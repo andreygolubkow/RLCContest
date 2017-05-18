@@ -47,16 +47,22 @@
     <Compile Include="CircuitControl.Designer.cs">
       <DependentUpon>CircuitControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="ElementFactory.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ElementFactory.Designer.cs">
+      <DependentUpon>ElementFactory.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="ResistorControl.cs">
+    <Compile Include="ElementControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ResistorControl.Designer.cs">
-      <DependentUpon>ResistorControl.cs</DependentUpon>
+    <Compile Include="ElementControl.Designer.cs">
+      <DependentUpon>ElementControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
@@ -65,12 +71,15 @@
     <EmbeddedResource Include="CircuitControl.resx">
       <DependentUpon>CircuitControl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ElementFactory.resx">
+      <DependentUpon>ElementFactory.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="ResistorControl.resx">
-      <DependentUpon>ResistorControl.cs</DependentUpon>
+    <EmbeddedResource Include="ElementControl.resx">
+      <DependentUpon>ElementControl.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

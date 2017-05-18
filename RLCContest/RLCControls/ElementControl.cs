@@ -1,23 +1,35 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Windows.Forms;
 
 using Core.Elements;
 
 namespace RLCControls
 {
-    public partial class ResistorControl: UserControl
+    public partial class ElementControl: UserControl
     {
-        private Resistor _resistor;
-        public ResistorControl()
+        private IElement _element;
+        public ElementControl()
         {
             InitializeComponent();
-            _resistor = new Resistor();
         }
 
-        public ResistorControl(string name, double value)
+        public ElementControl(string name, double value, Type type)
         {
             InitializeComponent();
-            _resistor = new Resistor(name,value);
+            if ( type == typeof(Resistor) )
+            {
+                _element = new Resistor(name, value);
+            }
+            if (type == typeof(Capacitor))
+            {
+                _element = new Capacitor(name, value);
+            }
+            if (type == typeof(Inductor))
+            {
+                _element = new Inductor(name, value);
+            }
+
         }
 
         /// <summary>
@@ -27,7 +39,7 @@ namespace RLCControls
         {
             get
             {
-                return _resistor.Value;
+                return _element.Value;
             }
 
             set
@@ -36,7 +48,7 @@ namespace RLCControls
                 {
                     throw new ArgumentException("Сопротивление не может быть меньше 0.");
                 }
-                _resistor.Value = value;
+                _element.Value = value;
             }
         }
 
@@ -47,7 +59,7 @@ namespace RLCControls
         {
             get
             {
-                return _resistor.Name;
+                return _element.Name;
             }
 
             set
@@ -62,6 +74,13 @@ namespace RLCControls
         /// <summary>
         /// Получение элемента.
         /// </summary>
-        public IElement Element => _resistor;
+        public IElement Element => _element;
+
+        [DefaultValue(null)]
+        public IElement InputElement { get; set; }
+
+        [DefaultValue(null)]
+        public IElement OutputElement { get; set; }
+
     }
 }

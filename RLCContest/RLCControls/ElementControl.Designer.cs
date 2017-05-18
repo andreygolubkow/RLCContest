@@ -1,6 +1,6 @@
 ﻿namespace RLCControls
 {
-    partial class ResistorControl
+    partial class ElementControl
     {
         /// <summary>
         /// Обязательная переменная конструктора.
