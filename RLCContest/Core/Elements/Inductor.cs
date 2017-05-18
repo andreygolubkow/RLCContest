@@ -98,7 +98,14 @@
         /// </summary>
         /// <param name="frequency">Частота.</param>
         /// <returns>Комплексное число.</returns>
-        public Complex CalculateZ(double frequency) => 2 * Math.PI * frequency * this.Value;
+        public Complex CalculateZ(double frequency)
+        {
+            if (frequency < 0)
+            {
+                throw new ArgumentException("Частота не может быть отрицательной.");
+            }
+            return new Complex(0, 2 * Math.PI * frequency * this.Value);
+        }
 
         #endregion
     }

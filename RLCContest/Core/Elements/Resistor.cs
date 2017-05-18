@@ -77,10 +77,7 @@
         /// </summary>
         public double Value
         {
-            get
-            {
-                return this._value;
-            }
+            get => this._value;
 
             set
             {
@@ -99,7 +96,14 @@
         /// </summary>
         /// <param name="frequency">Частота.</param>
         /// <returns>Сопростивление резистора, не зависит от частоты.</returns>
-        public Complex CalculateZ(double frequency) => new Complex(this._value, 0);
+        public Complex CalculateZ(double frequency)
+        {
+            if (frequency < 0)
+            {
+                throw new ArgumentException("Частота не может быть отрицательной.");
+            }
+            return new Complex(Value, 0);
+        }
 
         #endregion
     }

@@ -30,7 +30,6 @@
         /// <param name="frequency">Частота.</param>
         /// <returns>Комплексное сопротивление.</returns>
         Complex CalculateZ(double frequency);
-
-
     }
 }
+

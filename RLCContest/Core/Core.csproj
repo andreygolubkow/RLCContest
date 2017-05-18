@@ -41,9 +41,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Circuits\StandartCircuit.cs" />
+    <Compile Include="Elements\Capacitor.cs" />
     <Compile Include="Elements\IElement.cs" />
     <Compile Include="Elements\Inductor.cs" />
     <Compile Include="Elements\Resistor.cs" />
+    <Compile Include="Circuits\ICircuit.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
