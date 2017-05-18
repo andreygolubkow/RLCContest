@@ -14,6 +14,12 @@ namespace Core.Elements
             Value = 0;
         }
 
+        public Capacitor(string name, double value)
+        {
+            Name = name;
+            Value = value;
+        }
+
         #region Implementation of IElement
 
         /// <summary>
