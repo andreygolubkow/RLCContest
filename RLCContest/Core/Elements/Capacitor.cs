@@ -59,6 +59,7 @@ namespace Core.Elements
                     throw new ArgumentException("Ёмкость не должна быть меньше нуля.");
                 }
                 _value = value;
+                ValueChanged?.Invoke(this,new EventArgs());
             }
         }
 

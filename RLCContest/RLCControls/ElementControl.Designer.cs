@@ -61,6 +61,7 @@
             this.elementPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.elementPicture.TabIndex = 0;
             this.elementPicture.TabStop = false;
+            this.elementPicture.MouseMove += new System.Windows.Forms.MouseEventHandler(this.elementPicture_MouseMove);
             // 
             // ElementControl
             // 

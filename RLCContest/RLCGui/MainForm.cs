@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using RLCControls;
+
 namespace RLCGui
 {
     public partial class MainForm : Form
@@ -17,11 +19,18 @@ namespace RLCGui
             InitializeComponent();
         }
 
-        private void createElementButton_Click(object sender, EventArgs e)
+        private void CreateElementButtonClick(object sender, EventArgs e)
         {
-            var element = elementFactory.Element;
-            element.Location = new System.Drawing.Point(20,20);
-            Controls.Add(element);
+            var element = elementFactory.GetElementControl();
+            circuitControl.AddControl(element);
+
+        }
+
+        
+
+        private void CreateElementButtonMouseMove(object sender, MouseEventArgs e)
+        {
+
         }
     }
 }

@@ -33,6 +33,7 @@
             this.elementValue = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.debugGetElement = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // elementsComboBox
@@ -79,10 +80,22 @@
             this.label2.TabIndex = 4;
             this.label2.Text = "Номинал";
             // 
+            // debugGetElement
+            // 
+            this.debugGetElement.Location = new System.Drawing.Point(114, 56);
+            this.debugGetElement.Name = "debugGetElement";
+            this.debugGetElement.Size = new System.Drawing.Size(75, 23);
+            this.debugGetElement.TabIndex = 5;
+            this.debugGetElement.Text = "Get Element";
+            this.debugGetElement.UseVisualStyleBackColor = true;
+            this.debugGetElement.Visible = false;
+            this.debugGetElement.Click += new System.EventHandler(this.debugGetElement_Click);
+            // 
             // ElementFactory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.debugGetElement);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.elementValue);
@@ -102,5 +115,6 @@
         private System.Windows.Forms.TextBox elementValue;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button debugGetElement;
     }
 }

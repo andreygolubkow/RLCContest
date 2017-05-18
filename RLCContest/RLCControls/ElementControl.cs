@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Globalization;
 using System.Resources;
@@ -11,41 +12,11 @@ namespace RLCControls
     public partial class ElementControl: UserControl
     {
         private IElement _element;
-        public ElementControl()
-        {
-            InitializeComponent();
-            elementName.Text = "";
-            elementValue.Text = "";
-            elementPicture.Image = null;
-        }
-
-        public ElementControl(string name, double value, Type type)
-        {
-            InitializeComponent();
-            if ( type == typeof(Resistor) )
-            {
-                _element = new Resistor(name, value);
-                elementPicture.Image = RLCControls.Properties.Resources.Resistor;
-            }
-            if (type == typeof(Capacitor))
-            {
-                _element = new Capacitor(name, value);
-                elementPicture.Image = RLCControls.Properties.Resources.Capasitor;
-            }
-            if (type == typeof(Inductor))
-            {
-                _element = new Inductor(name, value);
-                elementPicture.Image = RLCControls.Properties.Resources.Inductor;
-            }
-            elementName.Text = _element.Name;
-            elementValue.Text = Convert.ToString(_element.Value, CultureInfo.CurrentCulture);
-
-        }
 
         public ElementControl(IElement element)
         {
-            InitializeComponent();
             _element = element;
+            InitializeComponent();
             if ( element is Resistor )
             {
                 elementPicture.Image = RLCControls.Properties.Resources.Resistor;
@@ -66,44 +37,12 @@ namespace RLCControls
         /// <summary>
         /// Номинал резистора.
         /// </summary>
-        public double Value
-        {
-            get
-            {
-                return _element.Value;
-            }
-
-            set
-            {
-                if ( value < 0 )
-                {
-                    throw new ArgumentException("Сопротивление не может быть меньше 0.");
-                }
-                _element.Value = value;
-                elementValue.Text = Convert.ToString(_element.Value, CultureInfo.CurrentCulture);
-            }
-        }
+        public double ElementValue => _element?.Value ?? 0;
 
         /// <summary>
         /// Наименование резистора.
         /// </summary>
-        public string Name
-        {
-            get
-            {
-                return _element.Name;
-            }
-
-            set
-            {
-                if ( value.Length == 0 )
-                {
-                    throw new ArgumentException("Название не может быть пустым.");
-                }
-                _element.Name = value;
-                elementName.Text = _element.Name;
-            }
-        }
+        public string ElementName => _element != null ? _element.Name : "NullElementName";
 
         /// <summary>
         /// Получение элемента.
@@ -111,10 +50,13 @@ namespace RLCControls
         public IElement Element => _element;
 
         [DefaultValue(null)]
-        public IElement InputElement { get; set; }
+        public List<ElementControl> InputElements { get; set; }
 
         [DefaultValue(null)]
-        public IElement OutputElement { get; set; }
+        public List<ElementControl> OutputElements { get; set; }
 
+        private void elementPicture_MouseMove(object sender, MouseEventArgs e)
+        {
+        }
     }
 }
