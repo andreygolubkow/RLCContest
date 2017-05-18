@@ -1,5 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Globalization;
+using System.Resources;
 using System.Windows.Forms;
 
 using Core.Elements;
@@ -12,6 +14,9 @@ namespace RLCControls
         public ElementControl()
         {
             InitializeComponent();
+            elementName.Text = "";
+            elementValue.Text = "";
+            elementPicture.Image = null;
         }
 
         public ElementControl(string name, double value, Type type)
@@ -20,15 +25,41 @@ namespace RLCControls
             if ( type == typeof(Resistor) )
             {
                 _element = new Resistor(name, value);
+                elementPicture.Image = RLCControls.Properties.Resources.Resistor;
             }
             if (type == typeof(Capacitor))
             {
                 _element = new Capacitor(name, value);
+                elementPicture.Image = RLCControls.Properties.Resources.Capasitor;
             }
             if (type == typeof(Inductor))
             {
                 _element = new Inductor(name, value);
+                elementPicture.Image = RLCControls.Properties.Resources.Inductor;
             }
+            elementName.Text = _element.Name;
+            elementValue.Text = Convert.ToString(_element.Value, CultureInfo.CurrentCulture);
+
+        }
+
+        public ElementControl(IElement element)
+        {
+            InitializeComponent();
+            _element = element;
+            if ( element is Resistor )
+            {
+                elementPicture.Image = RLCControls.Properties.Resources.Resistor;
+            }
+            if (element is Capacitor)
+            {
+                elementPicture.Image = RLCControls.Properties.Resources.Capasitor;
+            }
+            if (element is Inductor)
+            {
+                elementPicture.Image = RLCControls.Properties.Resources.Inductor;
+            }
+            elementName.Text = _element.Name;
+            elementValue.Text = Convert.ToString(_element.Value, CultureInfo.CurrentCulture);
 
         }
 
@@ -49,6 +80,7 @@ namespace RLCControls
                     throw new ArgumentException("Сопротивление не может быть меньше 0.");
                 }
                 _element.Value = value;
+                elementValue.Text = Convert.ToString(_element.Value, CultureInfo.CurrentCulture);
             }
         }
 
@@ -68,6 +100,8 @@ namespace RLCControls
                 {
                     throw new ArgumentException("Название не может быть пустым.");
                 }
+                _element.Name = value;
+                elementName.Text = _element.Name;
             }
         }
 

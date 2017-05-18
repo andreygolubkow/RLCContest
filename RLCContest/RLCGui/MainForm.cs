@@ -16,5 +16,12 @@ namespace RLCGui
         {
             InitializeComponent();
         }
+
+        private void createElementButton_Click(object sender, EventArgs e)
+        {
+            var element = elementFactory.Element;
+            element.Location = new System.Drawing.Point(20,20);
+            Controls.Add(element);
+        }
     }
 }

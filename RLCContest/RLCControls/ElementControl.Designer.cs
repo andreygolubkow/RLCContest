@@ -28,50 +28,50 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.resistorName = new System.Windows.Forms.Label();
-            this.resistorValue = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.elementName = new System.Windows.Forms.Label();
+            this.elementValue = new System.Windows.Forms.Label();
+            this.elementPicture = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.elementPicture)).BeginInit();
             this.SuspendLayout();
             // 
-            // resistorName
+            // elementName
             // 
-            this.resistorName.AutoSize = true;
-            this.resistorName.Location = new System.Drawing.Point(28, 33);
-            this.resistorName.Name = "resistorName";
-            this.resistorName.Size = new System.Drawing.Size(35, 13);
-            this.resistorName.TabIndex = 1;
-            this.resistorName.Text = "Name";
+            this.elementName.AutoSize = true;
+            this.elementName.Location = new System.Drawing.Point(28, 33);
+            this.elementName.Name = "elementName";
+            this.elementName.Size = new System.Drawing.Size(35, 13);
+            this.elementName.TabIndex = 1;
+            this.elementName.Text = "Name";
             // 
-            // resistorValue
+            // elementValue
             // 
-            this.resistorValue.AutoSize = true;
-            this.resistorValue.Location = new System.Drawing.Point(28, 46);
-            this.resistorValue.Name = "resistorValue";
-            this.resistorValue.Size = new System.Drawing.Size(32, 13);
-            this.resistorValue.TabIndex = 2;
-            this.resistorValue.Text = "1 Ом";
+            this.elementValue.AutoSize = true;
+            this.elementValue.Location = new System.Drawing.Point(28, 46);
+            this.elementValue.Name = "elementValue";
+            this.elementValue.Size = new System.Drawing.Size(32, 13);
+            this.elementValue.TabIndex = 2;
+            this.elementValue.Text = "1 Ом";
             // 
-            // pictureBox1
+            // elementPicture
             // 
-            this.pictureBox1.Image = global::RLCControls.Properties.Resources.Resistor;
-            this.pictureBox1.Location = new System.Drawing.Point(3, 3);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(80, 27);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
+            this.elementPicture.Image = global::RLCControls.Properties.Resources.Resistor;
+            this.elementPicture.Location = new System.Drawing.Point(3, 3);
+            this.elementPicture.Name = "elementPicture";
+            this.elementPicture.Size = new System.Drawing.Size(80, 27);
+            this.elementPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.elementPicture.TabIndex = 0;
+            this.elementPicture.TabStop = false;
             // 
-            // ResistorControl
+            // ElementControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.resistorValue);
-            this.Controls.Add(this.resistorName);
-            this.Controls.Add(this.pictureBox1);
-            this.Name = "ResistorControl";
+            this.Controls.Add(this.elementValue);
+            this.Controls.Add(this.elementName);
+            this.Controls.Add(this.elementPicture);
+            this.Name = "ElementControl";
             this.Size = new System.Drawing.Size(86, 64);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.elementPicture)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -79,8 +79,8 @@
 
         #endregion
 
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label resistorName;
-        private System.Windows.Forms.Label resistorValue;
+        private System.Windows.Forms.PictureBox elementPicture;
+        private System.Windows.Forms.Label elementName;
+        private System.Windows.Forms.Label elementValue;
     }
 }

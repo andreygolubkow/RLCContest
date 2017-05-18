@@ -53,6 +53,11 @@
     <Compile Include="ElementFactory.Designer.cs">
       <DependentUpon>ElementFactory.cs</DependentUpon>
     </Compile>
+    <Compile Include="ElementImages.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ElementImages.resx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -73,6 +78,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ElementFactory.resx">
       <DependentUpon>ElementFactory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ElementImages.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ElementImages.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
