@@ -30,7 +30,7 @@ namespace Core.Elements
                
         }
 
-        public void Add
+
 
         #region Implementation of IElement
 
