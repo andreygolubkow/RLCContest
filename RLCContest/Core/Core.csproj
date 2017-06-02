@@ -41,15 +41,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Circuits\StandartCircuit.cs" />
+    <Compile Include="Circuits\SerialCircuit.cs" />
     <Compile Include="Elements\Capacitor.cs" />
-    <Compile Include="Elements\Circuit.cs" />
-    <Compile Include="Elements\IElement.cs" />
     <Compile Include="Elements\Inductor.cs" />
     <Compile Include="Elements\Resistor.cs" />
-    <Compile Include="Circuits\ICircuit.cs" />
+    <Compile Include="ICircuit.cs" />
+    <Compile Include="IComponent.cs" />
+    <Compile Include="IElement.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

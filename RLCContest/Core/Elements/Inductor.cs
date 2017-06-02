@@ -68,6 +68,7 @@
                 }
 
                 this._name = value;
+
             }
         }
 
