@@ -48,10 +48,7 @@ namespace Core.Elements
         /// </summary>
         public double Value
         {
-            get
-            {
-                return _value;
-            }
+            get => _value;
             set
             {
                 if ( value < 0 )
@@ -59,6 +56,7 @@ namespace Core.Elements
                     throw new ArgumentException("Ёмкость не должна быть меньше нуля.");
                 }
                 _value = value;
+                ValueChanged?.Invoke(this,new EventArgs());
             }
         }
 
@@ -67,9 +65,9 @@ namespace Core.Elements
         /// </summary>
         /// <param name="frequency">Частота.</param>
         /// <returns>Комплексное сопротивление.</returns>
-        public Complex CalculateZ(double frequency)
+        Complex IComponent.CalculateZ(double frequency)
         {
-            if ( frequency < 0 )
+            if (frequency < 0)
             {
                 throw new ArgumentException("Частота не может быть отрицательной.");
             }
