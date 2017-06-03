@@ -42,10 +42,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CapacitorElementControl.cs">
+    <Compile Include="BaseCircuitControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="CapacitorElementControl.Designer.cs">
+    <Compile Include="BaseCircuitControl.Designer.cs">
+      <DependentUpon>BaseCircuitControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Elements\CapacitorElementControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Elements\CapacitorElementControl.Designer.cs">
       <DependentUpon>CapacitorElementControl.cs</DependentUpon>
     </Compile>
     <Compile Include="BaseElementControl.cs">
@@ -54,15 +60,36 @@
     <Compile Include="BaseElementControl.Designer.cs">
       <DependentUpon>BaseElementControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Elements\InductorElementControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Elements\InductorElementControl.Designer.cs">
+      <DependentUpon>InductorElementControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Elements\ResistorElementControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Elements\ResistorElementControl.Designer.cs">
+      <DependentUpon>ResistorElementControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="BaseCircuitControl.resx">
+      <DependentUpon>BaseCircuitControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="BaseElementControl.resx">
       <DependentUpon>BaseElementControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CapacitorElementControl.resx">
+    <EmbeddedResource Include="Elements\CapacitorElementControl.resx">
       <DependentUpon>CapacitorElementControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Elements\InductorElementControl.resx">
+      <DependentUpon>InductorElementControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Elements\ResistorElementControl.resx">
+      <DependentUpon>ResistorElementControl.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

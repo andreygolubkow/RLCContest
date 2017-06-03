@@ -1,4 +1,4 @@
-﻿namespace Controls
+﻿namespace Controls.Elements
 {
     partial class CapacitorElementControl: BaseElementControl
     {
