@@ -47,7 +47,7 @@
             this.baseGroubBox.Controls.Add(this.nameTextBox);
             this.baseGroubBox.Location = new System.Drawing.Point(3, 0);
             this.baseGroubBox.Name = "baseGroubBox";
-            this.baseGroubBox.Size = new System.Drawing.Size(240, 65);
+            this.baseGroubBox.Size = new System.Drawing.Size(242, 66);
             this.baseGroubBox.TabIndex = 0;
             this.baseGroubBox.TabStop = false;
             this.baseGroubBox.Text = "Element";
@@ -80,7 +80,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.valueTextBox.Location = new System.Drawing.Point(47, 39);
             this.valueTextBox.Name = "valueTextBox";
-            this.valueTextBox.Size = new System.Drawing.Size(109, 20);
+            this.valueTextBox.Size = new System.Drawing.Size(111, 20);
             this.valueTextBox.TabIndex = 1;
             // 
             // nameTextBox
@@ -89,7 +89,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.nameTextBox.Location = new System.Drawing.Point(47, 13);
             this.nameTextBox.Name = "nameTextBox";
-            this.nameTextBox.Size = new System.Drawing.Size(186, 20);
+            this.nameTextBox.Size = new System.Drawing.Size(188, 20);
             this.nameTextBox.TabIndex = 0;
             // 
             // BaseElementControl
@@ -98,7 +98,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.baseGroubBox);
             this.Name = "BaseElementControl";
-            this.Size = new System.Drawing.Size(249, 69);
+            this.Size = new System.Drawing.Size(251, 70);
             this.baseGroubBox.ResumeLayout(false);
             this.baseGroubBox.PerformLayout();
             this.ResumeLayout(false);

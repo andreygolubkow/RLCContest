@@ -1,16 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Drawing;
-using System.Data;
 using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using Core;
-using Core.Elements;
 
 namespace Controls
 {
@@ -18,7 +11,7 @@ namespace Controls
     {
         private IElement _element;
 
-        public BaseElementControl()
+        protected BaseElementControl()
         {
             InitializeComponent();
             _element = null;
@@ -57,6 +50,5 @@ namespace Controls
             get => Convert.ToDouble(valueTextBox.Text);
             set => valueTextBox.Text = Convert.ToString(value, CultureInfo.CurrentCulture);
         }
-
     }
 }

@@ -12,9 +12,11 @@ namespace Controls
 {
     public partial class BaseCircuitControl : UserControl
     {
-        public BaseCircuitControl()
+        protected BaseCircuitControl()
         {
             InitializeComponent();
         }
+
+
     }
 }
