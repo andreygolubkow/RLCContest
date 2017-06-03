@@ -3,37 +3,35 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Data;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using Core;
 using Core.Elements;
 
 namespace Controls
 {
-    public partial class CapacitorControl : UserControl
+    public partial class BaseElementControl : UserControl
     {
-        private Capacitor _element;
+        private IElement _element;
 
-        public CapacitorControl()
+        public BaseElementControl()
         {
             InitializeComponent();
             _element = null;
-#if !DEBUG
-            zValueLabel.Text = "";
-#endif
         }
 
         [Browsable(false)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         [EditorBrowsable(EditorBrowsableState.Never)]
         [DefaultValue(null)]
-        public Capacitor Element
+        public virtual IElement Element
         {
             get
             {
-                _element = new Capacitor(nameTextBox.Text,Convert.ToDouble(valueTextBox.Text));
                 return _element;
             }
             set
@@ -46,6 +44,18 @@ namespace Controls
                 }
                 _element = value;
             }
+        }
+
+        protected string ElementName
+        {
+            get => nameTextBox.Text;
+            set => nameTextBox.Text = value;
+        }
+
+        protected double ElementValue
+        {
+            get => Convert.ToDouble(valueTextBox.Text);
+            set => valueTextBox.Text = Convert.ToString(value, CultureInfo.CurrentCulture);
         }
 
     }

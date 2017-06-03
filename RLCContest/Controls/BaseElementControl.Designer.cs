@@ -1,6 +1,6 @@
 ﻿namespace Controls
 {
-    partial class CapacitorControl
+    partial class BaseElementControl
     {
         /// <summary>
         /// Обязательная переменная конструктора.
@@ -28,29 +28,29 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.capacitorGroubBox = new System.Windows.Forms.GroupBox();
+            this.baseGroubBox = new System.Windows.Forms.GroupBox();
             this.valueLabel = new System.Windows.Forms.Label();
             this.nameLabel = new System.Windows.Forms.Label();
             this.valueTextBox = new System.Windows.Forms.TextBox();
             this.nameTextBox = new System.Windows.Forms.TextBox();
-            this.capacitorGroubBox.SuspendLayout();
+            this.baseGroubBox.SuspendLayout();
             this.SuspendLayout();
             // 
-            // capacitorGroubBox
+            // baseGroubBox
             // 
-            this.capacitorGroubBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.baseGroubBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.capacitorGroubBox.Controls.Add(this.valueLabel);
-            this.capacitorGroubBox.Controls.Add(this.nameLabel);
-            this.capacitorGroubBox.Controls.Add(this.valueTextBox);
-            this.capacitorGroubBox.Controls.Add(this.nameTextBox);
-            this.capacitorGroubBox.Location = new System.Drawing.Point(3, 0);
-            this.capacitorGroubBox.Name = "capacitorGroubBox";
-            this.capacitorGroubBox.Size = new System.Drawing.Size(240, 65);
-            this.capacitorGroubBox.TabIndex = 0;
-            this.capacitorGroubBox.TabStop = false;
-            this.capacitorGroubBox.Text = "Capacitor";
+            this.baseGroubBox.Controls.Add(this.valueLabel);
+            this.baseGroubBox.Controls.Add(this.nameLabel);
+            this.baseGroubBox.Controls.Add(this.valueTextBox);
+            this.baseGroubBox.Controls.Add(this.nameTextBox);
+            this.baseGroubBox.Location = new System.Drawing.Point(3, 0);
+            this.baseGroubBox.Name = "baseGroubBox";
+            this.baseGroubBox.Size = new System.Drawing.Size(240, 65);
+            this.baseGroubBox.TabIndex = 0;
+            this.baseGroubBox.TabStop = false;
+            this.baseGroubBox.Text = "Element";
             // 
             // valueLabel
             // 
@@ -92,24 +92,23 @@
             this.nameTextBox.Size = new System.Drawing.Size(186, 20);
             this.nameTextBox.TabIndex = 0;
             // 
-            // CapacitorControl
+            // BaseElementControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.capacitorGroubBox);
-            this.Name = "CapacitorControl";
+            this.Controls.Add(this.baseGroubBox);
+            this.Name = "BaseElementControl";
             this.Size = new System.Drawing.Size(249, 69);
-            this.capacitorGroubBox.ResumeLayout(false);
-            this.capacitorGroubBox.PerformLayout();
+            this.baseGroubBox.ResumeLayout(false);
+            this.baseGroubBox.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.GroupBox capacitorGroubBox;
         private System.Windows.Forms.Label valueLabel;
         private System.Windows.Forms.Label nameLabel;
+        protected System.Windows.Forms.GroupBox baseGroubBox;
         private System.Windows.Forms.TextBox valueTextBox;
         private System.Windows.Forms.TextBox nameTextBox;
     }

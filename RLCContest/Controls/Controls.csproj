@@ -42,18 +42,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CapacitorControl.cs">
+    <Compile Include="CapacitorElementControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="CapacitorControl.Designer.cs">
-      <DependentUpon>CapacitorControl.cs</DependentUpon>
+    <Compile Include="CapacitorElementControl.Designer.cs">
+      <DependentUpon>CapacitorElementControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseElementControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="BaseElementControl.Designer.cs">
+      <DependentUpon>BaseElementControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="CapacitorControl.resx">
-      <DependentUpon>CapacitorControl.cs</DependentUpon>
+    <EmbeddedResource Include="BaseElementControl.resx">
+      <DependentUpon>BaseElementControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CapacitorElementControl.resx">
+      <DependentUpon>CapacitorElementControl.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
