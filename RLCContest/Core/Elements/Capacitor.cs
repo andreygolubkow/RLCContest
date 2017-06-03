@@ -65,7 +65,7 @@ namespace Core.Elements
         /// </summary>
         /// <param name="frequency">Частота.</param>
         /// <returns>Комплексное сопротивление.</returns>
-        Complex IComponent.CalculateZ(double frequency)
+        public Complex CalculateZ(double frequency)
         {
             if (frequency < 0)
             {
