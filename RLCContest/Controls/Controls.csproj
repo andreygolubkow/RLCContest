@@ -42,62 +42,71 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BaseCircuitControl.cs">
+    <Compile Include="Factories\BaseControls\BaseFactoryControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="BaseCircuitControl.Designer.cs">
+    <Compile Include="Factories\BaseControls\BaseFactoryControl.Designer.cs">
+      <DependentUpon>BaseFactoryControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SingleControls\BaseControls\BaseCircuitControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SingleControls\BaseControls\BaseCircuitControl.Designer.cs">
       <DependentUpon>BaseCircuitControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Circuits\SerialCircuitControl.cs">
+    <Compile Include="SingleControls\Circuits\SerialCircuitControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Circuits\SerialCircuitControl.Designer.cs">
+    <Compile Include="SingleControls\Circuits\SerialCircuitControl.Designer.cs">
       <DependentUpon>SerialCircuitControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Elements\CapacitorElementControl.cs">
+    <Compile Include="SingleControls\Elements\CapacitorElementControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Elements\CapacitorElementControl.Designer.cs">
+    <Compile Include="SingleControls\Elements\CapacitorElementControl.Designer.cs">
       <DependentUpon>CapacitorElementControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="BaseElementControl.cs">
+    <Compile Include="SingleControls\BaseControls\BaseElementControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="BaseElementControl.Designer.cs">
+    <Compile Include="SingleControls\BaseControls\BaseElementControl.Designer.cs">
       <DependentUpon>BaseElementControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Elements\InductorElementControl.cs">
+    <Compile Include="SingleControls\Elements\InductorElementControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Elements\InductorElementControl.Designer.cs">
+    <Compile Include="SingleControls\Elements\InductorElementControl.Designer.cs">
       <DependentUpon>InductorElementControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Elements\ResistorElementControl.cs">
+    <Compile Include="SingleControls\Elements\ResistorElementControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Elements\ResistorElementControl.Designer.cs">
+    <Compile Include="SingleControls\Elements\ResistorElementControl.Designer.cs">
       <DependentUpon>ResistorElementControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="BaseCircuitControl.resx">
+    <EmbeddedResource Include="Factories\BaseControls\BaseFactoryControl.resx">
+      <DependentUpon>BaseFactoryControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SingleControls\BaseControls\BaseCircuitControl.resx">
       <DependentUpon>BaseCircuitControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="BaseElementControl.resx">
+    <EmbeddedResource Include="SingleControls\BaseControls\BaseElementControl.resx">
       <DependentUpon>BaseElementControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Circuits\SerialCircuitControl.resx">
+    <EmbeddedResource Include="SingleControls\Circuits\SerialCircuitControl.resx">
       <DependentUpon>SerialCircuitControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Elements\CapacitorElementControl.resx">
+    <EmbeddedResource Include="SingleControls\Elements\CapacitorElementControl.resx">
       <DependentUpon>CapacitorElementControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Elements\InductorElementControl.resx">
+    <EmbeddedResource Include="SingleControls\Elements\InductorElementControl.resx">
       <DependentUpon>InductorElementControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Elements\ResistorElementControl.resx">
+    <EmbeddedResource Include="SingleControls\Elements\ResistorElementControl.resx">
       <DependentUpon>ResistorElementControl.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
@@ -110,5 +119,6 @@
       <Name>Core</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
