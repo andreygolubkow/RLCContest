@@ -1,6 +1,7 @@
 ﻿#region
 
 using System;
+using System.ComponentModel;
 
 using Controls.SingleControls.BaseControls;
 
@@ -24,11 +25,12 @@ namespace Controls.SingleControls.Elements
             InitializeComponent();
         }
 
+        [DefaultValue(null)]
         public override IElement Element
         {
             get
             {
-                _inductor = new Inductor(ElementName, ElementValue);
+                _inductor = ElementName.Length > 0 ? new Inductor(ElementName, ElementValue) : null;
                 return _inductor;
             }
             set

@@ -39,15 +39,17 @@ namespace Controls.SingleControls.BaseControls
             }
         }
 
+        [DefaultValue(null)]
         protected string ElementName
         {
             get => nameTextBox.Text;
-            set => nameTextBox.Text = value;
+            set => nameTextBox.Text = value ?? "";
         }
 
+        [DefaultValue(0)]
         protected double ElementValue
         {
-            get => Convert.ToDouble(valueTextBox.Text);
+            get => valueTextBox.Text.Length>0 ? Convert.ToDouble(valueTextBox.Text):0;
             set => valueTextBox.Text = Convert.ToString(value, CultureInfo.CurrentCulture);
         }
     }

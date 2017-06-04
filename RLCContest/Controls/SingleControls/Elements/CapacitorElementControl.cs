@@ -22,15 +22,17 @@ namespace Controls.SingleControls.Elements
         public CapacitorElementControl()
         {
             InitializeComponent();
+
         }
 
         #region Overrides of BaseElementControl
+
 
         public override IElement Element
         {
             get
             {
-                _capacitor = new Capacitor(ElementName, ElementValue);
+                _capacitor = ElementName.Length>0 ? new Capacitor(ElementName, ElementValue) : null;
                 return _capacitor;
             }
             set

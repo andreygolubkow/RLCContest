@@ -1,6 +1,7 @@
 ﻿#region
 
 using System;
+using System.ComponentModel;
 
 using Controls.SingleControls.BaseControls;
 
@@ -24,11 +25,12 @@ namespace Controls.SingleControls.Elements
             InitializeComponent();
         }
 
+        [DefaultValue(null)]
         public override IElement Element
         {
             get
             {
-                _resistor = new Resistor(ElementName, ElementValue);
+                _resistor = ElementName.Length>0 ? new Resistor(ElementName, ElementValue) : null;
                 return _resistor;
             }
             set
