@@ -2,12 +2,14 @@
 
 using System;
 
+using Controls.SingleControls.BaseControls;
+
 using Core;
 using Core.Elements;
 
 #endregion
 
-namespace Controls.Elements
+namespace Controls.SingleControls.Elements
 {
     public partial class InductorElementControl : BaseElementControl
     {

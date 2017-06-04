@@ -1,4 +1,4 @@
-﻿namespace Controls.Circuits
+﻿namespace Controls.SingleControls.Circuits
 {
     partial class SerialCircuitControl
     {

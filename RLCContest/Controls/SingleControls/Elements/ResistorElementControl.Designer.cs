@@ -1,4 +1,4 @@
-﻿namespace Controls.Elements
+﻿namespace Controls.SingleControls.Elements
 {
     partial class ResistorElementControl
     {
