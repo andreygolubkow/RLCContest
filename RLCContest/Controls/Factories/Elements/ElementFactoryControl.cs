@@ -1,5 +1,4 @@
 ﻿using System.Drawing;
-using System.Windows.Forms;
 
 using Controls.Factories.BaseControls;
 
@@ -10,9 +9,10 @@ namespace Controls.Factories.Elements
         public ElementFactoryControl()
         {
             InitializeComponent();
-            inductorElementControl.Location = new Point(6, 73);
-            capacitorElementControl.Location = new Point(6, 73);
-            resistorElementControl.Location = new Point(6, 73);
+            inductorElementControl.Location = new Point(3, 65);
+            capacitorElementControl.Location = new Point(3, 65);
+            resistorElementControl.Location = new Point(3, 65);
+            Size = new Size(352, 269);
         }
     }
 }

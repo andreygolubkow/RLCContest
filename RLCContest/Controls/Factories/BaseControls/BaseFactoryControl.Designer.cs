@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.containerControl = new System.Windows.Forms.GroupBox();
             this.manageGroupBox = new System.Windows.Forms.GroupBox();
             this.clearButton = new System.Windows.Forms.Button();
             this.removeButton = new System.Windows.Forms.Button();
@@ -44,21 +43,9 @@
             this.calculateGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
-            // containerControl
-            // 
-            this.containerControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.containerControl.Location = new System.Drawing.Point(3, 3);
-            this.containerControl.Name = "containerControl";
-            this.containerControl.Size = new System.Drawing.Size(335, 93);
-            this.containerControl.TabIndex = 0;
-            this.containerControl.TabStop = false;
-            this.containerControl.Text = "Factory";
-            // 
             // manageGroupBox
             // 
-            this.manageGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.manageGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.manageGroupBox.Controls.Add(this.clearButton);
             this.manageGroupBox.Controls.Add(this.removeButton);
@@ -117,8 +104,6 @@
             // 
             // calculateGroupBox
             // 
-            this.calculateGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.calculateGroupBox.Controls.Add(this.zValue);
             this.calculateGroupBox.Controls.Add(this.zLabel);
             this.calculateGroupBox.Controls.Add(this.calculateZButton);
@@ -133,7 +118,7 @@
             // 
             // zValue
             // 
-            this.zValue.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.zValue.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.zValue.AutoSize = true;
             this.zValue.Location = new System.Drawing.Point(271, 27);
             this.zValue.Name = "zValue";
@@ -143,7 +128,6 @@
             // 
             // zLabel
             // 
-            this.zLabel.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.zLabel.AutoSize = true;
             this.zLabel.Location = new System.Drawing.Point(248, 27);
             this.zLabel.Name = "zLabel";
@@ -153,7 +137,7 @@
             // 
             // calculateZButton
             // 
-            this.calculateZButton.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.calculateZButton.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.calculateZButton.Location = new System.Drawing.Point(167, 22);
             this.calculateZButton.Name = "calculateZButton";
             this.calculateZButton.Size = new System.Drawing.Size(75, 23);
@@ -164,7 +148,7 @@
             // 
             // frequencyValueTextBox
             // 
-            this.frequencyValueTextBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.frequencyValueTextBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.frequencyValueTextBox.Location = new System.Drawing.Point(65, 24);
             this.frequencyValueTextBox.Name = "frequencyValueTextBox";
             this.frequencyValueTextBox.Size = new System.Drawing.Size(96, 20);
@@ -172,7 +156,6 @@
             // 
             // frequencyLabel
             // 
-            this.frequencyLabel.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.frequencyLabel.AutoSize = true;
             this.frequencyLabel.Location = new System.Drawing.Point(5, 27);
             this.frequencyLabel.Name = "frequencyLabel";
@@ -186,7 +169,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.calculateGroupBox);
             this.Controls.Add(this.manageGroupBox);
-            this.Controls.Add(this.containerControl);
             this.MinimumSize = new System.Drawing.Size(341, 224);
             this.Name = "BaseFactoryControl";
             this.Size = new System.Drawing.Size(341, 224);
@@ -198,17 +180,16 @@
         }
 
         #endregion
-        private System.Windows.Forms.GroupBox manageGroupBox;
         private System.Windows.Forms.Button removeButton;
         private System.Windows.Forms.Button modifyButton;
         private System.Windows.Forms.Button createNewButton;
         private System.Windows.Forms.Button clearButton;
-        private System.Windows.Forms.GroupBox calculateGroupBox;
         protected System.Windows.Forms.Label zValue;
         private System.Windows.Forms.Label zLabel;
         protected System.Windows.Forms.Button calculateZButton;
         protected System.Windows.Forms.TextBox frequencyValueTextBox;
         private System.Windows.Forms.Label frequencyLabel;
-        protected System.Windows.Forms.GroupBox containerControl;
+        protected System.Windows.Forms.GroupBox manageGroupBox;
+        protected System.Windows.Forms.GroupBox calculateGroupBox;
     }
 }

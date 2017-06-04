@@ -34,11 +34,11 @@
             // 
             this.baseGroubBox.Text = "Capacitor";
             // 
-            // CapasitorElementControl
+            // CapacitorElementControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Name = "CapasitorElementControl";
+            this.Name = "CapacitorElementControl";
             this.ResumeLayout(false);
 
         }
