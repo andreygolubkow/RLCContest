@@ -40,10 +40,12 @@ namespace Core.Circuits
             }
         }
 
-        public IComponent this[int index] => _components[index];
-
-        public void AddComponent(IComponent component)
+        public void Add(IComponent component)
         {
+            if (component == null)
+            {
+                throw new ArgumentException("Нельзя добавить объект данного типа.");
+            }
             if (FindComponent(component.Name) != null)
             {
                 throw new ArgumentException("Компонент с таким именем уже существует.");
@@ -54,13 +56,83 @@ namespace Core.Circuits
             CircuitChanged?.Invoke(this, new EventArgs());
         }
 
-        public void RemoveComponent(IComponent component)
+        public bool Contains(IComponent value)
         {
-            _components.Remove(component);
-            UnsubscribeToComponent(component);
+            return _components.Contains(value);
+        }
+
+        public void Clear()
+        {
+            foreach (IComponent component in _components)
+            {
+                UnsubscribeToComponent(component);
+            }
+            _components.Clear();
+        }
+
+        public void CopyTo(IComponent[] array, int arrayIndex)
+        {
+            _components.CopyTo(array, arrayIndex);
+        }
+
+        public int IndexOf(IComponent component)
+        {
+            if ( component == null )
+            {
+                throw new ArgumentException("Объект не является компонентом.");
+            }
+            return  _components.IndexOf(component);
+        }
+
+        public void Insert(int index, IComponent component)
+        {
+            if ( component == null )
+            {
+                throw new ArgumentException("Объект не является компонентом.");
+            }
+            _components.Insert(index, component);
+            SubscribeToComponent(component);
 
             CircuitChanged?.Invoke(this, new EventArgs());
+
         }
+
+        public bool Remove(IComponent component)
+        {
+            if (component == null)
+            {
+                throw new ArgumentException("Объект не является компонентом.");
+            }
+            if (_components.Remove(component))
+            {
+                UnsubscribeToComponent(component);
+                CircuitChanged?.Invoke(this, new EventArgs());
+                return true;
+            }
+            return false;
+        }
+
+        public int Count => _components.Count;
+
+        public bool IsReadOnly => false;
+
+        public void RemoveAt(int index)
+        {
+            IComponent component = _components[index];
+            _components.RemoveAt(index);
+            UnsubscribeToComponent(component);
+            CircuitChanged?.Invoke(this, new EventArgs());
+        }
+
+        public IComponent this[int index]
+        {
+            get => _components[index];
+            set => _components[index] = ((value != null) && (FindComponent(value.Name) == null))
+                ? value
+                : throw new ArgumentException("Элемент с таким именем уже существует.");
+        }
+
+        public IList<IComponent> Components => _components;
 
         public Complex CalculateZ(double frequency)
         {
@@ -73,9 +145,8 @@ namespace Core.Circuits
 
         #region Implementation of IEnumerable
 
-        /// <summary>Возвращает перечислитель, осуществляющий перебор коллекции.</summary>
-        /// <returns>Объект <see cref="T:System.Collections.IEnumerator" />, который может использоваться для перебора коллекции.</returns>
-        public IEnumerator GetEnumerator()
+        /// <inheritdoc />
+        IEnumerator<IComponent> IEnumerable<IComponent>.GetEnumerator()
         {
             return _components.GetEnumerator();
         }
@@ -118,5 +189,14 @@ namespace Core.Circuits
             }
         }
 
+        #region Implementation of IEnumerable
+
+        /// <inheritdoc />
+        public IEnumerator GetEnumerator()
+        {
+            return _components.GetEnumerator();
+        }
+
+        #endregion
     }
 }

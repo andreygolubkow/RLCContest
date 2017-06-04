@@ -1,18 +1,15 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Dynamic;
 
 namespace Core
 {
-    public interface ICircuit : IComponent, IEnumerable
+    public interface ICircuit : IComponent, IList<IComponent>
     {
         event EventHandler CircuitChanged;
 
-        IComponent this[int index] {get;}
-
-        void AddComponent(IComponent component);
-
-        void RemoveComponent(IComponent component);
+        IList<IComponent> Components { get; }
 
     }
 }
