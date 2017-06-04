@@ -48,6 +48,12 @@
     <Compile Include="BaseCircuitControl.Designer.cs">
       <DependentUpon>BaseCircuitControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Circuits\SerialCircuitControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Circuits\SerialCircuitControl.Designer.cs">
+      <DependentUpon>SerialCircuitControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Elements\CapacitorElementControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -82,6 +88,9 @@
     <EmbeddedResource Include="BaseElementControl.resx">
       <DependentUpon>BaseElementControl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Circuits\SerialCircuitControl.resx">
+      <DependentUpon>SerialCircuitControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Elements\CapacitorElementControl.resx">
       <DependentUpon>CapacitorElementControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -93,13 +102,13 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Properties\DataSources\Core.IComponent.datasource" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\Core\Core.csproj">
       <Project>{f2ea5921-4b93-4625-8e63-bc925af4244a}</Project>
       <Name>Core</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Properties\DataSources\Core.IComponent.datasource" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -30,14 +30,14 @@
         {
             this.components = new System.ComponentModel.Container();
             this.circuitGroupBox = new System.Windows.Forms.GroupBox();
-            this.elementsListBox = new System.Windows.Forms.ListBox();
-            this.elementsListGroupBox = new System.Windows.Forms.GroupBox();
-            this.nameTextBox = new System.Windows.Forms.TextBox();
             this.nameGroupBox = new System.Windows.Forms.GroupBox();
+            this.nameTextBox = new System.Windows.Forms.TextBox();
+            this.elementsListGroupBox = new System.Windows.Forms.GroupBox();
+            this.elementsListBox = new System.Windows.Forms.ListBox();
             this.iComponentBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.circuitGroupBox.SuspendLayout();
-            this.elementsListGroupBox.SuspendLayout();
             this.nameGroupBox.SuspendLayout();
+            this.elementsListGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iComponentBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -55,18 +55,26 @@
             this.circuitGroupBox.TabStop = false;
             this.circuitGroupBox.Text = "Circuit";
             // 
-            // elementsListBox
+            // nameGroupBox
             // 
-            this.elementsListBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.nameGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.elementsListBox.DataSource = this.iComponentBindingSource;
-            this.elementsListBox.DisplayMember = "Name";
-            this.elementsListBox.FormattingEnabled = true;
-            this.elementsListBox.Location = new System.Drawing.Point(6, 19);
-            this.elementsListBox.Name = "elementsListBox";
-            this.elementsListBox.Size = new System.Drawing.Size(242, 56);
-            this.elementsListBox.TabIndex = 0;
+            this.nameGroupBox.Controls.Add(this.nameTextBox);
+            this.nameGroupBox.Location = new System.Drawing.Point(6, 113);
+            this.nameGroupBox.Name = "nameGroupBox";
+            this.nameGroupBox.Size = new System.Drawing.Size(254, 46);
+            this.nameGroupBox.TabIndex = 4;
+            this.nameGroupBox.TabStop = false;
+            this.nameGroupBox.Text = "Name";
+            // 
+            // nameTextBox
+            // 
+            this.nameTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.nameTextBox.Location = new System.Drawing.Point(6, 16);
+            this.nameTextBox.Name = "nameTextBox";
+            this.nameTextBox.Size = new System.Drawing.Size(242, 20);
+            this.nameTextBox.TabIndex = 3;
             // 
             // elementsListGroupBox
             // 
@@ -81,30 +89,23 @@
             this.elementsListGroupBox.TabStop = false;
             this.elementsListGroupBox.Text = "Elements list";
             // 
-            // nameTextBox
+            // elementsListBox
             // 
-            this.nameTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.elementsListBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.nameTextBox.Location = new System.Drawing.Point(6, 16);
-            this.nameTextBox.Name = "nameTextBox";
-            this.nameTextBox.Size = new System.Drawing.Size(242, 20);
-            this.nameTextBox.TabIndex = 3;
-            // 
-            // nameGroupBox
-            // 
-            this.nameGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.nameGroupBox.Controls.Add(this.nameTextBox);
-            this.nameGroupBox.Location = new System.Drawing.Point(6, 113);
-            this.nameGroupBox.Name = "nameGroupBox";
-            this.nameGroupBox.Size = new System.Drawing.Size(254, 46);
-            this.nameGroupBox.TabIndex = 4;
-            this.nameGroupBox.TabStop = false;
-            this.nameGroupBox.Text = "Name";
+            this.elementsListBox.DataSource = this.iComponentBindingSource;
+            this.elementsListBox.DisplayMember = "Name";
+            this.elementsListBox.FormattingEnabled = true;
+            this.elementsListBox.Location = new System.Drawing.Point(6, 19);
+            this.elementsListBox.Name = "elementsListBox";
+            this.elementsListBox.Size = new System.Drawing.Size(242, 56);
+            this.elementsListBox.TabIndex = 0;
             // 
             // iComponentBindingSource
             // 
             this.iComponentBindingSource.DataSource = typeof(Core.IComponent);
+            this.iComponentBindingSource.CurrentItemChanged += new System.EventHandler(this.iComponentBindingSource_CurrentItemChanged);
             // 
             // BaseCircuitControl
             // 
@@ -114,9 +115,9 @@
             this.Name = "BaseCircuitControl";
             this.Size = new System.Drawing.Size(275, 174);
             this.circuitGroupBox.ResumeLayout(false);
-            this.elementsListGroupBox.ResumeLayout(false);
             this.nameGroupBox.ResumeLayout(false);
             this.nameGroupBox.PerformLayout();
+            this.elementsListGroupBox.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.iComponentBindingSource)).EndInit();
             this.ResumeLayout(false);
 

@@ -1,6 +1,6 @@
-﻿namespace Controls.Elements
+﻿namespace Controls.Circuits
 {
-    partial class CapacitorElementControl
+    partial class SerialCircuitControl
     {
         /// <summary> 
         /// Обязательная переменная конструктора.
@@ -30,15 +30,15 @@
         {
             this.SuspendLayout();
             // 
-            // baseGroubBox
+            // circuitGroupBox
             // 
-            this.baseGroubBox.Text = "Capacitor";
+            this.circuitGroupBox.Text = "Serial Circuit";
             // 
-            // CapasitorElementControl
+            // SerialCircuitControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Name = "CapasitorElementControl";
+            this.Name = "SerialCircuitControl";
             this.ResumeLayout(false);
 
         }
