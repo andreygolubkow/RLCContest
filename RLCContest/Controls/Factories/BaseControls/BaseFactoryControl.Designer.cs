@@ -46,80 +46,96 @@
             // 
             // containerControl
             // 
+            this.containerControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.containerControl.Location = new System.Drawing.Point(3, 3);
             this.containerControl.Name = "containerControl";
-            this.containerControl.Size = new System.Drawing.Size(347, 155);
+            this.containerControl.Size = new System.Drawing.Size(330, 261);
             this.containerControl.TabIndex = 0;
             this.containerControl.TabStop = false;
             this.containerControl.Text = "Factory";
             // 
             // manageGroupBox
             // 
+            this.manageGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.manageGroupBox.Controls.Add(this.clearButton);
             this.manageGroupBox.Controls.Add(this.removeButton);
             this.manageGroupBox.Controls.Add(this.modifyButton);
             this.manageGroupBox.Controls.Add(this.createNewButton);
-            this.manageGroupBox.Location = new System.Drawing.Point(3, 164);
+            this.manageGroupBox.Location = new System.Drawing.Point(3, 270);
             this.manageGroupBox.Name = "manageGroupBox";
-            this.manageGroupBox.Size = new System.Drawing.Size(347, 51);
+            this.manageGroupBox.Size = new System.Drawing.Size(330, 51);
             this.manageGroupBox.TabIndex = 1;
             this.manageGroupBox.TabStop = false;
             this.manageGroupBox.Text = "Manage";
             // 
             // createNewButton
             // 
-            this.createNewButton.Location = new System.Drawing.Point(6, 19);
+            this.createNewButton.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.createNewButton.Location = new System.Drawing.Point(5, 19);
             this.createNewButton.Name = "createNewButton";
             this.createNewButton.Size = new System.Drawing.Size(75, 23);
             this.createNewButton.TabIndex = 0;
             this.createNewButton.Text = "Create new";
             this.createNewButton.UseVisualStyleBackColor = true;
+            this.createNewButton.Click += new System.EventHandler(this.createNewButton_Click);
             // 
             // modifyButton
             // 
-            this.modifyButton.Location = new System.Drawing.Point(87, 19);
+            this.modifyButton.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.modifyButton.Location = new System.Drawing.Point(86, 19);
             this.modifyButton.Name = "modifyButton";
             this.modifyButton.Size = new System.Drawing.Size(75, 23);
             this.modifyButton.TabIndex = 1;
             this.modifyButton.Text = "Modify";
             this.modifyButton.UseVisualStyleBackColor = true;
+            this.modifyButton.Click += new System.EventHandler(this.modifyButton_Click);
             // 
             // removeButton
             // 
-            this.removeButton.Location = new System.Drawing.Point(168, 19);
+            this.removeButton.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.removeButton.Location = new System.Drawing.Point(167, 19);
             this.removeButton.Name = "removeButton";
             this.removeButton.Size = new System.Drawing.Size(75, 23);
             this.removeButton.TabIndex = 2;
             this.removeButton.Text = " Remove";
             this.removeButton.UseVisualStyleBackColor = true;
+            this.removeButton.Click += new System.EventHandler(this.removeButton_Click);
             // 
             // clearButton
             // 
-            this.clearButton.Location = new System.Drawing.Point(266, 19);
+            this.clearButton.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.clearButton.Location = new System.Drawing.Point(250, 19);
             this.clearButton.Name = "clearButton";
             this.clearButton.Size = new System.Drawing.Size(75, 23);
             this.clearButton.TabIndex = 3;
             this.clearButton.Text = "Clear";
             this.clearButton.UseVisualStyleBackColor = true;
+            this.clearButton.Click += new System.EventHandler(this.clearButton_Click);
             // 
             // calculateGroupBox
             // 
+            this.calculateGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.calculateGroupBox.Controls.Add(this.zValue);
             this.calculateGroupBox.Controls.Add(this.zLabel);
             this.calculateGroupBox.Controls.Add(this.calculateZButton);
             this.calculateGroupBox.Controls.Add(this.frequencyValueTextBox);
             this.calculateGroupBox.Controls.Add(this.frequencyLabel);
-            this.calculateGroupBox.Location = new System.Drawing.Point(3, 221);
+            this.calculateGroupBox.Location = new System.Drawing.Point(3, 327);
             this.calculateGroupBox.Name = "calculateGroupBox";
-            this.calculateGroupBox.Size = new System.Drawing.Size(347, 62);
+            this.calculateGroupBox.Size = new System.Drawing.Size(330, 62);
             this.calculateGroupBox.TabIndex = 2;
             this.calculateGroupBox.TabStop = false;
             this.calculateGroupBox.Text = "Calculate";
             // 
             // frequencyLabel
             // 
+            this.frequencyLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.frequencyLabel.AutoSize = true;
-            this.frequencyLabel.Location = new System.Drawing.Point(6, 27);
+            this.frequencyLabel.Location = new System.Drawing.Point(3, 27);
             this.frequencyLabel.Name = "frequencyLabel";
             this.frequencyLabel.Size = new System.Drawing.Size(57, 13);
             this.frequencyLabel.TabIndex = 0;
@@ -127,24 +143,28 @@
             // 
             // frequencyValueTextBox
             // 
-            this.frequencyValueTextBox.Location = new System.Drawing.Point(66, 24);
+            this.frequencyValueTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.frequencyValueTextBox.Location = new System.Drawing.Point(63, 24);
             this.frequencyValueTextBox.Name = "frequencyValueTextBox";
             this.frequencyValueTextBox.Size = new System.Drawing.Size(96, 20);
             this.frequencyValueTextBox.TabIndex = 1;
             // 
             // calculateZButton
             // 
-            this.calculateZButton.Location = new System.Drawing.Point(168, 22);
+            this.calculateZButton.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.calculateZButton.Location = new System.Drawing.Point(165, 22);
             this.calculateZButton.Name = "calculateZButton";
             this.calculateZButton.Size = new System.Drawing.Size(75, 23);
             this.calculateZButton.TabIndex = 2;
             this.calculateZButton.Text = "Calculate Z";
             this.calculateZButton.UseVisualStyleBackColor = true;
+            this.calculateZButton.Click += new System.EventHandler(this.calculateZButton_Click);
             // 
             // zLabel
             // 
+            this.zLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.zLabel.AutoSize = true;
-            this.zLabel.Location = new System.Drawing.Point(249, 27);
+            this.zLabel.Location = new System.Drawing.Point(246, 27);
             this.zLabel.Name = "zLabel";
             this.zLabel.Size = new System.Drawing.Size(17, 13);
             this.zLabel.TabIndex = 3;
@@ -152,8 +172,9 @@
             // 
             // zValue
             // 
+            this.zValue.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.zValue.AutoSize = true;
-            this.zValue.Location = new System.Drawing.Point(272, 27);
+            this.zValue.Location = new System.Drawing.Point(269, 27);
             this.zValue.Name = "zValue";
             this.zValue.Size = new System.Drawing.Size(13, 13);
             this.zValue.TabIndex = 4;
@@ -167,7 +188,7 @@
             this.Controls.Add(this.manageGroupBox);
             this.Controls.Add(this.containerControl);
             this.Name = "BaseFactoryControl";
-            this.Size = new System.Drawing.Size(353, 286);
+            this.Size = new System.Drawing.Size(336, 392);
             this.manageGroupBox.ResumeLayout(false);
             this.calculateGroupBox.ResumeLayout(false);
             this.calculateGroupBox.PerformLayout();
