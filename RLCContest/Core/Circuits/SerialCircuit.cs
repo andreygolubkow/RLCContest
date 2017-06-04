@@ -127,9 +127,16 @@ namespace Core.Circuits
         public IComponent this[int index]
         {
             get => _components[index];
-            set => _components[index] = ((value != null) && (FindComponent(value.Name) == null))
-                ? value
-                : throw new ArgumentException("Элемент с таким именем уже существует.");
+            set
+            {
+                IComponent component = ((value != null) && (FindComponent(value.Name) == null))
+                    ? value
+                    : throw new ArgumentException("Элемент с таким именем уже существует.");
+                UnsubscribeToComponent(_components[index]);
+                _components[index] = component;
+                SubscribeToComponent(_components[index]);
+                CircuitChanged?.Invoke(this, new EventArgs());
+            }
         }
 
         public IList<IComponent> Components => _components;
