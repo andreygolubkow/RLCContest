@@ -6,7 +6,7 @@ namespace Controls.Factories.BaseControls
 {
     public partial class BaseFactoryControl : UserControl
     {
-        private BaseFactoryControl()
+        protected BaseFactoryControl()
         {
             InitializeComponent();
         }

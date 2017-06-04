@@ -30,16 +30,16 @@
         {
             this.containerControl = new System.Windows.Forms.GroupBox();
             this.manageGroupBox = new System.Windows.Forms.GroupBox();
-            this.createNewButton = new System.Windows.Forms.Button();
-            this.modifyButton = new System.Windows.Forms.Button();
-            this.removeButton = new System.Windows.Forms.Button();
             this.clearButton = new System.Windows.Forms.Button();
+            this.removeButton = new System.Windows.Forms.Button();
+            this.modifyButton = new System.Windows.Forms.Button();
+            this.createNewButton = new System.Windows.Forms.Button();
             this.calculateGroupBox = new System.Windows.Forms.GroupBox();
-            this.frequencyLabel = new System.Windows.Forms.Label();
-            this.frequencyValueTextBox = new System.Windows.Forms.TextBox();
-            this.calculateZButton = new System.Windows.Forms.Button();
-            this.zLabel = new System.Windows.Forms.Label();
             this.zValue = new System.Windows.Forms.Label();
+            this.zLabel = new System.Windows.Forms.Label();
+            this.calculateZButton = new System.Windows.Forms.Button();
+            this.frequencyValueTextBox = new System.Windows.Forms.TextBox();
+            this.frequencyLabel = new System.Windows.Forms.Label();
             this.manageGroupBox.SuspendLayout();
             this.calculateGroupBox.SuspendLayout();
             this.SuspendLayout();
@@ -71,27 +71,16 @@
             this.manageGroupBox.TabStop = false;
             this.manageGroupBox.Text = "Manage";
             // 
-            // createNewButton
+            // clearButton
             // 
-            this.createNewButton.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.createNewButton.Location = new System.Drawing.Point(5, 19);
-            this.createNewButton.Name = "createNewButton";
-            this.createNewButton.Size = new System.Drawing.Size(75, 23);
-            this.createNewButton.TabIndex = 0;
-            this.createNewButton.Text = "Create new";
-            this.createNewButton.UseVisualStyleBackColor = true;
-            this.createNewButton.Click += new System.EventHandler(this.createNewButton_Click);
-            // 
-            // modifyButton
-            // 
-            this.modifyButton.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.modifyButton.Location = new System.Drawing.Point(86, 19);
-            this.modifyButton.Name = "modifyButton";
-            this.modifyButton.Size = new System.Drawing.Size(75, 23);
-            this.modifyButton.TabIndex = 1;
-            this.modifyButton.Text = "Modify";
-            this.modifyButton.UseVisualStyleBackColor = true;
-            this.modifyButton.Click += new System.EventHandler(this.modifyButton_Click);
+            this.clearButton.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.clearButton.Location = new System.Drawing.Point(250, 19);
+            this.clearButton.Name = "clearButton";
+            this.clearButton.Size = new System.Drawing.Size(75, 23);
+            this.clearButton.TabIndex = 3;
+            this.clearButton.Text = "Clear";
+            this.clearButton.UseVisualStyleBackColor = true;
+            this.clearButton.Click += new System.EventHandler(this.clearButton_Click);
             // 
             // removeButton
             // 
@@ -104,16 +93,27 @@
             this.removeButton.UseVisualStyleBackColor = true;
             this.removeButton.Click += new System.EventHandler(this.removeButton_Click);
             // 
-            // clearButton
+            // modifyButton
             // 
-            this.clearButton.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.clearButton.Location = new System.Drawing.Point(250, 19);
-            this.clearButton.Name = "clearButton";
-            this.clearButton.Size = new System.Drawing.Size(75, 23);
-            this.clearButton.TabIndex = 3;
-            this.clearButton.Text = "Clear";
-            this.clearButton.UseVisualStyleBackColor = true;
-            this.clearButton.Click += new System.EventHandler(this.clearButton_Click);
+            this.modifyButton.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.modifyButton.Location = new System.Drawing.Point(86, 19);
+            this.modifyButton.Name = "modifyButton";
+            this.modifyButton.Size = new System.Drawing.Size(75, 23);
+            this.modifyButton.TabIndex = 1;
+            this.modifyButton.Text = "Modify";
+            this.modifyButton.UseVisualStyleBackColor = true;
+            this.modifyButton.Click += new System.EventHandler(this.modifyButton_Click);
+            // 
+            // createNewButton
+            // 
+            this.createNewButton.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.createNewButton.Location = new System.Drawing.Point(5, 19);
+            this.createNewButton.Name = "createNewButton";
+            this.createNewButton.Size = new System.Drawing.Size(75, 23);
+            this.createNewButton.TabIndex = 0;
+            this.createNewButton.Text = "Create new";
+            this.createNewButton.UseVisualStyleBackColor = true;
+            this.createNewButton.Click += new System.EventHandler(this.createNewButton_Click);
             // 
             // calculateGroupBox
             // 
@@ -131,23 +131,25 @@
             this.calculateGroupBox.TabStop = false;
             this.calculateGroupBox.Text = "Calculate";
             // 
-            // frequencyLabel
+            // zValue
             // 
-            this.frequencyLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.frequencyLabel.AutoSize = true;
-            this.frequencyLabel.Location = new System.Drawing.Point(3, 27);
-            this.frequencyLabel.Name = "frequencyLabel";
-            this.frequencyLabel.Size = new System.Drawing.Size(57, 13);
-            this.frequencyLabel.TabIndex = 0;
-            this.frequencyLabel.Text = "Frequency";
+            this.zValue.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.zValue.AutoSize = true;
+            this.zValue.Location = new System.Drawing.Point(269, 27);
+            this.zValue.Name = "zValue";
+            this.zValue.Size = new System.Drawing.Size(13, 13);
+            this.zValue.TabIndex = 4;
+            this.zValue.Text = "0";
             // 
-            // frequencyValueTextBox
+            // zLabel
             // 
-            this.frequencyValueTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.frequencyValueTextBox.Location = new System.Drawing.Point(63, 24);
-            this.frequencyValueTextBox.Name = "frequencyValueTextBox";
-            this.frequencyValueTextBox.Size = new System.Drawing.Size(96, 20);
-            this.frequencyValueTextBox.TabIndex = 1;
+            this.zLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.zLabel.AutoSize = true;
+            this.zLabel.Location = new System.Drawing.Point(246, 27);
+            this.zLabel.Name = "zLabel";
+            this.zLabel.Size = new System.Drawing.Size(17, 13);
+            this.zLabel.TabIndex = 3;
+            this.zLabel.Text = "Z:";
             // 
             // calculateZButton
             // 
@@ -160,25 +162,23 @@
             this.calculateZButton.UseVisualStyleBackColor = true;
             this.calculateZButton.Click += new System.EventHandler(this.calculateZButton_Click);
             // 
-            // zLabel
+            // frequencyValueTextBox
             // 
-            this.zLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.zLabel.AutoSize = true;
-            this.zLabel.Location = new System.Drawing.Point(246, 27);
-            this.zLabel.Name = "zLabel";
-            this.zLabel.Size = new System.Drawing.Size(17, 13);
-            this.zLabel.TabIndex = 3;
-            this.zLabel.Text = "Z:";
+            this.frequencyValueTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.frequencyValueTextBox.Location = new System.Drawing.Point(63, 24);
+            this.frequencyValueTextBox.Name = "frequencyValueTextBox";
+            this.frequencyValueTextBox.Size = new System.Drawing.Size(96, 20);
+            this.frequencyValueTextBox.TabIndex = 1;
             // 
-            // zValue
+            // frequencyLabel
             // 
-            this.zValue.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.zValue.AutoSize = true;
-            this.zValue.Location = new System.Drawing.Point(269, 27);
-            this.zValue.Name = "zValue";
-            this.zValue.Size = new System.Drawing.Size(13, 13);
-            this.zValue.TabIndex = 4;
-            this.zValue.Text = "0";
+            this.frequencyLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.frequencyLabel.AutoSize = true;
+            this.frequencyLabel.Location = new System.Drawing.Point(3, 27);
+            this.frequencyLabel.Name = "frequencyLabel";
+            this.frequencyLabel.Size = new System.Drawing.Size(57, 13);
+            this.frequencyLabel.TabIndex = 0;
+            this.frequencyLabel.Text = "Frequency";
             // 
             // BaseFactoryControl
             // 

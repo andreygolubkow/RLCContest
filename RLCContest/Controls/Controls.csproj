@@ -48,6 +48,12 @@
     <Compile Include="Factories\BaseControls\BaseFactoryControl.Designer.cs">
       <DependentUpon>BaseFactoryControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Factories\Elements\ElementFactoryControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Factories\Elements\ElementFactoryControl.Designer.cs">
+      <DependentUpon>ElementFactoryControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="SingleControls\BaseControls\BaseCircuitControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -90,6 +96,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Factories\BaseControls\BaseFactoryControl.resx">
       <DependentUpon>BaseFactoryControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Factories\Elements\ElementFactoryControl.resx">
+      <DependentUpon>ElementFactoryControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SingleControls\BaseControls\BaseCircuitControl.resx">
       <DependentUpon>BaseCircuitControl.cs</DependentUpon>
