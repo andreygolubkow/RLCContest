@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Globalization;
+using System.Numerics;
 using System.Windows.Forms;
 
 namespace Controls.Factories.BaseControls
@@ -25,7 +26,7 @@ namespace Controls.Factories.BaseControls
             set => frequencyValueTextBox.Text = Convert.ToString(value, CultureInfo.CurrentCulture);
         }
 
-        public double Impedance
+        public Complex Impedance
         {
             get => Convert.ToDouble(zValue.Text);
             set => zValue.Text = Convert.ToString(value, CultureInfo.CurrentCulture);

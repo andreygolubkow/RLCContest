@@ -37,6 +37,10 @@
             this.elementTypeGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
+            // calculateZButton
+            // 
+            this.calculateZButton.Click += new System.EventHandler(this.calculateZButton_Click);
+            // 
             // manageGroupBox
             // 
             this.manageGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)));
@@ -65,10 +69,15 @@
             this.elementTypeComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.elementTypeComboBox.FormattingEnabled = true;
+            this.elementTypeComboBox.Items.AddRange(new object[] {
+            "Capacitor",
+            "Inductor",
+            "Resistor"});
             this.elementTypeComboBox.Location = new System.Drawing.Point(6, 19);
             this.elementTypeComboBox.Name = "elementTypeComboBox";
             this.elementTypeComboBox.Size = new System.Drawing.Size(740, 21);
             this.elementTypeComboBox.TabIndex = 0;
+            this.elementTypeComboBox.SelectedIndexChanged += new System.EventHandler(this.elementTypeComboBox_SelectedIndexChanged);
             // 
             // capacitorElementControl
             // 
@@ -100,6 +109,7 @@
             this.Controls.Add(this.elementTypeGroupBox);
             this.Name = "ElementFactoryControl";
             this.Size = new System.Drawing.Size(758, 269);
+            this.ClearButtonClick += new System.EventHandler(this.ElementFactoryControl_ClearButtonClick);
             this.Controls.SetChildIndex(this.elementTypeGroupBox, 0);
             this.Controls.SetChildIndex(this.capacitorElementControl, 0);
             this.Controls.SetChildIndex(this.inductorElementControl, 0);

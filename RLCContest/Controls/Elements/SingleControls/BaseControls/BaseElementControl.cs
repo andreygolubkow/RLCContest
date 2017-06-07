@@ -52,5 +52,11 @@ namespace Controls.SingleControls.BaseControls
             get => valueTextBox.Text.Length>0 ? Convert.ToDouble(valueTextBox.Text):0;
             set => valueTextBox.Text = Convert.ToString(value, CultureInfo.CurrentCulture);
         }
+
+        public void CleaFields()
+        {
+            ElementName = "";
+            ElementValue = 0;
+        }
     }
 }
