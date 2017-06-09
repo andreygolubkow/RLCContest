@@ -41,6 +41,7 @@
             this.circuitGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.circuitGridView.Location = new System.Drawing.Point(0, 0);
             this.circuitGridView.Name = "circuitGridView";
+            this.circuitGridView.ReadOnly = true;
             this.circuitGridView.RowHeadersVisible = false;
             this.circuitGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.circuitGridView.Size = new System.Drawing.Size(631, 346);

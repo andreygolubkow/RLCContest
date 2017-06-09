@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.openFreqList = new System.Windows.Forms.Button();
-            this.openWithTestListButton = new System.Windows.Forms.Button();
             this.OpenFreqListForTestButton = new System.Windows.Forms.Button();
+            this.openWithTestListButton = new System.Windows.Forms.Button();
+            this.openFreqList = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -47,15 +47,15 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Frequencies Editor";
             // 
-            // openFreqList
+            // OpenFreqListForTestButton
             // 
-            this.openFreqList.Location = new System.Drawing.Point(6, 19);
-            this.openFreqList.Name = "openFreqList";
-            this.openFreqList.Size = new System.Drawing.Size(94, 23);
-            this.openFreqList.TabIndex = 0;
-            this.openFreqList.Text = "Open empty list";
-            this.openFreqList.UseVisualStyleBackColor = true;
-            this.openFreqList.Click += new System.EventHandler(this.openFreqListEditor_Click);
+            this.OpenFreqListForTestButton.Location = new System.Drawing.Point(6, 48);
+            this.OpenFreqListForTestButton.Name = "OpenFreqListForTestButton";
+            this.OpenFreqListForTestButton.Size = new System.Drawing.Size(203, 23);
+            this.OpenFreqListForTestButton.TabIndex = 2;
+            this.OpenFreqListForTestButton.Text = "Open for test list";
+            this.OpenFreqListForTestButton.UseVisualStyleBackColor = true;
+            this.OpenFreqListForTestButton.Click += new System.EventHandler(this.OpenFreqListForTestButton_Click);
             // 
             // openWithTestListButton
             // 
@@ -67,15 +67,15 @@
             this.openWithTestListButton.UseVisualStyleBackColor = true;
             this.openWithTestListButton.Click += new System.EventHandler(this.openWithTestListButton_Click);
             // 
-            // OpenFreqListForTestButton
+            // openFreqList
             // 
-            this.OpenFreqListForTestButton.Location = new System.Drawing.Point(6, 48);
-            this.OpenFreqListForTestButton.Name = "OpenFreqListForTestButton";
-            this.OpenFreqListForTestButton.Size = new System.Drawing.Size(203, 23);
-            this.OpenFreqListForTestButton.TabIndex = 2;
-            this.OpenFreqListForTestButton.Text = "Open for test list";
-            this.OpenFreqListForTestButton.UseVisualStyleBackColor = true;
-            this.OpenFreqListForTestButton.Click += new System.EventHandler(this.OpenFreqListForTestButton_Click);
+            this.openFreqList.Location = new System.Drawing.Point(6, 19);
+            this.openFreqList.Name = "openFreqList";
+            this.openFreqList.Size = new System.Drawing.Size(94, 23);
+            this.openFreqList.TabIndex = 0;
+            this.openFreqList.Text = "Open empty list";
+            this.openFreqList.UseVisualStyleBackColor = true;
+            this.openFreqList.Click += new System.EventHandler(this.openFreqListEditor_Click);
             // 
             // TestForm
             // 
@@ -84,7 +84,7 @@
             this.ClientSize = new System.Drawing.Size(618, 379);
             this.Controls.Add(this.groupBox1);
             this.Name = "TestForm";
-            this.Text = "TestForm";
+            this.Text = "DEBUG Form";
             this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
 

@@ -65,6 +65,7 @@
             this.Controls.Add(this.circuitsCalculatorGroupBox);
             this.Name = "CalculatorZForm";
             this.Text = "Calculator";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CalculatorZForm_FormClosing);
             this.circuitsCalculatorGroupBox.ResumeLayout(false);
             this.ResumeLayout(false);
 

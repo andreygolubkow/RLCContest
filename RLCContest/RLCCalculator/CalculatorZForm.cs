@@ -40,7 +40,7 @@ namespace RLCCalculator
                 }
                 _circuit = value;
                 _circuit.CircuitChanged += CircuitChanged;
-
+                circuitViewer.ShowZ(_circuit, _frequencies.ToArray());
             }
         }
 
@@ -64,6 +64,10 @@ namespace RLCCalculator
             }
         }
 
-
+        private void CalculatorZForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            e.Cancel = true;
+            Visible = false;
+        }
     }
 }

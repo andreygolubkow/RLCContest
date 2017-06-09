@@ -97,6 +97,7 @@
             this.testCircuitsToolStripMenuItem.Name = "testCircuitsToolStripMenuItem";
             this.testCircuitsToolStripMenuItem.Size = new System.Drawing.Size(83, 20);
             this.testCircuitsToolStripMenuItem.Text = "Test Circuits";
+            this.testCircuitsToolStripMenuItem.Click += new System.EventHandler(this.testCircuitsToolStripMenuItem_Click);
             // 
             // settingsToolStripMenuItem
             // 

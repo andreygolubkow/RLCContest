@@ -34,6 +34,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Numerics" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -45,11 +46,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CalculatorForm.cs">
+    <Compile Include="CalculatorZForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CalculatorForm.Designer.cs">
-      <DependentUpon>CalculatorForm.cs</DependentUpon>
+    <Compile Include="CalculatorZForm.Designer.cs">
+      <DependentUpon>CalculatorZForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CircuitDetailForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CircuitDetailForm.Designer.cs">
+      <DependentUpon>CircuitDetailForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ElementDetailForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ElementDetailForm.Designer.cs">
+      <DependentUpon>ElementDetailForm.cs</DependentUpon>
     </Compile>
     <Compile Include="FrequencyEditorForm.cs">
       <SubType>Form</SubType>
@@ -71,8 +84,14 @@
     <Compile Include="TestForm.Designer.cs">
       <DependentUpon>TestForm.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="CalculatorForm.resx">
-      <DependentUpon>CalculatorForm.cs</DependentUpon>
+    <EmbeddedResource Include="CalculatorZForm.resx">
+      <DependentUpon>CalculatorZForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CircuitDetailForm.resx">
+      <DependentUpon>CircuitDetailForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ElementDetailForm.resx">
+      <DependentUpon>ElementDetailForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrequencyEditorForm.resx">
       <DependentUpon>FrequencyEditorForm.cs</DependentUpon>
