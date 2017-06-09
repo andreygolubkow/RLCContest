@@ -1,4 +1,4 @@
-﻿namespace Controls.SingleControls.BaseControls
+﻿namespace Controls.Elements.SingleControls.BaseControls
 {
     partial class BaseElementControl
     {

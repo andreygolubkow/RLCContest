@@ -1,11 +1,11 @@
 ﻿using System;
 
-using Controls.SingleControls.BaseControls;
+using Controls.Elements.SingleControls.BaseControls;
 
 using Core;
 using Core.Circuits;
 
-namespace Controls.SingleControls.Circuits
+namespace Controls.Elements.SingleControls.Circuits
 {
     public partial class SerialCircuitControl : BaseCircuitControl
     {

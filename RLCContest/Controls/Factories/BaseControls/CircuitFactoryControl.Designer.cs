@@ -1,4 +1,6 @@
-﻿namespace Controls.Factories.BaseControls
+﻿using Controls.Elements.SingleControls.Circuits;
+
+namespace Controls.Factories.BaseControls
 {
     partial class CircuitFactoryControl
     {
@@ -30,7 +32,7 @@
         {
             this.circuitTypeComboBox = new System.Windows.Forms.ComboBox();
             this.circuitTypeGroupBox = new System.Windows.Forms.GroupBox();
-            this.serialCircuitControl = new Controls.SingleControls.Circuits.SerialCircuitControl();
+            this.serialCircuitControl = new SerialCircuitControl();
             this.elementManager = new System.Windows.Forms.GroupBox();
             this.removeElementButton = new System.Windows.Forms.Button();
             this.editElementButton = new System.Windows.Forms.Button();
@@ -157,7 +159,7 @@
 
         private System.Windows.Forms.ComboBox circuitTypeComboBox;
         private System.Windows.Forms.GroupBox circuitTypeGroupBox;
-        private SingleControls.Circuits.SerialCircuitControl serialCircuitControl;
+        private SerialCircuitControl serialCircuitControl;
         private System.Windows.Forms.GroupBox elementManager;
         private System.Windows.Forms.Button removeElementButton;
         private System.Windows.Forms.Button editElementButton;

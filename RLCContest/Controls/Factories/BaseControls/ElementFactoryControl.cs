@@ -3,10 +3,9 @@ using System.Drawing;
 using System.Numerics;
 using System.Windows.Forms;
 
-using Controls.Factories.BaseControls;
-using Controls.SingleControls.BaseControls;
+using Controls.Elements.SingleControls.BaseControls;
 
-namespace Controls.Factories.Elements
+namespace Controls.Factories.BaseControls
 {
     public partial class ElementFactoryControl : BaseFactoryControl
     {
@@ -29,7 +28,7 @@ namespace Controls.Factories.Elements
             elementTypeComboBox.SelectedIndex = 0;
         }
 
-        private void ElementTypeComboBoxSelectedIndexChanged(object sender, System.EventArgs e)
+        private void ElementTypeComboBoxSelectedIndexChanged(object sender, EventArgs e)
         {
             /*
              *  0=Capacitor

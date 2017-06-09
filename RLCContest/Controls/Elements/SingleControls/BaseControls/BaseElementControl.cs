@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 using Core;
 
-namespace Controls.SingleControls.BaseControls
+namespace Controls.Elements.SingleControls.BaseControls
 {
     public partial class BaseElementControl : UserControl
     {

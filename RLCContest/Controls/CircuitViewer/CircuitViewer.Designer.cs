@@ -1,4 +1,4 @@
-﻿namespace Controls
+﻿namespace Controls.CircuitViewer
 {
     partial class CircuitViewer
     {
@@ -34,10 +34,15 @@
             // 
             // circuitGridView
             // 
+            this.circuitGridView.AllowUserToAddRows = false;
+            this.circuitGridView.AllowUserToDeleteRows = false;
+            this.circuitGridView.AllowUserToResizeRows = false;
             this.circuitGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.circuitGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.circuitGridView.Location = new System.Drawing.Point(0, 0);
             this.circuitGridView.Name = "circuitGridView";
+            this.circuitGridView.RowHeadersVisible = false;
+            this.circuitGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.circuitGridView.Size = new System.Drawing.Size(631, 346);
             this.circuitGridView.TabIndex = 0;
             // 

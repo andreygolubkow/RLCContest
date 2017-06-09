@@ -1,4 +1,6 @@
-﻿namespace Controls.Factories.Elements
+﻿using Controls.Elements.SingleControls.Elements;
+
+namespace Controls.Factories.BaseControls
 {
     partial class ElementFactoryControl
     {
@@ -30,9 +32,9 @@
         {
             this.elementTypeGroupBox = new System.Windows.Forms.GroupBox();
             this.elementTypeComboBox = new System.Windows.Forms.ComboBox();
-            this.capacitorElementControl = new Controls.SingleControls.Elements.CapacitorElementControl();
-            this.inductorElementControl = new Controls.SingleControls.Elements.InductorElementControl();
-            this.resistorElementControl = new Controls.SingleControls.Elements.ResistorElementControl();
+            this.capacitorElementControl = new CapacitorElementControl();
+            this.inductorElementControl = new InductorElementControl();
+            this.resistorElementControl = new ResistorElementControl();
             this.calculateGroupBox.SuspendLayout();
             this.elementTypeGroupBox.SuspendLayout();
             this.SuspendLayout();
@@ -125,9 +127,9 @@
 
         #endregion
 
-        private SingleControls.Elements.ResistorElementControl resistorElementControl;
-        private SingleControls.Elements.InductorElementControl inductorElementControl;
-        private SingleControls.Elements.CapacitorElementControl capacitorElementControl;
+        private ResistorElementControl resistorElementControl;
+        private InductorElementControl inductorElementControl;
+        private CapacitorElementControl capacitorElementControl;
         private System.Windows.Forms.GroupBox elementTypeGroupBox;
         private System.Windows.Forms.ComboBox elementTypeComboBox;
     }

@@ -2,14 +2,14 @@
 
 using System;
 
-using Controls.SingleControls.BaseControls;
+using Controls.Elements.SingleControls.BaseControls;
 
 using Core;
 using Core.Elements;
 
 #endregion
 
-namespace Controls.SingleControls.Elements
+namespace Controls.Elements.SingleControls.Elements
 {
     public partial class CapacitorElementControl : BaseElementControl
     {
