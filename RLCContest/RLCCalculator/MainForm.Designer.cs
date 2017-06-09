@@ -1,6 +1,6 @@
 ﻿namespace RLCCalculator
 {
-    partial class Form1
+    partial class MainForm
     {
         /// <summary>
         /// Обязательная переменная конструктора.
@@ -30,12 +30,12 @@
         {
             this.SuspendLayout();
             // 
-            // Form1
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(605, 384);
-            this.Name = "Form1";
+            this.ClientSize = new System.Drawing.Size(683, 423);
+            this.Name = "MainForm";
             this.Text = "Form1";
             this.ResumeLayout(false);
 

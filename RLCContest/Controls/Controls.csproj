@@ -43,6 +43,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CircuitViewer\CircuitViewer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CircuitViewer\CircuitViewer.Designer.cs">
+      <DependentUpon>CircuitViewer.cs</DependentUpon>
+    </Compile>
     <Compile Include="Factories\BaseControls\BaseFactoryControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -101,6 +107,9 @@
     <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="CircuitViewer\CircuitViewer.resx">
+      <DependentUpon>CircuitViewer.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Factories\BaseControls\BaseFactoryControl.resx">
       <DependentUpon>BaseFactoryControl.cs</DependentUpon>
     </EmbeddedResource>
