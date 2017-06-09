@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26403.7
+VisualStudioVersion = 15.0.26430.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{F2EA5921-4B93-4625-8E63-BC925AF4244A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Controls", "Controls\Controls.csproj", "{BD6EC8A1-AFDF-4EEA-BCEF-5925D8F8F7CD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RLCCalculator", "RLCCalculator\RLCCalculator.csproj", "{FFA21F7C-C2AC-4414-AF59-5081419AE583}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{BD6EC8A1-AFDF-4EEA-BCEF-5925D8F8F7CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BD6EC8A1-AFDF-4EEA-BCEF-5925D8F8F7CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BD6EC8A1-AFDF-4EEA-BCEF-5925D8F8F7CD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FFA21F7C-C2AC-4414-AF59-5081419AE583}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FFA21F7C-C2AC-4414-AF59-5081419AE583}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FFA21F7C-C2AC-4414-AF59-5081419AE583}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FFA21F7C-C2AC-4414-AF59-5081419AE583}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
