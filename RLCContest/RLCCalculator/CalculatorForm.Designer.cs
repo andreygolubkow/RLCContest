@@ -1,6 +1,6 @@
 ﻿namespace RLCCalculator
 {
-    partial class Calculator
+    partial class CalculatorZForm
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.circuitsCalculatorGroupBox = new System.Windows.Forms.GroupBox();
-            this.circuitViewer1 = new Controls.CircuitViewer.CircuitViewer();
+            this.circuitViewer = new Controls.CircuitViewer.CircuitViewer();
             this.circuitsCalculatorGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -38,7 +38,7 @@
             this.circuitsCalculatorGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.circuitsCalculatorGroupBox.Controls.Add(this.circuitViewer1);
+            this.circuitsCalculatorGroupBox.Controls.Add(this.circuitViewer);
             this.circuitsCalculatorGroupBox.Location = new System.Drawing.Point(12, 12);
             this.circuitsCalculatorGroupBox.Name = "circuitsCalculatorGroupBox";
             this.circuitsCalculatorGroupBox.Size = new System.Drawing.Size(585, 380);
@@ -46,23 +46,24 @@
             this.circuitsCalculatorGroupBox.TabStop = false;
             this.circuitsCalculatorGroupBox.Text = "Circuits Calculator";
             // 
-            // circuitViewer1
+            // circuitViewer
             // 
-            this.circuitViewer1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.circuitViewer.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.circuitViewer1.Location = new System.Drawing.Point(6, 19);
-            this.circuitViewer1.Name = "circuitViewer1";
-            this.circuitViewer1.Size = new System.Drawing.Size(573, 355);
-            this.circuitViewer1.TabIndex = 0;
+            this.circuitViewer.Location = new System.Drawing.Point(6, 19);
+            this.circuitViewer.Name = "circuitViewer";
+            this.circuitViewer.Size = new System.Drawing.Size(573, 355);
+            this.circuitViewer.TabIndex = 0;
             // 
-            // Calculator
+            // CalculatorZForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(609, 404);
+            this.ControlBox = false;
             this.Controls.Add(this.circuitsCalculatorGroupBox);
-            this.Name = "Calculator";
+            this.Name = "CalculatorZForm";
             this.Text = "Calculator";
             this.circuitsCalculatorGroupBox.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -72,6 +73,6 @@
         #endregion
 
         private System.Windows.Forms.GroupBox circuitsCalculatorGroupBox;
-        private Controls.CircuitViewer.CircuitViewer circuitViewer1;
+        private Controls.CircuitViewer.CircuitViewer circuitViewer;
     }
 }

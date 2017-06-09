@@ -38,6 +38,13 @@ namespace Controls.CircuitViewer
             FillCircuitsTable(circuits,freq);
         }
 
+        public void ClearTable()
+        {
+            circuitGridView.Rows.Clear();
+            circuitGridView.Columns.Clear();
+            BuildStandartRows();
+        }
+
         private void BuildFreqRows(double[] freq)
         {
             foreach (var f in freq)
