@@ -34,7 +34,7 @@ namespace Controls.Factories.BaseControls
                     ctrl.Location = new Point(7, 58);
                 }
             }
-            Size = new Size(352, 269);
+            Size = new Size(355, 423);
             circuitTypeComboBox.SelectedIndex = 0;
         }
 

@@ -120,7 +120,7 @@
             // 
             this.zValue.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.zValue.AutoSize = true;
-            this.zValue.Location = new System.Drawing.Point(271, 27);
+            this.zValue.Location = new System.Drawing.Point(214, 27);
             this.zValue.Name = "zValue";
             this.zValue.Size = new System.Drawing.Size(13, 13);
             this.zValue.TabIndex = 4;
@@ -129,7 +129,7 @@
             // zLabel
             // 
             this.zLabel.AutoSize = true;
-            this.zLabel.Location = new System.Drawing.Point(248, 27);
+            this.zLabel.Location = new System.Drawing.Point(200, 27);
             this.zLabel.Name = "zLabel";
             this.zLabel.Size = new System.Drawing.Size(17, 13);
             this.zLabel.TabIndex = 3;
@@ -138,7 +138,7 @@
             // calculateZButton
             // 
             this.calculateZButton.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.calculateZButton.Location = new System.Drawing.Point(167, 22);
+            this.calculateZButton.Location = new System.Drawing.Point(119, 22);
             this.calculateZButton.Name = "calculateZButton";
             this.calculateZButton.Size = new System.Drawing.Size(75, 23);
             this.calculateZButton.TabIndex = 2;
@@ -151,7 +151,7 @@
             this.frequencyValueTextBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.frequencyValueTextBox.Location = new System.Drawing.Point(65, 24);
             this.frequencyValueTextBox.Name = "frequencyValueTextBox";
-            this.frequencyValueTextBox.Size = new System.Drawing.Size(96, 20);
+            this.frequencyValueTextBox.Size = new System.Drawing.Size(48, 20);
             this.frequencyValueTextBox.TabIndex = 1;
             // 
             // frequencyLabel

@@ -7,9 +7,12 @@ namespace Controls.Factories.BaseControls
 {
     public partial class BaseFactoryControl : UserControl
     {
+        private Complex _impedanceComplex;
+
         protected BaseFactoryControl()
         {
             InitializeComponent();
+            _impedanceComplex = new Complex(0,0);
         }
 
         public event EventHandler CreateButtonClick;
@@ -22,14 +25,21 @@ namespace Controls.Factories.BaseControls
 
         public double Frequency
         {
-            get => Convert.ToDouble(frequencyValueTextBox.TextLength);
+            get => frequencyValueTextBox.TextLength>0 ? Convert.ToDouble(frequencyValueTextBox.Text) : 0;
             set => frequencyValueTextBox.Text = Convert.ToString(value, CultureInfo.CurrentCulture);
         }
 
         public Complex Impedance
         {
-            get => Convert.ToDouble(zValue.Text);
-            set => zValue.Text = Convert.ToString(value, CultureInfo.CurrentCulture);
+            get
+            {
+                return _impedanceComplex;
+            }
+            set 
+            {
+                _impedanceComplex = value;
+                zValue.Text = Convert.ToString(value, CultureInfo.CurrentCulture);
+            }
         }
 
         private void CreateNewButtonClick(object sender, EventArgs e)

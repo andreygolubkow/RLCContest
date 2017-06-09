@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.Numerics;
 using System.Windows.Forms;
 
 using Controls.Factories.BaseControls;
@@ -63,6 +64,7 @@ namespace Controls.Factories.Elements
                 try
                 {
                     Impedance = _elementControl.Element.CalculateZ(Frequency);
+                    Impedance = new Complex(Math.Round(Impedance.Real,4), Math.Round(Impedance.Imaginary, 4));
                 }
                 catch ( Exception exception )
                 {

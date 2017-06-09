@@ -82,6 +82,7 @@
             // 
             // serialCircuitControl
             // 
+            this.serialCircuitControl.ElementName = "";
             this.serialCircuitControl.Location = new System.Drawing.Point(7, 58);
             this.serialCircuitControl.Name = "serialCircuitControl";
             this.serialCircuitControl.Size = new System.Drawing.Size(275, 174);

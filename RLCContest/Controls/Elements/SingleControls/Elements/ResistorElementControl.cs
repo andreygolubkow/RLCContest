@@ -30,7 +30,7 @@ namespace Controls.SingleControls.Elements
         {
             get
             {
-                _resistor = ElementName.Length>0 ? new Resistor(ElementName, ElementValue) : null;
+                _resistor = ElementName.Length>0 ? new Resistor(ElementName, ElementValue) : new Resistor("Resistor" + Convert.ToString(DateTime.Now.Millisecond),ElementValue);
                 return _resistor;
             }
             set

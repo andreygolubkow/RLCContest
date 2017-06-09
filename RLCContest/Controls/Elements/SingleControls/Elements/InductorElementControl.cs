@@ -30,7 +30,7 @@ namespace Controls.SingleControls.Elements
         {
             get
             {
-                _inductor = ElementName.Length > 0 ? new Inductor(ElementName, ElementValue) : null;
+                _inductor = ElementName.Length > 0 ? new Inductor(ElementName, ElementValue) : new Inductor("Inductor" + Convert.ToString(DateTime.Now.Millisecond),ElementValue);
                 return _inductor;
             }
             set
