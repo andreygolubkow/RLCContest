@@ -39,7 +39,7 @@
             // 
             // calculateZButton
             // 
-            this.calculateZButton.Click += new System.EventHandler(this.calculateZButton_Click);
+            this.calculateZButton.Click += new System.EventHandler(this.CalculateZButtonClick);
             // 
             // manageGroupBox
             // 
@@ -77,7 +77,7 @@
             this.elementTypeComboBox.Name = "elementTypeComboBox";
             this.elementTypeComboBox.Size = new System.Drawing.Size(740, 21);
             this.elementTypeComboBox.TabIndex = 0;
-            this.elementTypeComboBox.SelectedIndexChanged += new System.EventHandler(this.elementTypeComboBox_SelectedIndexChanged);
+            this.elementTypeComboBox.SelectedIndexChanged += new System.EventHandler(this.ElementTypeComboBoxSelectedIndexChanged);
             // 
             // capacitorElementControl
             // 
@@ -109,7 +109,7 @@
             this.Controls.Add(this.elementTypeGroupBox);
             this.Name = "ElementFactoryControl";
             this.Size = new System.Drawing.Size(758, 269);
-            this.ClearButtonClick += new System.EventHandler(this.ElementFactoryControl_ClearButtonClick);
+            this.ClearButtonClick += new System.EventHandler(this.ElementFactoryControlClearButtonClick);
             this.Controls.SetChildIndex(this.elementTypeGroupBox, 0);
             this.Controls.SetChildIndex(this.capacitorElementControl, 0);
             this.Controls.SetChildIndex(this.inductorElementControl, 0);

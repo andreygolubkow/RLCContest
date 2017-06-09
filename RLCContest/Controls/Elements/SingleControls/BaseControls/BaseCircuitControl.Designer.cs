@@ -105,7 +105,7 @@
             // iComponentBindingSource
             // 
             this.iComponentBindingSource.DataSource = typeof(Core.IComponent);
-            this.iComponentBindingSource.CurrentItemChanged += new System.EventHandler(this.iComponentBindingSource_CurrentItemChanged);
+            this.iComponentBindingSource.CurrentItemChanged += new System.EventHandler(this.IComponentBindingSourceCurrentItemChanged);
             // 
             // BaseCircuitControl
             // 

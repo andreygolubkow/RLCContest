@@ -100,7 +100,7 @@
             this.createNewButton.TabIndex = 0;
             this.createNewButton.Text = "Create new";
             this.createNewButton.UseVisualStyleBackColor = true;
-            this.createNewButton.Click += new System.EventHandler(this.createNewButton_Click);
+            this.createNewButton.Click += new System.EventHandler(this.CreateNewButtonClick);
             // 
             // calculateGroupBox
             // 
@@ -144,7 +144,7 @@
             this.calculateZButton.TabIndex = 2;
             this.calculateZButton.Text = "Calculate Z";
             this.calculateZButton.UseVisualStyleBackColor = true;
-            this.calculateZButton.Click += new System.EventHandler(this.calculateZButton_Click);
+            this.calculateZButton.Click += new System.EventHandler(this.CalculateZButtonClick);
             // 
             // frequencyValueTextBox
             // 

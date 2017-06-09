@@ -28,7 +28,7 @@ namespace Controls.Factories.Elements
             elementTypeComboBox.SelectedIndex = 0;
         }
 
-        private void elementTypeComboBox_SelectedIndexChanged(object sender, System.EventArgs e)
+        private void ElementTypeComboBoxSelectedIndexChanged(object sender, System.EventArgs e)
         {
             /*
              *  0=Capacitor
@@ -56,7 +56,7 @@ namespace Controls.Factories.Elements
             _elementControl.CleaFields();
         }
 
-        private void calculateZButton_Click(object sender, EventArgs e)
+        private void CalculateZButtonClick(object sender, EventArgs e)
         {
             if ( _elementControl != null )
             {
@@ -72,7 +72,7 @@ namespace Controls.Factories.Elements
             }
         }
 
-        private void ElementFactoryControl_ClearButtonClick(object sender, EventArgs e)
+        private void ElementFactoryControlClearButtonClick(object sender, EventArgs e)
         {
             _elementControl.CleaFields();
         }

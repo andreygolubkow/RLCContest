@@ -53,12 +53,12 @@ namespace Controls.SingleControls.BaseControls
         [DefaultValue(null)]
         public Core.IComponent CurrentComponent => (Core.IComponent)iComponentBindingSource.Current;
 
-        private void iComponentBindingSource_CurrentItemChanged(object sender, EventArgs e)
+        private void IComponentBindingSourceCurrentItemChanged(object sender, EventArgs e)
         {
             _currentChanged?.Invoke(sender,e);
         }
 
-        protected string ElementName
+        public string ElementName
         {
             get
             {
@@ -70,7 +70,7 @@ namespace Controls.SingleControls.BaseControls
             }
         }
 
-        protected ICircuit ListDataSource
+        public ICircuit ListDataSource
         {
             set
             {

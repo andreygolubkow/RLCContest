@@ -32,7 +32,7 @@ namespace Controls.Factories.BaseControls
             set => zValue.Text = Convert.ToString(value, CultureInfo.CurrentCulture);
         }
 
-        private void createNewButton_Click(object sender, EventArgs e)
+        private void CreateNewButtonClick(object sender, EventArgs e)
         {
             CreateButtonClick?.Invoke(sender,e);
         }
@@ -52,7 +52,7 @@ namespace Controls.Factories.BaseControls
             ClearButtonClick?.Invoke(sender, e);
         }
 
-        private void calculateZButton_Click(object sender, EventArgs e)
+        private void CalculateZButtonClick(object sender, EventArgs e)
         {
 
         }
