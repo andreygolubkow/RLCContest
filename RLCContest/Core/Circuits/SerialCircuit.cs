@@ -61,6 +61,24 @@ namespace Core.Circuits
             return _components.Contains(value);
         }
 
+        public int Add(object value)
+        {
+            if ( value is IComponent component)
+            {
+                this.Add(component);
+            }
+            return _components.Count;
+        }
+
+        public bool Contains(object value)
+        {
+            if (value is IComponent component)
+            {
+                return _components.Contains(component);
+            }
+            return false;
+        }
+
         public void Clear()
         {
             foreach (IComponent component in _components)
@@ -68,6 +86,31 @@ namespace Core.Circuits
                 UnsubscribeToComponent(component);
             }
             _components.Clear();
+        }
+
+        public int IndexOf(object value)
+        {
+            if (value is IComponent component)
+            {
+                return _components.IndexOf(component);
+            }
+            return -1;
+        }
+
+        public void Insert(int index, object value)
+        {
+            if (value is IComponent component)
+            {
+                this.Insert(index,component);
+            }
+        }
+
+        public void Remove(object value)
+        {
+            if (value is IComponent component)
+            {
+                this.Remove(component);
+            }
         }
 
         public void CopyTo(IComponent[] array, int arrayIndex)
@@ -112,9 +155,19 @@ namespace Core.Circuits
             return false;
         }
 
+        public void CopyTo(Array array, int index)
+        {
+            throw new NotImplementedException("Метод не реализован.");
+        }
+
         public int Count => _components.Count;
 
+        public object SyncRoot => false;
+
+        public bool IsSynchronized =>  false;
+
         public bool IsReadOnly => false;
+        public bool IsFixedSize { get; }
 
         public void RemoveAt(int index)
         {
@@ -123,6 +176,21 @@ namespace Core.Circuits
             UnsubscribeToComponent(component);
             CircuitChanged?.Invoke(this, new EventArgs());
         }
+
+        object IList.this[int index]
+        {
+            get
+            {
+                return _components[index];
+            }
+            set
+            {
+                if ( value is IComponent c )
+                {
+                    this[index] = c;
+                }
+            }
+       }
 
         public IComponent this[int index]
         {

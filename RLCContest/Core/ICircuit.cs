@@ -1,9 +1,10 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 
 namespace Core
 {
-    public interface ICircuit : IComponent, IList<IComponent>
+    public interface ICircuit : IComponent, IList<IComponent>, IList
     {
         event EventHandler CircuitChanged;
 
