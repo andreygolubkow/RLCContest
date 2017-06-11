@@ -30,7 +30,7 @@ namespace RLCCalculator
             }
             catch ( Exception exception )
             {
-                MessageBox.Show("You did not enter a number");
+                MessageBox.Show(@"You did not enter a number");
 #if DEBUG
                 MessageBox.Show(exception.Message);
 #endif

@@ -37,9 +37,10 @@
             this.testCircuitsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.frequenciesMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.zCalculatorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.statusStrip = new System.Windows.Forms.StatusStrip();
+            this.circuitEditorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.circuitsGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iComponentBindingSource)).BeginInit();
             this.mainMenu.SuspendLayout();
@@ -114,18 +115,11 @@
             this.frequenciesMenuItem.Text = "Frequencies";
             this.frequenciesMenuItem.Click += new System.EventHandler(this.frequenciesMenuItem_Click);
             // 
-            // statusStrip
-            // 
-            this.statusStrip.Location = new System.Drawing.Point(0, 406);
-            this.statusStrip.Name = "statusStrip";
-            this.statusStrip.Size = new System.Drawing.Size(368, 22);
-            this.statusStrip.TabIndex = 2;
-            this.statusStrip.Text = "statusStrip1";
-            // 
             // viewToolStripMenuItem
             // 
             this.viewToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.zCalculatorToolStripMenuItem});
+            this.zCalculatorToolStripMenuItem,
+            this.circuitEditorToolStripMenuItem});
             this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
             this.viewToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
             this.viewToolStripMenuItem.Text = "View";
@@ -137,6 +131,21 @@
             this.zCalculatorToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.zCalculatorToolStripMenuItem.Text = "Z Calculator";
             this.zCalculatorToolStripMenuItem.Click += new System.EventHandler(this.zCalculatorToolStripMenuItem_Click);
+            // 
+            // statusStrip
+            // 
+            this.statusStrip.Location = new System.Drawing.Point(0, 406);
+            this.statusStrip.Name = "statusStrip";
+            this.statusStrip.Size = new System.Drawing.Size(368, 22);
+            this.statusStrip.TabIndex = 2;
+            this.statusStrip.Text = "statusStrip1";
+            // 
+            // circuitEditorToolStripMenuItem
+            // 
+            this.circuitEditorToolStripMenuItem.Name = "circuitEditorToolStripMenuItem";
+            this.circuitEditorToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.circuitEditorToolStripMenuItem.Text = "Circuit Editor";
+            this.circuitEditorToolStripMenuItem.Click += new System.EventHandler(this.circuitEditorToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -171,6 +180,7 @@
         private System.Windows.Forms.ToolStripMenuItem frequenciesMenuItem;
         private System.Windows.Forms.ToolStripMenuItem viewToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem zCalculatorToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem circuitEditorToolStripMenuItem;
     }
 }
 

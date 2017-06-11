@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RLCCalculator", "RLCCalcula
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tools", "Tools\Tools.csproj", "{54C32793-D344-4871-BDD0-B33DFAA54D7B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RLCLite", "RLCLite\RLCLite.csproj", "{84E441D0-8E8F-46F0-ABAD-26A922E9B11D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{54C32793-D344-4871-BDD0-B33DFAA54D7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{54C32793-D344-4871-BDD0-B33DFAA54D7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{54C32793-D344-4871-BDD0-B33DFAA54D7B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{84E441D0-8E8F-46F0-ABAD-26A922E9B11D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{84E441D0-8E8F-46F0-ABAD-26A922E9B11D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{84E441D0-8E8F-46F0-ABAD-26A922E9B11D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{84E441D0-8E8F-46F0-ABAD-26A922E9B11D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

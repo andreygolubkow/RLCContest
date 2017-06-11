@@ -28,25 +28,28 @@
         /// </summary>
         private void InitializeComponent()
         {
+            Core.Circuits.SerialCircuit serialCircuit1 = new Core.Circuits.SerialCircuit();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CircuitDetailForm));
             this.circuitFactoryControl = new Controls.Factories.BaseControls.CircuitFactoryControl();
             this.SuspendLayout();
             // 
             // circuitFactoryControl
             // 
+            serialCircuit1.Name = "";
+            this.circuitFactoryControl.Circuit = serialCircuit1;
             this.circuitFactoryControl.Frequency = 0D;
             this.circuitFactoryControl.Impedance = ((System.Numerics.Complex)(resources.GetObject("circuitFactoryControl.Impedance")));
             this.circuitFactoryControl.Location = new System.Drawing.Point(12, 12);
             this.circuitFactoryControl.MinimumSize = new System.Drawing.Size(341, 224);
             this.circuitFactoryControl.Name = "circuitFactoryControl";
-            this.circuitFactoryControl.Size = new System.Drawing.Size(355, 423);
+            this.circuitFactoryControl.Size = new System.Drawing.Size(351, 424);
             this.circuitFactoryControl.TabIndex = 0;
             // 
             // CircuitDetailForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(375, 437);
+            this.ClientSize = new System.Drawing.Size(375, 449);
             this.Controls.Add(this.circuitFactoryControl);
             this.Name = "CircuitDetailForm";
             this.Text = "CircuitDetailForm";

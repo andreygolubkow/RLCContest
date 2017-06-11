@@ -70,12 +70,6 @@ namespace Controls.Elements.SingleControls.BaseControls
             }
         }
 
-        public ICircuit ListDataSource
-        {
-            set
-            {
-                iComponentBindingSource.DataSource = value;
-            }
-        }
+       
     }
 }

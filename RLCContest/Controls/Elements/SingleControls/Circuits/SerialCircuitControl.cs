@@ -13,7 +13,6 @@ namespace Controls.Elements.SingleControls.Circuits
         {
             InitializeComponent();
             _circuit = new SerialCircuit();
-            ListDataSource = _circuit;
             _circuit.CircuitChanged += CircuitChanged;
         }
 
@@ -40,16 +39,16 @@ namespace Controls.Elements.SingleControls.Circuits
                 {
                     throw new ArgumentException("Объект не являестся SerialCircuit");
                 }
-                _circuit = circuit;
+                base.Circuit = circuit;
                 ElementName = circuit.Name;
-                ListDataSource = _circuit;
                 _circuit.CircuitChanged += CircuitChanged;
+                
             }
         }
 
         private void CircuitChanged(object sender, EventArgs e)
         {
-            ListDataSource = _circuit;
+            
         }
     }
 }

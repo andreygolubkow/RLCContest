@@ -15,16 +15,18 @@ namespace RLCCalculator
         private Project _project;
 
         private CalculatorZForm _calculatorZ;
-        
+        private CircuitDetailForm _circuitDetailForm;
+
         public MainForm()
         {
             InitializeComponent();
             _project = new Project();
             _calculatorZ = new CalculatorZForm();
             _calculatorZ.VisibleChanged += FormCalculatorZVisibleChanged;
+            _circuitDetailForm = new CircuitDetailForm();
 #if DEBUG
-            var testForm = new TestForm();
-            testForm.Show();
+            //var testForm = new TestForm();
+            //testForm.Show();
 #endif
         }
 
@@ -33,7 +35,7 @@ namespace RLCCalculator
             zCalculatorToolStripMenuItem.Checked = _calculatorZ.Visible;
         }
 
-        private void frequenciesMenuItem_Click(object sender, System.EventArgs e)
+        private void frequenciesMenuItem_Click(object sender, EventArgs e)
         {
             var freqEditorForm = new FrequencyEditorForm(_project.Frequencies);
             freqEditorForm.ShowDialog();
@@ -41,7 +43,7 @@ namespace RLCCalculator
             _calculatorZ.Frequencies = _project.Frequencies;
         }
 
-        private void zCalculatorToolStripMenuItem_Click(object sender, System.EventArgs e)
+        private void zCalculatorToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if ( _calculatorZ == null )
             {
@@ -51,7 +53,7 @@ namespace RLCCalculator
             _calculatorZ.Visible = zCalculatorToolStripMenuItem.Checked;
         }
 
-        private void iComponentBindingSource_CurrentChanged(object sender, System.EventArgs e)
+        private void iComponentBindingSource_CurrentChanged(object sender, EventArgs e)
         {
             if ( _calculatorZ == null )
             {
@@ -59,9 +61,10 @@ namespace RLCCalculator
                 _calculatorZ.Frequencies = _project.Frequencies;
             }
             _calculatorZ.Circuit = (ICircuit)iComponentBindingSource.Current;
+            _circuitDetailForm.Circuit = (ICircuit)iComponentBindingSource.Current;
         }
 
-        private void testCircuitsToolStripMenuItem_Click(object sender, System.EventArgs e)
+        private void testCircuitsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var c1 = new SerialCircuit();
             c1.Name = "C1";
@@ -75,6 +78,12 @@ namespace RLCCalculator
             list.Add(c1);
             list.Add(c2);
             iComponentBindingSource.DataSource = list;
+
+        }
+
+        private void circuitEditorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            _circuitDetailForm.Visible = true;
 
         }
     }

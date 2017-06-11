@@ -1,21 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Numerics;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
+
+using Core;
 
 namespace RLCCalculator
 {
     public partial class CircuitDetailForm : Form
     {
+        
+
         public CircuitDetailForm()
         {
             InitializeComponent();
+        }
+
+        public ICircuit Circuit
+        {
+            set
+            {
+                circuitFactoryControl.Circuit = value;
+            }
         }
 
         private void CircuitDetailForm_FormClosing(object sender, FormClosingEventArgs e)

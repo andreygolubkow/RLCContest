@@ -155,7 +155,9 @@ namespace Core.Circuits
         /// <inheritdoc />
         IEnumerator<IComponent> IEnumerable<IComponent>.GetEnumerator()
         {
-            return _components.GetEnumerator();
+
+                return (IEnumerator<IComponent>)this;
+            
         }
 
         #endregion

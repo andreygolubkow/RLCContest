@@ -3,6 +3,9 @@ using System.Drawing;
 
 using Controls.Elements.SingleControls.BaseControls;
 
+using Core;
+using Core.Circuits;
+
 using IComponent = Core.IComponent;
 
 namespace Controls.Factories.BaseControls
@@ -75,6 +78,22 @@ namespace Controls.Factories.BaseControls
         private void addElementButton_Click(object sender, EventArgs e)
         {
             AddComponentButtonClick?.Invoke(this,e);
+        }
+
+        public ICircuit Circuit
+        {
+            get
+            {
+                return _circuitControl.Circuit;
+            }
+            set
+            {
+                if ( value is SerialCircuit )
+                {
+                    circuitTypeComboBox.SelectedIndex = 0;
+                }
+                _circuitControl.Circuit = value;
+            }
         }
     }
 }
