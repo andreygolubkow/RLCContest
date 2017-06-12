@@ -156,8 +156,8 @@ namespace Core.Circuits
         IEnumerator<IComponent> IEnumerable<IComponent>.GetEnumerator()
         {
 
-                return (IEnumerator<IComponent>)this;
-            
+            return _components.GetEnumerator();
+
         }
 
         #endregion
