@@ -58,12 +58,6 @@
     <Compile Include="CircuitDetailForm.Designer.cs">
       <DependentUpon>CircuitDetailForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="ElementDetailForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ElementDetailForm.Designer.cs">
-      <DependentUpon>ElementDetailForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="FrequencyEditorForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -89,9 +83,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CircuitDetailForm.resx">
       <DependentUpon>CircuitDetailForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ElementDetailForm.resx">
-      <DependentUpon>ElementDetailForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrequencyEditorForm.resx">
       <DependentUpon>FrequencyEditorForm.cs</DependentUpon>

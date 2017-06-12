@@ -28,17 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.circuitGroupBox = new System.Windows.Forms.GroupBox();
             this.nameGroupBox = new System.Windows.Forms.GroupBox();
             this.nameTextBox = new System.Windows.Forms.TextBox();
             this.elementsListGroupBox = new System.Windows.Forms.GroupBox();
-            this.elementsListBox = new System.Windows.Forms.ListBox();
-            this.iComponentBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.circuitListView = new Controls.Elements.CircuitListView();
             this.circuitGroupBox.SuspendLayout();
             this.nameGroupBox.SuspendLayout();
             this.elementsListGroupBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.iComponentBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // circuitGroupBox
@@ -81,7 +78,7 @@
             this.elementsListGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.elementsListGroupBox.Controls.Add(this.elementsListBox);
+            this.elementsListGroupBox.Controls.Add(this.circuitListView);
             this.elementsListGroupBox.Location = new System.Drawing.Point(6, 19);
             this.elementsListGroupBox.Name = "elementsListGroupBox";
             this.elementsListGroupBox.Size = new System.Drawing.Size(254, 95);
@@ -89,23 +86,13 @@
             this.elementsListGroupBox.TabStop = false;
             this.elementsListGroupBox.Text = "Elements list";
             // 
-            // elementsListBox
+            // circuitListView
             // 
-            this.elementsListBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.elementsListBox.DataSource = this.iComponentBindingSource;
-            this.elementsListBox.DisplayMember = "Name";
-            this.elementsListBox.FormattingEnabled = true;
-            this.elementsListBox.Location = new System.Drawing.Point(6, 19);
-            this.elementsListBox.Name = "elementsListBox";
-            this.elementsListBox.Size = new System.Drawing.Size(242, 56);
-            this.elementsListBox.TabIndex = 0;
-            // 
-            // iComponentBindingSource
-            // 
-            this.iComponentBindingSource.DataSource = typeof(Core.IComponent);
-            this.iComponentBindingSource.CurrentItemChanged += new System.EventHandler(this.IComponentBindingSourceCurrentItemChanged);
+            this.circuitListView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.circuitListView.Location = new System.Drawing.Point(3, 16);
+            this.circuitListView.Name = "circuitListView";
+            this.circuitListView.Size = new System.Drawing.Size(248, 76);
+            this.circuitListView.TabIndex = 0;
             // 
             // BaseCircuitControl
             // 
@@ -118,7 +105,6 @@
             this.nameGroupBox.ResumeLayout(false);
             this.nameGroupBox.PerformLayout();
             this.elementsListGroupBox.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.iComponentBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -129,7 +115,6 @@
         private System.Windows.Forms.GroupBox nameGroupBox;
         private System.Windows.Forms.TextBox nameTextBox;
         private System.Windows.Forms.GroupBox elementsListGroupBox;
-        private System.Windows.Forms.ListBox elementsListBox;
-        private System.Windows.Forms.BindingSource iComponentBindingSource;
+        private CircuitListView circuitListView;
     }
 }

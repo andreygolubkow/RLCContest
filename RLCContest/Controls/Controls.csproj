@@ -43,10 +43,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CircuitListView.cs">
+    <Compile Include="Elements\CircuitListView.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="CircuitListView.Designer.cs">
+    <Compile Include="Elements\CircuitListView.Designer.cs">
       <DependentUpon>CircuitListView.cs</DependentUpon>
     </Compile>
     <Compile Include="CircuitViewer\CircuitViewer.cs">
@@ -54,24 +54,6 @@
     </Compile>
     <Compile Include="CircuitViewer\CircuitViewer.Designer.cs">
       <DependentUpon>CircuitViewer.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Factories\BaseControls\BaseFactoryControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Factories\BaseControls\BaseFactoryControl.Designer.cs">
-      <DependentUpon>BaseFactoryControl.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Factories\BaseControls\CircuitFactoryControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Factories\BaseControls\CircuitFactoryControl.Designer.cs">
-      <DependentUpon>CircuitFactoryControl.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Factories\BaseControls\ElementFactoryControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Factories\BaseControls\ElementFactoryControl.Designer.cs">
-      <DependentUpon>ElementFactoryControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Elements\SingleControls\BaseControls\BaseCircuitControl.cs">
       <SubType>UserControl</SubType>
@@ -113,20 +95,11 @@
     <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="CircuitListView.resx">
+    <EmbeddedResource Include="Elements\CircuitListView.resx">
       <DependentUpon>CircuitListView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CircuitViewer\CircuitViewer.resx">
       <DependentUpon>CircuitViewer.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Factories\BaseControls\BaseFactoryControl.resx">
-      <DependentUpon>BaseFactoryControl.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Factories\BaseControls\CircuitFactoryControl.resx">
-      <DependentUpon>CircuitFactoryControl.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Factories\BaseControls\ElementFactoryControl.resx">
-      <DependentUpon>ElementFactoryControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Elements\SingleControls\BaseControls\BaseCircuitControl.resx">
       <DependentUpon>BaseCircuitControl.cs</DependentUpon>
@@ -154,6 +127,10 @@
     <ProjectReference Include="..\Core\Core.csproj">
       <Project>{f2ea5921-4b93-4625-8e63-bc925af4244a}</Project>
       <Name>Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Tools\Tools.csproj">
+      <Project>{54c32793-d344-4871-bdd0-b33dfaa54d7b}</Project>
+      <Name>Tools</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

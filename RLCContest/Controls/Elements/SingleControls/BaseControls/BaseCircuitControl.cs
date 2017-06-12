@@ -33,25 +33,25 @@ namespace Controls.Elements.SingleControls.BaseControls
             set
             {
                 _circuit = value;
-                iComponentBindingSource.DataSource = _circuit;
+               circuitListView.Circuit = _circuit;
             } 
         }
 
         public void Add(Core.IComponent component)
         {
-            iComponentBindingSource.Add(component);
+            _circuit.Add(component);
         }
 
         public void Remove(Core.IComponent component)
         {
-            iComponentBindingSource.Remove(component);
+            _circuit.Remove(component);
         }
 
         [Browsable(false)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         [EditorBrowsable(EditorBrowsableState.Never)]
         [DefaultValue(null)]
-        public Core.IComponent CurrentComponent => (Core.IComponent)iComponentBindingSource.Current;
+        public Core.IComponent CurrentComponent => circuitListView.Current;
 
         private void IComponentBindingSourceCurrentItemChanged(object sender, EventArgs e)
         {
@@ -70,6 +70,9 @@ namespace Controls.Elements.SingleControls.BaseControls
             }
         }
 
-       
+        private void elementsListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
