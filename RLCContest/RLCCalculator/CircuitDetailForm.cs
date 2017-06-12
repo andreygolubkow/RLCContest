@@ -1,6 +1,7 @@
 ﻿using System.Windows.Forms;
 
 using Core;
+using Core.Circuits;
 
 namespace RLCCalculator
 {
@@ -17,7 +18,10 @@ namespace RLCCalculator
         {
             set
             {
-                circuitFactoryControl.Circuit = value;
+                if ( value is SerialCircuit )
+                {
+                    serialCircuitControl.Circuit = value;
+                }
             }
         }
 
