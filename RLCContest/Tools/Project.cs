@@ -1,5 +1,6 @@
 ﻿
 
+using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 
@@ -7,6 +8,7 @@ using Core;
 
 namespace Tools
 {
+    [Serializable]
     public class Project
     {
         private List<double> _frequencies;
@@ -16,6 +18,7 @@ namespace Tools
         {
             _frequencies = new List<double>();
         }
+
 
         public List<double> Frequencies
         {
