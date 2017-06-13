@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CircuitDetailForm));
             this.addComponentButton = new System.Windows.Forms.Button();
             this.addSubcircuitButton = new System.Windows.Forms.Button();
             this.editElementButton = new System.Windows.Forms.Button();
@@ -44,7 +45,7 @@
             this.addComponentButton.Location = new System.Drawing.Point(12, 240);
             this.addComponentButton.Name = "addComponentButton";
             this.addComponentButton.Size = new System.Drawing.Size(93, 23);
-            this.addComponentButton.TabIndex = 1;
+            this.addComponentButton.TabIndex = 3;
             this.addComponentButton.Text = "Add component";
             this.addComponentButton.UseVisualStyleBackColor = true;
             this.addComponentButton.Click += new System.EventHandler(this.addComponentButton_Click);
@@ -54,7 +55,7 @@
             this.addSubcircuitButton.Location = new System.Drawing.Point(12, 269);
             this.addSubcircuitButton.Name = "addSubcircuitButton";
             this.addSubcircuitButton.Size = new System.Drawing.Size(93, 23);
-            this.addSubcircuitButton.TabIndex = 2;
+            this.addSubcircuitButton.TabIndex = 6;
             this.addSubcircuitButton.Text = "Add subcircuit";
             this.addSubcircuitButton.UseVisualStyleBackColor = true;
             this.addSubcircuitButton.Click += new System.EventHandler(this.addSubcircuitButton_Click);
@@ -64,7 +65,7 @@
             this.editElementButton.Location = new System.Drawing.Point(111, 240);
             this.editElementButton.Name = "editElementButton";
             this.editElementButton.Size = new System.Drawing.Size(75, 23);
-            this.editElementButton.TabIndex = 3;
+            this.editElementButton.TabIndex = 4;
             this.editElementButton.Text = "Edit element";
             this.editElementButton.UseVisualStyleBackColor = true;
             this.editElementButton.Click += new System.EventHandler(this.editElementButton_Click);
@@ -74,7 +75,7 @@
             this.removeElementButton.Location = new System.Drawing.Point(192, 240);
             this.removeElementButton.Name = "removeElementButton";
             this.removeElementButton.Size = new System.Drawing.Size(75, 23);
-            this.removeElementButton.TabIndex = 4;
+            this.removeElementButton.TabIndex = 5;
             this.removeElementButton.Text = "Remove";
             this.removeElementButton.UseVisualStyleBackColor = true;
             this.removeElementButton.Click += new System.EventHandler(this.removeElementButton_Click);
@@ -84,11 +85,12 @@
             this.circuitTypeComboBox.Enabled = false;
             this.circuitTypeComboBox.FormattingEnabled = true;
             this.circuitTypeComboBox.Items.AddRange(new object[] {
-            "Serial Circuit"});
+            "Serial Circuit",
+            "Parallel Circuit"});
             this.circuitTypeComboBox.Location = new System.Drawing.Point(12, 33);
             this.circuitTypeComboBox.Name = "circuitTypeComboBox";
             this.circuitTypeComboBox.Size = new System.Drawing.Size(269, 21);
-            this.circuitTypeComboBox.TabIndex = 5;
+            this.circuitTypeComboBox.TabIndex = 1;
             this.circuitTypeComboBox.SelectedIndexChanged += new System.EventHandler(this.circuitTypeComboBox_SelectedIndexChanged);
             // 
             // label1
@@ -117,7 +119,7 @@
             this.serialCircuitControl.Location = new System.Drawing.Point(12, 60);
             this.serialCircuitControl.Name = "serialCircuitControl";
             this.serialCircuitControl.Size = new System.Drawing.Size(275, 174);
-            this.serialCircuitControl.TabIndex = 0;
+            this.serialCircuitControl.TabIndex = 2;
             this.serialCircuitControl.Visible = false;
             // 
             // parallelCircuitControl
@@ -125,8 +127,8 @@
             this.parallelCircuitControl.ElementName = "";
             this.parallelCircuitControl.Location = new System.Drawing.Point(293, 60);
             this.parallelCircuitControl.Name = "parallelCircuitControl";
-            this.parallelCircuitControl.Size = new System.Drawing.Size(265, 164);
-            this.parallelCircuitControl.TabIndex = 8;
+            this.parallelCircuitControl.Size = new System.Drawing.Size(275, 174);
+            this.parallelCircuitControl.TabIndex = 2;
             this.parallelCircuitControl.Visible = false;
             // 
             // CircuitDetailForm
@@ -144,8 +146,9 @@
             this.Controls.Add(this.addComponentButton);
             this.Controls.Add(this.serialCircuitControl);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "CircuitDetailForm";
-            this.Text = "CircuitDetailForm";
+            this.Text = "Circuit";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CircuitDetailForm_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();

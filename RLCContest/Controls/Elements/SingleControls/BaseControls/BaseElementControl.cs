@@ -5,6 +5,8 @@ using System.Windows.Forms;
 
 using Core;
 
+using Tools;
+
 namespace Controls.Elements.SingleControls.BaseControls
 {
     [Serializable]
@@ -58,6 +60,11 @@ namespace Controls.Elements.SingleControls.BaseControls
         {
             ElementName = "";
             ElementValue = 0;
+        }
+
+        private void valueTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Validators.DoubleEnterValidate(valueTextBox.Text,e);
         }
     }
 }

@@ -47,7 +47,7 @@
             this.componentTypeComboBox.Location = new System.Drawing.Point(12, 25);
             this.componentTypeComboBox.Name = "componentTypeComboBox";
             this.componentTypeComboBox.Size = new System.Drawing.Size(251, 21);
-            this.componentTypeComboBox.TabIndex = 0;
+            this.componentTypeComboBox.TabIndex = 1;
             this.componentTypeComboBox.SelectedIndexChanged += new System.EventHandler(this.componentTypeComboBox_SelectedIndexChanged);
             // 
             // capacitorElementControl
@@ -71,7 +71,7 @@
             this.resistorElementControl.Location = new System.Drawing.Point(526, 52);
             this.resistorElementControl.Name = "resistorElementControl";
             this.resistorElementControl.Size = new System.Drawing.Size(251, 70);
-            this.resistorElementControl.TabIndex = 4;
+            this.resistorElementControl.TabIndex = 2;
             this.resistorElementControl.Visible = false;
             // 
             // label1
@@ -88,7 +88,7 @@
             this.okButton.Location = new System.Drawing.Point(188, 128);
             this.okButton.Name = "okButton";
             this.okButton.Size = new System.Drawing.Size(75, 23);
-            this.okButton.TabIndex = 6;
+            this.okButton.TabIndex = 3;
             this.okButton.Text = "Ok";
             this.okButton.UseVisualStyleBackColor = true;
             this.okButton.Click += new System.EventHandler(this.okButton_Click);
@@ -98,12 +98,12 @@
             this.cancelButton.Location = new System.Drawing.Point(15, 128);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(75, 23);
-            this.cancelButton.TabIndex = 7;
+            this.cancelButton.TabIndex = 4;
             this.cancelButton.Text = "Cancel";
             this.cancelButton.UseVisualStyleBackColor = true;
             this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
             // 
-            // ComponentDetailForm
+            // ElementDetailForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;

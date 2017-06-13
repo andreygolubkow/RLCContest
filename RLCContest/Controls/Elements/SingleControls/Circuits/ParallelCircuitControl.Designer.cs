@@ -36,7 +36,7 @@
             this.circuitGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.circuitGroupBox.Location = new System.Drawing.Point(0, 0);
             this.circuitGroupBox.Size = new System.Drawing.Size(271, 164);
-            this.circuitGroupBox.Text = "Parallel circuit";
+            this.circuitGroupBox.Text = "Parallel Circuit";
             // 
             // ParallelCircuitControl
             // 

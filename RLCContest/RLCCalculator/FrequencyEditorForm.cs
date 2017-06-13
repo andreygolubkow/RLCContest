@@ -24,6 +24,11 @@ namespace RLCCalculator
 
         private void addButton_Click(object sender, EventArgs e)
         {
+            if ( frequencyTextBox.Text.Length == 0 )
+            {
+                MessageBox.Show("You must enter the frequency");
+                return;
+            }
             try
             {
                 frequenciesListBox.Items.Add(frequencyTextBox.Text.Trim());
@@ -42,6 +47,11 @@ namespace RLCCalculator
 
         private void removeButton_Click(object sender, EventArgs e)
         {
+            if (frequenciesListBox.SelectedIndex == -1)
+            {
+                MessageBox.Show("You must select an item");
+                return;
+            }
             frequenciesListBox.Items.Remove(frequenciesListBox.SelectedItem);
         }
 

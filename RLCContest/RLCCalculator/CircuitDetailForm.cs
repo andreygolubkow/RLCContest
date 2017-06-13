@@ -78,11 +78,21 @@ namespace RLCCalculator
 
         private void removeElementButton_Click(object sender, System.EventArgs e)
         {
+            if ( _circuitControl.CurrentComponent == null )
+            {
+                MessageBox.Show("You must select an item to delete");
+                return;
+            }
             _circuitControl.Remove(_circuitControl.CurrentComponent);
         }
 
         private void addComponentButton_Click(object sender, System.EventArgs e)
         {
+            if ( _circuitControl == null )
+            {
+                MessageBox.Show("You need to select an electrical circuit to add elements");
+                return;
+            }
             var componentForm = new ElementDetailForm(null);
             if ( componentForm.ShowDialog() == DialogResult.OK )
             {
@@ -119,6 +129,11 @@ namespace RLCCalculator
 
         private void createButton_Click(object sender, System.EventArgs e)
         {
+            if (_circuitControl == null)
+            {
+                MessageBox.Show("You need to select an electrical circuit to create circuit");
+                return;
+            }
             try
             {
                 ICircuit circuit = _circuitControl.Circuit;
@@ -133,6 +148,11 @@ namespace RLCCalculator
 
         private void addSubcircuitButton_Click(object sender, EventArgs e)
         {
+            if (_circuitControl == null)
+            {
+                MessageBox.Show("You need to select an electrical circuit to add elements");
+                return;
+            }
             var circuitForm = new CircuitDetailForm(FormOpenMode.Create);
             if (circuitForm.ShowDialog() == DialogResult.OK)
             {
@@ -142,6 +162,11 @@ namespace RLCCalculator
 
         private void editElementButton_Click(object sender, EventArgs e)
         {
+            if ( _circuitControl.CurrentComponent == null )
+            {
+                MessageBox.Show("You must select an item to edit");
+                return;
+            }
             if ( _circuitControl.CurrentComponent is IElement element )
             {
                 var elementForm = new ElementDetailForm(element);

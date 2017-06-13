@@ -74,8 +74,22 @@ namespace RLCCalculator
 
         private void okButton_Click(object sender, EventArgs e)
         {
-            DialogResult = DialogResult.OK;
-            Close();
+            if ( _elementControl == null )
+            {
+                MessageBox.Show("You must create an element");
+                return;
+            }
+            try
+            {
+                var a = _elementControl.Element;
+                DialogResult = DialogResult.OK;
+                Close();
+            }
+            catch ( Exception ex )
+            {
+                MessageBox.Show(ex.Message);
+            }
+
         }
 
         private void componentTypeComboBox_SelectedIndexChanged(object sender, EventArgs e)

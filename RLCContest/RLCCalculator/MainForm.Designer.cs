@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.circuitsGroupBox = new System.Windows.Forms.GroupBox();
             this.circuitsListBox = new System.Windows.Forms.ListBox();
             this.iComponentBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -39,14 +40,12 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.openProjectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveProjectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.testCircuitsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.frequenciesMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.zCalculatorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.circuitEditorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.refreshListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.circuitsGroupBox.SuspendLayout();
@@ -62,7 +61,7 @@
             this.circuitsGroupBox.Controls.Add(this.circuitsListBox);
             this.circuitsGroupBox.Location = new System.Drawing.Point(12, 39);
             this.circuitsGroupBox.Name = "circuitsGroupBox";
-            this.circuitsGroupBox.Size = new System.Drawing.Size(344, 359);
+            this.circuitsGroupBox.Size = new System.Drawing.Size(342, 345);
             this.circuitsGroupBox.TabIndex = 0;
             this.circuitsGroupBox.TabStop = false;
             this.circuitsGroupBox.Text = "Circuits List";
@@ -75,7 +74,7 @@
             this.circuitsListBox.FormattingEnabled = true;
             this.circuitsListBox.Location = new System.Drawing.Point(3, 16);
             this.circuitsListBox.Name = "circuitsListBox";
-            this.circuitsListBox.Size = new System.Drawing.Size(338, 340);
+            this.circuitsListBox.Size = new System.Drawing.Size(336, 326);
             this.circuitsListBox.TabIndex = 0;
             // 
             // iComponentBindingSource
@@ -87,13 +86,12 @@
             // 
             this.mainMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
-            this.testCircuitsToolStripMenuItem,
             this.settingsToolStripMenuItem,
             this.viewToolStripMenuItem,
             this.refreshListToolStripMenuItem});
             this.mainMenu.Location = new System.Drawing.Point(0, 0);
             this.mainMenu.Name = "mainMenu";
-            this.mainMenu.Size = new System.Drawing.Size(368, 24);
+            this.mainMenu.Size = new System.Drawing.Size(366, 24);
             this.mainMenu.TabIndex = 1;
             // 
             // fileToolStripMenuItem
@@ -111,42 +109,40 @@
             // newCircuitToolStripMenuItem
             // 
             this.newCircuitToolStripMenuItem.Name = "newCircuitToolStripMenuItem";
-            this.newCircuitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.newCircuitToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
+            this.newCircuitToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
             this.newCircuitToolStripMenuItem.Text = "New circuit";
             this.newCircuitToolStripMenuItem.Click += new System.EventHandler(this.newCircuitToolStripMenuItem_Click);
             // 
             // newProjectToolStripMenuItem
             // 
             this.newProjectToolStripMenuItem.Name = "newProjectToolStripMenuItem";
-            this.newProjectToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.newProjectToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Alt) 
+            | System.Windows.Forms.Keys.N)));
+            this.newProjectToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
             this.newProjectToolStripMenuItem.Text = "New project";
             this.newProjectToolStripMenuItem.Click += new System.EventHandler(this.newProjectToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(201, 6);
             // 
             // openProjectToolStripMenuItem
             // 
             this.openProjectToolStripMenuItem.Name = "openProjectToolStripMenuItem";
-            this.openProjectToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.openProjectToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
+            this.openProjectToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
             this.openProjectToolStripMenuItem.Text = "Open project";
             this.openProjectToolStripMenuItem.Click += new System.EventHandler(this.openProjectToolStripMenuItem_Click);
             // 
             // saveProjectToolStripMenuItem
             // 
             this.saveProjectToolStripMenuItem.Name = "saveProjectToolStripMenuItem";
-            this.saveProjectToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.saveProjectToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
+            this.saveProjectToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
             this.saveProjectToolStripMenuItem.Text = "Save project";
             this.saveProjectToolStripMenuItem.Click += new System.EventHandler(this.saveProjectToolStripMenuItem_Click);
-            // 
-            // testCircuitsToolStripMenuItem
-            // 
-            this.testCircuitsToolStripMenuItem.Name = "testCircuitsToolStripMenuItem";
-            this.testCircuitsToolStripMenuItem.Size = new System.Drawing.Size(83, 20);
-            this.testCircuitsToolStripMenuItem.Text = "Test Circuits";
-            this.testCircuitsToolStripMenuItem.Click += new System.EventHandler(this.testCircuitsToolStripMenuItem_Click);
             // 
             // settingsToolStripMenuItem
             // 
@@ -159,7 +155,8 @@
             // frequenciesMenuItem
             // 
             this.frequenciesMenuItem.Name = "frequenciesMenuItem";
-            this.frequenciesMenuItem.Size = new System.Drawing.Size(137, 22);
+            this.frequenciesMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F)));
+            this.frequenciesMenuItem.Size = new System.Drawing.Size(177, 22);
             this.frequenciesMenuItem.Text = "Frequencies";
             this.frequenciesMenuItem.Click += new System.EventHandler(this.frequenciesMenuItem_Click);
             // 
@@ -175,31 +172,26 @@
             // zCalculatorToolStripMenuItem
             // 
             this.zCalculatorToolStripMenuItem.Name = "zCalculatorToolStripMenuItem";
-            this.zCalculatorToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
+            this.zCalculatorToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.I)));
+            this.zCalculatorToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
             this.zCalculatorToolStripMenuItem.Text = "Z Calculator";
             this.zCalculatorToolStripMenuItem.Click += new System.EventHandler(this.zCalculatorToolStripMenuItem_Click);
             // 
             // circuitEditorToolStripMenuItem
             // 
             this.circuitEditorToolStripMenuItem.Name = "circuitEditorToolStripMenuItem";
-            this.circuitEditorToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
+            this.circuitEditorToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.E)));
+            this.circuitEditorToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
             this.circuitEditorToolStripMenuItem.Text = "Circuit Editor";
             this.circuitEditorToolStripMenuItem.Click += new System.EventHandler(this.circuitEditorToolStripMenuItem_Click);
             // 
             // refreshListToolStripMenuItem
             // 
             this.refreshListToolStripMenuItem.Name = "refreshListToolStripMenuItem";
+            this.refreshListToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F5;
             this.refreshListToolStripMenuItem.Size = new System.Drawing.Size(79, 20);
             this.refreshListToolStripMenuItem.Text = "Refresh List";
             this.refreshListToolStripMenuItem.Click += new System.EventHandler(this.refreshListToolStripMenuItem_Click);
-            // 
-            // statusStrip
-            // 
-            this.statusStrip.Location = new System.Drawing.Point(0, 406);
-            this.statusStrip.Name = "statusStrip";
-            this.statusStrip.Size = new System.Drawing.Size(368, 22);
-            this.statusStrip.TabIndex = 2;
-            this.statusStrip.Text = "statusStrip1";
             // 
             // openFileDialog
             // 
@@ -217,10 +209,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(368, 428);
-            this.Controls.Add(this.statusStrip);
+            this.ClientSize = new System.Drawing.Size(366, 414);
             this.Controls.Add(this.circuitsGroupBox);
             this.Controls.Add(this.mainMenu);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.mainMenu;
             this.Name = "MainForm";
             this.Text = "Circuit Viewer ";
@@ -237,11 +229,9 @@
 
         private System.Windows.Forms.GroupBox circuitsGroupBox;
         private System.Windows.Forms.MenuStrip mainMenu;
-        private System.Windows.Forms.StatusStrip statusStrip;
         private System.Windows.Forms.ListBox circuitsListBox;
         private System.Windows.Forms.BindingSource iComponentBindingSource;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem testCircuitsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem frequenciesMenuItem;
         private System.Windows.Forms.ToolStripMenuItem viewToolStripMenuItem;

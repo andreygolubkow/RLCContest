@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CalculatorZForm));
             this.circuitsCalculatorGroupBox = new System.Windows.Forms.GroupBox();
             this.circuitViewer = new Controls.CircuitViewer.CircuitViewer();
             this.circuitsCalculatorGroupBox.SuspendLayout();
@@ -62,8 +63,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(609, 187);
             this.Controls.Add(this.circuitsCalculatorGroupBox);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "CalculatorZForm";
-            this.Text = "Calculator";
+            this.Text = "Z Calculator";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CalculatorZForm_FormClosing);
             this.circuitsCalculatorGroupBox.ResumeLayout(false);
             this.ResumeLayout(false);
