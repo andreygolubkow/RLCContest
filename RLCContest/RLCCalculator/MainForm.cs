@@ -40,7 +40,7 @@ namespace RLCCalculator
                 _calculatorZ = new CalculatorZForm();
                 _calculatorZ.Frequencies = _project.Frequencies;
             }
-            _calculatorZ.Visible = zCalculatorToolStripMenuItem.Checked;
+            _calculatorZ.Visible = true;
         }
 
         private void iComponentBindingSource_CurrentChanged(object sender, EventArgs e)
@@ -74,6 +74,30 @@ namespace RLCCalculator
         private void circuitEditorToolStripMenuItem_Click(object sender, EventArgs e)
         {
             _circuitDetailForm.Visible = true;
+        }
+
+        private void refreshListToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            iComponentBindingSource.ResetBindings(false);
+        }
+
+        private void newCircuitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var circuitForm = new CircuitDetailForm(FormOpenMode.Create);
+            if (circuitForm.ShowDialog() == DialogResult.OK)
+            {
+                iComponentBindingSource.Add(circuitForm.Circuit);
+            }
+        }
+
+        private void newProjectToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            _project = new Project();
+            _project.Frequencies = new List<double>();
+            _project.Circuits = new List<IComponent>();
+            iComponentBindingSource.DataSource = _project.Circuits;
+            _calculatorZ.Frequencies = _project.Frequencies;
+            _calculatorZ.Circuit = null;
         }
     }
 }

@@ -1,12 +1,16 @@
 ﻿
 
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
+
+using Core;
 
 namespace Tools
 {
     public class Project
     {
         private List<double> _frequencies;
+        private List<IComponent> _circuits;
 
         public Project()
         {
@@ -21,9 +25,24 @@ namespace Tools
                 {
                     return _frequencies;
                 }
-                return new List<double>();
+                _frequencies = new List<double>();
+                return _frequencies;
             }
             set => _frequencies = value;
+        }
+
+        public List<IComponent> Circuits
+        {
+            get
+            {
+                if ( _circuits != null )
+                {
+                    return _circuits;
+                }
+                _circuits = new List<IComponent>();
+                return _circuits;
+            }
+            set => _circuits = value;
         }
     }
 }

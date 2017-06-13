@@ -66,5 +66,15 @@ namespace Controls.Elements.SingleControls.BaseControls
             }
         }
 
+        private void nameTextBox_TextChanged(object sender, EventArgs e)
+        {
+            if ( _circuit != null )
+            {
+                if ( nameTextBox.Text.Length > 0 )
+                {
+                    _circuit.Name = nameTextBox.Text;
+                }
+            }
+        }
     }
 }

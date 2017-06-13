@@ -20,15 +20,18 @@ namespace RLCCalculator
             switch ( mode )
             {
                 case FormOpenMode.Create:
-                    createNewCircuitGroupBox.Visible = true;
+                    
                     circuitTypeComboBox.Enabled = true;
+                    createButton.Visible = true;
+                   
                     break;
                 case FormOpenMode.Edit:
-                    createNewCircuitGroupBox.Visible = false;
+                   
                     circuitTypeComboBox.Enabled = false;
+                   
                     break;
                 case FormOpenMode.LiveEdit:
-                    createNewCircuitGroupBox.Visible = false;
+                   
                     circuitTypeComboBox.Enabled = false;
                     break;
             }
@@ -136,6 +139,20 @@ namespace RLCCalculator
                  var circuitForm = new CircuitDetailForm(FormOpenMode.Edit);
                 circuitForm.Circuit = circuit;
                 circuitForm.ShowDialog();
+            }
+        }
+
+        private void okEditButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ICircuit circuit = _circuitControl.Circuit;
+                DialogResult = DialogResult.OK;
+                Close();
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
             }
         }
     }

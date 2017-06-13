@@ -35,10 +35,7 @@
             this.circuitTypeComboBox = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.createButton = new System.Windows.Forms.Button();
-            this.cancelButton = new System.Windows.Forms.Button();
-            this.createNewCircuitGroupBox = new System.Windows.Forms.GroupBox();
             this.serialCircuitControl = new Controls.Elements.SingleControls.Circuits.SerialCircuitControl();
-            this.createNewCircuitGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // addComponentButton
@@ -104,35 +101,14 @@
             // 
             // createButton
             // 
-            this.createButton.Location = new System.Drawing.Point(105, 19);
+            this.createButton.Location = new System.Drawing.Point(111, 292);
             this.createButton.Name = "createButton";
-            this.createButton.Size = new System.Drawing.Size(141, 23);
+            this.createButton.Size = new System.Drawing.Size(156, 23);
             this.createButton.TabIndex = 7;
             this.createButton.Text = "Create";
             this.createButton.UseVisualStyleBackColor = true;
+            this.createButton.Visible = false;
             this.createButton.Click += new System.EventHandler(this.createButton_Click);
-            // 
-            // cancelButton
-            // 
-            this.cancelButton.Location = new System.Drawing.Point(6, 19);
-            this.cancelButton.Name = "cancelButton";
-            this.cancelButton.Size = new System.Drawing.Size(93, 23);
-            this.cancelButton.TabIndex = 8;
-            this.cancelButton.Text = "Cancel";
-            this.cancelButton.UseVisualStyleBackColor = true;
-            this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
-            // 
-            // createNewCircuitGroupBox
-            // 
-            this.createNewCircuitGroupBox.Controls.Add(this.cancelButton);
-            this.createNewCircuitGroupBox.Controls.Add(this.createButton);
-            this.createNewCircuitGroupBox.Location = new System.Drawing.Point(15, 298);
-            this.createNewCircuitGroupBox.Name = "createNewCircuitGroupBox";
-            this.createNewCircuitGroupBox.Size = new System.Drawing.Size(252, 52);
-            this.createNewCircuitGroupBox.TabIndex = 9;
-            this.createNewCircuitGroupBox.TabStop = false;
-            this.createNewCircuitGroupBox.Text = "Create new circuit";
-            this.createNewCircuitGroupBox.Visible = false;
             // 
             // serialCircuitControl
             // 
@@ -141,13 +117,14 @@
             this.serialCircuitControl.Name = "serialCircuitControl";
             this.serialCircuitControl.Size = new System.Drawing.Size(275, 174);
             this.serialCircuitControl.TabIndex = 0;
+            this.serialCircuitControl.Visible = false;
             // 
             // CircuitDetailForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(293, 362);
-            this.Controls.Add(this.createNewCircuitGroupBox);
+            this.ClientSize = new System.Drawing.Size(293, 323);
+            this.Controls.Add(this.createButton);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.circuitTypeComboBox);
             this.Controls.Add(this.removeElementButton);
@@ -159,7 +136,6 @@
             this.Name = "CircuitDetailForm";
             this.Text = "CircuitDetailForm";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CircuitDetailForm_FormClosing);
-            this.createNewCircuitGroupBox.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -175,7 +151,5 @@
         private System.Windows.Forms.ComboBox circuitTypeComboBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button createButton;
-        private System.Windows.Forms.Button cancelButton;
-        private System.Windows.Forms.GroupBox createNewCircuitGroupBox;
     }
 }

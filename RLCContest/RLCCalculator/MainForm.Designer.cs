@@ -41,6 +41,12 @@
             this.zCalculatorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.circuitEditorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
+            this.refreshListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.newCircuitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.newProjectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.openProjectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveProjectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.circuitsGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iComponentBindingSource)).BeginInit();
             this.mainMenu.SuspendLayout();
@@ -81,7 +87,8 @@
             this.fileToolStripMenuItem,
             this.testCircuitsToolStripMenuItem,
             this.settingsToolStripMenuItem,
-            this.viewToolStripMenuItem});
+            this.viewToolStripMenuItem,
+            this.refreshListToolStripMenuItem});
             this.mainMenu.Location = new System.Drawing.Point(0, 0);
             this.mainMenu.Name = "mainMenu";
             this.mainMenu.Size = new System.Drawing.Size(368, 24);
@@ -89,6 +96,12 @@
             // 
             // fileToolStripMenuItem
             // 
+            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.newCircuitToolStripMenuItem,
+            this.newProjectToolStripMenuItem,
+            this.toolStripSeparator1,
+            this.openProjectToolStripMenuItem,
+            this.saveProjectToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "File";
@@ -146,6 +159,44 @@
             this.statusStrip.TabIndex = 2;
             this.statusStrip.Text = "statusStrip1";
             // 
+            // refreshListToolStripMenuItem
+            // 
+            this.refreshListToolStripMenuItem.Name = "refreshListToolStripMenuItem";
+            this.refreshListToolStripMenuItem.Size = new System.Drawing.Size(79, 20);
+            this.refreshListToolStripMenuItem.Text = "Refresh List";
+            this.refreshListToolStripMenuItem.Click += new System.EventHandler(this.refreshListToolStripMenuItem_Click);
+            // 
+            // newCircuitToolStripMenuItem
+            // 
+            this.newCircuitToolStripMenuItem.Name = "newCircuitToolStripMenuItem";
+            this.newCircuitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.newCircuitToolStripMenuItem.Text = "New circuit";
+            this.newCircuitToolStripMenuItem.Click += new System.EventHandler(this.newCircuitToolStripMenuItem_Click);
+            // 
+            // newProjectToolStripMenuItem
+            // 
+            this.newProjectToolStripMenuItem.Name = "newProjectToolStripMenuItem";
+            this.newProjectToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.newProjectToolStripMenuItem.Text = "New project";
+            this.newProjectToolStripMenuItem.Click += new System.EventHandler(this.newProjectToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
+            // 
+            // openProjectToolStripMenuItem
+            // 
+            this.openProjectToolStripMenuItem.Name = "openProjectToolStripMenuItem";
+            this.openProjectToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.openProjectToolStripMenuItem.Text = "Open project";
+            // 
+            // saveProjectToolStripMenuItem
+            // 
+            this.saveProjectToolStripMenuItem.Name = "saveProjectToolStripMenuItem";
+            this.saveProjectToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.saveProjectToolStripMenuItem.Text = "Save project";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -180,6 +231,12 @@
         private System.Windows.Forms.ToolStripMenuItem viewToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem zCalculatorToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem circuitEditorToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem refreshListToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem newCircuitToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem newProjectToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripMenuItem openProjectToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem saveProjectToolStripMenuItem;
     }
 }
 
