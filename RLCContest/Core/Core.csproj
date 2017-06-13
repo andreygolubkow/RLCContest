@@ -45,6 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Circuits\ParallelCircuit.cs" />
     <Compile Include="Circuits\SerialCircuit.cs" />
     <Compile Include="Elements\Capacitor.cs" />
     <Compile Include="Elements\Inductor.cs" />
