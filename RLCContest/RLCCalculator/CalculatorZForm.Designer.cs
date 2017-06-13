@@ -41,7 +41,7 @@
             this.circuitsCalculatorGroupBox.Controls.Add(this.circuitViewer);
             this.circuitsCalculatorGroupBox.Location = new System.Drawing.Point(12, 12);
             this.circuitsCalculatorGroupBox.Name = "circuitsCalculatorGroupBox";
-            this.circuitsCalculatorGroupBox.Size = new System.Drawing.Size(585, 380);
+            this.circuitsCalculatorGroupBox.Size = new System.Drawing.Size(585, 163);
             this.circuitsCalculatorGroupBox.TabIndex = 0;
             this.circuitsCalculatorGroupBox.TabStop = false;
             this.circuitsCalculatorGroupBox.Text = "Circuits Calculator";
@@ -53,15 +53,14 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.circuitViewer.Location = new System.Drawing.Point(6, 19);
             this.circuitViewer.Name = "circuitViewer";
-            this.circuitViewer.Size = new System.Drawing.Size(573, 355);
+            this.circuitViewer.Size = new System.Drawing.Size(573, 138);
             this.circuitViewer.TabIndex = 0;
             // 
             // CalculatorZForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(609, 404);
-            this.ControlBox = false;
+            this.ClientSize = new System.Drawing.Size(609, 187);
             this.Controls.Add(this.circuitsCalculatorGroupBox);
             this.Name = "CalculatorZForm";
             this.Text = "Calculator";

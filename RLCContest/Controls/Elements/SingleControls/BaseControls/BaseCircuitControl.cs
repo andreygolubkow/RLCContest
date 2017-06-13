@@ -27,12 +27,13 @@ namespace Controls.Elements.SingleControls.BaseControls
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         [EditorBrowsable(EditorBrowsableState.Never)]
         [DefaultValue(null)]
-        public virtual ICircuit Circuit
+        public virtual ICircuit Circuit 
         {
             get => _circuit;
             set
             {
                 _circuit = value;
+                ElementName = value.Name;
                circuitListView.Circuit = _circuit;
             } 
         }
@@ -53,11 +54,6 @@ namespace Controls.Elements.SingleControls.BaseControls
         [DefaultValue(null)]
         public Core.IComponent CurrentComponent => circuitListView.Current;
 
-        private void IComponentBindingSourceCurrentItemChanged(object sender, EventArgs e)
-        {
-            _currentChanged?.Invoke(sender,e);
-        }
-
         public string ElementName
         {
             get
@@ -70,9 +66,5 @@ namespace Controls.Elements.SingleControls.BaseControls
             }
         }
 
-        private void elementsListBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }

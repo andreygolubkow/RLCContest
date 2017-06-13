@@ -22,17 +22,7 @@ namespace RLCCalculator
             InitializeComponent();
             _project = new Project();
             _calculatorZ = new CalculatorZForm();
-            _calculatorZ.VisibleChanged += FormCalculatorZVisibleChanged;
-            _circuitDetailForm = new CircuitDetailForm();
-#if DEBUG
-            //var testForm = new TestForm();
-            //testForm.Show();
-#endif
-        }
-
-        private void FormCalculatorZVisibleChanged(object sender, EventArgs e)
-        {
-            zCalculatorToolStripMenuItem.Checked = _calculatorZ.Visible;
+            _circuitDetailForm = new CircuitDetailForm(FormOpenMode.LiveEdit);
         }
 
         private void frequenciesMenuItem_Click(object sender, EventArgs e)
@@ -84,7 +74,6 @@ namespace RLCCalculator
         private void circuitEditorToolStripMenuItem_Click(object sender, EventArgs e)
         {
             _circuitDetailForm.Visible = true;
-
         }
     }
 }

@@ -32,7 +32,15 @@ namespace Controls.Elements.SingleControls.Elements
         {
             get
             {
-                _capacitor = ElementName.Length>0 ? new Capacitor(ElementName, ElementValue) : new Capacitor("Element"+ Convert.ToString(DateTime.Now.Millisecond), ElementValue);
+                if ( _capacitor == null )
+                {
+                    _capacitor = ElementName.Length > 0 ? new Capacitor(ElementName, ElementValue) : new Capacitor("Element" + Convert.ToString(DateTime.Now.Millisecond), ElementValue);
+                }
+                else
+                {
+                    _capacitor.Name = ElementName;
+                    _capacitor.Value = ElementValue;
+                }
                 return _capacitor;
             }
             set

@@ -25,22 +25,25 @@ namespace Controls.Elements.SingleControls.Circuits
             }
             set
             {
+                if (!(value is SerialCircuit circuit) && value != null)
+                {
+                    throw new ArgumentException("Объект не являестся SerialCircuit");
+                }
                 if ( _circuit != null )
                 {
                     _circuit.CircuitChanged -= CircuitChanged;
                 }
-                
-                if (value == null)
+                if ( value == null )
                 {
                     _circuit = new SerialCircuit();
-                    return;
+
                 }
-                if ( !(value is SerialCircuit circuit) )
+                else
                 {
-                    throw new ArgumentException("Объект не являестся SerialCircuit");
+                    _circuit = value;
                 }
-                base.Circuit = circuit;
-                ElementName = circuit.Name;
+                    
+                base.Circuit = _circuit;
                 _circuit.CircuitChanged += CircuitChanged;
                 
             }

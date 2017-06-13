@@ -39,8 +39,8 @@
             this.frequenciesMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.zCalculatorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.circuitEditorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.circuitsGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iComponentBindingSource)).BeginInit();
             this.mainMenu.SuspendLayout();
@@ -126,11 +126,17 @@
             // 
             // zCalculatorToolStripMenuItem
             // 
-            this.zCalculatorToolStripMenuItem.CheckOnClick = true;
             this.zCalculatorToolStripMenuItem.Name = "zCalculatorToolStripMenuItem";
             this.zCalculatorToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.zCalculatorToolStripMenuItem.Text = "Z Calculator";
             this.zCalculatorToolStripMenuItem.Click += new System.EventHandler(this.zCalculatorToolStripMenuItem_Click);
+            // 
+            // circuitEditorToolStripMenuItem
+            // 
+            this.circuitEditorToolStripMenuItem.Name = "circuitEditorToolStripMenuItem";
+            this.circuitEditorToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.circuitEditorToolStripMenuItem.Text = "Circuit Editor";
+            this.circuitEditorToolStripMenuItem.Click += new System.EventHandler(this.circuitEditorToolStripMenuItem_Click);
             // 
             // statusStrip
             // 
@@ -139,13 +145,6 @@
             this.statusStrip.Size = new System.Drawing.Size(368, 22);
             this.statusStrip.TabIndex = 2;
             this.statusStrip.Text = "statusStrip1";
-            // 
-            // circuitEditorToolStripMenuItem
-            // 
-            this.circuitEditorToolStripMenuItem.Name = "circuitEditorToolStripMenuItem";
-            this.circuitEditorToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.circuitEditorToolStripMenuItem.Text = "Circuit Editor";
-            this.circuitEditorToolStripMenuItem.Click += new System.EventHandler(this.circuitEditorToolStripMenuItem_Click);
             // 
             // MainForm
             // 

@@ -27,6 +27,7 @@ namespace RLCCalculator
             try
             {
                 frequenciesListBox.Items.Add(frequencyTextBox.Text.Trim());
+                frequencyTextBox.Text = "";
             }
             catch ( Exception exception )
             {
