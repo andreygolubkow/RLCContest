@@ -33,6 +33,24 @@ namespace Tools
                 }
                 return c;
             }
+            if (circuit is ParallelCircuit)
+            {
+                var c = new ParallelCircuit();
+                c.Name = circuit.Name;
+                foreach (var e in circuit)
+                {
+                    if (e is IElement el)
+                    {
+                        c.Add(CopyElement(el));
+                    }
+                    else if (e is ICircuit ci)
+                    {
+                        c.Add(CopyCircuit(ci));
+                    }
+                }
+                return c;
+            }
+
             return null;
         }
 

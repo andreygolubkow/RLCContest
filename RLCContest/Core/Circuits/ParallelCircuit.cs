@@ -4,6 +4,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Numerics;
 
 namespace Core.Circuits
@@ -32,7 +33,14 @@ namespace Core.Circuits
         /// <inheritdoc />
         public Complex CalculateZ(double frequency)
         {
-            throw new NotImplementedException();
+            Complex mult = new Complex(0,0);
+            Complex sum = new Complex(0,0);
+            foreach (var component in _components)
+            {
+                mult *= component.CalculateZ(frequency);
+                sum += component.CalculateZ(frequency);
+            }
+            return mult / sum;
         }
 
         #endregion
@@ -58,31 +66,56 @@ namespace Core.Circuits
         /// <inheritdoc />
         public void Add(IComponent item)
         {
-            throw new NotImplementedException();
+            if (item == null)
+            {
+                throw new ArgumentException("Нельзя добавить объект данного типа.");
+            }
+            if (FindComponent(item.Name) != null)
+            {
+                throw new ArgumentException("Компонент с таким именем уже существует.");
+            }
+            _components.Add(item);
+            SubscribeToComponent(item);
+
+            CircuitChanged?.Invoke(this, new EventArgs());
         }
 
         /// <inheritdoc />
         public void Clear()
         {
-            throw new NotImplementedException();
+            foreach (IComponent component in _components)
+            {
+                UnsubscribeToComponent(component);
+            }
+            _components.Clear();
         }
 
         /// <inheritdoc />
         public bool Contains(IComponent item)
         {
-            throw new NotImplementedException();
+            return _components.Contains(item);
         }
 
         /// <inheritdoc />
         public void CopyTo(IComponent[] array, int arrayIndex)
         {
-            throw new NotImplementedException();
+            _components.CopyTo(array, arrayIndex);
         }
 
         /// <inheritdoc />
         public bool Remove(IComponent item)
         {
-            throw new NotImplementedException();
+            if (item == null)
+            {
+                throw new ArgumentException("Объект не является компонентом.");
+            }
+            if (_components.Remove(item))
+            {
+                UnsubscribeToComponent(item);
+                CircuitChanged?.Invoke(this, new EventArgs());
+                return true;
+            }
+            return false;
         }
 
         /// <inheritdoc />
@@ -90,7 +123,7 @@ namespace Core.Circuits
         {
             get
             {
-                throw new NotImplementedException();
+                return _components.Count;
             }
         }
 
@@ -99,7 +132,7 @@ namespace Core.Circuits
         {
             get
             {
-                throw new NotImplementedException();
+                return false;
             }
         }
 
@@ -110,31 +143,44 @@ namespace Core.Circuits
         /// <inheritdoc />
         public int IndexOf(IComponent item)
         {
-            throw new NotImplementedException();
+            return _components.IndexOf(item);
         }
 
         /// <inheritdoc />
         public void Insert(int index, IComponent item)
         {
-            throw new NotImplementedException();
+            if (item == null)
+            {
+                throw new ArgumentException("Объект не является компонентом.");
+            }
+            _components.Insert(index, item);
+            SubscribeToComponent(item);
+
+            CircuitChanged?.Invoke(this, new EventArgs());
         }
 
         /// <inheritdoc />
         public void RemoveAt(int index)
         {
-            throw new NotImplementedException();
+            IComponent component = _components[index];
+            _components.RemoveAt(index);
+            UnsubscribeToComponent(component);
+            CircuitChanged?.Invoke(this, new EventArgs());
         }
 
         /// <inheritdoc />
         public IComponent this[int index]
         {
-            get
-            {
-                throw new NotImplementedException();
-            }
+            get => _components[index];
             set
             {
-                throw new NotImplementedException();
+                IComponent component = ((value != null) && (FindComponent(value.Name) == null))
+                    ? value
+                    : throw new ArgumentException("Элемент с таким именем уже существует.");
+                UnsubscribeToComponent(_components[index]);
+                _components[index] = component;
+                SubscribeToComponent(_components[index]);
+                CircuitChanged?.Invoke(this, new EventArgs());
             }
         }
 
@@ -149,10 +195,46 @@ namespace Core.Circuits
         {
             get
             {
-                throw new NotImplementedException();
+                return _components;
             }
         }
 
         #endregion
+
+        private IComponent FindComponent(string name)
+        {
+            return _components.FirstOrDefault(c => c.Name == name);
+        }
+
+        private void CircuitCircuitChanged(object sender, EventArgs e)
+        {
+            CircuitChanged?.Invoke(sender, e);
+        }
+
+        private void SubscribeToComponent(IComponent component)
+        {
+            if (component is ICircuit circuit)
+            {
+                circuit.CircuitChanged += CircuitCircuitChanged;
+            }
+            else
+            if (component is IElement element)
+            {
+                element.ValueChanged += CircuitCircuitChanged;
+            }
+        }
+
+        private void UnsubscribeToComponent(IComponent component)
+        {
+            if (component is ICircuit circuit)
+            {
+                circuit.CircuitChanged -= CircuitCircuitChanged;
+            }
+            else
+            if (component is IElement element)
+            {
+                element.ValueChanged -= CircuitCircuitChanged;
+            }
+        }
     }
 }

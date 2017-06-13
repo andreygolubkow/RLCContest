@@ -61,6 +61,12 @@
     <Compile Include="Elements\SingleControls\BaseControls\BaseCircuitControl.Designer.cs">
       <DependentUpon>BaseCircuitControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Elements\SingleControls\Circuits\ParallelCircuitControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Elements\SingleControls\Circuits\ParallelCircuitControl.Designer.cs">
+      <DependentUpon>ParallelCircuitControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Elements\SingleControls\Circuits\SerialCircuitControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -106,6 +112,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Elements\SingleControls\BaseControls\BaseElementControl.resx">
       <DependentUpon>BaseElementControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Elements\SingleControls\Circuits\ParallelCircuitControl.resx">
+      <DependentUpon>ParallelCircuitControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Elements\SingleControls\Circuits\SerialCircuitControl.resx">
       <DependentUpon>SerialCircuitControl.cs</DependentUpon>
