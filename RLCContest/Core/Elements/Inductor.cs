@@ -6,6 +6,7 @@
     /// <summary>
     /// The inductor.
     /// </summary>
+    [Serializable]
     public class Inductor : IElement
     {
         /// <summary>

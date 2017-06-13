@@ -3,6 +3,7 @@ using System.Numerics;
 
 namespace Core.Elements
 {
+    [Serializable]
     public class Capacitor : IElement
     {
         private string _name;

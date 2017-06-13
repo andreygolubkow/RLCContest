@@ -6,6 +6,7 @@
     /// <summary>
     /// Резистор.
     /// </summary>
+    [Serializable]
     public class Resistor : IElement
     {
         /// <summary>

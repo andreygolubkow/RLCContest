@@ -13,6 +13,7 @@ namespace Core.Circuits
     /// <summary>
     ///     Цепь с последовательным соеднинением элементов.
     /// </summary>
+    [Serializable]
     public class SerialCircuit : ICircuit
     {
         private readonly List<IComponent> _components;
