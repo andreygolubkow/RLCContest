@@ -99,5 +99,24 @@ namespace RLCCalculator
             _calculatorZ.Frequencies = _project.Frequencies;
             _calculatorZ.Circuit = null;
         }
+
+        private void openProjectToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if ( openFileDialog.ShowDialog() == DialogResult.OK )
+            {
+                DataSerializer.DeserializeJson(openFileDialog.FileName,ref _project);
+                iComponentBindingSource.DataSource = _project.Circuits;
+                _calculatorZ.Frequencies = _project.Frequencies;
+                _calculatorZ.Circuit = null;
+            }
+        }
+
+        private void saveProjectToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                DataSerializer.SerializeJson(saveFileDialog.FileName, ref _project);
+            }
+        }
     }
 }
