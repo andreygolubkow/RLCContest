@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Numerics;
+using System.Runtime.Serialization;
 
 namespace Core.Elements
 {
@@ -26,7 +27,6 @@ namespace Core.Elements
         /// <summary>
         /// Событие, вызывается когда изменено значение.
         /// </summary>
-        [field: NonSerializedAttribute()]
         public event EventHandler ValueChanged;
 
         /// <summary>
@@ -77,5 +77,6 @@ namespace Core.Elements
         }
 
         #endregion
+
     }
 }

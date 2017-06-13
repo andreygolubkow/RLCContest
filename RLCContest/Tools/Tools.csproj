@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="DataSerializer.cs" />
     <Compile Include="Project.cs" />
+    <Compile Include="ProjectDublicator.cs" />
     <Compile Include="Validators.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

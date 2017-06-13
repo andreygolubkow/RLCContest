@@ -116,13 +116,10 @@ namespace RLCCalculator
 
         private void saveProjectToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            var saveProject = ProjectDublicator.CopyProject(_project);
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
-                iComponentBindingSource.DataSource = null;
-                _calculatorZ.Circuit = null;
-                _circuitDetailForm.Circuit = null;
-                GC.Collect();
-                DataSerializer.SerializeBin(saveFileDialog.FileName, _project);
+                DataSerializer.SerializeBin(saveFileDialog.FileName, saveProject);
             }
         }
     }

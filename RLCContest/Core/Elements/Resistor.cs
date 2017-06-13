@@ -1,4 +1,6 @@
-﻿namespace Core.Elements
+﻿using System.Runtime.Serialization;
+
+namespace Core.Elements
 {
     using System;
     using System.Numerics;
@@ -50,7 +52,6 @@
         /// <summary>
         /// Срабатывает при изменении сопротивления.
         /// </summary>
-        [field: NonSerializedAttribute()]
         public event EventHandler ValueChanged;
 
         /// <summary>
@@ -108,5 +109,6 @@
         }
 
         #endregion
+
     }
 }

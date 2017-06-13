@@ -5,6 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
+using System.Runtime.Serialization;
 
 #endregion
 
@@ -19,7 +20,6 @@ namespace Core.Circuits
         private readonly List<IComponent> _components;
         private string _name;
 
-        [field: NonSerializedAttribute()]
         public event EventHandler CircuitChanged;
 
        
@@ -212,5 +212,6 @@ namespace Core.Circuits
         }
 
         #endregion
+
     }
 }
