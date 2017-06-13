@@ -21,6 +21,9 @@ namespace RLCCalculator
         {
             InitializeComponent();
             _project = new Project();
+            _project.Circuits = new List<IComponent>();
+            _project.Frequencies = new List<double>();
+            iComponentBindingSource.DataSource = _project.Circuits;
             _calculatorZ = new CalculatorZForm();
             _circuitDetailForm = new CircuitDetailForm(FormOpenMode.LiveEdit);
         }
@@ -104,7 +107,7 @@ namespace RLCCalculator
         {
             if ( openFileDialog.ShowDialog() == DialogResult.OK )
             {
-                DataSerializer.DeserializeJson(openFileDialog.FileName,ref _project);
+                DataSerializer.DeserializeBin(openFileDialog.FileName,ref _project);
                 iComponentBindingSource.DataSource = _project.Circuits;
                 _calculatorZ.Frequencies = _project.Frequencies;
                 _calculatorZ.Circuit = null;
@@ -115,7 +118,11 @@ namespace RLCCalculator
         {
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
-                DataSerializer.SerializeJson(saveFileDialog.FileName, ref _project);
+                iComponentBindingSource.DataSource = null;
+                _calculatorZ.Circuit = null;
+                _circuitDetailForm.Circuit = null;
+                GC.Collect();
+                DataSerializer.SerializeBin(saveFileDialog.FileName, _project);
             }
         }
     }

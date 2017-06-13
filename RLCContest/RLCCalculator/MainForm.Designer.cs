@@ -203,14 +203,14 @@
             // 
             // openFileDialog
             // 
-            this.openFileDialog.DefaultExt = "*.json";
-            this.openFileDialog.Filter = "JSON files|*.json";
+            this.openFileDialog.DefaultExt = "cr";
+            this.openFileDialog.Filter = "Circuit library|*.cr";
             this.openFileDialog.Title = "Open circuit project";
             // 
             // saveFileDialog
             // 
-            this.saveFileDialog.DefaultExt = "json";
-            this.saveFileDialog.Filter = "JSON files|*.json";
+            this.saveFileDialog.DefaultExt = "cr";
+            this.saveFileDialog.Filter = "Circuit library|*.cr";
             this.saveFileDialog.Title = "Save circuit project";
             // 
             // MainForm

@@ -26,6 +26,7 @@ namespace Core.Elements
         /// <summary>
         /// Событие, вызывается когда изменено значение.
         /// </summary>
+        [field: NonSerializedAttribute()]
         public event EventHandler ValueChanged;
 
         /// <summary>

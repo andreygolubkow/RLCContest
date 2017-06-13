@@ -7,6 +7,7 @@ using Core.Circuits;
 
 namespace Controls.Elements.SingleControls.Circuits
 {
+    [Serializable]
     public partial class SerialCircuitControl : BaseCircuitControl
     {
         public SerialCircuitControl()

@@ -19,8 +19,10 @@ namespace Core.Circuits
         private readonly List<IComponent> _components;
         private string _name;
 
+        [field: NonSerializedAttribute()]
         public event EventHandler CircuitChanged;
 
+       
         public SerialCircuit()
         {
             _components = new List<IComponent>();
@@ -125,6 +127,7 @@ namespace Core.Circuits
             CircuitChanged?.Invoke(this, new EventArgs());
         }
 
+
         public IComponent this[int index]
         {
             get => _components[index];
@@ -139,6 +142,7 @@ namespace Core.Circuits
                 CircuitChanged?.Invoke(this, new EventArgs());
             }
         }
+
 
         public IList<IComponent> Components => _components;
 

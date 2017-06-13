@@ -7,6 +7,7 @@ using Core;
 
 namespace Controls.Elements.SingleControls.BaseControls
 {
+    [Serializable]
     public partial class BaseElementControl : UserControl
     {
         private IElement _element;

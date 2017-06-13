@@ -1,45 +1,34 @@
 ﻿using System;
 using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 
-using Newtonsoft.Json;
-
-using Formatting = System.Xml.Formatting;
 
 namespace Tools
 {
     public static class DataSerializer
     {
-        public static void DeserializeJson<T>(string fileName, ref T container)
+        public static void DeserializeBin<T>(string fileName, ref T container)
         {
-            if (container == null)
+            var formatter = new BinaryFormatter();
+            var deserializeFile = new FileStream(fileName, FileMode.OpenOrCreate);
+            if (deserializeFile.Length > 0)
             {
-                throw new ArgumentNullException(nameof(container));
+                container = (T)formatter.Deserialize(deserializeFile);
+                deserializeFile.Close();
             }
-
-            container = JsonConvert.DeserializeObject<T>(File.ReadAllText(fileName), new JsonSerializerSettings
-                                                                                     {
-                                                                                         TypeNameHandling = TypeNameHandling.Auto,
-                                                                                         NullValueHandling = NullValueHandling.Ignore,
-                                                                                     });
+            else
+            {
+                deserializeFile.Close();
+                throw new ArgumentException("Файл пустой");
+            }
         }
 
-        public static void SerializeJson<T>(string fileName, ref T container)
+        public static void SerializeBin<T>(string fileName,  T container)
         {
-
-            var serializer = new JsonSerializer();
-            //serializer.Converters.Add(new Newtonsoft.Json.Converters.JavaScriptDateTimeConverter());
-            serializer.NullValueHandling = NullValueHandling.Ignore;
-            serializer.TypeNameHandling = TypeNameHandling.Auto;
-            serializer.Formatting = Newtonsoft.Json.Formatting.Indented;
-
-            using (var sw = new StreamWriter(fileName))
-            {
-                using (JsonWriter writer = new JsonTextWriter(sw))
-                {
-                    serializer.Serialize(writer, container, typeof(T));
-                }
-            }
-
+            var formatter = new BinaryFormatter();
+            var serializeFileStream = new FileStream(fileName, FileMode.OpenOrCreate);
+            formatter.Serialize(serializeFileStream, container);
+            serializeFileStream.Close();
         }
     }
 }

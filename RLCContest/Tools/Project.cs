@@ -12,11 +12,12 @@ namespace Tools
     public class Project
     {
         private List<double> _frequencies;
-        private List<IComponent> _circuits;
+        private List<Core.IComponent> _circuits;
 
         public Project()
         {
             _frequencies = new List<double>();
+            _circuits  = new List<IComponent>();
         }
 
 

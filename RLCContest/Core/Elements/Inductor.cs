@@ -49,6 +49,7 @@
         /// <summary>
         /// Вызывается при изменении номинала.
         /// </summary>
+        [field: NonSerializedAttribute()]
         public event EventHandler ValueChanged;
 
         /// <summary>

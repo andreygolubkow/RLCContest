@@ -50,6 +50,7 @@
         /// <summary>
         /// Срабатывает при изменении сопротивления.
         /// </summary>
+        [field: NonSerializedAttribute()]
         public event EventHandler ValueChanged;
 
         /// <summary>

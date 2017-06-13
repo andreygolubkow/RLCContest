@@ -6,6 +6,7 @@ using Core;
 
 namespace Controls.Elements.SingleControls.BaseControls
 {
+    [Serializable]
     public partial class BaseCircuitControl : UserControl
     {
         private event EventHandler _currentChanged;
