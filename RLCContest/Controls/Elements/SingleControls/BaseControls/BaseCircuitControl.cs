@@ -9,19 +9,12 @@ namespace Controls.Elements.SingleControls.BaseControls
     [Serializable]
     public partial class BaseCircuitControl : UserControl
     {
-        private event EventHandler _currentChanged;
 
         protected ICircuit _circuit;
 
         protected BaseCircuitControl()
         {
             InitializeComponent();
-        }
-        
-        public event EventHandler CurrentChanged
-        {
-            add => _currentChanged += value;
-            remove => _currentChanged -= value;
         }
 
         [Browsable(false)]

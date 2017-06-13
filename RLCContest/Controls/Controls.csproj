@@ -133,6 +133,9 @@
     <None Include="Properties\DataSources\Core.IComponent.datasource" />
   </ItemGroup>
   <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\Core\Core.csproj">
       <Project>{f2ea5921-4b93-4625-8e63-bc925af4244a}</Project>
       <Name>Core</Name>

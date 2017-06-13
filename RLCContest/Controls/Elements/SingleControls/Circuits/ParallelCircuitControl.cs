@@ -13,7 +13,7 @@ namespace Controls.Elements.SingleControls.Circuits
         {
             InitializeComponent();
 
-            _circuit = new SerialCircuit();
+            _circuit = new ParallelCircuit();
             _circuit.CircuitChanged += CircuitChanged;
         }
 
@@ -26,9 +26,9 @@ namespace Controls.Elements.SingleControls.Circuits
             }
             set
             {
-                if (!(value is SerialCircuit circuit) && value != null)
+                if (!(value is ParallelCircuit circuit) && value != null)
                 {
-                    throw new ArgumentException("Объект не являестся SerialCircuit");
+                    throw new ArgumentException("Объект не являестся ParallelCircuit");
                 }
                 if (_circuit != null)
                 {
@@ -36,7 +36,7 @@ namespace Controls.Elements.SingleControls.Circuits
                 }
                 if (value == null)
                 {
-                    _circuit = new SerialCircuit();
+                    _circuit = new ParallelCircuit();
 
                 }
                 else

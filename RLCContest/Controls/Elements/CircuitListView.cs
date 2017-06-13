@@ -67,7 +67,7 @@ namespace Controls.Elements
         private void FillList(ICircuit circuit)
         {
             listBox.Items.Clear();
-            foreach (IComponent e in _circuit)
+            foreach (IComponent e in circuit)
             {
                 listBox.Items.Add(e.Name);
             }

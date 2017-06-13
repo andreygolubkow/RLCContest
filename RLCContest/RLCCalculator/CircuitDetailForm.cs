@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
 
 using Controls.Elements.SingleControls.BaseControls;
@@ -16,6 +17,11 @@ namespace RLCCalculator
         public CircuitDetailForm(FormOpenMode mode = FormOpenMode.Create)
         {
             InitializeComponent();
+
+            Size = new Size(304, 362);
+            serialCircuitControl.Location = new Point(12, 60);
+            parallelCircuitControl.Location = new Point(12, 60);
+
             _mode = mode;
             switch ( mode )
             {
@@ -45,6 +51,11 @@ namespace RLCCalculator
                 if ( value is SerialCircuit )
                 {
                     circuitTypeComboBox.SelectedIndex = 0;
+                    _circuitControl.Circuit = value;
+                }
+                if (value is ParallelCircuit)
+                {
+                    circuitTypeComboBox.SelectedIndex = 1;
                     _circuitControl.Circuit = value;
                 }
             }
@@ -86,8 +97,13 @@ namespace RLCCalculator
             {
                 _circuitControl = serialCircuitControl;
             }
+            if (circuitTypeComboBox.SelectedIndex == 1)
+            {
+                _circuitControl = parallelCircuitControl;
+            }
 
             serialCircuitControl.Visible = circuitTypeComboBox.SelectedIndex == 0;
+            parallelCircuitControl.Visible = circuitTypeComboBox.SelectedIndex == 1;
 
             if ( _mode == FormOpenMode.Create )
             {

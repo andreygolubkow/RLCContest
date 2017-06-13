@@ -36,6 +36,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.createButton = new System.Windows.Forms.Button();
             this.serialCircuitControl = new Controls.Elements.SingleControls.Circuits.SerialCircuitControl();
+            this.parallelCircuitControl = new Controls.Elements.SingleControls.Circuits.ParallelCircuitControl();
             this.SuspendLayout();
             // 
             // addComponentButton
@@ -119,11 +120,21 @@
             this.serialCircuitControl.TabIndex = 0;
             this.serialCircuitControl.Visible = false;
             // 
+            // parallelCircuitControl
+            // 
+            this.parallelCircuitControl.ElementName = "";
+            this.parallelCircuitControl.Location = new System.Drawing.Point(293, 60);
+            this.parallelCircuitControl.Name = "parallelCircuitControl";
+            this.parallelCircuitControl.Size = new System.Drawing.Size(265, 164);
+            this.parallelCircuitControl.TabIndex = 8;
+            this.parallelCircuitControl.Visible = false;
+            // 
             // CircuitDetailForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(293, 323);
+            this.ClientSize = new System.Drawing.Size(567, 323);
+            this.Controls.Add(this.parallelCircuitControl);
             this.Controls.Add(this.createButton);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.circuitTypeComboBox);
@@ -151,5 +162,6 @@
         private System.Windows.Forms.ComboBox circuitTypeComboBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button createButton;
+        private Controls.Elements.SingleControls.Circuits.ParallelCircuitControl parallelCircuitControl;
     }
 }
