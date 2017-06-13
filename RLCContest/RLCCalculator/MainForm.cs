@@ -86,31 +86,45 @@ namespace RLCCalculator
 
         private void newCircuitToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var circuitForm = new CircuitDetailForm(FormOpenMode.Create);
-            if (circuitForm.ShowDialog() == DialogResult.OK)
-            {
-                iComponentBindingSource.Add(circuitForm.Circuit);
-            }
+
         }
 
         private void newProjectToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            _project = new Project();
-            _project.Frequencies = new List<double>();
-            _project.Circuits = new List<IComponent>();
-            iComponentBindingSource.DataSource = _project.Circuits;
-            _calculatorZ.Frequencies = _project.Frequencies;
-            _calculatorZ.Circuit = null;
+            var message = MessageBox.Show("Do you want to create a new project? All data will be lost!",
+                                          "Create new project",
+                                          MessageBoxButtons.YesNo);
+            if ( message == DialogResult.Yes )
+            {
+                _project = new Project();
+                _project.Frequencies = new List<double>();
+                _project.Circuits = new List<IComponent>();
+                iComponentBindingSource.DataSource = _project.Circuits;
+                _calculatorZ.Frequencies = _project.Frequencies;
+                _calculatorZ.Circuit = null;
+            }
         }
 
         private void openProjectToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if ( openFileDialog.ShowDialog() == DialogResult.OK )
             {
-                DataSerializer.DeserializeBin(openFileDialog.FileName,ref _project);
+                try
+                {
+                    DataSerializer.DeserializeBin(openFileDialog.FileName, ref _project);
+
+                }
+                catch ( Exception exception )
+                {
+                    MessageBox.Show(exception.Message);
+                    _project = new Project();
+                    _project.Circuits = new List<IComponent>();
+                    _project.Frequencies = new List<double>();
+                }
                 iComponentBindingSource.DataSource = _project.Circuits;
                 _calculatorZ.Frequencies = _project.Frequencies;
                 _calculatorZ.Circuit = null;
+
             }
         }
 
@@ -120,6 +134,28 @@ namespace RLCCalculator
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
                 DataSerializer.SerializeBin(saveFileDialog.FileName, saveProject);
+            }
+        }
+
+        private void newCircuitToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            var circuitForm = new CircuitDetailForm(FormOpenMode.Create);
+            if (circuitForm.ShowDialog() == DialogResult.OK)
+            {
+                iComponentBindingSource.Add(circuitForm.Circuit);
+            }
+        }
+
+        private void removeCircuitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if ( iComponentBindingSource.Current == null )
+            {
+                MessageBox.Show("You must select an element to delete");
+                return;
+            }
+            if ( iComponentBindingSource.Current != null )
+            {
+                iComponentBindingSource.RemoveCurrent();
             }
         }
     }

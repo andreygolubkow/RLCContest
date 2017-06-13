@@ -81,6 +81,10 @@ namespace RLCCalculator
             }
             try
             {
+                if ( _elementControl.Element.Name.Length == 0 )
+                {
+                    throw new Exception("You must enter a valid name");
+                }
                 var a = _elementControl.Element;
                 DialogResult = DialogResult.OK;
                 Close();

@@ -78,6 +78,11 @@ namespace RLCCalculator
 
         private void removeElementButton_Click(object sender, System.EventArgs e)
         {
+            if (_circuitControl == null)
+            {
+                MessageBox.Show("You must create circuit  to delete items");
+                return;
+            }
             if ( _circuitControl.CurrentComponent == null )
             {
                 MessageBox.Show("You must select an item to delete");
@@ -96,7 +101,15 @@ namespace RLCCalculator
             var componentForm = new ElementDetailForm(null);
             if ( componentForm.ShowDialog() == DialogResult.OK )
             {
-                _circuitControl.Add(componentForm.Element);
+                try
+                {
+                    _circuitControl.Add(componentForm.Element);
+                }
+                catch ( Exception exception )
+                {
+                    MessageBox.Show(exception.Message);
+                }
+                
             }
         }
 
@@ -136,6 +149,10 @@ namespace RLCCalculator
             }
             try
             {
+                if ( _circuitControl.Circuit.Name.Length == 0 )
+                {
+                    throw new Exception("You must enter a valid name");
+                }
                 ICircuit circuit = _circuitControl.Circuit;
                 DialogResult = DialogResult.OK;
                 Close();
@@ -156,12 +173,24 @@ namespace RLCCalculator
             var circuitForm = new CircuitDetailForm(FormOpenMode.Create);
             if (circuitForm.ShowDialog() == DialogResult.OK)
             {
-                _circuitControl.Add(circuitForm.Circuit);
+                try
+                {
+                    _circuitControl.Add(circuitForm.Circuit);
+                }
+                catch (Exception exception)
+                {
+                    MessageBox.Show(exception.Message);
+                }
             }
         }
 
         private void editElementButton_Click(object sender, EventArgs e)
         {
+            if ( _circuitControl == null )
+            {
+                MessageBox.Show("You must create circuit to edit");
+                return;
+            }
             if ( _circuitControl.CurrentComponent == null )
             {
                 MessageBox.Show("You must select an item to edit");

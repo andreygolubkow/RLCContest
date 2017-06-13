@@ -35,7 +35,6 @@
             this.iComponentBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.mainMenu = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.newCircuitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newProjectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.openProjectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -48,6 +47,9 @@
             this.refreshListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
+            this.circuitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.newCircuitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.removeCircuitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.circuitsGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iComponentBindingSource)).BeginInit();
             this.mainMenu.SuspendLayout();
@@ -86,6 +88,7 @@
             // 
             this.mainMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
+            this.circuitToolStripMenuItem,
             this.settingsToolStripMenuItem,
             this.viewToolStripMenuItem,
             this.refreshListToolStripMenuItem});
@@ -97,7 +100,6 @@
             // fileToolStripMenuItem
             // 
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.newCircuitToolStripMenuItem,
             this.newProjectToolStripMenuItem,
             this.toolStripSeparator1,
             this.openProjectToolStripMenuItem,
@@ -105,14 +107,6 @@
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "File";
-            // 
-            // newCircuitToolStripMenuItem
-            // 
-            this.newCircuitToolStripMenuItem.Name = "newCircuitToolStripMenuItem";
-            this.newCircuitToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
-            this.newCircuitToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
-            this.newCircuitToolStripMenuItem.Text = "New circuit";
-            this.newCircuitToolStripMenuItem.Click += new System.EventHandler(this.newCircuitToolStripMenuItem_Click);
             // 
             // newProjectToolStripMenuItem
             // 
@@ -205,6 +199,32 @@
             this.saveFileDialog.Filter = "Circuit library|*.cr";
             this.saveFileDialog.Title = "Save circuit project";
             // 
+            // circuitToolStripMenuItem
+            // 
+            this.circuitToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.newCircuitToolStripMenuItem,
+            this.removeCircuitToolStripMenuItem});
+            this.circuitToolStripMenuItem.Name = "circuitToolStripMenuItem";
+            this.circuitToolStripMenuItem.Size = new System.Drawing.Size(54, 20);
+            this.circuitToolStripMenuItem.Text = "Circuit";
+            // 
+            // newCircuitToolStripMenuItem
+            // 
+            this.newCircuitToolStripMenuItem.Name = "newCircuitToolStripMenuItem";
+            this.newCircuitToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
+            this.newCircuitToolStripMenuItem.Size = new System.Drawing.Size(217, 22);
+            this.newCircuitToolStripMenuItem.Text = "New circuit";
+            this.newCircuitToolStripMenuItem.Click += new System.EventHandler(this.newCircuitToolStripMenuItem_Click_1);
+            // 
+            // removeCircuitToolStripMenuItem
+            // 
+            this.removeCircuitToolStripMenuItem.Name = "removeCircuitToolStripMenuItem";
+            this.removeCircuitToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Alt) 
+            | System.Windows.Forms.Keys.X)));
+            this.removeCircuitToolStripMenuItem.Size = new System.Drawing.Size(217, 22);
+            this.removeCircuitToolStripMenuItem.Text = "Remove circuit";
+            this.removeCircuitToolStripMenuItem.Click += new System.EventHandler(this.removeCircuitToolStripMenuItem_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -238,13 +258,15 @@
         private System.Windows.Forms.ToolStripMenuItem zCalculatorToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem circuitEditorToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem refreshListToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem newCircuitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem newProjectToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem openProjectToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveProjectToolStripMenuItem;
         private System.Windows.Forms.OpenFileDialog openFileDialog;
         private System.Windows.Forms.SaveFileDialog saveFileDialog;
+        private System.Windows.Forms.ToolStripMenuItem circuitToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem newCircuitToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem removeCircuitToolStripMenuItem;
     }
 }
 
