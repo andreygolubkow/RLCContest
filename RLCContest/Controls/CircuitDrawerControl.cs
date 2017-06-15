@@ -33,72 +33,119 @@ namespace Controls
 
         private void Draw(ICircuit circuit)
         {
-            var upLine = SectionsCounter(circuit).upLine;
-            var vertLine = SectionsCounter(circuit).vertLine;
-            var downLine = SectionsCounter(circuit).downLine;
-            
+
+            var list = GetComponentsList(circuit);
+
+            var upMax = SectionsCounter(list).upLine;
+            var vertMax = SectionsCounter(list).vertLine;
+            var downMax = SectionsCounter(list).downLine;
+
+
             //+1 - Добавляем место под поворотный компонент в горизонтальном выводе
             //+2 - Добавляем место под поворотные компоненты в вертикальном выводе
-            BuildArea(upLine+1, vertLine+2);
-
-            var upStack = new Queue<IComponent>();
-            var vertStack = new Queue<IComponent>();
-            var downStack = new Queue<IComponent>();
-
-            for (int i = 0; i < circuit.Count; i++)
-            {
-                if ( i < upLine )
-                {
-                    upStack.Enqueue(circuit[i]);
-                    continue;
-                }
-
-                if (i < vertLine+upLine)
-                {
-                    vertStack.Enqueue(circuit[i]);
-                    continue;
-                }
-
-                {
-                    downStack.Enqueue(circuit[i]);
-                }      
-            }
+            BuildArea(upMax + 1, vertMax + 2);
 
             int x = 0;
             int y = 0;
 
-
-
-            while ( upStack.Count>0 )
+            for (int i = 0; i < list.Count; i++)
             {
-                DrawComponent(x,y,upStack.Dequeue());
-                x++;
-                
-            }
-            DrawTurnDown(x,y);
-            y++;
-            while (vertStack.Count > 0)
-            {
-                DrawComponent(x, y, vertStack.Dequeue(),ConnectionType.Vertical);
-                y++;
-
-            }
-            DrawTurnUp(x,y);
-            x--;
-            while (downStack.Count > 0)
-            {
-                DrawComponent(x, y, downStack.Dequeue());
-                x--;
+                if ( i < upMax )
+                {
+                    DrawComponent(x,y,list[i],DrawType.Horizontal);
+                    x++;
+                    continue;
+                }
+                if ( i == upMax )
+                {
+                    DrawTurnDown(x,y);
+                    y++;
+                }
+                if ( i < upMax + vertMax )
+                {
+                    DrawComponent(x,y,list[i],DrawType.Vertical);
+                    y++;
+                    continue;
+                }
+                if (i == upMax + vertMax)
+                {
+                    DrawTurnUp(x, y);
+                    x--;
+                }
+                if (i < upMax + vertMax+downMax)
+                {
+                    DrawComponent(x, y, list[i], DrawType.Horizontal);
+                    x--;
+                }
             }
 
 
         }
 
-        private static (int upLine,int vertLine,int downLine)  SectionsCounter(ICircuit circuit)
+
+        /// <summary>
+        /// Получаем рекурсивно список компонентов
+        /// </summary>
+        /// <param name="circuit"></param>
+        /// <returns></returns>
+        private List<ElementWithConnectionAdapter> GetComponentsList(ICircuit circuit)
         {
-            var upLine = circuit.Count / 3 < 1 ? 1 : circuit.Count / 3;
-            var downLine = upLine*2 > circuit.Count ? upLine-1 : upLine;
-            var vertLine = circuit.Count - downLine - upLine;
+            var list = new List<ElementWithConnectionAdapter>();
+
+            foreach (IComponent c in circuit)
+            {
+                if ( c is ICircuit icirc )
+                {
+                    //Переход Serial => Parallel
+                    if ( circuit is SerialCircuit && icirc is ParallelCircuit )
+                    {
+                        var connector = new SerialToParralelAdapter();
+                        connector.Image = CircuitImages.HorizontalSerialToParralelAdapter;
+                        var elementAdapter = new ElementWithConnectionAdapter(connector,ConnectionType.Adapter);
+                        list.Add(elementAdapter);
+                    }
+                    //Переход Parallel => Serial
+                    else if (circuit is ParallelCircuit && icirc is SerialCircuit)
+                    {
+                        var connector = new SerialToParralelAdapter();
+                        connector.Image = CircuitImages.HorizontalSerialToParralelAdapter;
+                        connector.Image.RotateFlip(RotateFlipType.RotateNoneFlipX);
+                        var elementAdapter = new ElementWithConnectionAdapter(connector, ConnectionType.Adapter);
+                        list.Add(elementAdapter);
+                    }
+                    list.AddRange(GetComponentsList(icirc));
+                    //Переход Serial => Parallel
+                    if (circuit is SerialCircuit && icirc is ParallelCircuit)
+                    {
+                        var connector = new SerialToParralelAdapter();
+                        connector.Image = CircuitImages.HorizontalSerialToParralelAdapter;
+                        connector.Image.RotateFlip(RotateFlipType.RotateNoneFlipX);
+                        var elementAdapter = new ElementWithConnectionAdapter(connector, ConnectionType.Adapter);
+                        list.Add(elementAdapter);
+                    }
+                    //Переход Parallel => Serial
+                    else if (circuit is ParallelCircuit && icirc is SerialCircuit)
+                    {
+                        var connector = new SerialToParralelAdapter();
+                        connector.Image = CircuitImages.HorizontalSerialToParralelAdapter;
+                        var elementAdapter = new ElementWithConnectionAdapter(connector, ConnectionType.Adapter);
+                        list.Add(elementAdapter);
+                    }
+                }
+                else if (c is IElement element)
+                {
+                    var connectionType = circuit is SerialCircuit ? ConnectionType.Serial : ConnectionType.Parallel;
+                    list.Add(new ElementWithConnectionAdapter(element, connectionType));
+                }
+            }
+            return list;
+        }
+
+        private static (int upLine,int vertLine,int downLine)  SectionsCounter(IList<ElementWithConnectionAdapter>  list)
+        {
+            var upLine = list.Count / 3 < 1 ? 1 : list.Count / 3;
+            var downLine = upLine*2 > list.Count ? upLine-1 : upLine;
+            var vertLine = list.Count - downLine - upLine;
             return (upLine, vertLine, downLine);
         }
 
@@ -118,21 +165,35 @@ namespace Controls
             gridView.RowCount = rowsCount;
         }
 
-        private void DrawComponent(int x, int y, Core.IComponent component, ConnectionType connectionType = ConnectionType.Horizontal)
+        private void DrawComponent(int x, int y, ElementWithConnectionAdapter component, DrawType connectionType = DrawType.Horizontal)
         {
             var cell = (DataGridViewImageCell)gridView.Rows[y].Cells[x];
             Image componentImage = CircuitImages.WhiteBlock;
-            componentImage = component is Resistor ? CircuitImages.Resistor : componentImage;
-            componentImage = component is Capacitor ? CircuitImages.Capasitor : componentImage;
-            componentImage = component is Inductor ? CircuitImages.Inductor : componentImage;
-            componentImage = component is ICircuit ? CircuitImages.IC : componentImage;
+            if ( component.ConnectionType == ConnectionType.Parallel )
+            {
+                componentImage = component.Element is Resistor ? CircuitImages.ParallelResistor : componentImage;
+                componentImage = component.Element is Capacitor ? CircuitImages.ParallelCapasitor : componentImage;
+                componentImage = component.Element is Inductor ? CircuitImages.ParallelInductor : componentImage;
+                componentImage?.RotateFlip(RotateFlipType.Rotate90FlipNone);
+            }
+            else if (component.ConnectionType == ConnectionType.Serial)
+            {
+                componentImage = component.Element is Resistor ? CircuitImages.SerialResistor : componentImage;
+                componentImage = component.Element is Capacitor ? CircuitImages.SerialCapasitor : componentImage;
+                componentImage = component.Element is Inductor ? CircuitImages.SerialInductor : componentImage;
+            }
+            else
+            {
+                var adapter = (SerialToParralelAdapter)component.Element;
+                componentImage = adapter.Image;
+            }
 
             //Рисуем обозначения
             var graphics = Graphics.FromImage(componentImage);
             var font = new System.Drawing.Font(FontFamily.GenericMonospace,14);
-            graphics.DrawString(component.Name,font,new SolidBrush(Color.Black), new Point(0,0));
+            graphics.DrawString(component.Element.Name,font,new SolidBrush(Color.Black), new Point(0,0));
             
-            if ( connectionType == ConnectionType.Vertical )
+            if ( connectionType == DrawType.Vertical )
             {
                 componentImage?.RotateFlip(RotateFlipType.Rotate90FlipNone);
             }

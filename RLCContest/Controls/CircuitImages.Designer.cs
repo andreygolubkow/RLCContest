@@ -63,9 +63,9 @@ namespace Controls {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap Capasitor {
+        public static System.Drawing.Bitmap HorizontalSerialToParralelAdapter {
             get {
-                object obj = ResourceManager.GetObject("Capasitor", resourceCulture);
+                object obj = ResourceManager.GetObject("HorizontalSerialToParralelAdapter", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -73,9 +73,9 @@ namespace Controls {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap IC {
+        public static System.Drawing.Bitmap ParallelCapasitor {
             get {
-                object obj = ResourceManager.GetObject("IC", resourceCulture);
+                object obj = ResourceManager.GetObject("ParallelCapasitor", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -83,9 +83,9 @@ namespace Controls {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap Inductor {
+        public static System.Drawing.Bitmap ParallelInductor {
             get {
-                object obj = ResourceManager.GetObject("Inductor", resourceCulture);
+                object obj = ResourceManager.GetObject("ParallelInductor", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -93,9 +93,49 @@ namespace Controls {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap Resistor {
+        public static System.Drawing.Bitmap ParallelResistor {
             get {
-                object obj = ResourceManager.GetObject("Resistor", resourceCulture);
+                object obj = ResourceManager.GetObject("ParallelResistor", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap SerialCapasitor {
+            get {
+                object obj = ResourceManager.GetObject("SerialCapasitor", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap SerialIC {
+            get {
+                object obj = ResourceManager.GetObject("SerialIC", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap SerialInductor {
+            get {
+                object obj = ResourceManager.GetObject("SerialInductor", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap SerialResistor {
+            get {
+                object obj = ResourceManager.GetObject("SerialResistor", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -116,6 +156,16 @@ namespace Controls {
         public static System.Drawing.Bitmap TurnUp {
             get {
                 object obj = ResourceManager.GetObject("TurnUp", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap VerticalSerialToParralelAdapter {
+            get {
+                object obj = ResourceManager.GetObject("VerticalSerialToParralelAdapter", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

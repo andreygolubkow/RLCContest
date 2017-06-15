@@ -58,6 +58,7 @@
       <DependentUpon>CircuitImages.resx</DependentUpon>
     </Compile>
     <Compile Include="ConnectionType.cs" />
+    <Compile Include="DrawType.cs" />
     <Compile Include="Elements\CircuitListView.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -112,12 +113,14 @@
     <Compile Include="Elements\SingleControls\Elements\ResistorElementControl.Designer.cs">
       <DependentUpon>ResistorElementControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="ElementWithConnectionAdapter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="SerialToParralelAdapter.cs" />
     <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
   </ItemGroup>
   <ItemGroup>
@@ -159,6 +162,7 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -178,18 +182,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Capasitor.bmp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\IC.bmp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Inductor.bmp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Resistor.bmp" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\TurnUp.bmp" />
   </ItemGroup>
   <ItemGroup>
@@ -197,6 +189,33 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\WhiteBlock.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ParallelCapasitor.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ParallelInductor.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ParallelResistor.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SerialCapasitor.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SerialIC.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SerialInductor.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SerialResistor.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\VerticalSerialToParralelAdapter.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\HorizontalSerialToParralelAdapter.bmp" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
