@@ -57,6 +57,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>CircuitImages.resx</DependentUpon>
     </Compile>
+    <Compile Include="ConnectionType.cs" />
     <Compile Include="Elements\CircuitListView.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -187,6 +188,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Resistor.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TurnUp.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TurnDown.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WhiteBlock.bmp" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

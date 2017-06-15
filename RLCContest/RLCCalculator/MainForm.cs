@@ -158,5 +158,20 @@ namespace RLCCalculator
                 iComponentBindingSource.RemoveCurrent();
             }
         }
+
+        private void circuitDesignerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var circuit = iComponentBindingSource.Current as ICircuit;
+            if (circuit == null)
+            {
+                MessageBox.Show("You must select an element to delete");
+                return;
+            }
+            if (circuit != null)
+            {
+                var designForm = new CircuitGraphicView(circuit);
+                designForm.ShowDialog();
+            }
+        }
     }
 }

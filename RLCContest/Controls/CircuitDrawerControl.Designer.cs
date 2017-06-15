@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.gridView = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.gridView)).BeginInit();
             this.SuspendLayout();
@@ -47,15 +48,22 @@
             this.gridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridView.GridColor = System.Drawing.Color.White;
             this.gridView.Location = new System.Drawing.Point(0, 0);
+            this.gridView.MultiSelect = false;
             this.gridView.Name = "gridView";
             this.gridView.ReadOnly = true;
+            this.gridView.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.gridView.RowHeadersVisible = false;
             this.gridView.RowHeadersWidth = 50;
             this.gridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Empty;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
+            this.gridView.RowsDefaultCellStyle = dataGridViewCellStyle1;
             this.gridView.RowTemplate.Height = 50;
             this.gridView.RowTemplate.ReadOnly = true;
             this.gridView.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.gridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.gridView.ShowEditingIcon = false;
             this.gridView.Size = new System.Drawing.Size(433, 372);
             this.gridView.TabIndex = 0;
             // 

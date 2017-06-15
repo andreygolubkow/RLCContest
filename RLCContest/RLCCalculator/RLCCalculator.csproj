@@ -64,6 +64,12 @@
     <Compile Include="CircuitDetailForm.Designer.cs">
       <DependentUpon>CircuitDetailForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="CircuitGraphicView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CircuitGraphicView.Designer.cs">
+      <DependentUpon>CircuitGraphicView.cs</DependentUpon>
+    </Compile>
     <Compile Include="DrawingForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -102,6 +108,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CircuitDetailForm.resx">
       <DependentUpon>CircuitDetailForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CircuitGraphicView.resx">
+      <DependentUpon>CircuitGraphicView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DrawingForm.resx">
       <DependentUpon>DrawingForm.cs</DependentUpon>

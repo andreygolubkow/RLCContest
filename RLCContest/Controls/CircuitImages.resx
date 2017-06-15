@@ -130,4 +130,13 @@
   <data name="Resistor" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Resistor.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="TurnDown" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\TurnDown.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="TurnUp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\TurnUp.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WhiteBlock" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\WhiteBlock.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

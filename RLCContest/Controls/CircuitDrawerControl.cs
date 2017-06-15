@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Data;
 using System.Linq;
+using System.Net;
 using System.Reflection;
 using System.Resources;
 using System.Text;
@@ -23,90 +24,133 @@ namespace Controls
         public CircuitDrawerControl()
         {
             InitializeComponent();
-            var c = new SerialCircuit();
-            c.Add(new Capacitor("c1",5));
-            c.Add(new Resistor("r1", 1));
-            c.Add(new Inductor("i1", 2));
-            c.Add(new SerialCircuit());
-
-            DrawCircuit(c);
         }
 
-        private void DrawCircuit(ICircuit circuit)
+        public void DrawCircuit(ICircuit circuit)
+        {
+            Draw(circuit);
+        }
+
+        private void Draw(ICircuit circuit)
         {
             var upLine = SectionsCounter(circuit).upLine;
             var vertLine = SectionsCounter(circuit).vertLine;
             var downLine = SectionsCounter(circuit).downLine;
+            
+            //+1 - Добавляем место под поворотный компонент в горизонтальном выводе
+            //+2 - Добавляем место под поворотные компоненты в вертикальном выводе
+            BuildArea(upLine+1, vertLine+2);
 
-            BuildArea(10, 10);
+            var upStack = new Queue<IComponent>();
+            var vertStack = new Queue<IComponent>();
+            var downStack = new Queue<IComponent>();
 
-            int x = 1;
-            int y = 1;
-            int upCounter = 0;
-            int vertCounter = 0;
-            int downCounter = 0;
-
-            foreach (IComponent component in circuit)
+            for (int i = 0; i < circuit.Count; i++)
             {
-                if ( upCounter < upLine )
+                if ( i < upLine )
                 {
-                    DrawComponent(x,y,component);
-                    x++;
-                    upCounter++;
+                    upStack.Enqueue(circuit[i]);
                     continue;
                 }
-                if ( vertCounter < vertLine )
+
+                if (i < vertLine+upLine)
                 {
-                    if ( vertCounter == 0 )
-                    {
-                        y++;
-                    }
-                    DrawComponent(x,y,component);
-                    vertCounter++;
-                    y++;
+                    vertStack.Enqueue(circuit[i]);
                     continue;
                 }
-                if (downCounter < downLine)
+
                 {
-                    x--;
-                    DrawComponent(x, y, component);
-                    downCounter++;
-                }
-            }  
+                    downStack.Enqueue(circuit[i]);
+                }      
+            }
+
+            int x = 0;
+            int y = 0;
+
+
+
+            while ( upStack.Count>0 )
+            {
+                DrawComponent(x,y,upStack.Dequeue());
+                x++;
+                
+            }
+            DrawTurnDown(x,y);
+            y++;
+            while (vertStack.Count > 0)
+            {
+                DrawComponent(x, y, vertStack.Dequeue(),ConnectionType.Vertical);
+                y++;
+
+            }
+            DrawTurnUp(x,y);
+            x--;
+            while (downStack.Count > 0)
+            {
+                DrawComponent(x, y, downStack.Dequeue());
+                x--;
+            }
+
 
         }
 
         private static (int upLine,int vertLine,int downLine)  SectionsCounter(ICircuit circuit)
         {
-            int upLine = circuit.Count % 3;
-            int downLine = upLine;
-            int vertLine = circuit.Count - upLine - downLine;
+            var upLine = circuit.Count / 3 < 1 ? 1 : circuit.Count / 3;
+            var downLine = upLine*2 > circuit.Count ? upLine-1 : upLine;
+            var vertLine = circuit.Count - downLine - upLine;
             return (upLine, vertLine, downLine);
         }
 
         private void BuildArea(int columnsCount, int rowsCount)
         {
-            gridView.RowCount = rowsCount;
+            gridView.Columns.Clear();
+            gridView.Rows.Clear();
+            
             for (int i = 0; i < columnsCount; i++)
             {
                 gridView.Columns.Add(new DataGridViewImageColumn(false)
                                      {
-                                         Width = 50
+                                         Width = 50,
+                                         Image = CircuitImages.WhiteBlock
                                      });
             }
+            gridView.RowCount = rowsCount;
         }
 
-        private void DrawComponent(int x, int y, Core.IComponent component)
+        private void DrawComponent(int x, int y, Core.IComponent component, ConnectionType connectionType = ConnectionType.Horizontal)
         {
             var cell = (DataGridViewImageCell)gridView.Rows[y].Cells[x];
-            Image componentImage = null;
+            Image componentImage = CircuitImages.WhiteBlock;
             componentImage = component is Resistor ? CircuitImages.Resistor : componentImage;
             componentImage = component is Capacitor ? CircuitImages.Capasitor : componentImage;
             componentImage = component is Inductor ? CircuitImages.Inductor : componentImage;
             componentImage = component is ICircuit ? CircuitImages.IC : componentImage;
+
+            //Рисуем обозначения
+            var graphics = Graphics.FromImage(componentImage);
+            var font = new System.Drawing.Font(FontFamily.GenericMonospace,14);
+            graphics.DrawString(component.Name,font,new SolidBrush(Color.Black), new Point(0,0));
+            
+            if ( connectionType == ConnectionType.Vertical )
+            {
+                componentImage?.RotateFlip(RotateFlipType.Rotate90FlipNone);
+            }
             cell.Value = componentImage;
+        }
 
+        private void DrawTurnUp(int x, int y)
+        {
+            var cell = (DataGridViewImageCell)gridView.Rows[y].Cells[x];
+            Image componentImage = CircuitImages.TurnUp;
+            cell.Value = componentImage;
+        }
 
+        private void DrawTurnDown(int x, int y)
+        {
+            var cell = (DataGridViewImageCell)gridView.Rows[y].Cells[x];
+            Image componentImage = CircuitImages.TurnDown;
+            cell.Value = componentImage;
         }
     }
 }
