@@ -34,7 +34,7 @@ namespace Controls
         private void Draw(ICircuit circuit)
         {
 
-            var list = GetComponentsList(circuit);
+            var list = GenerateImages(circuit);
 
             var upMax = SectionsCounter(list).upLine;
             var vertMax = SectionsCounter(list).vertLine;
@@ -82,66 +82,28 @@ namespace Controls
 
         }
 
-
-        /// <summary>
-        /// Получаем рекурсивно список компонентов
-        /// </summary>
-        /// <param name="circuit"></param>
-        /// <returns></returns>
-        private List<ElementWithConnectionAdapter> GetComponentsList(ICircuit circuit)
+        private List<Image> GenerateImages(ICircuit circuit)
         {
-            var list = new List<ElementWithConnectionAdapter>();
+            var list = new List<Image>();
 
-            foreach (IComponent c in circuit)
+            if ( circuit is SerialCircuit )
             {
-                if ( c is ICircuit icirc )
+                foreach (var component in circuit)
                 {
-                    //Переход Serial => Parallel
-                    if ( circuit is SerialCircuit && icirc is ParallelCircuit )
-                    {
-                        var connector = new SerialToParralelAdapter();
-                        connector.Image = CircuitImages.HorizontalSerialToParralelAdapter;
-                        var elementAdapter = new ElementWithConnectionAdapter(connector,ConnectionType.Adapter);
-                        list.Add(elementAdapter);
-                    }
-                    //Переход Parallel => Serial
-                    else if (circuit is ParallelCircuit && icirc is SerialCircuit)
-                    {
-                        var connector = new SerialToParralelAdapter();
-                        connector.Image = CircuitImages.HorizontalSerialToParralelAdapter;
-                        connector.Image.RotateFlip(RotateFlipType.RotateNoneFlipX);
-                        var elementAdapter = new ElementWithConnectionAdapter(connector, ConnectionType.Adapter);
-                        list.Add(elementAdapter);
-                    }
-                    list.AddRange(GetComponentsList(icirc));
-                    //Переход Serial => Parallel
-                    if (circuit is SerialCircuit && icirc is ParallelCircuit)
-                    {
-                        var connector = new SerialToParralelAdapter();
-                        connector.Image = CircuitImages.HorizontalSerialToParralelAdapter;
-                        connector.Image.RotateFlip(RotateFlipType.RotateNoneFlipX);
-                        var elementAdapter = new ElementWithConnectionAdapter(connector, ConnectionType.Adapter);
-                        list.Add(elementAdapter);
-                    }
-                    //Переход Parallel => Serial
-                    else if (circuit is ParallelCircuit && icirc is SerialCircuit)
-                    {
-                        var connector = new SerialToParralelAdapter();
-                        connector.Image = CircuitImages.HorizontalSerialToParralelAdapter;
-                        var elementAdapter = new ElementWithConnectionAdapter(connector, ConnectionType.Adapter);
-                        list.Add(elementAdapter);
-                    }
-                }
-                else if (c is IElement element)
-                {
-                    var connectionType = circuit is SerialCircuit ? ConnectionType.Serial : ConnectionType.Parallel;
-                    list.Add(new ElementWithConnectionAdapter(element, connectionType));
+                    Image componentImage = CircuitImages.WhiteBlock;
+                    componentImage = component is Resistor ? CircuitImages.SerialResistor : CircuitImages.SerialIC;
+                    componentImage = component is Capacitor ? CircuitImages.SerialCapasitor : componentImage;
+                    componentImage = component is Inductor ? CircuitImages.SerialInductor : componentImage;
+                    var graphics = Graphics.FromImage(componentImage);
+                    var font = new System.Drawing.Font(FontFamily.GenericMonospace, 14);
+                    graphics.DrawString(component.Name, font, new SolidBrush(Color.Black), new Point(0, 0));
+                    list.Add(componentImage);
                 }
             }
             return list;
         }
 
-        private static (int upLine,int vertLine,int downLine)  SectionsCounter(IList<ElementWithConnectionAdapter>  list)
+        private static (int upLine,int vertLine,int downLine)  SectionsCounter<T>(IList<T>  list)
         {
             var upLine = list.Count / 3 < 1 ? 1 : list.Count / 3;
             var downLine = upLine*2 > list.Count ? upLine-1 : upLine;
@@ -164,40 +126,16 @@ namespace Controls
             }
             gridView.RowCount = rowsCount;
         }
-
-        private void DrawComponent(int x, int y, ElementWithConnectionAdapter component, DrawType connectionType = DrawType.Horizontal)
+        
+        private void DrawComponent(int x, int y, Image component, DrawType connectionType = DrawType.Horizontal)
         {
             var cell = (DataGridViewImageCell)gridView.Rows[y].Cells[x];
-            Image componentImage = CircuitImages.WhiteBlock;
-            if ( component.ConnectionType == ConnectionType.Parallel )
-            {
-                componentImage = component.Element is Resistor ? CircuitImages.ParallelResistor : componentImage;
-                componentImage = component.Element is Capacitor ? CircuitImages.ParallelCapasitor : componentImage;
-                componentImage = component.Element is Inductor ? CircuitImages.ParallelInductor : componentImage;
-                componentImage?.RotateFlip(RotateFlipType.Rotate90FlipNone);
-            }
-            else if (component.ConnectionType == ConnectionType.Serial)
-            {
-                componentImage = component.Element is Resistor ? CircuitImages.SerialResistor : componentImage;
-                componentImage = component.Element is Capacitor ? CircuitImages.SerialCapasitor : componentImage;
-                componentImage = component.Element is Inductor ? CircuitImages.SerialInductor : componentImage;
-            }
-            else
-            {
-                var adapter = (SerialToParralelAdapter)component.Element;
-                componentImage = adapter.Image;
-            }
-
-            //Рисуем обозначения
-            var graphics = Graphics.FromImage(componentImage);
-            var font = new System.Drawing.Font(FontFamily.GenericMonospace,14);
-            graphics.DrawString(component.Element.Name,font,new SolidBrush(Color.Black), new Point(0,0));
             
             if ( connectionType == DrawType.Vertical )
             {
-                componentImage?.RotateFlip(RotateFlipType.Rotate90FlipNone);
+                component?.RotateFlip(RotateFlipType.Rotate90FlipNone);
             }
-            cell.Value = componentImage;
+            cell.Value = component;
         }
 
         private void DrawTurnUp(int x, int y)
