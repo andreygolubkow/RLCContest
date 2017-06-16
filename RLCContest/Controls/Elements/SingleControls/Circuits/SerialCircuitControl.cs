@@ -26,7 +26,7 @@ namespace Controls.Elements.SingleControls.Circuits
             }
             set
             {
-                if (!(value is SerialCircuit circuit) && value != null)
+                if (!(value is SerialCircuit) && value != null)
                 {
                     throw new ArgumentException("Объект не являестся SerialCircuit");
                 }

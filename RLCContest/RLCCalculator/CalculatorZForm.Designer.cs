@@ -66,7 +66,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "CalculatorZForm";
             this.Text = "Z Calculator";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CalculatorZForm_FormClosing);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CalculatorZFormFormClosing);
             this.circuitsCalculatorGroupBox.ResumeLayout(false);
             this.ResumeLayout(false);
 

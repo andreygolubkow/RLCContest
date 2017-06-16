@@ -42,7 +42,7 @@ namespace Core.Elements
             {
                 if ( value.Length == 0 )
                 {
-                    throw new ArgumentException("Имя должно быть не пустым.");
+                    throw new ArgumentException("The name must not be empty.");
                 }
                 _name = value;
             }
@@ -58,7 +58,7 @@ namespace Core.Elements
             {
                 if ( value < 0 )
                 {
-                    throw new ArgumentException("Ёмкость не должна быть меньше нуля.");
+                    throw new ArgumentException("The capacity must not be less than zero.");
                 }
                 _value = value;
                 ValueChanged?.Invoke(this, new EventArgs());
@@ -74,7 +74,7 @@ namespace Core.Elements
         {
             if ( frequency < 0 )
             {
-                throw new ArgumentException("Частота не может быть отрицательной.");
+                throw new ArgumentException("The frequency can not be negative.");
             }
             return new Complex(0, -1 / (2 * Math.PI * frequency * Value));
         }

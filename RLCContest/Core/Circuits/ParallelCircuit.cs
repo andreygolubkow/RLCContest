@@ -34,14 +34,23 @@ namespace Core.Circuits
         /// <inheritdoc />
         public Complex CalculateZ(double frequency)
         {
-            var mult = new Complex(0, 0);
-            var sum = new Complex(0, 0);
+            Complex mult;
+            Complex sum;
+            if ( Components.Count > 0 )
+            {
+                mult = new Complex(1, 1);
+            }
+            else
+            {
+                mult = new Complex(0, 0);
+            }
+            sum = new Complex(0, 0);
             foreach (IComponent component in _components)
             {
                 mult *= component.CalculateZ(frequency);
                 sum += component.CalculateZ(frequency);
             }
-            return mult / sum;
+            return mult/sum;
         }
 
         #endregion
@@ -69,11 +78,11 @@ namespace Core.Circuits
         {
             if ( item == null )
             {
-                throw new ArgumentException("Нельзя добавить объект данного типа.");
+                throw new ArgumentException("You can not add an object of this type.");
             }
             if ( FindComponent(item.Name) != null )
             {
-                throw new ArgumentException("Компонент с таким именем уже существует.");
+                throw new ArgumentException("A component with this name already exists.");
             }
             _components.Add(item);
             SubscribeToComponent(item);
@@ -108,7 +117,7 @@ namespace Core.Circuits
         {
             if ( item == null )
             {
-                throw new ArgumentException("Объект не является компонентом.");
+                throw new ArgumentException("The object is not a component.");
             }
             if ( _components.Remove(item) )
             {
@@ -140,7 +149,7 @@ namespace Core.Circuits
         {
             if ( item == null )
             {
-                throw new ArgumentException("Объект не является компонентом.");
+                throw new ArgumentException("The object is not a component.");
             }
             _components.Insert(index, item);
             SubscribeToComponent(item);
@@ -165,7 +174,7 @@ namespace Core.Circuits
             {
                 IComponent component = value != null && FindComponent(value.Name) == null
                     ? value
-                    : throw new ArgumentException("Элемент с таким именем уже существует.");
+                    : throw new ArgumentException("The object is not a component.");
                 UnsubscribeToComponent(_components[index]);
                 _components[index] = component;
                 SubscribeToComponent(_components[index]);

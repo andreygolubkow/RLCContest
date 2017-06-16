@@ -62,7 +62,7 @@ namespace Controls.Elements.SingleControls.BaseControls
             ElementValue = 0;
         }
 
-        private void valueTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        private void ValueTextBoxKeyPress(object sender, KeyPressEventArgs e)
         {
             Validators.DoubleEnterValidate(valueTextBox.Text,e);
         }

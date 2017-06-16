@@ -62,7 +62,7 @@
             {
                 if ( value.Length == 0 )
                 {
-                    throw new ArgumentException("Наименование катушки не может быть пустым.");
+                    throw new ArgumentException("The name of the coil can not be empty.");
                 }
 
                 _name = value;
@@ -80,7 +80,7 @@
             {
                 if ( value < 0 )
                 {
-                    throw new ArgumentException("Индуктивность не может быть отрицательной.");
+                    throw new ArgumentException("Inductance can not be negative.");
                 }
 
                 _value = value;
@@ -97,7 +97,7 @@
         {
             if ( frequency < 0 )
             {
-                throw new ArgumentException("Частота не может быть отрицательной.");
+                throw new ArgumentException("The frequency can not be negative.");
             }
             return new Complex(0, 2 * Math.PI * frequency * Value);
         }

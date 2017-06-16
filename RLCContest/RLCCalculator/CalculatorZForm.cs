@@ -57,7 +57,7 @@ namespace RLCCalculator
             }
         }
 
-        private void CalculatorZForm_FormClosing(object sender, FormClosingEventArgs e)
+        private void CalculatorZFormFormClosing(object sender, FormClosingEventArgs e)
         {
             e.Cancel = true;
             Visible = false;

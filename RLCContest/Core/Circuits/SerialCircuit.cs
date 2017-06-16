@@ -35,7 +35,7 @@ namespace Core.Circuits
             {
                 if ( FindComponent(value) != null )
                 {
-                    throw new ArgumentException("Компонент с таким именем уже существует.");
+                    throw new ArgumentException("A component with this name already exists.");
                 }
                 _name = value;
             }
@@ -45,11 +45,11 @@ namespace Core.Circuits
         {
             if ( component == null )
             {
-                throw new ArgumentException("Нельзя добавить объект данного типа.");
+                throw new ArgumentException("You can not add an object of this type.");
             }
             if ( FindComponent(component.Name) != null )
             {
-                throw new ArgumentException("Компонент с таким именем уже существует.");
+                throw new ArgumentException("A component with this name already exists.");
             }
             _components.Add(component);
             SubscribeToComponent(component);
@@ -80,7 +80,7 @@ namespace Core.Circuits
         {
             if ( component == null )
             {
-                throw new ArgumentException("Объект не является компонентом.");
+                throw new ArgumentException("The object is not a component.");
             }
             return _components.IndexOf(component);
         }
@@ -89,7 +89,7 @@ namespace Core.Circuits
         {
             if ( component == null )
             {
-                throw new ArgumentException("Объект не является компонентом.");
+                throw new ArgumentException("The object is not a component.");
             }
             _components.Insert(index, component);
             SubscribeToComponent(component);
@@ -101,7 +101,7 @@ namespace Core.Circuits
         {
             if ( component == null )
             {
-                throw new ArgumentException("Объект не является компонентом.");
+                throw new ArgumentException("The object is not a component.");
             }
             if ( _components.Remove(component) )
             {
@@ -131,7 +131,7 @@ namespace Core.Circuits
             {
                 IComponent component = value != null && FindComponent(value.Name) == null
                     ? value
-                    : throw new ArgumentException("Элемент с таким именем уже существует.");
+                    : throw new ArgumentException("An element with this name already exists.");
                 UnsubscribeToComponent(_components[index]);
                 _components[index] = component;
                 SubscribeToComponent(_components[index]);

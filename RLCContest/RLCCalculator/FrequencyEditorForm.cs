@@ -22,11 +22,11 @@ namespace RLCCalculator
 
         public List<double> Frequencies => (from object frequency in frequenciesListBox.Items select Convert.ToDouble(frequency, CultureInfo.InvariantCulture)).ToList();
 
-        private void addButton_Click(object sender, EventArgs e)
+        private void AddButtonClick(object sender, EventArgs e)
         {
             if ( frequencyTextBox.Text.Length == 0 )
             {
-                MessageBox.Show("You must enter the frequency");
+                MessageBox.Show(@"You must enter the frequency");
                 return;
             }
             try
@@ -45,17 +45,17 @@ namespace RLCCalculator
 
         }
 
-        private void removeButton_Click(object sender, EventArgs e)
+        private void RemoveButtonClick(object sender, EventArgs e)
         {
             if (frequenciesListBox.SelectedIndex == -1)
             {
-                MessageBox.Show("You must select an item");
+                MessageBox.Show(@"You must select an item");
                 return;
             }
             frequenciesListBox.Items.Remove(frequenciesListBox.SelectedItem);
         }
 
-        private void frequencyTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        private void FrequencyTextBoxKeyPress(object sender, KeyPressEventArgs e)
         {
             Validators.DoubleEnterValidate(frequencyTextBox.Text, e);
         }

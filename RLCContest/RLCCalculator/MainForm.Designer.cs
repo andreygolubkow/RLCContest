@@ -84,7 +84,7 @@
             // iComponentBindingSource
             // 
             this.iComponentBindingSource.DataSource = typeof(Core.IComponent);
-            this.iComponentBindingSource.CurrentChanged += new System.EventHandler(this.iComponentBindingSource_CurrentChanged);
+            this.iComponentBindingSource.CurrentChanged += new System.EventHandler(this.IComponentBindingSourceCurrentChanged);
             // 
             // mainMenu
             // 
@@ -117,7 +117,7 @@
             | System.Windows.Forms.Keys.N)));
             this.newProjectToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
             this.newProjectToolStripMenuItem.Text = "New project";
-            this.newProjectToolStripMenuItem.Click += new System.EventHandler(this.newProjectToolStripMenuItem_Click);
+            this.newProjectToolStripMenuItem.Click += new System.EventHandler(this.NewProjectToolStripMenuItemClick);
             // 
             // toolStripSeparator1
             // 
@@ -130,7 +130,7 @@
             this.openProjectToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
             this.openProjectToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
             this.openProjectToolStripMenuItem.Text = "Open project";
-            this.openProjectToolStripMenuItem.Click += new System.EventHandler(this.openProjectToolStripMenuItem_Click);
+            this.openProjectToolStripMenuItem.Click += new System.EventHandler(this.OpenProjectToolStripMenuItemClick);
             // 
             // saveProjectToolStripMenuItem
             // 
@@ -138,7 +138,7 @@
             this.saveProjectToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
             this.saveProjectToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
             this.saveProjectToolStripMenuItem.Text = "Save project";
-            this.saveProjectToolStripMenuItem.Click += new System.EventHandler(this.saveProjectToolStripMenuItem_Click);
+            this.saveProjectToolStripMenuItem.Click += new System.EventHandler(this.SaveProjectToolStripMenuItemClick);
             // 
             // circuitToolStripMenuItem
             // 
@@ -157,7 +157,7 @@
             this.newCircuitToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
             this.newCircuitToolStripMenuItem.Size = new System.Drawing.Size(217, 22);
             this.newCircuitToolStripMenuItem.Text = "New circuit";
-            this.newCircuitToolStripMenuItem.Click += new System.EventHandler(this.newCircuitToolStripMenuItem_Click_1);
+            this.newCircuitToolStripMenuItem.Click += new System.EventHandler(this.NewCircuitToolStripMenuItemClick1);
             // 
             // removeCircuitToolStripMenuItem
             // 
@@ -166,7 +166,7 @@
             | System.Windows.Forms.Keys.X)));
             this.removeCircuitToolStripMenuItem.Size = new System.Drawing.Size(217, 22);
             this.removeCircuitToolStripMenuItem.Text = "Remove circuit";
-            this.removeCircuitToolStripMenuItem.Click += new System.EventHandler(this.removeCircuitToolStripMenuItem_Click);
+            this.removeCircuitToolStripMenuItem.Click += new System.EventHandler(this.RemoveCircuitToolStripMenuItemClick);
             // 
             // settingsToolStripMenuItem
             // 
@@ -182,7 +182,7 @@
             this.frequenciesMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F)));
             this.frequenciesMenuItem.Size = new System.Drawing.Size(177, 22);
             this.frequenciesMenuItem.Text = "Frequencies";
-            this.frequenciesMenuItem.Click += new System.EventHandler(this.frequenciesMenuItem_Click);
+            this.frequenciesMenuItem.Click += new System.EventHandler(this.FrequenciesMenuItemClick);
             // 
             // viewToolStripMenuItem
             // 
@@ -199,7 +199,7 @@
             this.zCalculatorToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.I)));
             this.zCalculatorToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
             this.zCalculatorToolStripMenuItem.Text = "Z Calculator";
-            this.zCalculatorToolStripMenuItem.Click += new System.EventHandler(this.zCalculatorToolStripMenuItem_Click);
+            this.zCalculatorToolStripMenuItem.Click += new System.EventHandler(this.ZCalculatorToolStripMenuItemClick);
             // 
             // circuitEditorToolStripMenuItem
             // 
@@ -207,7 +207,7 @@
             this.circuitEditorToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.E)));
             this.circuitEditorToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
             this.circuitEditorToolStripMenuItem.Text = "Circuit Editor";
-            this.circuitEditorToolStripMenuItem.Click += new System.EventHandler(this.circuitEditorToolStripMenuItem_Click);
+            this.circuitEditorToolStripMenuItem.Click += new System.EventHandler(this.CircuitEditorToolStripMenuItemClick);
             // 
             // refreshListToolStripMenuItem
             // 
@@ -215,7 +215,7 @@
             this.refreshListToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F5;
             this.refreshListToolStripMenuItem.Size = new System.Drawing.Size(79, 20);
             this.refreshListToolStripMenuItem.Text = "Refresh List";
-            this.refreshListToolStripMenuItem.Click += new System.EventHandler(this.refreshListToolStripMenuItem_Click);
+            this.refreshListToolStripMenuItem.Click += new System.EventHandler(this.RefreshListToolStripMenuItemClick);
             // 
             // openFileDialog
             // 
@@ -240,7 +240,7 @@
             this.circuitDesignerToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D)));
             this.circuitDesignerToolStripMenuItem.Size = new System.Drawing.Size(217, 22);
             this.circuitDesignerToolStripMenuItem.Text = "Circuit Designer";
-            this.circuitDesignerToolStripMenuItem.Click += new System.EventHandler(this.circuitDesignerToolStripMenuItem_Click);
+            this.circuitDesignerToolStripMenuItem.Click += new System.EventHandler(this.CircuitDesignerToolStripMenuItemClick);
             // 
             // MainForm
             // 

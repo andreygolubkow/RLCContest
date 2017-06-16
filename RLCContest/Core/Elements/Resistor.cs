@@ -63,7 +63,7 @@
             {
                 if ( value.Length == 0 )
                 {
-                    throw new ArgumentException("Наименование резистора не может быть пустым.");
+                    throw new ArgumentException("The name of the resistor can not be empty.");
                 }
 
                 _name = value;
@@ -81,7 +81,7 @@
             {
                 if ( value < 0 )
                 {
-                    throw new ArgumentException("Сопротивление не может быть отрицательным.");
+                    throw new ArgumentException("Resistance can not be negative.");
                 }
 
                 _value = value;
@@ -98,7 +98,7 @@
         {
             if ( frequency < 0 )
             {
-                throw new ArgumentException("Частота не может быть отрицательной.");
+                throw new ArgumentException("The frequency can not be negative.");
             }
             return new Complex(Value, 0);
         }

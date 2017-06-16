@@ -55,7 +55,7 @@
             this.OpenFreqListForTestButton.TabIndex = 2;
             this.OpenFreqListForTestButton.Text = "Open for test list";
             this.OpenFreqListForTestButton.UseVisualStyleBackColor = true;
-            this.OpenFreqListForTestButton.Click += new System.EventHandler(this.OpenFreqListForTestButton_Click);
+            this.OpenFreqListForTestButton.Click += new System.EventHandler(this.OpenFreqListForTestButtonClick);
             // 
             // openWithTestListButton
             // 
@@ -65,7 +65,7 @@
             this.openWithTestListButton.TabIndex = 1;
             this.openWithTestListButton.Text = "Open with test list";
             this.openWithTestListButton.UseVisualStyleBackColor = true;
-            this.openWithTestListButton.Click += new System.EventHandler(this.openWithTestListButton_Click);
+            this.openWithTestListButton.Click += new System.EventHandler(this.OpenWithTestListButtonClick);
             // 
             // openFreqList
             // 
@@ -75,7 +75,7 @@
             this.openFreqList.TabIndex = 0;
             this.openFreqList.Text = "Open empty list";
             this.openFreqList.UseVisualStyleBackColor = true;
-            this.openFreqList.Click += new System.EventHandler(this.openFreqListEditor_Click);
+            this.openFreqList.Click += new System.EventHandler(this.OpenFreqListEditorClick);
             // 
             // TestForm
             // 

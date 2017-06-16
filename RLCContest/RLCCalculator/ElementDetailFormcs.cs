@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using Controls.Elements.SingleControls.BaseControls;
@@ -13,12 +7,13 @@ using Controls.Elements.SingleControls.BaseControls;
 using Core;
 using Core.Elements;
 
+using Tools;
+
 namespace RLCCalculator
 {
     public partial class ElementDetailForm : Form
     {
         private BaseElementControl _elementControl;
-        private FormOpenMode _mode;
 
         public ElementDetailForm(IElement element = null)
         {
@@ -50,33 +45,22 @@ namespace RLCCalculator
 
                 _elementControl.Visible = true;
                 _elementControl.Element = element;
-                _mode = FormOpenMode.Edit;
-            }
-            else
-            {
-                _mode = FormOpenMode.Create;
             }
         }
 
-        public IElement Element
-        {
-            get
-            {
-                return _elementControl.Element;
-            }
-        }
+        public IElement Element => _elementControl.Element;
 
-        private void cancelButton_Click(object sender, EventArgs e)
+        private void CancelButtonClick(object sender, EventArgs e)
         {
             DialogResult = DialogResult.Cancel;
             Close();
         }
 
-        private void okButton_Click(object sender, EventArgs e)
+        private void OkButtonClick(object sender, EventArgs e)
         {
             if ( _elementControl == null )
             {
-                MessageBox.Show("You must create an element");
+                MessageBox.Show(@"You must create an element");
                 return;
             }
             try
@@ -85,7 +69,7 @@ namespace RLCCalculator
                 {
                     throw new Exception("You must enter a valid name");
                 }
-                var a = _elementControl.Element;
+                _elementControl.Element.TryLoad();
                 DialogResult = DialogResult.OK;
                 Close();
             }
@@ -96,7 +80,7 @@ namespace RLCCalculator
 
         }
 
-        private void componentTypeComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        private void ComponentTypeComboBoxSelectedIndexChanged(object sender, EventArgs e)
         {
             capacitorElementControl.Visible = componentTypeComboBox.SelectedIndex == 0;
             inductorElementControl.Visible = componentTypeComboBox.SelectedIndex == 1;

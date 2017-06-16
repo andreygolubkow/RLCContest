@@ -12,13 +12,13 @@ namespace RLCCalculator
             InitializeComponent();
         }
 
-        private void openFreqListEditor_Click(object sender, EventArgs e)
+        private void OpenFreqListEditorClick(object sender, EventArgs e)
         {
             var freqEditor = new FrequencyEditorForm(new List<double>());
             freqEditor.Show();
         }
 
-        private void openWithTestListButton_Click(object sender, EventArgs e)
+        private void OpenWithTestListButtonClick(object sender, EventArgs e)
         {
             var list = new List<double>
                        {
@@ -30,7 +30,7 @@ namespace RLCCalculator
             freqEditor.Show();
         }
 
-        private void OpenFreqListForTestButton_Click(object sender, EventArgs e)
+        private void OpenFreqListForTestButtonClick(object sender, EventArgs e)
         {
             var listA = new List<double>
                        {

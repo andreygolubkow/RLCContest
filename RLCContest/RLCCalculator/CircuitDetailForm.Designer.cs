@@ -48,7 +48,7 @@
             this.addComponentButton.TabIndex = 3;
             this.addComponentButton.Text = "Add component";
             this.addComponentButton.UseVisualStyleBackColor = true;
-            this.addComponentButton.Click += new System.EventHandler(this.addComponentButton_Click);
+            this.addComponentButton.Click += new System.EventHandler(this.AddComponentButtonClick);
             // 
             // addSubcircuitButton
             // 
@@ -58,7 +58,7 @@
             this.addSubcircuitButton.TabIndex = 6;
             this.addSubcircuitButton.Text = "Add subcircuit";
             this.addSubcircuitButton.UseVisualStyleBackColor = true;
-            this.addSubcircuitButton.Click += new System.EventHandler(this.addSubcircuitButton_Click);
+            this.addSubcircuitButton.Click += new System.EventHandler(this.AddSubcircuitButtonClick);
             // 
             // editElementButton
             // 
@@ -68,7 +68,7 @@
             this.editElementButton.TabIndex = 4;
             this.editElementButton.Text = "Edit element";
             this.editElementButton.UseVisualStyleBackColor = true;
-            this.editElementButton.Click += new System.EventHandler(this.editElementButton_Click);
+            this.editElementButton.Click += new System.EventHandler(this.EditElementButtonClick);
             // 
             // removeElementButton
             // 
@@ -78,7 +78,7 @@
             this.removeElementButton.TabIndex = 5;
             this.removeElementButton.Text = "Remove";
             this.removeElementButton.UseVisualStyleBackColor = true;
-            this.removeElementButton.Click += new System.EventHandler(this.removeElementButton_Click);
+            this.removeElementButton.Click += new System.EventHandler(this.RemoveElementButtonClick);
             // 
             // circuitTypeComboBox
             // 
@@ -91,7 +91,7 @@
             this.circuitTypeComboBox.Name = "circuitTypeComboBox";
             this.circuitTypeComboBox.Size = new System.Drawing.Size(269, 21);
             this.circuitTypeComboBox.TabIndex = 1;
-            this.circuitTypeComboBox.SelectedIndexChanged += new System.EventHandler(this.circuitTypeComboBox_SelectedIndexChanged);
+            this.circuitTypeComboBox.SelectedIndexChanged += new System.EventHandler(this.CircuitTypeComboBoxSelectedIndexChanged);
             // 
             // label1
             // 
@@ -111,7 +111,7 @@
             this.createButton.Text = "Create";
             this.createButton.UseVisualStyleBackColor = true;
             this.createButton.Visible = false;
-            this.createButton.Click += new System.EventHandler(this.createButton_Click);
+            this.createButton.Click += new System.EventHandler(this.CreateButtonClick);
             // 
             // serialCircuitControl
             // 
@@ -149,7 +149,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "CircuitDetailForm";
             this.Text = "Circuit";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CircuitDetailForm_FormClosing);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CircuitDetailFormFormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 

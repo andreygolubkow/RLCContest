@@ -7,12 +7,14 @@ using Controls.Elements.SingleControls.BaseControls;
 using Core;
 using Core.Circuits;
 
+using Tools;
+
 namespace RLCCalculator
 {
     public partial class CircuitDetailForm : Form
     {
         private BaseCircuitControl _circuitControl;
-        private FormOpenMode _mode;
+        private readonly FormOpenMode _mode;
 
         public CircuitDetailForm(FormOpenMode mode = FormOpenMode.Create)
         {
@@ -40,6 +42,8 @@ namespace RLCCalculator
                    
                     circuitTypeComboBox.Enabled = false;
                     break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(mode), mode, null);
             }
             
         }
@@ -59,14 +63,11 @@ namespace RLCCalculator
                     _circuitControl.Circuit = value;
                 }
             }
-            get
-            {
-                return _circuitControl.Circuit;
-            }
+            get => _circuitControl.Circuit;
         }
 
 
-        private void CircuitDetailForm_FormClosing(object sender, FormClosingEventArgs e)
+        private void CircuitDetailFormFormClosing(object sender, FormClosingEventArgs e)
         {
             if ( _mode == FormOpenMode.LiveEdit )
             {
@@ -76,26 +77,26 @@ namespace RLCCalculator
 
         }
 
-        private void removeElementButton_Click(object sender, System.EventArgs e)
+        private void RemoveElementButtonClick(object sender, EventArgs e)
         {
             if (_circuitControl == null)
             {
-                MessageBox.Show("You must create circuit  to delete items");
+                MessageBox.Show(@"You must create circuit  to delete items");
                 return;
             }
             if ( _circuitControl.CurrentComponent == null )
             {
-                MessageBox.Show("You must select an item to delete");
+                MessageBox.Show(@"You must select an item to delete");
                 return;
             }
             _circuitControl.Remove(_circuitControl.CurrentComponent);
         }
 
-        private void addComponentButton_Click(object sender, System.EventArgs e)
+        private void AddComponentButtonClick(object sender, EventArgs e)
         {
             if ( _circuitControl == null )
             {
-                MessageBox.Show("You need to select an electrical circuit to add elements");
+                MessageBox.Show(@"You need to select an electrical circuit to add elements");
                 return;
             }
             var componentForm = new ElementDetailForm(null);
@@ -113,7 +114,7 @@ namespace RLCCalculator
             }
         }
 
-        private void circuitTypeComboBox_SelectedIndexChanged(object sender, System.EventArgs e)
+        private void CircuitTypeComboBoxSelectedIndexChanged(object sender, EventArgs e)
         {
 
             if ( circuitTypeComboBox.SelectedIndex == 0 )
@@ -134,17 +135,11 @@ namespace RLCCalculator
             }
         }
 
-        private void cancelButton_Click(object sender, System.EventArgs e)
-        {
-            DialogResult = DialogResult.Cancel;
-            Close();
-        }
-
-        private void createButton_Click(object sender, System.EventArgs e)
+        private void CreateButtonClick(object sender, EventArgs e)
         {
             if (_circuitControl == null)
             {
-                MessageBox.Show("You need to select an electrical circuit to create circuit");
+                MessageBox.Show(@"You need to select an electrical circuit to create circuit");
                 return;
             }
             try
@@ -154,6 +149,11 @@ namespace RLCCalculator
                     throw new Exception("You must enter a valid name");
                 }
                 ICircuit circuit = _circuitControl.Circuit;
+                if ( circuit == null )
+                {
+                    throw new ArgumentNullException(nameof(circuit));
+                }
+                circuit.TryLoad();
                 DialogResult = DialogResult.OK;
                 Close();
             }
@@ -163,11 +163,11 @@ namespace RLCCalculator
             }
         }
 
-        private void addSubcircuitButton_Click(object sender, EventArgs e)
+        private void AddSubcircuitButtonClick(object sender, EventArgs e)
         {
             if (_circuitControl == null)
             {
-                MessageBox.Show("You need to select an electrical circuit to add elements");
+                MessageBox.Show(@"You need to select an electrical circuit to add elements");
                 return;
             }
             var circuitForm = new CircuitDetailForm(FormOpenMode.Create);
@@ -184,16 +184,16 @@ namespace RLCCalculator
             }
         }
 
-        private void editElementButton_Click(object sender, EventArgs e)
+        private void EditElementButtonClick(object sender, EventArgs e)
         {
             if ( _circuitControl == null )
             {
-                MessageBox.Show("You must create circuit to edit");
+                MessageBox.Show(@"You must create circuit to edit");
                 return;
             }
             if ( _circuitControl.CurrentComponent == null )
             {
-                MessageBox.Show("You must select an item to edit");
+                MessageBox.Show(@"You must select an item to edit");
                 return;
             }
             if ( _circuitControl.CurrentComponent is IElement element )
@@ -201,28 +201,15 @@ namespace RLCCalculator
                 var elementForm = new ElementDetailForm(element);
                 if ( elementForm.ShowDialog() == DialogResult.OK )
                 {
-                    var  a = elementForm.Element;
                 }
             }
             else if (_circuitControl.CurrentComponent is ICircuit circuit)
             {
-                 var circuitForm = new CircuitDetailForm(FormOpenMode.Edit);
-                circuitForm.Circuit = circuit;
+                var circuitForm = new CircuitDetailForm(FormOpenMode.Edit)
+                                  {
+                                      Circuit = circuit
+                                  };
                 circuitForm.ShowDialog();
-            }
-        }
-
-        private void okEditButton_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                ICircuit circuit = _circuitControl.Circuit;
-                DialogResult = DialogResult.OK;
-                Close();
-            }
-            catch (Exception exception)
-            {
-                MessageBox.Show(exception.Message);
             }
         }
     }

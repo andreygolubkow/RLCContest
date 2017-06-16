@@ -87,7 +87,7 @@
             this.removeButton.TabIndex = 2;
             this.removeButton.Text = "Remove";
             this.removeButton.UseVisualStyleBackColor = true;
-            this.removeButton.Click += new System.EventHandler(this.removeButton_Click);
+            this.removeButton.Click += new System.EventHandler(this.RemoveButtonClick);
             // 
             // addButton
             // 
@@ -97,7 +97,7 @@
             this.addButton.TabIndex = 1;
             this.addButton.Text = "Add";
             this.addButton.UseVisualStyleBackColor = true;
-            this.addButton.Click += new System.EventHandler(this.addButton_Click);
+            this.addButton.Click += new System.EventHandler(this.AddButtonClick);
             // 
             // frequencyTextBox
             // 
@@ -105,7 +105,7 @@
             this.frequencyTextBox.Name = "frequencyTextBox";
             this.frequencyTextBox.Size = new System.Drawing.Size(118, 20);
             this.frequencyTextBox.TabIndex = 5;
-            this.frequencyTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.frequencyTextBox_KeyPress);
+            this.frequencyTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.FrequencyTextBoxKeyPress);
             // 
             // FrequencyEditorForm
             // 

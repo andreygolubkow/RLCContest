@@ -26,7 +26,7 @@ namespace Controls.Elements.SingleControls.Circuits
             }
             set
             {
-                if (!(value is ParallelCircuit circuit) && value != null)
+                if (!(value is ParallelCircuit) && value != null)
                 {
                     throw new ArgumentException("Объект не являестся ParallelCircuit");
                 }

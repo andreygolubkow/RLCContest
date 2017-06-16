@@ -48,7 +48,7 @@
             this.componentTypeComboBox.Name = "componentTypeComboBox";
             this.componentTypeComboBox.Size = new System.Drawing.Size(251, 21);
             this.componentTypeComboBox.TabIndex = 1;
-            this.componentTypeComboBox.SelectedIndexChanged += new System.EventHandler(this.componentTypeComboBox_SelectedIndexChanged);
+            this.componentTypeComboBox.SelectedIndexChanged += new System.EventHandler(this.ComponentTypeComboBoxSelectedIndexChanged);
             // 
             // capacitorElementControl
             // 
@@ -91,7 +91,7 @@
             this.okButton.TabIndex = 3;
             this.okButton.Text = "Ok";
             this.okButton.UseVisualStyleBackColor = true;
-            this.okButton.Click += new System.EventHandler(this.okButton_Click);
+            this.okButton.Click += new System.EventHandler(this.OkButtonClick);
             // 
             // cancelButton
             // 
@@ -101,7 +101,7 @@
             this.cancelButton.TabIndex = 4;
             this.cancelButton.Text = "Cancel";
             this.cancelButton.UseVisualStyleBackColor = true;
-            this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
+            this.cancelButton.Click += new System.EventHandler(this.CancelButtonClick);
             // 
             // ElementDetailForm
             // 
