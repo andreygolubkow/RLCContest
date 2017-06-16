@@ -63,9 +63,9 @@ namespace Controls {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap HorizontalSerialToParralelAdapter {
+        public static System.Drawing.Bitmap ParallelCapasitor {
             get {
-                object obj = ResourceManager.GetObject("HorizontalSerialToParralelAdapter", resourceCulture);
+                object obj = ResourceManager.GetObject("ParallelCapasitor", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -73,9 +73,19 @@ namespace Controls {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ParallelCapasitor {
+        public static System.Drawing.Bitmap ParallelDownCorner {
             get {
-                object obj = ResourceManager.GetObject("ParallelCapasitor", resourceCulture);
+                object obj = ResourceManager.GetObject("ParallelDownCorner", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap ParallelIC {
+            get {
+                object obj = ResourceManager.GetObject("ParallelIC", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -103,9 +113,29 @@ namespace Controls {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap ParallelUpCorner {
+            get {
+                object obj = ResourceManager.GetObject("ParallelUpCorner", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap SerialCapasitor {
             get {
                 object obj = ResourceManager.GetObject("SerialCapasitor", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap SerialDownCorner {
+            get {
+                object obj = ResourceManager.GetObject("SerialDownCorner", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -143,29 +173,9 @@ namespace Controls {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap TurnDown {
+        public static System.Drawing.Bitmap SerialUpCorner {
             get {
-                object obj = ResourceManager.GetObject("TurnDown", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap TurnUp {
-            get {
-                object obj = ResourceManager.GetObject("TurnUp", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap VerticalSerialToParralelAdapter {
-            get {
-                object obj = ResourceManager.GetObject("VerticalSerialToParralelAdapter", resourceCulture);
+                object obj = ResourceManager.GetObject("SerialUpCorner", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

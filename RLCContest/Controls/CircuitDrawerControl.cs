@@ -28,10 +28,17 @@ namespace Controls
 
         public void DrawCircuit(ICircuit circuit)
         {
-            Draw(circuit);
+            if ( circuit is SerialCircuit )
+            {
+                DrawSerial(circuit);
+            }
+            else
+            {
+                DrawParallel(circuit);
+            }
         }
 
-        private void Draw(ICircuit circuit)
+        private void DrawSerial(ICircuit circuit)
         {
 
             var list = GenerateImages(circuit);
@@ -58,7 +65,14 @@ namespace Controls
                 }
                 if ( i == upMax )
                 {
-                    DrawTurnDown(x,y);
+                    if ( circuit is SerialCircuit )
+                    {
+                        DrawUpSCorner(x, y);
+                    }
+                    else
+                    {
+                        DrawUpPCorner(x, y);
+                    }
                     y++;
                 }
                 if ( i < upMax + vertMax )
@@ -69,7 +83,14 @@ namespace Controls
                 }
                 if (i == upMax + vertMax)
                 {
-                    DrawTurnUp(x, y);
+                    if (circuit is SerialCircuit)
+                    {
+                        DrawDownSCorner(x, y);
+                    }
+                    else
+                    {
+                        DrawDownPCorner(x, y);
+                    }
                     x--;
                 }
                 if (i < upMax + vertMax+downMax)
@@ -78,8 +99,25 @@ namespace Controls
                     x--;
                 }
             }
+        }
 
+        private void DrawParallel(ICircuit circuit)
+        {
 
+            var list = GenerateImages(circuit);
+
+            //+1 - Добавляем место под поворотный компонент в горизонтальном выводе
+            //+2 - Добавляем место под поворотные компоненты в вертикальном выводе
+            BuildArea(list.Count, 3);
+
+            int x = 0;
+            int y = 1;
+
+            for (int i = 0; i < list.Count; i++)
+            {
+                DrawComponent(x, y, list[i], DrawType.Vertical);
+                x++;
+            }
         }
 
         private List<Image> GenerateImages(ICircuit circuit)
@@ -94,6 +132,20 @@ namespace Controls
                     componentImage = component is Resistor ? CircuitImages.SerialResistor : CircuitImages.SerialIC;
                     componentImage = component is Capacitor ? CircuitImages.SerialCapasitor : componentImage;
                     componentImage = component is Inductor ? CircuitImages.SerialInductor : componentImage;
+                    var graphics = Graphics.FromImage(componentImage);
+                    var font = new System.Drawing.Font(FontFamily.GenericMonospace, 14);
+                    graphics.DrawString(component.Name, font, new SolidBrush(Color.Black), new Point(0, 0));
+                    list.Add(componentImage);
+                }
+            }
+            else if ( circuit is ParallelCircuit )
+            {
+                foreach (var component in circuit)
+                {
+                    Image componentImage = CircuitImages.WhiteBlock;
+                    componentImage = component is Resistor ? CircuitImages.ParallelResistor : CircuitImages.ParallelIC;
+                    componentImage = component is Capacitor ? CircuitImages.ParallelCapasitor : componentImage;
+                    componentImage = component is Inductor ? CircuitImages.ParallelInductor : componentImage;
                     var graphics = Graphics.FromImage(componentImage);
                     var font = new System.Drawing.Font(FontFamily.GenericMonospace, 14);
                     graphics.DrawString(component.Name, font, new SolidBrush(Color.Black), new Point(0, 0));
@@ -138,17 +190,31 @@ namespace Controls
             cell.Value = component;
         }
 
-        private void DrawTurnUp(int x, int y)
+        private void DrawUpPCorner(int x, int y)
         {
             var cell = (DataGridViewImageCell)gridView.Rows[y].Cells[x];
-            Image componentImage = CircuitImages.TurnUp;
+            Image componentImage = CircuitImages.ParallelUpCorner;
             cell.Value = componentImage;
         }
 
-        private void DrawTurnDown(int x, int y)
+        private void DrawDownPCorner(int x, int y)
         {
             var cell = (DataGridViewImageCell)gridView.Rows[y].Cells[x];
-            Image componentImage = CircuitImages.TurnDown;
+            Image componentImage = CircuitImages.ParallelDownCorner;
+            cell.Value = componentImage;
+        }
+
+        private void DrawUpSCorner(int x, int y)
+        {
+            var cell = (DataGridViewImageCell)gridView.Rows[y].Cells[x];
+            Image componentImage = CircuitImages.SerialUpCorner;
+            cell.Value = componentImage;
+        }
+
+        private void DrawDownSCorner(int x, int y)
+        {
+            var cell = (DataGridViewImageCell)gridView.Rows[y].Cells[x];
+            Image componentImage = CircuitImages.SerialDownCorner;
             cell.Value = componentImage;
         }
     }

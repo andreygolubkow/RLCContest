@@ -118,11 +118,14 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="HorizontalSerialToParralelAdapter" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\HorizontalSerialToParralelAdapter.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="ParallelCapasitor" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\ParallelCapasitor.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ParallelDownCorner" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\TurnDown Parallel.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ParallelIC" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\ParallelIC.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="ParallelInductor" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\ParallelInductor.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -130,8 +133,14 @@
   <data name="ParallelResistor" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\ParallelResistor.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="ParallelUpCorner" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Turn Up Parallel.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="SerialCapasitor" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\SerialCapasitor.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SerialDownCorner" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\TurnUp.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="SerialIC" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\SerialIC.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -142,14 +151,8 @@
   <data name="SerialResistor" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\SerialResistor.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="TurnDown" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="SerialUpCorner" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\TurnDown.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="TurnUp" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\TurnUp.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="VerticalSerialToParralelAdapter" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\VerticalSerialToParralelAdapter.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="WhiteBlock" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\WhiteBlock.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>

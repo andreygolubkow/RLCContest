@@ -182,16 +182,13 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\TurnUp.bmp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\TurnDown.bmp" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\WhiteBlock.bmp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\ParallelCapasitor.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ParallelIC.bmp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\ParallelInductor.bmp" />
@@ -212,10 +209,16 @@
     <None Include="Resources\SerialResistor.bmp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\VerticalSerialToParralelAdapter.bmp" />
+    <None Include="Resources\Turn Up Parallel.bmp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\HorizontalSerialToParralelAdapter.bmp" />
+    <None Include="Resources\TurnDown Parallel.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TurnDown.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TurnUp.bmp" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
