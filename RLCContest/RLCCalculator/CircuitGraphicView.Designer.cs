@@ -1,4 +1,6 @@
-﻿namespace RLCCalculator
+﻿using Controls.CircuitDrawer;
+
+namespace RLCCalculator
 {
     partial class CircuitGraphicView
     {
@@ -29,7 +31,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CircuitGraphicView));
-            this.circuitDrawerControl = new Controls.CircuitDrawerControl();
+            this.circuitDrawerControl = new CircuitDrawerControl();
             this.SuspendLayout();
             // 
             // circuitDrawerControl
@@ -55,6 +57,6 @@
 
         #endregion
 
-        private Controls.CircuitDrawerControl circuitDrawerControl;
+        private CircuitDrawerControl circuitDrawerControl;
     }
 }

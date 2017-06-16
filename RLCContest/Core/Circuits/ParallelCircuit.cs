@@ -1,11 +1,15 @@
 ﻿// //RLCContest->Core->ParallelCircuit.cs
 // //andreygolubkow Андрей Голубков
 
+#region
+
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
+
+#endregion
 
 namespace Core.Circuits
 {
@@ -13,12 +17,9 @@ namespace Core.Circuits
     public class ParallelCircuit : ICircuit
     {
         private readonly List<IComponent> _components;
-        private string _name;
 
         /// <inheritdoc />
         public event EventHandler CircuitChanged;
-
-
 
         public ParallelCircuit()
         {
@@ -33,9 +34,9 @@ namespace Core.Circuits
         /// <inheritdoc />
         public Complex CalculateZ(double frequency)
         {
-            Complex mult = new Complex(0,0);
-            Complex sum = new Complex(0,0);
-            foreach (var component in _components)
+            var mult = new Complex(0, 0);
+            var sum = new Complex(0, 0);
+            foreach (IComponent component in _components)
             {
                 mult *= component.CalculateZ(frequency);
                 sum += component.CalculateZ(frequency);
@@ -66,11 +67,11 @@ namespace Core.Circuits
         /// <inheritdoc />
         public void Add(IComponent item)
         {
-            if (item == null)
+            if ( item == null )
             {
                 throw new ArgumentException("Нельзя добавить объект данного типа.");
             }
-            if (FindComponent(item.Name) != null)
+            if ( FindComponent(item.Name) != null )
             {
                 throw new ArgumentException("Компонент с таким именем уже существует.");
             }
@@ -105,11 +106,11 @@ namespace Core.Circuits
         /// <inheritdoc />
         public bool Remove(IComponent item)
         {
-            if (item == null)
+            if ( item == null )
             {
                 throw new ArgumentException("Объект не является компонентом.");
             }
-            if (_components.Remove(item))
+            if ( _components.Remove(item) )
             {
                 UnsubscribeToComponent(item);
                 CircuitChanged?.Invoke(this, new EventArgs());
@@ -119,22 +120,10 @@ namespace Core.Circuits
         }
 
         /// <inheritdoc />
-        public int Count
-        {
-            get
-            {
-                return _components.Count;
-            }
-        }
+        public int Count => _components.Count;
 
         /// <inheritdoc />
-        public bool IsReadOnly
-        {
-            get
-            {
-                return false;
-            }
-        }
+        public bool IsReadOnly => false;
 
         #endregion
 
@@ -149,7 +138,7 @@ namespace Core.Circuits
         /// <inheritdoc />
         public void Insert(int index, IComponent item)
         {
-            if (item == null)
+            if ( item == null )
             {
                 throw new ArgumentException("Объект не является компонентом.");
             }
@@ -174,7 +163,7 @@ namespace Core.Circuits
             get => _components[index];
             set
             {
-                IComponent component = ((value != null) && (FindComponent(value.Name) == null))
+                IComponent component = value != null && FindComponent(value.Name) == null
                     ? value
                     : throw new ArgumentException("Элемент с таким именем уже существует.");
                 UnsubscribeToComponent(_components[index]);
@@ -188,16 +177,8 @@ namespace Core.Circuits
 
         #region Implementation of ICircuit
 
-
-
         /// <inheritdoc />
-        public IList<IComponent> Components
-        {
-            get
-            {
-                return _components;
-            }
-        }
+        public IList<IComponent> Components => _components;
 
         #endregion
 
@@ -213,12 +194,11 @@ namespace Core.Circuits
 
         private void SubscribeToComponent(IComponent component)
         {
-            if (component is ICircuit circuit)
+            if ( component is ICircuit circuit )
             {
                 circuit.CircuitChanged += CircuitCircuitChanged;
             }
-            else
-            if (component is IElement element)
+            else if ( component is IElement element )
             {
                 element.ValueChanged += CircuitCircuitChanged;
             }
@@ -226,15 +206,39 @@ namespace Core.Circuits
 
         private void UnsubscribeToComponent(IComponent component)
         {
-            if (component is ICircuit circuit)
+            if ( component is ICircuit circuit )
             {
                 circuit.CircuitChanged -= CircuitCircuitChanged;
             }
-            else
-            if (component is IElement element)
+            else if ( component is IElement element )
             {
                 element.ValueChanged -= CircuitCircuitChanged;
             }
         }
+
+        #region Implementation of ICloneable
+
+        /// <inheritdoc />
+        public object Clone()
+        {
+            var c = new ParallelCircuit
+                    {
+                        Name = Name
+                    };
+            foreach (IComponent e in this)
+            {
+                if ( e is IElement el )
+                {
+                    c.Add((IElement)el.Clone());
+                }
+                else if ( e is ICircuit ci )
+                {
+                    c.Add((ICircuit)ci.Clone());
+                }
+            }
+            return c;
+        }
+
+        #endregion
     }
 }

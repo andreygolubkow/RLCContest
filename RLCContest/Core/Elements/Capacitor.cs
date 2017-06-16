@@ -1,6 +1,9 @@
-﻿using System;
+﻿#region
+
+using System;
 using System.Numerics;
-using System.Runtime.Serialization;
+
+#endregion
 
 namespace Core.Elements
 {
@@ -25,12 +28,12 @@ namespace Core.Elements
         #region Implementation of IElement
 
         /// <summary>
-        /// Событие, вызывается когда изменено значение.
+        ///     Событие, вызывается когда изменено значение.
         /// </summary>
         public event EventHandler ValueChanged;
 
         /// <summary>
-        /// Название элемента.
+        ///     Название элемента.
         /// </summary>
         public string Name
         {
@@ -46,7 +49,7 @@ namespace Core.Elements
         }
 
         /// <summary>
-        /// Номинал.
+        ///     Номинал.
         /// </summary>
         public double Value
         {
@@ -58,18 +61,18 @@ namespace Core.Elements
                     throw new ArgumentException("Ёмкость не должна быть меньше нуля.");
                 }
                 _value = value;
-                ValueChanged?.Invoke(this,new EventArgs());
+                ValueChanged?.Invoke(this, new EventArgs());
             }
         }
 
         /// <summary>
-        /// Рассчет сопротивления.
+        ///     Рассчет сопротивления.
         /// </summary>
         /// <param name="frequency">Частота.</param>
         /// <returns>Комплексное сопротивление.</returns>
         public Complex CalculateZ(double frequency)
         {
-            if (frequency < 0)
+            if ( frequency < 0 )
             {
                 throw new ArgumentException("Частота не может быть отрицательной.");
             }
@@ -78,5 +81,14 @@ namespace Core.Elements
 
         #endregion
 
+        #region Implementation of ICloneable
+
+        /// <inheritdoc />
+        public object Clone()
+        {
+            return new Capacitor(Name, Value);
+        }
+
+        #endregion
     }
 }

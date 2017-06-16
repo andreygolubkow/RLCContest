@@ -3,7 +3,7 @@
 namespace Core
 {
     /// <summary>
-    /// Элемент электрической цепи.
+    ///     Элемент электрической цепи.
     /// </summary>
     public interface IElement : IComponent
     {

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Controls {
+namespace Controls.CircuitDrawer {
     using System;
     
     
@@ -22,7 +22,7 @@ namespace Controls {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class CircuitImages {
+    internal class CircuitImages {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,10 +36,10 @@ namespace Controls {
         ///   Возвращает кэшированный экземпляр ResourceManager, использованный этим классом.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static global::System.Resources.ResourceManager ResourceManager {
+        internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Controls.CircuitImages", typeof(CircuitImages).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Controls.CircuitDrawer.CircuitImages", typeof(CircuitImages).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -51,7 +51,7 @@ namespace Controls {
         ///   обращений к ресурсу с помощью этого класса ресурса со строгой типизацией.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static global::System.Globalization.CultureInfo Culture {
+        internal static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -63,7 +63,7 @@ namespace Controls {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ParallelCapasitor {
+        internal static System.Drawing.Bitmap ParallelCapasitor {
             get {
                 object obj = ResourceManager.GetObject("ParallelCapasitor", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -73,17 +73,7 @@ namespace Controls {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ParallelDownCorner {
-            get {
-                object obj = ResourceManager.GetObject("ParallelDownCorner", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap ParallelIC {
+        internal static System.Drawing.Bitmap ParallelIC {
             get {
                 object obj = ResourceManager.GetObject("ParallelIC", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -93,7 +83,7 @@ namespace Controls {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ParallelInductor {
+        internal static System.Drawing.Bitmap ParallelInductor {
             get {
                 object obj = ResourceManager.GetObject("ParallelInductor", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -103,7 +93,7 @@ namespace Controls {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ParallelResistor {
+        internal static System.Drawing.Bitmap ParallelResistor {
             get {
                 object obj = ResourceManager.GetObject("ParallelResistor", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -113,17 +103,7 @@ namespace Controls {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ParallelUpCorner {
-            get {
-                object obj = ResourceManager.GetObject("ParallelUpCorner", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap SerialCapasitor {
+        internal static System.Drawing.Bitmap SerialCapasitor {
             get {
                 object obj = ResourceManager.GetObject("SerialCapasitor", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -133,17 +113,7 @@ namespace Controls {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap SerialDownCorner {
-            get {
-                object obj = ResourceManager.GetObject("SerialDownCorner", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap SerialIC {
+        internal static System.Drawing.Bitmap SerialIC {
             get {
                 object obj = ResourceManager.GetObject("SerialIC", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -153,7 +123,7 @@ namespace Controls {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap SerialInductor {
+        internal static System.Drawing.Bitmap SerialInductor {
             get {
                 object obj = ResourceManager.GetObject("SerialInductor", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -163,7 +133,7 @@ namespace Controls {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap SerialResistor {
+        internal static System.Drawing.Bitmap SerialResistor {
             get {
                 object obj = ResourceManager.GetObject("SerialResistor", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -173,9 +143,9 @@ namespace Controls {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap SerialUpCorner {
+        internal static System.Drawing.Bitmap TurnDown {
             get {
-                object obj = ResourceManager.GetObject("SerialUpCorner", resourceCulture);
+                object obj = ResourceManager.GetObject("TurnDown", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -183,7 +153,17 @@ namespace Controls {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap WhiteBlock {
+        internal static System.Drawing.Bitmap TurnUp {
+            get {
+                object obj = ResourceManager.GetObject("TurnUp", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap WhiteBlock {
             get {
                 object obj = ResourceManager.GetObject("WhiteBlock", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));

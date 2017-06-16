@@ -1,6 +1,4 @@
-﻿using System.Runtime.Serialization;
-
-namespace Core.Elements
+﻿namespace Core.Elements
 {
     using System;
     using System.Numerics;
@@ -12,18 +10,18 @@ namespace Core.Elements
     public class Inductor : IElement
     {
         /// <summary>
-        /// Наименование.
+        ///     Наименование.
         /// </summary>
         private string _name;
 
         /// <summary>
-        /// Индуктивность.
+        ///     Индуктивность.
         /// </summary>
         private double _value;
 
         /// <summary>
-        /// Создает новый <see cref="Inductor"/>.
-        /// С нулевым номиналом и наименованием Inductor.
+        ///     Создает новый <see cref="Inductor" />.
+        ///     С нулевым номиналом и наименованием Inductor.
         /// </summary>
         public Inductor()
         {
@@ -32,13 +30,13 @@ namespace Core.Elements
         }
 
         /// <summary>
-        /// Создает новый <see cref="Inductor"/>.
+        ///     Создает новый <see cref="Inductor" />.
         /// </summary>
         /// <param name="name">
-        /// Наименование компонента.
+        ///     Наименование компонента.
         /// </param>
         /// <param name="value">
-        /// Номинал.
+        ///     Номинал.
         /// </param>
         public Inductor(string name, double value)
         {
@@ -49,41 +47,34 @@ namespace Core.Elements
         #region Implementation of IElement
 
         /// <summary>
-        /// Вызывается при изменении номинала.
+        ///     Вызывается при изменении номинала.
         /// </summary>
         public event EventHandler ValueChanged;
 
         /// <summary>
-        /// Название элемента.
+        ///     Название элемента.
         /// </summary>
         public string Name
         {
-            get
-            {
-                return this._name;
-            }
+            get => _name;
 
             set
             {
-                if (value.Length == 0)
+                if ( value.Length == 0 )
                 {
                     throw new ArgumentException("Наименование катушки не может быть пустым.");
                 }
 
-                this._name = value;
-
+                _name = value;
             }
         }
 
         /// <summary>
-        /// Значение.
+        ///     Значение.
         /// </summary>
         public double Value
         {
-            get
-            {
-                return this._value;
-            }
+            get => _value;
 
             set
             {
@@ -92,27 +83,35 @@ namespace Core.Elements
                     throw new ArgumentException("Индуктивность не может быть отрицательной.");
                 }
 
-                this._value = value;
+                _value = value;
                 ValueChanged?.Invoke(this, new EventArgs());
             }
         }
 
         /// <summary>
-        /// Рассчет сопротивления.
+        ///     Рассчет сопротивления.
         /// </summary>
         /// <param name="frequency">Частота.</param>
         /// <returns>Комплексное число.</returns>
         public Complex CalculateZ(double frequency)
         {
-            if (frequency < 0)
+            if ( frequency < 0 )
             {
                 throw new ArgumentException("Частота не может быть отрицательной.");
             }
-            return new Complex(0, 2 * Math.PI * frequency * this.Value);
+            return new Complex(0, 2 * Math.PI * frequency * Value);
         }
 
         #endregion
 
- 
+        #region Implementation of ICloneable
+
+        /// <inheritdoc />
+        public object Clone()
+        {
+            return new Inductor(Name, Value);
+        }
+
+        #endregion
     }
 }

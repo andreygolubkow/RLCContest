@@ -5,7 +5,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
-using System.Runtime.Serialization;
 
 #endregion
 
@@ -22,7 +21,6 @@ namespace Core.Circuits
 
         public event EventHandler CircuitChanged;
 
-       
         public SerialCircuit()
         {
             _components = new List<IComponent>();
@@ -45,11 +43,11 @@ namespace Core.Circuits
 
         public void Add(IComponent component)
         {
-            if (component == null)
+            if ( component == null )
             {
                 throw new ArgumentException("Нельзя добавить объект данного типа.");
             }
-            if (FindComponent(component.Name) != null)
+            if ( FindComponent(component.Name) != null )
             {
                 throw new ArgumentException("Компонент с таким именем уже существует.");
             }
@@ -84,7 +82,7 @@ namespace Core.Circuits
             {
                 throw new ArgumentException("Объект не является компонентом.");
             }
-            return  _components.IndexOf(component);
+            return _components.IndexOf(component);
         }
 
         public void Insert(int index, IComponent component)
@@ -97,16 +95,15 @@ namespace Core.Circuits
             SubscribeToComponent(component);
 
             CircuitChanged?.Invoke(this, new EventArgs());
-
         }
 
         public bool Remove(IComponent component)
         {
-            if (component == null)
+            if ( component == null )
             {
                 throw new ArgumentException("Объект не является компонентом.");
             }
-            if (_components.Remove(component))
+            if ( _components.Remove(component) )
             {
                 UnsubscribeToComponent(component);
                 CircuitChanged?.Invoke(this, new EventArgs());
@@ -127,13 +124,12 @@ namespace Core.Circuits
             CircuitChanged?.Invoke(this, new EventArgs());
         }
 
-
         public IComponent this[int index]
         {
             get => _components[index];
             set
             {
-                IComponent component = ((value != null) && (FindComponent(value.Name) == null))
+                IComponent component = value != null && FindComponent(value.Name) == null
                     ? value
                     : throw new ArgumentException("Элемент с таким именем уже существует.");
                 UnsubscribeToComponent(_components[index]);
@@ -143,13 +139,12 @@ namespace Core.Circuits
             }
         }
 
-
         public IList<IComponent> Components => _components;
 
         public Complex CalculateZ(double frequency)
         {
-            var z = new Complex(0,0);
-            _components.ForEach(c=>z+=c.CalculateZ(frequency));
+            var z = new Complex(0, 0);
+            _components.ForEach(c => z += c.CalculateZ(frequency));
             return z;
         }
 
@@ -160,9 +155,7 @@ namespace Core.Circuits
         /// <inheritdoc />
         IEnumerator<IComponent> IEnumerable<IComponent>.GetEnumerator()
         {
-
             return _components.GetEnumerator();
-
         }
 
         #endregion
@@ -174,17 +167,16 @@ namespace Core.Circuits
 
         private void CircuitCircuitChanged(object sender, EventArgs e)
         {
-            CircuitChanged?.Invoke(sender,e);
+            CircuitChanged?.Invoke(sender, e);
         }
 
         private void SubscribeToComponent(IComponent component)
         {
-            if (component is ICircuit circuit)
+            if ( component is ICircuit circuit )
             {
                 circuit.CircuitChanged += CircuitCircuitChanged;
             }
-            else
-            if (component is IElement element)
+            else if ( component is IElement element )
             {
                 element.ValueChanged += CircuitCircuitChanged;
             }
@@ -192,12 +184,11 @@ namespace Core.Circuits
 
         private void UnsubscribeToComponent(IComponent component)
         {
-            if (component is ICircuit circuit)
+            if ( component is ICircuit circuit )
             {
                 circuit.CircuitChanged -= CircuitCircuitChanged;
             }
-            else
-            if (component is IElement element)
+            else if ( component is IElement element )
             {
                 element.ValueChanged -= CircuitCircuitChanged;
             }
@@ -213,5 +204,29 @@ namespace Core.Circuits
 
         #endregion
 
+        #region Implementation of ICloneable
+
+        /// <inheritdoc />
+        public object Clone()
+        {
+            var c = new SerialCircuit
+                    {
+                        Name = Name
+                    };
+            foreach (IComponent e in this)
+            {
+                if ( e is IElement el )
+                {
+                    c.Add((IElement)el.Clone());
+                }
+                else if ( e is ICircuit ci )
+                {
+                    c.Add((ICircuit)ci.Clone());
+                }
+            }
+            return c;
+        }
+
+        #endregion
     }
 }

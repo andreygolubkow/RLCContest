@@ -130,7 +130,7 @@ namespace RLCCalculator
 
         private void saveProjectToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var saveProject = ProjectDublicator.CopyProject(_project);
+            object saveProject = _project.Clone();
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
                 DataSerializer.SerializeBin(saveFileDialog.FileName, saveProject);

@@ -19,23 +19,13 @@ namespace Controls.CircuitViewer
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         [EditorBrowsable(EditorBrowsableState.Never)]
         [DefaultValue(null)]
-
         public void ShowZ(ICircuit circuit, double[] freq)
         {
             circuitGridView.Rows.Clear();
             circuitGridView.Columns.Clear();
             BuildStandartRows();
             BuildFreqRows(freq);
-            FillCircuitTable(circuit,freq);
-        }
-
-        public void ShowZ(ICircuit[] circuits, double[] freq)
-        {
-            circuitGridView.Rows.Clear();
-            circuitGridView.Columns.Clear();
-            BuildStandartRows();
-            BuildFreqRows(freq);
-            FillCircuitsTable(circuits,freq);
+            FillCircuitTable(circuit, freq);
         }
 
         public void ClearTable()
@@ -47,13 +37,15 @@ namespace Controls.CircuitViewer
 
         private void BuildFreqRows(double[] freq)
         {
-            foreach (var f in freq)
+            foreach (double f in freq)
             {
                 var freqColumn = new DataGridViewColumn
                                  {
-                                     HeaderText = Convert.ToString(Math.Round(f,5), CultureInfo.InvariantCulture),
+                                     HeaderText =
+                                             Convert.ToString(Math.Round(f, 5),
+                                                              CultureInfo.InvariantCulture),
                                      CellTemplate = new DataGridViewTextBoxCell()
-                };
+                                 };
                 circuitGridView.Columns.Add(freqColumn);
             }
         }
@@ -67,16 +59,15 @@ namespace Controls.CircuitViewer
                              };
             circuitGridView.Columns.Add(nameColumn);
             var elementColumn = new DataGridViewColumn
-                             {
-                                 HeaderText = @"Element",
-                                 CellTemplate = new DataGridViewTextBoxCell()
-                             };
+                                {
+                                    HeaderText = @"Element",
+                                    CellTemplate = new DataGridViewTextBoxCell()
+                                };
             circuitGridView.Columns.Add(elementColumn);
         }
 
-        private void FillCircuitTable(ICircuit circuit,double[] freq)
+        private void FillCircuitTable(ICircuit circuit, double[] freq)
         {
-
             for (int elementIndex = -1; elementIndex < circuit.Count; elementIndex++)
             {
                 var circuitRow = new DataGridViewRow();
@@ -104,14 +95,6 @@ namespace Controls.CircuitViewer
                 }
                 circuitRow.SetValues(cells);
                 circuitGridView.Rows.Add(circuitRow);
-            } 
-        }
-
-        private void FillCircuitsTable(ICircuit[] circuits,double[] freq)
-        {
-            foreach (var circuit in circuits)
-            {
-                FillCircuitTable(circuit, freq);
             }
         }
     }

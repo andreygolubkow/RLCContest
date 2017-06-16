@@ -1,6 +1,4 @@
-﻿using System.Runtime.Serialization;
-
-namespace Core.Elements
+﻿namespace Core.Elements
 {
     using System;
     using System.Numerics;
@@ -12,96 +10,93 @@ namespace Core.Elements
     public class Resistor : IElement
     {
         /// <summary>
-        /// Наименование резистора.
+        ///     Наименование резистора.
         /// </summary>
         private string _name;
 
         /// <summary>
-        /// Номинал резистора.
+        ///     Номинал резистора.
         /// </summary>
         private double _value;
 
         /// <summary>
-        /// Пустой контруктор для <see cref="Resistor"/>.
-        /// Номинал = 0.
-        /// Наименование компонента:"Resistor".
+        ///     Пустой контруктор для <see cref="Resistor" />.
+        ///     Номинал = 0.
+        ///     Наименование компонента:"Resistor".
         /// </summary>
         public Resistor()
         {
-            this.Value = 0;
-            this.Name = "Resistor";
+            Value = 0;
+            Name = "Resistor";
         }
 
         /// <summary>
-        /// Конструктор <see cref="Resistor"/>.
+        ///     Конструктор <see cref="Resistor" />.
         /// </summary>
         /// <param name="name">
-        /// Наименование элемента.
+        ///     Наименование элемента.
         /// </param>
         /// <param name="value">
-        /// Сопротивление.
+        ///     Сопротивление.
         /// </param>
         public Resistor(string name, double value)
         {
-            this.Value = value;
-            this.Name = name;
+            Value = value;
+            Name = name;
         }
 
         #region Implementation of IElement
 
         /// <summary>
-        /// Срабатывает при изменении сопротивления.
+        ///     Срабатывает при изменении сопротивления.
         /// </summary>
         public event EventHandler ValueChanged;
 
         /// <summary>
-        /// Название элемента.
+        ///     Название элемента.
         /// </summary>
         public string Name
         {
-            get
-            {
-                return this._name;
-            }
+            get => _name;
 
             set
             {
-                if (value.Length == 0)
+                if ( value.Length == 0 )
                 {
                     throw new ArgumentException("Наименование резистора не может быть пустым.");
                 }
 
-                this._name = value;
+                _name = value;
             }
         }
 
         /// <summary>
-        /// Сопротивление резистора.
+        ///     Сопротивление резистора.
         /// </summary>
         public double Value
         {
-            get => this._value;
+            get => _value;
 
             set
             {
-                if (value < 0)
+                if ( value < 0 )
                 {
                     throw new ArgumentException("Сопротивление не может быть отрицательным.");
                 }
 
-                this._value = value;
-                this.ValueChanged?.Invoke(this, new EventArgs());
+                _value = value;
+                ValueChanged?.Invoke(this, new EventArgs());
             }
         }
 
         /// <summary>
-        /// Рассчет сопротивления.
+        ///     Рассчет сопротивления.
         /// </summary>
         /// <param name="frequency">Частота.</param>
         /// <returns>Сопростивление резистора, не зависит от частоты.</returns>
         public Complex CalculateZ(double frequency)
         {
-            if (frequency < 0)
+            if ( frequency < 0 )
             {
                 throw new ArgumentException("Частота не может быть отрицательной.");
             }
@@ -110,5 +105,14 @@ namespace Core.Elements
 
         #endregion
 
+        #region Implementation of ICloneable
+
+        /// <inheritdoc />
+        public object Clone()
+        {
+            return new Resistor(Name, Value);
+        }
+
+        #endregion
     }
 }
