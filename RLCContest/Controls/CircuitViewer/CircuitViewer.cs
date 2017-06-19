@@ -42,8 +42,8 @@ namespace Controls.CircuitViewer
                 var freqColumn = new DataGridViewColumn
                                  {
                                      HeaderText =
-                                             Convert.ToString(Math.Round(f, 5),
-                                                              CultureInfo.InvariantCulture),
+                                             Convert.ToString(Math.Round(f,4),
+                                                              CultureInfo.CurrentCulture),
                                      CellTemplate = new DataGridViewTextBoxCell()
                                  };
                 circuitGridView.Columns.Add(freqColumn);

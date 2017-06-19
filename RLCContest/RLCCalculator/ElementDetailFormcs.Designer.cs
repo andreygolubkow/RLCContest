@@ -116,6 +116,8 @@
             this.Controls.Add(this.capacitorElementControl);
             this.Controls.Add(this.componentTypeComboBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "ElementDetailForm";
             this.Text = "ComponentDetailFormcs";
             this.ResumeLayout(false);

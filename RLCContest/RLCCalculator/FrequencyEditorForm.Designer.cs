@@ -28,15 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrequencyEditorForm));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.frequenciesListBox = new System.Windows.Forms.ListBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.frequencyTextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.removeButton = new System.Windows.Forms.Button();
             this.addButton = new System.Windows.Forms.Button();
-            this.frequencyTextBox = new System.Windows.Forms.TextBox();
+            this.doubleBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.doubleBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -51,6 +55,7 @@
             // 
             // frequenciesListBox
             // 
+            this.frequenciesListBox.DataSource = this.doubleBindingSource;
             this.frequenciesListBox.FormattingEnabled = true;
             this.frequenciesListBox.Location = new System.Drawing.Point(6, 19);
             this.frequenciesListBox.Name = "frequenciesListBox";
@@ -69,6 +74,14 @@
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Editor";
+            // 
+            // frequencyTextBox
+            // 
+            this.frequencyTextBox.Location = new System.Drawing.Point(6, 32);
+            this.frequencyTextBox.Name = "frequencyTextBox";
+            this.frequencyTextBox.Size = new System.Drawing.Size(118, 20);
+            this.frequencyTextBox.TabIndex = 5;
+            this.frequencyTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.FrequencyTextBoxKeyPress);
             // 
             // label1
             // 
@@ -99,14 +112,6 @@
             this.addButton.UseVisualStyleBackColor = true;
             this.addButton.Click += new System.EventHandler(this.AddButtonClick);
             // 
-            // frequencyTextBox
-            // 
-            this.frequencyTextBox.Location = new System.Drawing.Point(6, 32);
-            this.frequencyTextBox.Name = "frequencyTextBox";
-            this.frequencyTextBox.Size = new System.Drawing.Size(118, 20);
-            this.frequencyTextBox.TabIndex = 5;
-            this.frequencyTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.FrequencyTextBoxKeyPress);
-            // 
             // FrequencyEditorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -114,11 +119,15 @@
             this.ClientSize = new System.Drawing.Size(230, 300);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "FrequencyEditorForm";
             this.Text = "FrequencyEditor";
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.doubleBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -132,5 +141,6 @@
         private System.Windows.Forms.Button removeButton;
         private System.Windows.Forms.Button addButton;
         private System.Windows.Forms.TextBox frequencyTextBox;
+        private System.Windows.Forms.BindingSource doubleBindingSource;
     }
 }

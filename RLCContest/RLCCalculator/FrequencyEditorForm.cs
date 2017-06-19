@@ -10,17 +10,17 @@ namespace RLCCalculator
 {
     public partial class FrequencyEditorForm : Form
     {
+        private List<double> _freqDoubles;
+
         public FrequencyEditorForm(List<double> frequencies)
         {
             InitializeComponent();
-            frequenciesListBox.Items.Clear();
-            foreach (double frequency in frequencies)
-            {
-                frequenciesListBox.Items.Add(Convert.ToString(frequency, CultureInfo.InvariantCulture));
-            }
+            _freqDoubles = frequencies;
+            doubleBindingSource.DataSource = _freqDoubles;
+
         }
 
-        public List<double> Frequencies => (from object frequency in frequenciesListBox.Items select Convert.ToDouble(frequency, CultureInfo.InvariantCulture)).ToList();
+        public List<double> Frequencies => _freqDoubles; 
 
         private void AddButtonClick(object sender, EventArgs e)
         {
@@ -31,7 +31,7 @@ namespace RLCCalculator
             }
             try
             {
-                frequenciesListBox.Items.Add(frequencyTextBox.Text.Trim());
+                doubleBindingSource.Add(Convert.ToDouble(frequencyTextBox.Text.Trim()));
                 frequencyTextBox.Text = "";
             }
             catch ( Exception exception )
@@ -52,7 +52,7 @@ namespace RLCCalculator
                 MessageBox.Show(@"You must select an item");
                 return;
             }
-            frequenciesListBox.Items.Remove(frequenciesListBox.SelectedItem);
+            doubleBindingSource.RemoveCurrent();
         }
 
         private void FrequencyTextBoxKeyPress(object sender, KeyPressEventArgs e)
