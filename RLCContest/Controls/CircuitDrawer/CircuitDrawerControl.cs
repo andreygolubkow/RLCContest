@@ -10,24 +10,15 @@ namespace Controls.CircuitDrawer
 {
     public partial class CircuitDrawerControl : UserControl
     {
+        private CircuitGraphItem _graph;
+
+
+
         public CircuitDrawerControl()
         {
             InitializeComponent();
 
-            ICircuit circuit = new SerialCircuit();
-            circuit.Name = "SC1";
-            circuit.Add(new Resistor("R1",5));
-            circuit.Add(new Capacitor("C1",2));
 
-            ICircuit c2 = new ParallelCircuit();
-            c2.Add(new Resistor("RR1",2));
-            c2.Add(new Resistor("RR2",2));
-
-            circuit.Add(c2);
-
-            circuit.Add(new Resistor("r3",3));
-
-            DrawCircuit(circuit);
 
         }
 

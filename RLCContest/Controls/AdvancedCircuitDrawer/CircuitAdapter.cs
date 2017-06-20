@@ -6,19 +6,26 @@ using System.Drawing;
 using Core;
 using Core.Circuits;
 using Core.Elements;
+using Controls.AdvancedCircuitDrawer;
 
 namespace Controls.CircuitDrawer
 {
     public static class CircuitAdapter
     {
 
-        public static (CircuitGraphItem In, CircuitGraphItem Out) CircuitToGraph(ICircuit circuit)
+        public static (GraphElement In, GraphElement Out) CircuitToGraph(ICircuit circuit)
         {
             // контакт А
-            var aItem = new CircuitGraphItem();
+            var aItem = new GraphElement()
+            {
+                Image = CircuitImages.Connector,
+            };
             //Контакт Б
-            var bItem = new CircuitGraphItem();
-            CircuitGraphItem item = aItem;
+            var bItem = new GraphElement()
+            {
+                Image = CircuitImages.Connector,
+            };
+            GraphElement item = aItem;
             if ( circuit is SerialCircuit )
             {
                 foreach (var circuitItem in circuit)
@@ -33,7 +40,7 @@ namespace Controls.CircuitDrawer
                     }
                     else
                     {
-                        (CircuitGraphItem subCircuitIn,CircuitGraphItem subCircuitOut) = CircuitToGraph(circuitItem as ICircuit);
+                        (GraphElement subCircuitIn, GraphElement subCircuitOut) = CircuitToGraph(circuitItem as ICircuit);
                         item.Out.Add(subCircuitIn);
                         subCircuitIn.In.Add(item);
                         item = subCircuitOut;
@@ -59,7 +66,7 @@ namespace Controls.CircuitDrawer
                     }
                     else
                     {
-                        (CircuitGraphItem subCircuitIn, CircuitGraphItem subCircuitOut) = CircuitToGraph(circuitItem as ICircuit);
+                        (GraphElement subCircuitIn, GraphElement subCircuitOut) = CircuitToGraph(circuitItem as ICircuit);
                         aItem.Out.Add(subCircuitIn);
                         subCircuitIn.In.Add(aItem);
                         bItem.In.Add(subCircuitOut);
@@ -71,11 +78,10 @@ namespace Controls.CircuitDrawer
             return (aItem, bItem);
         }
 
-        private static CircuitGraphItem ElementToGraphItem(IElement element)
+        private static GraphElement ElementToGraphItem(IElement element)
         {
             Image image = CircuitImages.WhiteBlock;
-            if ( 
-                element is Resistor )
+            if (element is Resistor )
             {
                 image = CircuitImages.SerialResistor;
             }
@@ -87,8 +93,12 @@ namespace Controls.CircuitDrawer
             {
                 image = CircuitImages.SerialInductor;
             }
+            else
+            {
+                image = CircuitImages.Connector;
+            }
 
-            return new CircuitGraphItem()
+            return new GraphElement()
                    {
                        Image = image
                    };
