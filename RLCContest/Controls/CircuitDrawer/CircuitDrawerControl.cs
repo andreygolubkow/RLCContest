@@ -13,8 +13,77 @@ namespace Controls.CircuitDrawer
         public CircuitDrawerControl()
         {
             InitializeComponent();
+
+            ICircuit circuit = new SerialCircuit();
+            circuit.Name = "SC1";
+            circuit.Add(new Resistor("R1",5));
+            circuit.Add(new Capacitor("C1",2));
+
+            ICircuit c2 = new ParallelCircuit();
+            c2.Add(new Resistor("RR1",2));
+            c2.Add(new Resistor("RR2",2));
+
+            circuit.Add(c2);
+
+            circuit.Add(new Resistor("r3",3));
+
+            DrawCircuit(circuit);
+
         }
 
+        public void DrawCircuit(ICircuit circuit)
+        {
+        //    BuildArea(20,20);
+            DrawCircuit2(circuit);
+        }
+
+        public void DrawCircuit2(ICircuit circuit)
+        {
+            
+        }
+
+
+
+
+        public (int x,int y) DrawCircuit(IComponent circuit,int x, int y)
+        {
+            if (circuit is SerialCircuit c)
+            {
+                foreach (var el in c)
+                {
+                    if ( el is IElement )
+                    {
+                        
+                        gridView.Rows[y].Cells[x].Value = CircuitImages.SerialResistor;
+                        x++;
+                    }
+                    if ( el is ICircuit elcCircuit)
+                    {
+                        x=DrawCircuit(elcCircuit,x,y).x;
+                        x++;
+                    }
+                }
+            }
+            if (circuit is ParallelCircuit cr)
+            {
+                foreach (var el in cr)
+                {
+                    if (el is IElement)
+                    {
+
+                        gridView.Rows[y].Cells[x].Value = CircuitImages.ParallelResistor;
+                        y++;
+
+                    }
+                    if (el is ICircuit elcCircuit)
+                    {
+                        x= DrawCircuit(elcCircuit, x, y).x;
+                    }
+                }
+            }
+            return ((x, y));
+        }
+        /*
         public void DrawCircuit(ICircuit circuit)
         {
             if ( circuit is SerialCircuit )
@@ -25,7 +94,7 @@ namespace Controls.CircuitDrawer
             {
                 DrawParallel(circuit);
             }
-        }
+        }*/
 
         private void DrawSerial(ICircuit circuit)
         {

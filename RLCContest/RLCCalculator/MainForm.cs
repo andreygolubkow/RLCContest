@@ -18,6 +18,11 @@ namespace RLCCalculator
         public MainForm()
         {
             InitializeComponent();
+#if DEBUG
+            var test = new TestForm();
+            test.ShowDialog();
+#endif
+
             _project = new Project
                        {
                            Circuits = new List<IComponent>(),

@@ -46,12 +46,20 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CircuitDrawer\AdvancedCircuitDrawer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CircuitDrawer\AdvancedCircuitDrawer.Designer.cs">
+      <DependentUpon>AdvancedCircuitDrawer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CircuitDrawer\CircuitAdapter.cs" />
     <Compile Include="CircuitDrawer\CircuitDrawerControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="CircuitDrawer\CircuitDrawerControl.Designer.cs">
       <DependentUpon>CircuitDrawerControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="CircuitDrawer\CircuitGraphItem.cs" />
     <Compile Include="CircuitDrawer\CircuitImages.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -121,6 +129,9 @@
     <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="CircuitDrawer\AdvancedCircuitDrawer.resx">
+      <DependentUpon>AdvancedCircuitDrawer.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CircuitDrawer\CircuitDrawerControl.resx">
       <DependentUpon>CircuitDrawerControl.cs</DependentUpon>
     </EmbeddedResource>

@@ -3,6 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
+using Controls.CircuitDrawer;
+
+using Core;
+using Core.Circuits;
+using Core.Elements;
+
 namespace RLCCalculator
 {
     public partial class TestForm : Form
@@ -45,6 +51,26 @@ namespace RLCCalculator
             {
                 throw new Exception("Sequences not equals");
             }
+        }
+
+        private void buildGraphButton_Click(object sender, EventArgs e)
+        {
+            ICircuit circuit = new SerialCircuit();
+            circuit.Name = "SC1";
+            circuit.Add(new Resistor("R1", 5));
+            circuit.Add(new Capacitor("C1", 2));
+
+            var graph = CircuitAdapter.CircuitToGraph(circuit);
+
+
+            ICircuit c2 = new ParallelCircuit();
+            c2.Add(new Resistor("RR1", 2));
+            c2.Add(new Resistor("RR2", 2));
+
+            circuit.Add(c2);
+
+            circuit.Add(new Resistor("r3", 3));
+            
         }
     }
 }

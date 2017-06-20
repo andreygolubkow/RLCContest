@@ -32,7 +32,10 @@
             this.OpenFreqListForTestButton = new System.Windows.Forms.Button();
             this.openWithTestListButton = new System.Windows.Forms.Button();
             this.openFreqList = new System.Windows.Forms.Button();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.buildGraphButton = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -77,15 +80,37 @@
             this.openFreqList.UseVisualStyleBackColor = true;
             this.openFreqList.Click += new System.EventHandler(this.OpenFreqListEditorClick);
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.buildGraphButton);
+            this.groupBox2.Location = new System.Drawing.Point(12, 99);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(215, 100);
+            this.groupBox2.TabIndex = 1;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "GraphTest";
+            // 
+            // buildGraphButton
+            // 
+            this.buildGraphButton.Location = new System.Drawing.Point(6, 19);
+            this.buildGraphButton.Name = "buildGraphButton";
+            this.buildGraphButton.Size = new System.Drawing.Size(75, 23);
+            this.buildGraphButton.TabIndex = 0;
+            this.buildGraphButton.Text = "Build Graph";
+            this.buildGraphButton.UseVisualStyleBackColor = true;
+            this.buildGraphButton.Click += new System.EventHandler(this.buildGraphButton_Click);
+            // 
             // TestForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(618, 379);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "TestForm";
             this.Text = "DEBUG Form";
             this.groupBox1.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -96,5 +121,7 @@
         private System.Windows.Forms.Button openFreqList;
         private System.Windows.Forms.Button OpenFreqListForTestButton;
         private System.Windows.Forms.Button openWithTestListButton;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Button buildGraphButton;
     }
 }
