@@ -1,4 +1,7 @@
-﻿using System.Windows.Forms;
+﻿using System.Drawing;
+using System.Windows.Forms;
+
+using CircuitGraphics;
 
 using Core;
 
@@ -10,6 +13,11 @@ namespace RLCCalculator
         {
             InitializeComponent();
 
+            Image image = circuit.GetImage();
+
+            picture.Width = image.Width;
+            picture.Height = image.Height;
+            picture.Image = image;
         }
     }
 }

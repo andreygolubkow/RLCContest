@@ -42,6 +42,8 @@
             this.circuitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newCircuitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removeCircuitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.circuitDesignerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.frequenciesMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -50,8 +52,6 @@
             this.refreshListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.circuitDesignerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.circuitsGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iComponentBindingSource)).BeginInit();
             this.mainMenu.SuspendLayout();
@@ -168,6 +168,19 @@
             this.removeCircuitToolStripMenuItem.Text = "Remove circuit";
             this.removeCircuitToolStripMenuItem.Click += new System.EventHandler(this.RemoveCircuitToolStripMenuItemClick);
             // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(214, 6);
+            // 
+            // circuitDesignerToolStripMenuItem
+            // 
+            this.circuitDesignerToolStripMenuItem.Name = "circuitDesignerToolStripMenuItem";
+            this.circuitDesignerToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D)));
+            this.circuitDesignerToolStripMenuItem.Size = new System.Drawing.Size(217, 22);
+            this.circuitDesignerToolStripMenuItem.Text = "Circuit Designer";
+            this.circuitDesignerToolStripMenuItem.Click += new System.EventHandler(this.CircuitDesignerToolStripMenuItemClick);
+            // 
             // settingsToolStripMenuItem
             // 
             this.settingsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -228,19 +241,6 @@
             this.saveFileDialog.DefaultExt = "cr";
             this.saveFileDialog.Filter = "Circuit library|*.cr";
             this.saveFileDialog.Title = "Save circuit project";
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(214, 6);
-            // 
-            // circuitDesignerToolStripMenuItem
-            // 
-            this.circuitDesignerToolStripMenuItem.Name = "circuitDesignerToolStripMenuItem";
-            this.circuitDesignerToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D)));
-            this.circuitDesignerToolStripMenuItem.Size = new System.Drawing.Size(217, 22);
-            this.circuitDesignerToolStripMenuItem.Text = "Circuit Designer";
-            this.circuitDesignerToolStripMenuItem.Click += new System.EventHandler(this.CircuitDesignerToolStripMenuItemClick);
             // 
             // MainForm
             // 

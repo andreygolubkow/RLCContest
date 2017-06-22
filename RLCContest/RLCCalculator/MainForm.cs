@@ -19,8 +19,8 @@ namespace RLCCalculator
         {
             InitializeComponent();
 #if DEBUG
-            var test = new TestForm();
-            test.ShowDialog();
+           //// var test = new TestForm();
+           // test.ShowDialog();
 #endif
 
             _project = new Project

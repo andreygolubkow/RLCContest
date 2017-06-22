@@ -11,18 +11,30 @@ using Core.Circuits;
 
 namespace CircuitGraphics
 {
-    public class CircuitImageDrawer
+    public static class CircuitImageDrawer
     {
 
         private delegate void DrawElementProcedure(Graphics graphics);
         private delegate void DrawCircuitProcedure(Graphics graphics, ICircuit circuit);
 
-        public CircuitImageDrawer()
+        private static readonly Pen standartPen = new Pen(Color.Black);
+        private const  int inputLineLength = 10;
+        private const int outputLineLength = 20;
+
+        public static Bitmap GetImage(this ICircuit circuit)
         {
-        
+            if ( circuit is SerialCircuit serial )
+            {
+                return GetCircuitImage(serial);
+            }
+            if ( circuit is ParallelCircuit parallel )
+            {
+                return GetCircuitImage(parallel);
+            }
+            return new Bitmap(0,0);
         }
 
-        public Bitmap GetCircuitImage(SerialCircuit circuit)
+        private static Bitmap GetCircuitImage(SerialCircuit circuit)
         {
             var size = GetSize(circuit);
 
@@ -41,23 +53,32 @@ namespace CircuitGraphics
                         g.DrawImage(elementImage, new Point(x,y-elementImage.Height/2));
                         x += GetSize(element).Width;
                     }
-                    else if ( component is SerialCircuit serialCircuit )
+                    else if ( component is ICircuit circuitComponent )
                     {
-                        var serialCircuitImage = GetCircuitImage(serialCircuit);
-                        g.DrawImage(serialCircuitImage, new Point(x , y - serialCircuitImage.Height / 2));
-                        x += GetSize(serialCircuit).Width;
+                        Bitmap circuitImage = new Bitmap(1, 1);
+                        if (circuitComponent is SerialCircuit sc)
+                        {
+                            circuitImage = GetCircuitImage(sc);
+                        }
+                        else if (circuitComponent is ParallelCircuit pc)
+                        {
+                            circuitImage = GetCircuitImage(pc);
+                        }
+                        g.DrawImage(circuitImage, new Point(x , y - circuitImage.Height / 2));
+                        x += GetSize(circuitComponent).Width;
                     }
                 }
             }
             return bitmap;
         }
 
-        public Bitmap GetCircuitImage(ParallelCircuit circuit)
+        private static Bitmap GetCircuitImage(ParallelCircuit circuit)
         {
             var size = GetSize(circuit);
 
             var bitmap = new Bitmap(size.Width, size.Height);
-            int x = 0;
+
+            int x = inputLineLength;
             int y = 0;
 
             var firstComponent = circuit.FirstOrDefault();
@@ -71,15 +92,19 @@ namespace CircuitGraphics
 
             using (Graphics g = Graphics.FromImage(bitmap))
             {
-                g.DrawLine(new Pen(Color.Black),0, y+firstHeight/2,0,size.Height-lastHeight/2);
-                g.DrawLine(new Pen(Color.Black), 1, y + firstHeight/2, 1, size.Height - lastHeight / 2);
+                g.DrawLine(standartPen, 0, size.Height/2, 10, size.Height/2);
+                g.DrawLine(standartPen, 0, size.Height / 2 -1, 10, size.Height / 2 - 1);
+
+                g.DrawLine(standartPen, x, y+firstHeight/2,x,size.Height-lastHeight/2);
+                g.DrawLine(standartPen, x+1, y + firstHeight/2, x+1, size.Height - lastHeight / 2);
                 foreach (var component in circuit)
                 {
                     if (component is IElement element)
                     {
                         var elementImage = GetElementImage(element);
                         g.DrawImage(elementImage, new Point(x, y ));
-                        g.DrawLine(new Pen(Color.Black),x+elementImage.Width,y+elementImage.Height/2,size.Width-1,size.Height/2);
+                        g.DrawLine(standartPen, x+elementImage.Width,y+elementImage.Height/2, bitmap.Width-8, y + elementImage.Height / 2);
+                        g.DrawLine(standartPen, x + elementImage.Width, y + elementImage.Height/2 -1, bitmap.Width -8, y + elementImage.Height / 2 - 1);
                         y += elementImage.Height;
                     }
                     else if (component is ICircuit circuitComponent)
@@ -93,16 +118,23 @@ namespace CircuitGraphics
                             circuitImage = GetCircuitImage(pc);
                         }
                         g.DrawImage(circuitImage, new Point(x, y ));
-                        g.DrawLine(new Pen(Color.Black), x + circuitImage.Width, y + circuitImage.Height / 2, size.Width - 1, size.Height / 2);
+                        g.DrawLine(standartPen, x + circuitImage.Width, y + circuitImage.Height / 2, bitmap.Width -8, y + circuitImage.Height / 2);
+                        g.DrawLine(standartPen, x + circuitImage.Width, y + circuitImage.Height / 2 - 1, bitmap.Width - 8, y + circuitImage.Height / 2 - 1);
                         y += circuitImage.Height;
                     }
                 }
-                
+
+                g.DrawLine(standartPen, bitmap.Width - 8, firstHeight / 2, bitmap.Width - 8, size.Height - lastHeight / 2);
+                g.DrawLine(standartPen, bitmap.Width - 7, firstHeight / 2, bitmap.Width - 7, size.Height - lastHeight / 2);
+
+                g.DrawLine(standartPen, bitmap.Width - 8, bitmap.Height / 2, bitmap.Width, bitmap.Height / 2);
+                g.DrawLine(standartPen, bitmap.Width - 8, bitmap.Height / 2-1, bitmap.Width, bitmap.Height / 2 -1);
+
             }
             return bitmap;
         }
 
-        private Bitmap GetElementImage(IElement component)
+        private static Bitmap GetElementImage(IElement component)
         {
             DrawElementProcedure drawer = ElementDrawProcedureSelector(component);
 
@@ -115,7 +147,7 @@ namespace CircuitGraphics
         }
 
 
-        private Size GetSize(IComponent component)
+        private static Size GetSize(IComponent component)
         {
             if (component is ICircuit circuit)
             {
@@ -125,15 +157,15 @@ namespace CircuitGraphics
             {
                 return GetSize(element);
             }
-            return new Size(0,0);
+            return new Size(1,1);
         }
 
-        private Size GetSize(IElement component)
+        private static Size GetSize(IElement component)
         {
             return new Size(50,50);
         }
 
-        private Size GetSize(ICircuit circuit)
+        private static Size GetSize(ICircuit circuit)
         {
             if ( circuit is SerialCircuit serialCircuit )
             {
@@ -143,13 +175,13 @@ namespace CircuitGraphics
             {
                 return GetSize(parallelCircuit);
             }
-            return new Size(0,0);
+            return new Size(1,1);
         }
 
 
-        private Size GetSize(SerialCircuit circuit)
+        private static Size GetSize(SerialCircuit circuit)
         {
-            var size = new Size(0,0);
+            var size = circuit.Count > 0 ? new Size(0, 0) : new Size(1, 1);
             foreach (IComponent component in circuit)
             {
                 if ( component is IElement element )
@@ -173,9 +205,9 @@ namespace CircuitGraphics
             return size;
         }
 
-        private Size GetSize(ParallelCircuit circuit)
+        private static Size GetSize(ParallelCircuit circuit)
         {
-            var size = new Size(0, 0);
+            var size = circuit.Count > 0 ? new Size(0, 0) : new Size(1, 1);
             foreach (var component in circuit)
             {
                 if (component is IElement element)
@@ -188,8 +220,6 @@ namespace CircuitGraphics
                     var scSize = GetSize(sc);
                     size.Width = size.Width < scSize.Width ? scSize.Width : size.Width;
                     size.Height = size.Height + scSize.Height;
-
-
                 }
                 else if (component is ParallelCircuit pc)
                 {
@@ -198,12 +228,12 @@ namespace CircuitGraphics
                     size.Height = size.Height + pcSize.Height;
                 }
             }
-
+            size.Width += inputLineLength + outputLineLength;
             return size;
         }
 
         #region Element Drawers
-        private DrawElementProcedure ElementDrawProcedureSelector(IElement element)
+        private static DrawElementProcedure ElementDrawProcedureSelector(IElement element)
         {
             if (element is Resistor)
             {
@@ -217,38 +247,43 @@ namespace CircuitGraphics
             {
                 return DrawInductor;
             }
-            throw new NotImplementedException();
+            throw new NotImplementedException("Unknown element");
         }
 
-        private static void DrawResistor(Graphics graphics)
+        private  static void DrawResistor(Graphics graphics)
         {
             graphics.DrawRectangle(new Pen(Color.Black), new Rectangle(10, 17, 30, 16));
 
-            graphics.DrawLine(new Pen(Color.Black), 0, 24, 10, 24);
-            graphics.DrawLine(new Pen(Color.Black), 0, 25, 10, 25);
-            graphics.DrawLine(new Pen(Color.Black), 40, 24, 49, 24);
-            graphics.DrawLine(new Pen(Color.Black), 40, 25, 49, 25);
+            graphics.DrawLine(standartPen, 0, 24, 10, 24);
+            graphics.DrawLine(standartPen, 0, 25, 10, 25);
+            graphics.DrawLine(standartPen, 40, 24, 49, 24);
+            graphics.DrawLine(standartPen, 40, 25, 49, 25);
         }
 
         private static void DrawCapacitor(Graphics graphics)
         {
-            graphics.DrawLine(new Pen(Color.Black), 20, 17, 20, 32);
-            graphics.DrawLine(new Pen(Color.Black), 29, 17, 29, 32);
+            graphics.DrawLine(standartPen, 20, 17, 20, 32);
+            graphics.DrawLine(standartPen, 29, 17, 29, 32);
 
-            graphics.DrawLine(new Pen(Color.Black), 0, 24, 20, 24);
-            graphics.DrawLine(new Pen(Color.Black), 0, 25, 20, 25);
-            graphics.DrawLine(new Pen(Color.Black),29, 24, 49, 24);
-            graphics.DrawLine(new Pen(Color.Black), 29, 25, 49, 25);
+            graphics.DrawLine(standartPen, 0, 24, 20, 24);
+            graphics.DrawLine(standartPen, 0, 25, 20, 25);
+            graphics.DrawLine(standartPen, 29, 24, 49, 24);
+            graphics.DrawLine(standartPen, 29, 25, 49, 25);
         }
 
         private static void DrawInductor(Graphics graphics)
         {
-            graphics.DrawArc(new Pen(Color.Black), new Rectangle(10, 24, 20, 13), 0, 180);
 
-            graphics.DrawLine(new Pen(Color.Black), 0, 24, 20, 24);
-            graphics.DrawLine(new Pen(Color.Black), 0, 25, 20, 25);
-            graphics.DrawLine(new Pen(Color.Black), 40, 24, 29, 24);
-            graphics.DrawLine(new Pen(Color.Black), 40, 25, 29, 25);
+            graphics.DrawBezier(standartPen, 20,24,20,20,24,20,24,24);
+            graphics.DrawBezier(standartPen, 24, 24, 24, 20, 28, 20, 28, 24);
+            graphics.DrawBezier(standartPen, 28, 24, 28, 20, 32, 20, 32, 24);
+            graphics.DrawBezier(standartPen, 32, 24, 32, 20, 36, 20, 36, 24);
+            graphics.DrawBezier(standartPen, 36, 24, 36, 20, 40, 20, 40, 24);
+
+            graphics.DrawLine(standartPen, 0, 24, 20, 24);
+            graphics.DrawLine(standartPen, 0, 25, 20, 25);
+            graphics.DrawLine(standartPen, 40, 24, 49, 24);
+            graphics.DrawLine(standartPen, 40, 25, 49, 25);
         }
 
 #endregion
