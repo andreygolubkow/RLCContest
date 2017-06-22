@@ -58,11 +58,45 @@ namespace CircuitGraphics
 
             var bitmap = new Bitmap(size.Width, size.Height);
             int x = 0;
-            int y = size.Height / 2;
+            int y = 0;
+
+            var firstComponent = circuit.FirstOrDefault();
+            var lastElement = circuit.LastOrDefault();
+            if (firstComponent == null || lastElement == null)
+            {
+                return bitmap;
+            }
+            int firstHeight= GetSize(firstComponent).Height;
+            int lastHeight = GetSize(lastElement).Height;
 
             using (Graphics g = Graphics.FromImage(bitmap))
             {
-
+                g.DrawLine(new Pen(Color.Black),0, y+firstHeight/2,0,size.Height-lastHeight/2);
+                g.DrawLine(new Pen(Color.Black), 1, y + firstHeight/2, 1, size.Height - lastHeight / 2);
+                foreach (var component in circuit)
+                {
+                    if (component is IElement element)
+                    {
+                        var elementImage = GetElementImage(element);
+                        g.DrawImage(elementImage, new Point(x, y ));
+                        g.DrawLine(new Pen(Color.Black),x+elementImage.Width,y+elementImage.Height/2,size.Width-1,size.Height/2);
+                        y += elementImage.Height;
+                    }
+                    else if (component is ICircuit circuitComponent)
+                    {
+                        Bitmap circuitImage  = new Bitmap(1,1);
+                        if ( circuitComponent is SerialCircuit  sc)
+                        {
+                            circuitImage = GetCircuitImage(sc);
+                        } else if ( circuitComponent is ParallelCircuit pc )
+                        {
+                            circuitImage = GetCircuitImage(pc);
+                        }
+                        g.DrawImage(circuitImage, new Point(x, y ));
+                        g.DrawLine(new Pen(Color.Black), x + circuitImage.Width, y + circuitImage.Height / 2, size.Width - 1, size.Height / 2);
+                        y += circuitImage.Height;
+                    }
+                }
                 
             }
             return bitmap;
@@ -81,10 +115,37 @@ namespace CircuitGraphics
         }
 
 
+        private Size GetSize(IComponent component)
+        {
+            if (component is ICircuit circuit)
+            {
+                return GetSize(circuit);
+            }
+            else if (component is IElement element)
+            {
+                return GetSize(element);
+            }
+            return new Size(0,0);
+        }
+
         private Size GetSize(IElement component)
         {
             return new Size(50,50);
         }
+
+        private Size GetSize(ICircuit circuit)
+        {
+            if ( circuit is SerialCircuit serialCircuit )
+            {
+                return GetSize(serialCircuit);
+            }
+            else if (circuit is ParallelCircuit parallelCircuit)
+            {
+                return GetSize(parallelCircuit);
+            }
+            return new Size(0,0);
+        }
+
 
         private Size GetSize(SerialCircuit circuit)
         {
@@ -114,7 +175,31 @@ namespace CircuitGraphics
 
         private Size GetSize(ParallelCircuit circuit)
         {
-            return new Size(0,0);
+            var size = new Size(0, 0);
+            foreach (var component in circuit)
+            {
+                if (component is IElement element)
+                {
+                    size.Height = size.Height + GetSize(element).Height;
+                    size.Width = size.Width < GetSize(element).Width ? GetSize(element).Width : size.Width;
+                }
+                else if (component is SerialCircuit sc)
+                {
+                    var scSize = GetSize(sc);
+                    size.Width = size.Width < scSize.Width ? scSize.Width : size.Width;
+                    size.Height = size.Height + scSize.Height;
+
+
+                }
+                else if (component is ParallelCircuit pc)
+                {
+                    var pcSize = GetSize(pc);
+                    size.Width = size.Width < pcSize.Width ? pcSize.Width : size.Width;
+                    size.Height = size.Height + pcSize.Height;
+                }
+            }
+
+            return size;
         }
 
         #region Element Drawers

@@ -88,16 +88,16 @@
             this.groupBox2.Controls.Add(this.buildGraphButton);
             this.groupBox2.Location = new System.Drawing.Point(12, 99);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(580, 268);
+            this.groupBox2.Size = new System.Drawing.Size(580, 379);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "GraphicTest";
             // 
             // graphicTestPictureBox
             // 
-            this.graphicTestPictureBox.Location = new System.Drawing.Point(87, 19);
+            this.graphicTestPictureBox.Location = new System.Drawing.Point(144, 19);
             this.graphicTestPictureBox.Name = "graphicTestPictureBox";
-            this.graphicTestPictureBox.Size = new System.Drawing.Size(487, 243);
+            this.graphicTestPictureBox.Size = new System.Drawing.Size(430, 345);
             this.graphicTestPictureBox.TabIndex = 1;
             this.graphicTestPictureBox.TabStop = false;
             // 
@@ -115,7 +115,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(618, 379);
+            this.ClientSize = new System.Drawing.Size(618, 475);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "TestForm";
