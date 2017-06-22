@@ -13,7 +13,6 @@ namespace CircuitGraphics
 {
     public class CircuitImageDrawer
     {
-        private readonly Size ElementStandartSize = new Size(50,50);
 
         private delegate void DrawElementProcedure(Graphics graphics);
         private delegate void DrawCircuitProcedure(Graphics graphics, ICircuit circuit);
@@ -25,10 +24,11 @@ namespace CircuitGraphics
 
         public Bitmap GetCircuitImage(SerialCircuit circuit)
         {
+            var size = GetSize(circuit);
 
-            var bitmap = new Bitmap(300,300);
-            int x = 150;
-            int y = 150;
+            var bitmap = new Bitmap(size.Width,size.Height);
+            int x = 0;
+            int y = size.Height/2;
 
             using (Graphics g = Graphics.FromImage(bitmap))
             {
@@ -37,13 +37,34 @@ namespace CircuitGraphics
                 {
                     if ( component is IElement element )
                     {
-                        g.DrawImage( GetElementImage(element), new Point(x,y));
-                        x += ElementStandartSize.Width;
+                        var elementImage = GetElementImage(element);
+                        g.DrawImage(elementImage, new Point(x,y-elementImage.Height/2));
+                        x += GetSize(element).Width;
+                    }
+                    else if ( component is SerialCircuit serialCircuit )
+                    {
+                        var serialCircuitImage = GetCircuitImage(serialCircuit);
+                        g.DrawImage(serialCircuitImage, new Point(x , y - serialCircuitImage.Height / 2));
+                        x += GetSize(serialCircuit).Width;
                     }
                 }
-
             }
+            return bitmap;
+        }
 
+        public Bitmap GetCircuitImage(ParallelCircuit circuit)
+        {
+            var size = GetSize(circuit);
+
+            var bitmap = new Bitmap(size.Width, size.Height);
+            int x = 0;
+            int y = size.Height / 2;
+
+            using (Graphics g = Graphics.FromImage(bitmap))
+            {
+
+                
+            }
             return bitmap;
         }
 
@@ -51,7 +72,7 @@ namespace CircuitGraphics
         {
             DrawElementProcedure drawer = ElementDrawProcedureSelector(component);
 
-            var bitmap = new Bitmap(ElementStandartSize.Width,ElementStandartSize.Height);
+            var bitmap = new Bitmap(GetSize(component).Height, GetSize(component).Width);
             using (Graphics g = Graphics.FromImage(bitmap))
             {
                 drawer(g);
@@ -60,6 +81,41 @@ namespace CircuitGraphics
         }
 
 
+        private Size GetSize(IElement component)
+        {
+            return new Size(50,50);
+        }
+
+        private Size GetSize(SerialCircuit circuit)
+        {
+            var size = new Size(0,0);
+            foreach (IComponent component in circuit)
+            {
+                if ( component is IElement element )
+                {
+                    size.Height = size.Height < GetSize(element).Height ? GetSize(element).Height : size.Height;
+                    size.Width = size.Width + GetSize(element).Width;
+                }
+                else if ( component is SerialCircuit sc )
+                {
+                    var scSize = GetSize(sc);
+                    size.Height = size.Height < scSize.Height ? scSize.Height : size.Height;
+                    size.Width = size.Width + scSize.Width;
+                }
+                else if ( component is ParallelCircuit pc )
+                {
+                    var pcSize = GetSize(pc);
+                    size.Height = size.Height < pcSize.Height ? pcSize.Height : size.Height;
+                    size.Width = size.Width + pcSize.Width;
+                }
+            }
+            return size;
+        }
+
+        private Size GetSize(ParallelCircuit circuit)
+        {
+            return new Size(0,0);
+        }
 
         #region Element Drawers
         private DrawElementProcedure ElementDrawProcedureSelector(IElement element)
@@ -96,8 +152,8 @@ namespace CircuitGraphics
 
             graphics.DrawLine(new Pen(Color.Black), 0, 24, 20, 24);
             graphics.DrawLine(new Pen(Color.Black), 0, 25, 20, 25);
-            graphics.DrawLine(new Pen(Color.Black), 40, 24, 29, 24);
-            graphics.DrawLine(new Pen(Color.Black), 40, 25, 29, 25);
+            graphics.DrawLine(new Pen(Color.Black),29, 24, 49, 24);
+            graphics.DrawLine(new Pen(Color.Black), 29, 25, 49, 25);
         }
 
         private static void DrawInductor(Graphics graphics)

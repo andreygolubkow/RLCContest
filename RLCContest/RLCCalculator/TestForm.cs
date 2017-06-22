@@ -57,8 +57,17 @@ namespace RLCCalculator
             CircuitImageDrawer drawer = new CircuitImageDrawer();
 
             var circuit = new SerialCircuit();
-            circuit.Add(new Resistor());
-            circuit.Add(new Capacitor());
+            circuit.Add(new Resistor("R1",1));
+            circuit.Add(new Capacitor("C1",1));
+            circuit.Add(new Capacitor("C2", 1));
+            circuit.Add(new Capacitor("C3", 1));
+            circuit.Add(new Capacitor("C4", 1));
+
+            var circuit2 = new SerialCircuit();
+            circuit2.Add(new Capacitor("CC1",2));
+            circuit2.Add(new Capacitor("CC2",3));
+
+            circuit.Add(circuit2);
 
             graphicTestPictureBox.Image = drawer.GetCircuitImage(circuit);
         }
