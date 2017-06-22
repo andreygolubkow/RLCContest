@@ -1,14 +1,19 @@
-﻿namespace Core.Elements
-{
-    using System;
-    using System.Numerics;
+﻿#region Using
+using System;
+using System.Numerics;
 
+#endregion
+namespace Core.Elements
+{
+    #region Attributes
+    [Serializable] 
+    #endregion
     /// <summary>
     /// Резистор.
     /// </summary>
-    [Serializable]
     public class Resistor : IElement
     {
+        #region Private Members
         /// <summary>
         ///     Наименование резистора.
         /// </summary>
@@ -18,16 +23,17 @@
         ///     Номинал резистора.
         /// </summary>
         private double _value;
+        #endregion
 
+        #region Constructors
         /// <summary>
         ///     Пустой контруктор для <see cref="Resistor" />.
         ///     Номинал = 0.
         ///     Наименование компонента:"Resistor".
         /// </summary>
         public Resistor()
+            : this("New Resistor", 0)
         {
-            Value = 0;
-            Name = "Resistor";
         }
 
         /// <summary>
@@ -43,7 +49,8 @@
         {
             Value = value;
             Name = name;
-        }
+        } 
+        #endregion
 
         #region Implementation of IElement
 

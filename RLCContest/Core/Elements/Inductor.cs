@@ -1,14 +1,21 @@
-﻿namespace Core.Elements
-{
-    using System;
-    using System.Numerics;
+﻿#region Using
+using System;
+using System.Numerics;
 
+#endregion
+
+namespace Core.Elements
+{
+
+    #region Attributes
+    [Serializable] 
+    #endregion
     /// <summary>
     /// The inductor.
     /// </summary>
-    [Serializable]
     public class Inductor : IElement
     {
+        #region Private Members
         /// <summary>
         ///     Наименование.
         /// </summary>
@@ -19,14 +26,16 @@
         /// </summary>
         private double _value;
 
+        #endregion
+
+        #region Constructors
         /// <summary>
         ///     Создает новый <see cref="Inductor" />.
         ///     С нулевым номиналом и наименованием Inductor.
         /// </summary>
         public Inductor()
+            : this("New Inductor", 0)
         {
-            Value = 0;
-            Name = "Inductor";
         }
 
         /// <summary>
@@ -42,7 +51,8 @@
         {
             Name = name;
             Value = value;
-        }
+        } 
+        #endregion
 
         #region Implementation of IElement
 

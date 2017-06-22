@@ -1,4 +1,4 @@
-﻿#region
+﻿#region Using
 
 using System;
 using System.Numerics;
@@ -7,23 +7,28 @@ using System.Numerics;
 
 namespace Core.Elements
 {
-    [Serializable]
+    #region Attrubutes
+    [Serializable] 
+    #endregion
     public class Capacitor : IElement
     {
+        #region Private Members
         private string _name;
         private double _value;
+        #endregion
 
+        #region Constructors
         public Capacitor()
+            : this("New Capacitor", 0)
         {
-            Name = "Capacitor";
-            Value = 0;
         }
 
         public Capacitor(string name, double value)
         {
             Name = name;
             Value = value;
-        }
+        } 
+        #endregion
 
         #region Implementation of IElement
 
