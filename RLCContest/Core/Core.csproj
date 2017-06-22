@@ -53,6 +53,7 @@
     <Compile Include="ICircuit.cs" />
     <Compile Include="IComponent.cs" />
     <Compile Include="IElement.cs" />
+    <Compile Include="Project.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

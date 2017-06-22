@@ -6,6 +6,8 @@ using Core;
 
 using Tools;
 
+using Project = Core.Project;
+
 namespace RLCCalculator
 {
     public partial class MainForm : Form
