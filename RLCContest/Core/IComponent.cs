@@ -1,5 +1,7 @@
-﻿using System;
-using System.Numerics;
+﻿#region Using
+using System;
+using System.Numerics; 
+#endregion
 
 namespace Core
 {
@@ -8,8 +10,12 @@ namespace Core
     /// </summary>
     public interface IComponent : ICloneable
     {
+        #region Properties
         string Name { get; set; }
+        #endregion
 
-        Complex CalculateZ(double frequency);
+        #region Methods
+        Complex CalculateZ(double frequency); 
+        #endregion
     }
 }

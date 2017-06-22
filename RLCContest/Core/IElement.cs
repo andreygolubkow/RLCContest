@@ -1,4 +1,6 @@
-﻿using System;
+﻿#region Using
+using System; 
+#endregion
 
 namespace Core
 {
@@ -7,7 +9,12 @@ namespace Core
     /// </summary>
     public interface IElement : IComponent
     {
+        #region Events
         event EventHandler ValueChanged;
-        double Value { get; set; }
+        #endregion
+
+        #region Properties
+        double Value { get; set; } 
+        #endregion
     }
 }
