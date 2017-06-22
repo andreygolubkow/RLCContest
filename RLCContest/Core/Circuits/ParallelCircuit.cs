@@ -1,8 +1,4 @@
-﻿// //RLCContest->Core->ParallelCircuit.cs
-// //andreygolubkow Андрей Голубков
-
-#region
-
+﻿#region Using
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -13,18 +9,27 @@ using System.Numerics;
 
 namespace Core.Circuits
 {
+    #region Attributes
     [Serializable]
+    #endregion
     public class ParallelCircuit : ICircuit
     {
+
+        #region Private Members
         private readonly List<IComponent> _components;
+        #endregion
 
-        /// <inheritdoc />
+        #region Events
         public event EventHandler CircuitChanged;
+        #endregion
 
+        #region Constructors
         public ParallelCircuit()
         {
             _components = new List<IComponent>();
         }
+        #endregion
+
 
         #region Implementation of IComponent
 
@@ -191,6 +196,32 @@ namespace Core.Circuits
 
         #endregion
 
+        #region Implementation of ICloneable
+
+        /// <inheritdoc />
+        public object Clone()
+        {
+            var c = new ParallelCircuit
+                    {
+                        Name = Name
+                    };
+            foreach (IComponent e in this)
+            {
+                if (e is IElement el)
+                {
+                    c.Add((IElement)el.Clone());
+                }
+                else if (e is ICircuit ci)
+                {
+                    c.Add((ICircuit)ci.Clone());
+                }
+            }
+            return c;
+        }
+
+        #endregion
+
+        #region Private Methods
         private IComponent FindComponent(string name)
         {
             return _components.FirstOrDefault(c => c.Name == name);
@@ -224,30 +255,6 @@ namespace Core.Circuits
                 element.ValueChanged -= CircuitCircuitChanged;
             }
         }
-
-        #region Implementation of ICloneable
-
-        /// <inheritdoc />
-        public object Clone()
-        {
-            var c = new ParallelCircuit
-                    {
-                        Name = Name
-                    };
-            foreach (IComponent e in this)
-            {
-                if ( e is IElement el )
-                {
-                    c.Add((IElement)el.Clone());
-                }
-                else if ( e is ICircuit ci )
-                {
-                    c.Add((ICircuit)ci.Clone());
-                }
-            }
-            return c;
-        }
-
         #endregion
     }
 }

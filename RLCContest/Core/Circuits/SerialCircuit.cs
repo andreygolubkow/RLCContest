@@ -1,4 +1,4 @@
-﻿#region
+﻿#region Using
 
 using System;
 using System.Collections;
@@ -10,21 +10,32 @@ using System.Numerics;
 
 namespace Core.Circuits
 {
+
+    #region Attributes
+    [Serializable]
+    #endregion
+
     /// <summary>
     ///     Цепь с последовательным соеднинением элементов.
     /// </summary>
-    [Serializable]
     public class SerialCircuit : ICircuit
     {
+        #region Private Members
         private readonly List<IComponent> _components;
         private string _name;
+        #endregion
 
+
+        #region Events
         public event EventHandler CircuitChanged;
+        #endregion
 
+        #region Constructors
         public SerialCircuit()
         {
             _components = new List<IComponent>();
-        }
+        } 
+        #endregion
 
         #region Implementation of IComponent
 
@@ -160,40 +171,6 @@ namespace Core.Circuits
 
         #endregion
 
-        private IComponent FindComponent(string name)
-        {
-            return _components.FirstOrDefault(c => c.Name == name);
-        }
-
-        private void CircuitCircuitChanged(object sender, EventArgs e)
-        {
-            CircuitChanged?.Invoke(sender, e);
-        }
-
-        private void SubscribeToComponent(IComponent component)
-        {
-            if ( component is ICircuit circuit )
-            {
-                circuit.CircuitChanged += CircuitCircuitChanged;
-            }
-            else if ( component is IElement element )
-            {
-                element.ValueChanged += CircuitCircuitChanged;
-            }
-        }
-
-        private void UnsubscribeToComponent(IComponent component)
-        {
-            if ( component is ICircuit circuit )
-            {
-                circuit.CircuitChanged -= CircuitCircuitChanged;
-            }
-            else if ( component is IElement element )
-            {
-                element.ValueChanged -= CircuitCircuitChanged;
-            }
-        }
-
         #region Implementation of IEnumerable
 
         /// <inheritdoc />
@@ -215,11 +192,11 @@ namespace Core.Circuits
                     };
             foreach (IComponent e in this)
             {
-                if ( e is IElement el )
+                if (e is IElement el)
                 {
                     c.Add((IElement)el.Clone());
                 }
-                else if ( e is ICircuit ci )
+                else if (e is ICircuit ci)
                 {
                     c.Add((ICircuit)ci.Clone());
                 }
@@ -228,5 +205,43 @@ namespace Core.Circuits
         }
 
         #endregion
+
+        #region Private Methods
+        private IComponent FindComponent(string name)
+        {
+            return _components.FirstOrDefault(c => c.Name == name);
+        }
+
+        private void CircuitCircuitChanged(object sender, EventArgs e)
+        {
+            CircuitChanged?.Invoke(sender, e);
+        }
+
+        private void SubscribeToComponent(IComponent component)
+        {
+            if (component is ICircuit circuit)
+            {
+                circuit.CircuitChanged += CircuitCircuitChanged;
+            }
+            else if (component is IElement element)
+            {
+                element.ValueChanged += CircuitCircuitChanged;
+            }
+        }
+
+        private void UnsubscribeToComponent(IComponent component)
+        {
+            if (component is ICircuit circuit)
+            {
+                circuit.CircuitChanged -= CircuitCircuitChanged;
+            }
+            else if (component is IElement element)
+            {
+                element.ValueChanged -= CircuitCircuitChanged;
+            }
+        }
+
+        #endregion
+
     }
 }
