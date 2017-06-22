@@ -10,7 +10,6 @@ namespace RLCCalculator
         {
             InitializeComponent();
 
-            circuitDrawerControl.DrawCircuit(circuit);
         }
     }
 }

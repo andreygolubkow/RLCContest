@@ -54,32 +54,6 @@
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AdvancedCircuitDrawer\AdvancedCircuitDrawer.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="AdvancedCircuitDrawer\AdvancedCircuitDrawer.Designer.cs">
-      <DependentUpon>AdvancedCircuitDrawer.cs</DependentUpon>
-    </Compile>
-    <Compile Include="AdvancedCircuitDrawer\CircuitAdapter.cs" />
-    <Compile Include="AdvancedCircuitDrawer\GraphElement.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="AdvancedCircuitDrawer\GraphElement.Designer.cs">
-      <DependentUpon>GraphElement.cs</DependentUpon>
-    </Compile>
-    <Compile Include="CircuitDrawer\CircuitDrawerControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="CircuitDrawer\CircuitDrawerControl.Designer.cs">
-      <DependentUpon>CircuitDrawerControl.cs</DependentUpon>
-    </Compile>
-    <Compile Include="AdvancedCircuitDrawer\CircuitGraphItem.cs" />
-    <Compile Include="CircuitDrawer\CircuitImages.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>CircuitImages.resx</DependentUpon>
-    </Compile>
-    <Compile Include="CircuitDrawer\DrawType.cs" />
     <Compile Include="Elements\CircuitListView.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -143,19 +117,6 @@
     <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="AdvancedCircuitDrawer\AdvancedCircuitDrawer.resx">
-      <DependentUpon>AdvancedCircuitDrawer.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="AdvancedCircuitDrawer\GraphElement.resx">
-      <DependentUpon>GraphElement.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="CircuitDrawer\CircuitDrawerControl.resx">
-      <DependentUpon>CircuitDrawerControl.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="CircuitDrawer\CircuitImages.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>CircuitImages.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
     <EmbeddedResource Include="Elements\CircuitListView.resx">
       <DependentUpon>CircuitListView.cs</DependentUpon>
     </EmbeddedResource>
@@ -242,5 +203,6 @@
   <ItemGroup>
     <None Include="Resources\Connector.bmp" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

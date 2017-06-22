@@ -144,6 +144,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CircuitDrawer\CircuitGraphics.csproj">
+      <Project>{d384c78e-bb8d-4c25-b62a-bc92be1489d1}</Project>
+      <Name>CircuitGraphics</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Controls\Controls.csproj">
       <Project>{bd6ec8a1-afdf-4eea-bcef-5925d8f8f7cd}</Project>
       <Name>Controls</Name>

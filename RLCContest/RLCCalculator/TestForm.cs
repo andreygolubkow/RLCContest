@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
-using Controls.CircuitDrawer;
-
 using Core;
 using Core.Circuits;
 using Core.Elements;
+using CircuitGraphics;
 
 namespace RLCCalculator
 {
@@ -55,22 +54,13 @@ namespace RLCCalculator
 
         private void buildGraphButton_Click(object sender, EventArgs e)
         {
-            ICircuit circuit = new SerialCircuit();
-            circuit.Name = "SC1";
-            circuit.Add(new Resistor("R1", 5));
-            circuit.Add(new Capacitor("C1", 2));
+            CircuitImageDrawer drawer = new CircuitImageDrawer();
 
-            var graph = CircuitAdapter.CircuitToGraph(circuit);
+            var circuit = new SerialCircuit();
+            circuit.Add(new Resistor());
+            circuit.Add(new Capacitor());
 
-
-            ICircuit c2 = new ParallelCircuit();
-            c2.Add(new Resistor("RR1", 2));
-            c2.Add(new Resistor("RR2", 2));
-
-            circuit.Add(c2);
-
-            circuit.Add(new Resistor("r3", 3));
-            
+            graphicTestPictureBox.Image = drawer.GetCircuitImage(circuit);
         }
     }
 }

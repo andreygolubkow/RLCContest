@@ -33,9 +33,11 @@
             this.openWithTestListButton = new System.Windows.Forms.Button();
             this.openFreqList = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.graphicTestPictureBox = new System.Windows.Forms.PictureBox();
             this.buildGraphButton = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.graphicTestPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -82,13 +84,22 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.graphicTestPictureBox);
             this.groupBox2.Controls.Add(this.buildGraphButton);
             this.groupBox2.Location = new System.Drawing.Point(12, 99);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(215, 100);
+            this.groupBox2.Size = new System.Drawing.Size(580, 268);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "GraphTest";
+            this.groupBox2.Text = "GraphicTest";
+            // 
+            // graphicTestPictureBox
+            // 
+            this.graphicTestPictureBox.Location = new System.Drawing.Point(87, 19);
+            this.graphicTestPictureBox.Name = "graphicTestPictureBox";
+            this.graphicTestPictureBox.Size = new System.Drawing.Size(487, 243);
+            this.graphicTestPictureBox.TabIndex = 1;
+            this.graphicTestPictureBox.TabStop = false;
             // 
             // buildGraphButton
             // 
@@ -111,6 +122,7 @@
             this.Text = "DEBUG Form";
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.graphicTestPictureBox)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -123,5 +135,6 @@
         private System.Windows.Forms.Button openWithTestListButton;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button buildGraphButton;
+        private System.Windows.Forms.PictureBox graphicTestPictureBox;
     }
 }
