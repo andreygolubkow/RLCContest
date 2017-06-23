@@ -1,14 +1,15 @@
-﻿// //RLCContest->Tools->Extensions.cs
-// //andreygolubkow Андрей Голубков
-
+﻿#region Using
 using System;
 
 using Core;
+
+#endregion
 
 namespace Tools
 {
     public static class Extensions
     {
+        #region Public Methods
         /// <summary>
         /// Метод расширения для проверки правильности создания компонента эл. цепи
         /// </summary>
@@ -21,10 +22,12 @@ namespace Tools
                 string unused = el.Name;
                 el.CalculateZ(0);
             }
-            catch ( Exception exception )
+            catch (Exception exception)
             {
                 throw new Exception("Can not load element {0}", exception);
             }
         }
+
+        #endregion
     }
-}
+    }
