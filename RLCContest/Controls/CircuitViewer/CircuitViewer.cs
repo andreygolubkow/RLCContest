@@ -1,20 +1,26 @@
-﻿using System;
+﻿#region Using
+using System;
 using System.ComponentModel;
 using System.Drawing;
 using System.Globalization;
 using System.Windows.Forms;
 
 using Core;
+#endregion
 
 namespace Controls.CircuitViewer
 {
     public partial class CircuitViewer : UserControl
     {
+        #region Constructors
         public CircuitViewer()
         {
             InitializeComponent();
         }
 
+        #endregion
+
+        #region Public Methods
         [Browsable(false)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         [EditorBrowsable(EditorBrowsableState.Never)]
@@ -35,17 +41,20 @@ namespace Controls.CircuitViewer
             BuildStandartRows();
         }
 
+        #endregion
+
+        #region Private Methods
         private void BuildFreqRows(double[] freq)
         {
             foreach (double f in freq)
             {
                 var freqColumn = new DataGridViewColumn
-                                 {
-                                     HeaderText =
-                                             Convert.ToString(Math.Round(f,4),
+                {
+                    HeaderText =
+                                             Convert.ToString(Math.Round(f, 4),
                                                               CultureInfo.CurrentCulture),
-                                     CellTemplate = new DataGridViewTextBoxCell()
-                                 };
+                    CellTemplate = new DataGridViewTextBoxCell()
+                };
                 circuitGridView.Columns.Add(freqColumn);
             }
         }
@@ -53,16 +62,16 @@ namespace Controls.CircuitViewer
         private void BuildStandartRows()
         {
             var nameColumn = new DataGridViewColumn
-                             {
-                                 HeaderText = @"Name",
-                                 CellTemplate = new DataGridViewTextBoxCell()
-                             };
+            {
+                HeaderText = @"Name",
+                CellTemplate = new DataGridViewTextBoxCell()
+            };
             circuitGridView.Columns.Add(nameColumn);
             var elementColumn = new DataGridViewColumn
-                                {
-                                    HeaderText = @"Element",
-                                    CellTemplate = new DataGridViewTextBoxCell()
-                                };
+            {
+                HeaderText = @"Element",
+                CellTemplate = new DataGridViewTextBoxCell()
+            };
             circuitGridView.Columns.Add(elementColumn);
         }
 
@@ -73,7 +82,7 @@ namespace Controls.CircuitViewer
                 var circuitRow = new DataGridViewRow();
                 circuitRow.CreateCells(circuitGridView);
                 var cells = new object[freq.Length + 2];
-                if ( elementIndex == -1 )
+                if (elementIndex == -1)
                 {
                     cells[0] = circuit.Name;
                     cells[1] = "";
@@ -96,7 +105,8 @@ namespace Controls.CircuitViewer
                 circuitRow.SetValues(cells);
                 circuitGridView.Rows.Add(circuitRow);
             }
-        }
+        } 
+        #endregion
     }
 }
 
