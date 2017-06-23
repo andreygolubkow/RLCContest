@@ -1,22 +1,30 @@
-﻿using System;
+﻿#region Using
+using System;
 
 using Controls.Elements.SingleControls.BaseControls;
 
 using Core;
 using Core.Circuits;
 
+#endregion
+
 namespace Controls.Elements.SingleControls.Circuits
 {
+    #region Attributes
     [Serializable]
+    #endregion
     public partial class SerialCircuitControl : BaseCircuitControl
     {
+        #region Constructors
         public SerialCircuitControl()
         {
             InitializeComponent();
             _circuit = new SerialCircuit();
-            _circuit.CircuitChanged += CircuitChanged;
         }
 
+        #endregion
+
+        #region Public Properties
         public override ICircuit Circuit
         {
             get
@@ -30,11 +38,10 @@ namespace Controls.Elements.SingleControls.Circuits
                 {
                     throw new ArgumentException("Объект не являестся SerialCircuit");
                 }
-                if ( _circuit != null )
+                if (_circuit != null)
                 {
-                    _circuit.CircuitChanged -= CircuitChanged;
                 }
-                if ( value == null )
+                if (value == null)
                 {
                     _circuit = new SerialCircuit();
 
@@ -43,16 +50,10 @@ namespace Controls.Elements.SingleControls.Circuits
                 {
                     _circuit = value;
                 }
-                    
-                base.Circuit = _circuit;
-                _circuit.CircuitChanged += CircuitChanged;
-                
-            }
-        }
 
-        private void CircuitChanged(object sender, EventArgs e)
-        {
-            
-        }
+                base.Circuit = _circuit;
+            }
+        } 
+        #endregion
     }
 }

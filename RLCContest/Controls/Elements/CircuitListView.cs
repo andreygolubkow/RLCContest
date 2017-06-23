@@ -1,4 +1,5 @@
-﻿using System;
+﻿#region Using
+using System;
 using System.ComponentModel;
 using System.Windows.Forms;
 
@@ -6,17 +7,25 @@ using Core;
 
 using IComponent = Core.IComponent;
 
+#endregion
+
 namespace Controls.Elements
 {
     public partial class CircuitListView : UserControl
     {
+        #region Private Members
         private ICircuit _circuit;
 
+        #endregion
+
+        #region Constructors
         public CircuitListView()
         {
             InitializeComponent();
         }
+        #endregion
 
+        #region Public Properties
         [Browsable(false)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         [EditorBrowsable(EditorBrowsableState.Never)]
@@ -25,11 +34,11 @@ namespace Controls.Elements
         {
             set
             {
-                if ( _circuit != null )
+                if (_circuit != null)
                 {
                     _circuit.CircuitChanged -= CircuitChanged;
                 }
-                
+
                 _circuit = value;
                 if (value != null)
                 {
@@ -52,18 +61,20 @@ namespace Controls.Elements
         {
             get
             {
-                if ( _circuit == null )
+                if (_circuit == null)
                 {
                     return null;
                 }
-                if ( listBox.SelectedIndex == -1 )
+                if (listBox.SelectedIndex == -1)
                 {
                     return null;
                 }
                 return _circuit[listBox.SelectedIndex];
             }
         }
+        #endregion
 
+        #region Private Methods
         private void FillList(ICircuit circuit)
         {
             listBox.Items.Clear();
@@ -76,6 +87,7 @@ namespace Controls.Elements
         private void CircuitChanged(object sender, EventArgs e)
         {
             FillList(_circuit);
-        }
+        } 
+        #endregion
     }
 }

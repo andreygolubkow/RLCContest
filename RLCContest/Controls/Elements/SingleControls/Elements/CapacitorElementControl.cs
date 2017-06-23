@@ -1,4 +1,4 @@
-﻿#region
+﻿#region Using
 
 using System;
 
@@ -13,17 +13,19 @@ namespace Controls.Elements.SingleControls.Elements
 {
     public partial class CapacitorElementControl : BaseElementControl
     {
-        #region Fields
+        #region Private Fields
 
         private Capacitor _capacitor;
 
         #endregion
 
+        #region Constructors
         public CapacitorElementControl()
         {
             InitializeComponent();
 
-        }
+        } 
+        #endregion
 
         #region Overrides of BaseElementControl
 

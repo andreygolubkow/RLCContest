@@ -1,22 +1,26 @@
-﻿using System;
+﻿#region Using
+using System;
 
 using Controls.Elements.SingleControls.BaseControls;
 
 using Core;
 using Core.Circuits;
 
+#endregion
 namespace Controls.Elements.SingleControls.Circuits
 {
     public partial class ParallelCircuitControl : BaseCircuitControl
     {
+        #region Constructors
         public ParallelCircuitControl()
         {
             InitializeComponent();
 
             _circuit = new ParallelCircuit();
-            _circuit.CircuitChanged += CircuitChanged;
         }
+        #endregion
 
+        #region Public Properties
         public override ICircuit Circuit
         {
             get
@@ -32,7 +36,6 @@ namespace Controls.Elements.SingleControls.Circuits
                 }
                 if (_circuit != null)
                 {
-                    _circuit.CircuitChanged -= CircuitChanged;
                 }
                 if (value == null)
                 {
@@ -45,14 +48,8 @@ namespace Controls.Elements.SingleControls.Circuits
                 }
 
                 base.Circuit = _circuit;
-                _circuit.CircuitChanged += CircuitChanged;
-
             }
-        }
-
-        private void CircuitChanged(object sender, EventArgs e)
-        {
-
-        }
+        } 
+        #endregion
     }
 }

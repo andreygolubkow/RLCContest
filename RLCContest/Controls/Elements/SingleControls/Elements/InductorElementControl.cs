@@ -1,4 +1,4 @@
-﻿#region
+﻿#region Using
 
 using System;
 using System.ComponentModel;
@@ -14,17 +14,21 @@ namespace Controls.Elements.SingleControls.Elements
 {
     public partial class InductorElementControl : BaseElementControl
     {
-        #region Fields
+        #region Private Fields
 
         private Inductor _inductor;
 
         #endregion
 
+        #region Constructors
         public InductorElementControl()
         {
             InitializeComponent();
         }
 
+        #endregion
+
+        #region Public Properties
         [DefaultValue(null)]
         public override IElement Element
         {
@@ -43,20 +47,21 @@ namespace Controls.Elements.SingleControls.Elements
             }
             set
             {
-                if ( value is Inductor inductor )
+                if (value is Inductor inductor)
                 {
                     _inductor = inductor;
                     ElementName = inductor.Name;
                     ElementValue = inductor.Value;
                     return;
                 }
-                if ( value != null )
+                if (value != null)
                 {
                     throw new ArgumentException("Данный объект не допустим, для этого элемента.");
                 }
                 ElementName = "";
                 ElementValue = 0;
             }
-        }
+        } 
+        #endregion
     }
 }

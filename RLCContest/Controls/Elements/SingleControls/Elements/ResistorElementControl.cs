@@ -14,17 +14,20 @@ namespace Controls.Elements.SingleControls.Elements
 {
     public partial class ResistorElementControl : BaseElementControl
     {
-        #region Fields
+        #region  Private Fields
 
         private Resistor _resistor;
 
         #endregion
 
+        #region Constructors
         public ResistorElementControl()
         {
             InitializeComponent();
         }
+        #endregion
 
+        #region Public Properties
         [DefaultValue(null)]
         public override IElement Element
         {
@@ -44,20 +47,21 @@ namespace Controls.Elements.SingleControls.Elements
             }
             set
             {
-                if ( value is Resistor resistor )
+                if (value is Resistor resistor)
                 {
                     _resistor = resistor;
                     ElementName = resistor.Name;
                     ElementValue = resistor.Value;
                     return;
                 }
-                if ( value != null )
+                if (value != null)
                 {
                     throw new ArgumentException("Данный объект не допустим, для этого элемента.");
                 }
                 ElementName = "";
                 ElementValue = 0;
             }
-        }
+        } 
+        #endregion
     }
 }
