@@ -1,7 +1,7 @@
 ﻿using System.Drawing;
 using System.Windows.Forms;
 
-using CircuitGraphics;
+using CircuitDrawer;
 
 using Core;
 
