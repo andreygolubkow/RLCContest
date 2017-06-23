@@ -1,4 +1,5 @@
-﻿using System;
+﻿#region Using
+using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 
@@ -8,33 +9,42 @@ using Tools;
 
 using Project = Core.Project;
 
+#endregion
+
 namespace RLCCalculator
 {
     public partial class MainForm : Form
     {
+        #region Private Fields
         private Project _project;
 
         private CalculatorZForm _calculatorZ;
         private readonly CircuitDetailForm _circuitDetailForm;
 
+        #endregion
+
+        #region Constructors
         public MainForm()
         {
             InitializeComponent();
 #if DEBUG
-           //// var test = new TestForm();
-           // test.ShowDialog();
+            //// var test = new TestForm();
+            // test.ShowDialog();
 #endif
 
             _project = new Project
-                       {
-                           Circuits = new List<IComponent>(),
-                           Frequencies = new List<double>()
-                       };
+            {
+                Circuits = new List<IComponent>(),
+                Frequencies = new List<double>()
+            };
             iComponentBindingSource.DataSource = _project.Circuits;
             _calculatorZ = new CalculatorZForm();
             _circuitDetailForm = new CircuitDetailForm(FormOpenMode.LiveEdit);
         }
 
+        #endregion
+
+        #region Private Methods
         private void FrequenciesMenuItemClick(object sender, EventArgs e)
         {
             var freqEditorForm = new FrequencyEditorForm(_project.Frequencies);
@@ -45,24 +55,24 @@ namespace RLCCalculator
 
         private void ZCalculatorToolStripMenuItemClick(object sender, EventArgs e)
         {
-            if ( _calculatorZ == null )
+            if (_calculatorZ == null)
             {
                 _calculatorZ = new CalculatorZForm
-                               {
-                                   Frequencies = _project.Frequencies
-                               };
+                {
+                    Frequencies = _project.Frequencies
+                };
             }
             _calculatorZ.Visible = true;
         }
 
         private void IComponentBindingSourceCurrentChanged(object sender, EventArgs e)
         {
-            if ( _calculatorZ == null )
+            if (_calculatorZ == null)
             {
                 _calculatorZ = new CalculatorZForm
-                               {
-                                   Frequencies = _project.Frequencies
-                               };
+                {
+                    Frequencies = _project.Frequencies
+                };
             }
             _calculatorZ.Circuit = (ICircuit)iComponentBindingSource.Current;
             _circuitDetailForm.Circuit = (ICircuit)iComponentBindingSource.Current;
@@ -83,13 +93,13 @@ namespace RLCCalculator
             DialogResult message = MessageBox.Show(@"Do you want to create a new project? All data will be lost!",
                                           @"Create new project",
                                           MessageBoxButtons.YesNo);
-            if ( message == DialogResult.Yes )
+            if (message == DialogResult.Yes)
             {
                 _project = new Project
-                           {
-                               Frequencies = new List<double>(),
-                               Circuits = new List<IComponent>()
-                           };
+                {
+                    Frequencies = new List<double>(),
+                    Circuits = new List<IComponent>()
+                };
                 iComponentBindingSource.DataSource = _project.Circuits;
                 _calculatorZ.Frequencies = _project.Frequencies;
                 _calculatorZ.Circuit = null;
@@ -98,21 +108,21 @@ namespace RLCCalculator
 
         private void OpenProjectToolStripMenuItemClick(object sender, EventArgs e)
         {
-            if ( openFileDialog.ShowDialog() == DialogResult.OK )
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
                 try
                 {
                     DataSerializer.DeserializeBin(openFileDialog.FileName, ref _project);
 
                 }
-                catch ( Exception exception )
+                catch (Exception exception)
                 {
                     MessageBox.Show(exception.Message);
                     _project = new Project
-                               {
-                                   Circuits = new List<IComponent>(),
-                                   Frequencies = new List<double>()
-                               };
+                    {
+                        Circuits = new List<IComponent>(),
+                        Frequencies = new List<double>()
+                    };
                 }
                 iComponentBindingSource.DataSource = _project.Circuits;
                 _calculatorZ.Frequencies = _project.Frequencies;
@@ -141,12 +151,12 @@ namespace RLCCalculator
 
         private void RemoveCircuitToolStripMenuItemClick(object sender, EventArgs e)
         {
-            if ( iComponentBindingSource.Current == null )
+            if (iComponentBindingSource.Current == null)
             {
                 MessageBox.Show(@"You must select an element to delete");
                 return;
             }
-            if ( iComponentBindingSource.Current != null )
+            if (iComponentBindingSource.Current != null)
             {
                 iComponentBindingSource.RemoveCurrent();
             }
@@ -164,6 +174,7 @@ namespace RLCCalculator
                 var designForm = new CircuitGraphicView(circuit);
                 designForm.ShowDialog();
             }
-        }
+        } 
+        #endregion
     }
 }

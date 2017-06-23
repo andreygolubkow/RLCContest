@@ -76,7 +76,7 @@
     <Compile Include="ElementDetailFormcs.Designer.cs">
       <DependentUpon>ElementDetailFormcs.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormMode.cs" />
+    <Compile Include="FormModeEnumeration.cs" />
     <Compile Include="FrequencyEditorForm.cs">
       <SubType>Form</SubType>
     </Compile>

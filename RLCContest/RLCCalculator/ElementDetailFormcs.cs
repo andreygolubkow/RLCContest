@@ -1,4 +1,5 @@
-﻿using System;
+﻿#region Using
+using System;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -9,35 +10,41 @@ using Core.Elements;
 
 using Tools;
 
+#endregion
+
 namespace RLCCalculator
 {
     public partial class ElementDetailForm : Form
     {
+        #region Private Fields
         private BaseElementControl _elementControl;
 
+        #endregion
+
+        #region Constructors
         public ElementDetailForm(IElement element = null)
         {
             InitializeComponent();
 
-            capacitorElementControl.Location =new Point(12, 52);
+            capacitorElementControl.Location = new Point(12, 52);
             resistorElementControl.Location = new Point(12, 52);
             inductorElementControl.Location = new Point(12, 52);
             Size = new Size(286, 198);
 
 
-            if ( element != null )
+            if (element != null)
             {
-                if ( element is Resistor )
+                if (element is Resistor)
                 {
                     _elementControl = resistorElementControl;
                     componentTypeComboBox.SelectedIndex = 2;
                 }
-                else if ( element is Capacitor )
+                else if (element is Capacitor)
                 {
                     _elementControl = capacitorElementControl;
                     componentTypeComboBox.SelectedIndex = 0;
                 }
-                else if ( element is Inductor )
+                else if (element is Inductor)
                 {
                     _elementControl = inductorElementControl;
                     componentTypeComboBox.SelectedIndex = 1;
@@ -47,9 +54,13 @@ namespace RLCCalculator
                 _elementControl.Element = element;
             }
         }
+        #endregion
 
+        #region Public Properties
         public IElement Element => _elementControl.Element;
+        #endregion
 
+        #region Private Methods
         private void CancelButtonClick(object sender, EventArgs e)
         {
             DialogResult = DialogResult.Cancel;
@@ -58,14 +69,14 @@ namespace RLCCalculator
 
         private void OkButtonClick(object sender, EventArgs e)
         {
-            if ( _elementControl == null )
+            if (_elementControl == null)
             {
                 MessageBox.Show(@"You must create an element");
                 return;
             }
             try
             {
-                if ( _elementControl.Element.Name.Length == 0 )
+                if (_elementControl.Element.Name.Length == 0)
                 {
                     throw new Exception("You must enter a valid name");
                 }
@@ -73,7 +84,7 @@ namespace RLCCalculator
                 DialogResult = DialogResult.OK;
                 Close();
             }
-            catch ( Exception ex )
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
@@ -89,6 +100,7 @@ namespace RLCCalculator
             _elementControl = componentTypeComboBox.SelectedIndex == 0 ? capacitorElementControl : _elementControl;
             _elementControl = componentTypeComboBox.SelectedIndex == 1 ? inductorElementControl : _elementControl;
             _elementControl = componentTypeComboBox.SelectedIndex == 2 ? resistorElementControl : _elementControl;
-        }
+        } 
+        #endregion
     }
 }

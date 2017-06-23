@@ -1,33 +1,42 @@
-﻿using System;
+﻿#region Using
+using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 
 using Core;
 
+#endregion
+
 namespace RLCCalculator
 {
     public partial class CalculatorZForm : Form
     {
+        #region Private Fields
         private ICircuit _circuit;
         private List<double> _frequencies;
 
+        #endregion
+
+        #region Constructors
         public CalculatorZForm()
         {
             InitializeComponent();
             _frequencies = new List<double>();
         }
+        #endregion
 
+        #region Public Properties
         public ICircuit Circuit
         {
             set
             {
-                
-                if ( value == null )
+
+                if (value == null)
                 {
                     circuitViewer.ClearTable();
                     return;
                 }
-                if ( _circuit != null )
+                if (_circuit != null)
                 {
                     _circuit.CircuitChanged -= CircuitChanged;
                 }
@@ -41,19 +50,21 @@ namespace RLCCalculator
         {
             set
             {
-                if ( value != null )
+                if (value != null)
                 {
                     _frequencies = value;
                     CircuitChanged(this, new EventArgs());
                 }
             }
         }
+        #endregion
 
+        #region Private Methods
         private void CircuitChanged(object sender, EventArgs e)
         {
-            if ( _circuit != null )
+            if (_circuit != null)
             {
-                   circuitViewer.ShowZ(_circuit, _frequencies.ToArray());
+                circuitViewer.ShowZ(_circuit, _frequencies.ToArray());
             }
         }
 
@@ -61,6 +72,7 @@ namespace RLCCalculator
         {
             e.Cancel = true;
             Visible = false;
-        }
+        } 
+        #endregion
     }
 }

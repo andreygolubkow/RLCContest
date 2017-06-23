@@ -1,10 +1,14 @@
-﻿using System;
+﻿#region Using
+using System;
 using System.Windows.Forms;
+
+#endregion
 
 namespace RLCCalculator
 {
     public static class Program
     {
+        #region Public Methods
         /// <summary>
         /// Главная точка входа для приложения.
         /// </summary>
@@ -15,5 +19,7 @@ namespace RLCCalculator
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new MainForm());
         }
+
+        #endregion
     }
 }

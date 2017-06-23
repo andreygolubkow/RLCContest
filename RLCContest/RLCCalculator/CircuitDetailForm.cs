@@ -1,4 +1,5 @@
-﻿using System;
+﻿#region Using
+using System;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -9,13 +10,19 @@ using Core.Circuits;
 
 using Tools;
 
+#endregion
+
 namespace RLCCalculator
 {
     public partial class CircuitDetailForm : Form
     {
+        #region Private Fields
         private BaseCircuitControl _circuitControl;
         private readonly FormOpenMode _mode;
 
+        #endregion
+
+        #region Constructors
         public CircuitDetailForm(FormOpenMode mode = FormOpenMode.Create)
         {
             InitializeComponent();
@@ -25,34 +32,36 @@ namespace RLCCalculator
             parallelCircuitControl.Location = new Point(12, 60);
 
             _mode = mode;
-            switch ( mode )
+            switch (mode)
             {
                 case FormOpenMode.Create:
-                    
+
                     circuitTypeComboBox.Enabled = true;
                     createButton.Visible = true;
-                   
+
                     break;
                 case FormOpenMode.Edit:
-                   
+
                     circuitTypeComboBox.Enabled = false;
-                   
+
                     break;
                 case FormOpenMode.LiveEdit:
-                   
+
                     circuitTypeComboBox.Enabled = false;
                     break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(mode), mode, null);
             }
-            
-        }
 
+        }
+        #endregion
+
+        #region Public Properties
         public ICircuit Circuit
         {
             set
             {
-                if ( value is SerialCircuit )
+                if (value is SerialCircuit)
                 {
                     circuitTypeComboBox.SelectedIndex = 0;
                     _circuitControl.Circuit = value;
@@ -67,9 +76,12 @@ namespace RLCCalculator
         }
 
 
+        #endregion
+
+        #region Private Methods
         private void CircuitDetailFormFormClosing(object sender, FormClosingEventArgs e)
         {
-            if ( _mode == FormOpenMode.LiveEdit )
+            if (_mode == FormOpenMode.LiveEdit)
             {
                 e.Cancel = true;
                 Visible = false;
@@ -84,7 +96,7 @@ namespace RLCCalculator
                 MessageBox.Show(@"You must create circuit  to delete items");
                 return;
             }
-            if ( _circuitControl.CurrentComponent == null )
+            if (_circuitControl.CurrentComponent == null)
             {
                 MessageBox.Show(@"You must select an item to delete");
                 return;
@@ -94,30 +106,30 @@ namespace RLCCalculator
 
         private void AddComponentButtonClick(object sender, EventArgs e)
         {
-            if ( _circuitControl == null )
+            if (_circuitControl == null)
             {
                 MessageBox.Show(@"You need to select an electrical circuit to add elements");
                 return;
             }
             var componentForm = new ElementDetailForm(null);
-            if ( componentForm.ShowDialog() == DialogResult.OK )
+            if (componentForm.ShowDialog() == DialogResult.OK)
             {
                 try
                 {
                     _circuitControl.Add(componentForm.Element);
                 }
-                catch ( Exception exception )
+                catch (Exception exception)
                 {
                     MessageBox.Show(exception.Message);
                 }
-                
+
             }
         }
 
         private void CircuitTypeComboBoxSelectedIndexChanged(object sender, EventArgs e)
         {
 
-            if ( circuitTypeComboBox.SelectedIndex == 0 )
+            if (circuitTypeComboBox.SelectedIndex == 0)
             {
                 _circuitControl = serialCircuitControl;
             }
@@ -129,7 +141,7 @@ namespace RLCCalculator
             serialCircuitControl.Visible = circuitTypeComboBox.SelectedIndex == 0;
             parallelCircuitControl.Visible = circuitTypeComboBox.SelectedIndex == 1;
 
-            if ( _mode == FormOpenMode.Create )
+            if (_mode == FormOpenMode.Create)
             {
                 _circuitControl.Circuit = null;
             }
@@ -144,12 +156,12 @@ namespace RLCCalculator
             }
             try
             {
-                if ( _circuitControl.Circuit.Name.Length == 0 )
+                if (_circuitControl.Circuit.Name.Length == 0)
                 {
                     throw new Exception("You must enter a valid name");
                 }
                 ICircuit circuit = _circuitControl.Circuit;
-                if ( circuit == null )
+                if (circuit == null)
                 {
                     throw new ArgumentNullException(nameof(circuit));
                 }
@@ -157,7 +169,7 @@ namespace RLCCalculator
                 DialogResult = DialogResult.OK;
                 Close();
             }
-            catch ( Exception exception )
+            catch (Exception exception)
             {
                 MessageBox.Show(exception.Message);
             }
@@ -186,31 +198,32 @@ namespace RLCCalculator
 
         private void EditElementButtonClick(object sender, EventArgs e)
         {
-            if ( _circuitControl == null )
+            if (_circuitControl == null)
             {
                 MessageBox.Show(@"You must create circuit to edit");
                 return;
             }
-            if ( _circuitControl.CurrentComponent == null )
+            if (_circuitControl.CurrentComponent == null)
             {
                 MessageBox.Show(@"You must select an item to edit");
                 return;
             }
-            if ( _circuitControl.CurrentComponent is IElement element )
+            if (_circuitControl.CurrentComponent is IElement element)
             {
                 var elementForm = new ElementDetailForm(element);
-                if ( elementForm.ShowDialog() == DialogResult.OK )
+                if (elementForm.ShowDialog() == DialogResult.OK)
                 {
                 }
             }
             else if (_circuitControl.CurrentComponent is ICircuit circuit)
             {
                 var circuitForm = new CircuitDetailForm(FormOpenMode.Edit)
-                                  {
-                                      Circuit = circuit
-                                  };
+                {
+                    Circuit = circuit
+                };
                 circuitForm.ShowDialog();
             }
-        }
+        } 
+        #endregion
     }
 }
