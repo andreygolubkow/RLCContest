@@ -7,13 +7,17 @@ using Core;
 
 namespace Tools
 {
+
+    /// <summary>
+    /// Содержит методы расширения.
+    /// </summary>
     public static class Extensions
     {
         #region Public Methods
         /// <summary>
         /// Метод расширения для проверки правильности создания компонента эл. цепи
         /// </summary>
-        /// <param name="element"></param>
+        /// <param name="element">Элемент.</param>
         public static void TryLoad(this IComponent element)
         {
             try

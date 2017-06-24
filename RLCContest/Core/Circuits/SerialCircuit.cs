@@ -11,34 +11,48 @@ using System.Numerics;
 namespace Core.Circuits
 {
 
+    /// <summary>
+    /// Эл. цепь с последовательным соединеним элементов.
+    /// </summary>
     #region Attributes
     [Serializable]
     #endregion
-
-    /// <summary>
-    ///     Цепь с последовательным соеднинением элементов.
-    /// </summary>
     public class SerialCircuit : ICircuit
     {
         #region Private Members
+
+        /// <summary>
+        /// Список компонентов эл. цепи.
+        /// </summary>
         private readonly List<IComponent> _components;
+
+        /// <summary>
+        /// Наименование эл. цепи.
+        /// </summary>
         private string _name;
         #endregion
 
 
         #region Events
+
+        /// <inheritdoc/>
         public event EventHandler CircuitChanged;
         #endregion
 
         #region Constructors
+
+        /// <summary>
+        /// Создает экземпляр эл. цепи с последовательным соединением.  
+        /// </summary>
         public SerialCircuit()
         {
             _components = new List<IComponent>();
-        } 
+        }
         #endregion
 
         #region Implementation of IComponent
 
+        /// <inheritdoc/>
         public string Name
         {
             get => _name;
@@ -52,6 +66,7 @@ namespace Core.Circuits
             }
         }
 
+        /// <inheritdoc/>
         public void Add(IComponent component)
         {
             if ( component == null )
@@ -68,11 +83,13 @@ namespace Core.Circuits
             CircuitChanged?.Invoke(this, new EventArgs());
         }
 
+        /// <inheritdoc/>
         public bool Contains(IComponent value)
         {
             return _components.Contains(value);
         }
 
+        /// <inheritdoc/>
         public void Clear()
         {
             foreach (IComponent component in _components)
@@ -82,11 +99,13 @@ namespace Core.Circuits
             _components.Clear();
         }
 
+        /// <inheritdoc/>
         public void CopyTo(IComponent[] array, int arrayIndex)
         {
             _components.CopyTo(array, arrayIndex);
         }
 
+        /// <inheritdoc/>
         public int IndexOf(IComponent component)
         {
             if ( component == null )
@@ -96,6 +115,7 @@ namespace Core.Circuits
             return _components.IndexOf(component);
         }
 
+        /// <inheritdoc/>
         public void Insert(int index, IComponent component)
         {
             if ( component == null )
@@ -108,6 +128,7 @@ namespace Core.Circuits
             CircuitChanged?.Invoke(this, new EventArgs());
         }
 
+        /// <inheritdoc/>
         public bool Remove(IComponent component)
         {
             if ( component == null )
@@ -123,10 +144,13 @@ namespace Core.Circuits
             return false;
         }
 
+        /// <inheritdoc/>
         public int Count => _components.Count;
 
+        /// <inheritdoc/>
         public bool IsReadOnly => false;
 
+        /// <inheritdoc/>
         public void RemoveAt(int index)
         {
             IComponent component = _components[index];
@@ -135,6 +159,7 @@ namespace Core.Circuits
             CircuitChanged?.Invoke(this, new EventArgs());
         }
 
+        /// <inheritdoc/>
         public IComponent this[int index]
         {
             get => _components[index];
@@ -150,8 +175,10 @@ namespace Core.Circuits
             }
         }
 
+        /// <inheritdoc/>
         public IList<IComponent> Components => _components;
 
+        /// <inheritdoc/>
         public Complex CalculateZ(double frequency)
         {
             var z = new Complex(0, 0);
@@ -168,10 +195,6 @@ namespace Core.Circuits
         {
             return _components.GetEnumerator();
         }
-
-        #endregion
-
-        #region Implementation of IEnumerable
 
         /// <inheritdoc />
         public IEnumerator GetEnumerator()
@@ -207,16 +230,31 @@ namespace Core.Circuits
         #endregion
 
         #region Private Methods
+
+        /// <summary>
+        /// Ищет компонент с указанным именем.
+        /// </summary>
+        /// <param name="name">Имя комопнента.</param>
+        /// <returns>Компонент или null.</returns>
         private IComponent FindComponent(string name)
         {
             return _components.FirstOrDefault(c => c.Name == name);
         }
 
+        /// <summary>
+        /// Срабатывает при изменении компонента внутри цепи.
+        /// </summary>
+        /// <param name="sender">Компонент который изменился.</param>
+        /// <param name="e">Аргументы события.</param>
         private void CircuitCircuitChanged(object sender, EventArgs e)
         {
             CircuitChanged?.Invoke(sender, e);
         }
 
+        /// <summary>
+        /// Подписывается на события изменения компонента.
+        /// </summary>
+        /// <param name="component">Компонент эл. цепи.</param>
         private void SubscribeToComponent(IComponent component)
         {
             if (component is ICircuit circuit)
@@ -229,6 +267,10 @@ namespace Core.Circuits
             }
         }
 
+        /// <summary>
+        /// Отписывается от события измения компонента.
+        /// </summary>
+        /// <param name="component">Компонент эл.цепи.</param>
         private void UnsubscribeToComponent(IComponent component)
         {
             if (component is ICircuit circuit)

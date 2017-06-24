@@ -102,11 +102,7 @@ namespace Core.Elements
             }
         }
 
-        /// <summary>
-        ///     Рассчет сопротивления.
-        /// </summary>
-        /// <param name="frequency">Частота.</param>
-        /// <returns>Комплексное число.</returns>
+        /// <inheritdoc />
         public Complex CalculateZ(double frequency)
         {
             if ( frequency < 0 )

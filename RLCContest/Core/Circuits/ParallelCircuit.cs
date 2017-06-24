@@ -9,6 +9,9 @@ using System.Numerics;
 
 namespace Core.Circuits
 {
+    /// <summary>
+    /// Электрическая цепь с параллельным соединением элементов.
+    /// </summary>
     #region Attributes
     [Serializable]
     #endregion
@@ -16,14 +19,23 @@ namespace Core.Circuits
     {
 
         #region Private Members
+
+        /// <summary>
+        /// Список элементов эл. цепи.
+        /// </summary>
         private readonly List<IComponent> _components;
         #endregion
 
         #region Events
+        /// <inheritdoc/>
         public event EventHandler CircuitChanged;
         #endregion
 
         #region Constructors
+        
+        /// <summary>
+        /// Создает экземпляр эл.цепи с параллельным соединением.
+        /// </summary>
         public ParallelCircuit()
         {
             _components = new List<IComponent>();
@@ -222,16 +234,32 @@ namespace Core.Circuits
         #endregion
 
         #region Private Methods
+
+        /// <summary>
+        /// Ищет в эл.цепи компонент с указанным именем.
+        /// </summary>
+        /// <param name="name">Название компонента.</param>
+        /// <returns>Компонент эл.цепи или null</returns>
         private IComponent FindComponent(string name)
         {
             return _components.FirstOrDefault(c => c.Name == name);
         }
 
+        /// <summary>
+        /// Срабатывает при изменеии компонетов эл.цепи.
+        /// Вызывает событие изменения эл.цепи.
+        /// </summary>
+        /// <param name="sender"> Источник события.</param>
+        /// <param name="e">Параметры события.</param>
         private void CircuitCircuitChanged(object sender, EventArgs e)
         {
             CircuitChanged?.Invoke(sender, e);
         }
 
+        /// <summary>
+        /// Подписывается на событие изменения компонента.
+        /// </summary>
+        /// <param name="component">Компонент.</param>
         private void SubscribeToComponent(IComponent component)
         {
             if ( component is ICircuit circuit )
@@ -244,6 +272,10 @@ namespace Core.Circuits
             }
         }
 
+        /// <summary>
+        /// Отписывается от события изменения компонента.
+        /// </summary>
+        /// <param name="component">Компонент.</param>
         private void UnsubscribeToComponent(IComponent component)
         {
             if ( component is ICircuit circuit )

@@ -7,9 +7,20 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 namespace Tools
 {
+
+    /// <summary>
+    /// Класс сериализации. Позволяет сериализовать и десериализовать данные. 
+    /// </summary>
     public static class DataSerializer
     {
         #region Public Methods
+
+        /// <summary>
+        /// Десериализует данные из файла.
+        /// </summary>
+        /// <typeparam name="T">Тип десериализуемых данных.</typeparam>
+        /// <param name="fileName">Имя файла.</param>
+        /// <param name="container">Контейнер, куда будет записано содержимое.</param>
         public static void DeserializeBin<T>(string fileName, ref T container)
         {
             var formatter = new BinaryFormatter();
@@ -27,6 +38,12 @@ namespace Tools
             }
         }
 
+        /// <summary>
+        /// Сериализует данные в файл.
+        /// </summary>
+        /// <typeparam name="T">Тип сериализуемых данных.</typeparam>
+        /// <param name="fileName">Имя файла.</param>
+        /// <param name="container">Контейнер который требуется сериализовать.</param>
         public static void SerializeBin<T>(string fileName, T container)
         {
             var formatter = new BinaryFormatter();
