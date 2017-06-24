@@ -12,15 +12,26 @@ using Core.Elements;
 
 namespace Controls.Elements.SingleControls.Elements
 {
+
+    /// <summary>
+    /// Элемент управления для редактирования катушки индуктивности.
+    /// </summary>
     public partial class InductorElementControl : BaseElementControl
     {
         #region Private Fields
 
+        /// <summary>
+        /// Катушка индуктивности.
+        /// </summary>
         private Inductor _inductor;
 
         #endregion
 
         #region Constructors
+
+        /// <summary>
+        /// Создает новый экземпляр элемента управления.
+        /// </summary>
         public InductorElementControl()
         {
             InitializeComponent();
@@ -29,6 +40,8 @@ namespace Controls.Elements.SingleControls.Elements
         #endregion
 
         #region Public Properties
+
+        ///<inheritdoc />
         [DefaultValue(null)]
         public override IElement Element
         {

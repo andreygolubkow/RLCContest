@@ -12,16 +12,28 @@ using Tools;
 
 namespace Controls.Elements.SingleControls.BaseControls
 {
+
+    /// <summary>
+    /// Базовый элемент управления для элемента эл. цепи. 
+    /// </summary>
     #region Attrubutes
     [Serializable]
     #endregion
     public partial class BaseElementControl : UserControl
     {
         #region Private Fields
+
+        /// <summary>
+        /// Элемент эл. цепи.
+        /// </summary>
         private IElement _element;
         #endregion
 
         #region Constructors
+
+        /// <summary>
+        /// Создает экземпляр класса.
+        /// </summary>
         protected BaseElementControl()
         {
             InitializeComponent();
@@ -31,6 +43,10 @@ namespace Controls.Elements.SingleControls.BaseControls
         #endregion
 
         #region Public Properties
+
+        /// <summary>
+        /// Элемент  эл. цепи.
+        /// </summary>
         [Browsable(false)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         [EditorBrowsable(EditorBrowsableState.Never)]
@@ -55,6 +71,10 @@ namespace Controls.Elements.SingleControls.BaseControls
         #endregion
 
         #region Protected Properies
+
+        /// <summary>
+        /// Наименование элемента.
+        /// </summary>
         [DefaultValue(null)]
         protected string ElementName
         {
@@ -62,6 +82,9 @@ namespace Controls.Elements.SingleControls.BaseControls
             set => nameTextBox.Text = value ?? "";
         }
 
+        /// <summary>
+        /// Номинал элемента.
+        /// </summary>
         [DefaultValue(0)]
         protected double ElementValue
         {
@@ -71,6 +94,10 @@ namespace Controls.Elements.SingleControls.BaseControls
         #endregion
 
         #region Public Methods
+
+        /// <summary>
+        /// Очищает поля для ввода.
+        /// </summary>
         public void CleaFields()
         {
             ElementName = "";
@@ -79,6 +106,12 @@ namespace Controls.Elements.SingleControls.BaseControls
         #endregion
 
         #region Private Methods
+
+        /// <summary>
+        /// Нажатие клавиши в поле для ввода номинала.
+        /// </summary>
+        /// <param name="sender">Источник события.</param>
+        /// <param name="e">Аргументы события.</param>
         private void ValueTextBoxKeyPress(object sender, KeyPressEventArgs e)
         {
             Validators.DoubleEnterValidate(valueTextBox.Text, e);

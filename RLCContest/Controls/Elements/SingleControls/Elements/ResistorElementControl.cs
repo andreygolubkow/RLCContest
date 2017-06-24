@@ -12,15 +12,26 @@ using Core.Elements;
 
 namespace Controls.Elements.SingleControls.Elements
 {
+
+    /// <summary>
+    /// Элемент управления для редактирования ризистора.
+    /// </summary>
     public partial class ResistorElementControl : BaseElementControl
     {
         #region  Private Fields
 
+        /// <summary>
+        /// Резистор.
+        /// </summary>
         private Resistor _resistor;
 
         #endregion
 
         #region Constructors
+
+        /// <summary>
+        /// Создает новый экземпляр элемента управления.
+        /// </summary>
         public ResistorElementControl()
         {
             InitializeComponent();
@@ -28,6 +39,8 @@ namespace Controls.Elements.SingleControls.Elements
         #endregion
 
         #region Public Properties
+
+        /// <inheritdoc />
         [DefaultValue(null)]
         public override IElement Element
         {

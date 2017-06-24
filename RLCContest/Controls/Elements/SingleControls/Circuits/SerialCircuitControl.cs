@@ -10,12 +10,20 @@ using Core.Circuits;
 
 namespace Controls.Elements.SingleControls.Circuits
 {
+
+    /// <summary>
+    /// Элемент электрической цепи с последовательным соединением.
+    /// </summary>
     #region Attributes
     [Serializable]
     #endregion
     public partial class SerialCircuitControl : BaseCircuitControl
     {
         #region Constructors
+
+        /// <summary>
+        /// Создает новый экзмепляр элемента управления.
+        /// </summary>
         public SerialCircuitControl()
         {
             InitializeComponent();
@@ -25,6 +33,10 @@ namespace Controls.Elements.SingleControls.Circuits
         #endregion
 
         #region Public Properties
+
+        /// <summary>
+        /// Электрическая цепь.
+        /// </summary>
         public override ICircuit Circuit
         {
             get

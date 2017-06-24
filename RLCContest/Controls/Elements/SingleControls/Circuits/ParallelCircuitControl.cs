@@ -9,9 +9,16 @@ using Core.Circuits;
 #endregion
 namespace Controls.Elements.SingleControls.Circuits
 {
+    /// <summary>
+    /// Элемент управления для эл. цепи с параллельным соединением.
+    /// </summary>
     public partial class ParallelCircuitControl : BaseCircuitControl
     {
         #region Constructors
+
+        /// <summary>
+        /// Создает экземпляр элемента управления.
+        /// </summary>
         public ParallelCircuitControl()
         {
             InitializeComponent();
@@ -21,6 +28,10 @@ namespace Controls.Elements.SingleControls.Circuits
         #endregion
 
         #region Public Properties
+
+        /// <summary>
+        /// Электрическая цепь.
+        /// </summary>
         public override ICircuit Circuit
         {
             get

@@ -11,15 +11,26 @@ using Core.Elements;
 
 namespace Controls.Elements.SingleControls.Elements
 {
+
+    /// <summary>
+    /// Элемент управления для конденсатора.
+    /// </summary>
     public partial class CapacitorElementControl : BaseElementControl
     {
         #region Private Fields
 
+        /// <summary>
+        /// Конденсатор.
+        /// </summary>
         private Capacitor _capacitor;
 
         #endregion
 
         #region Constructors
+
+        /// <summary>
+        /// Создает новый экземпляр элемента управления.
+        /// </summary>
         public CapacitorElementControl()
         {
             InitializeComponent();
@@ -29,7 +40,9 @@ namespace Controls.Elements.SingleControls.Elements
 
         #region Overrides of BaseElementControl
 
-
+        /// <summary>
+        /// Элемент эл. цепи.
+        /// </summary>
         public override IElement Element
         {
             get

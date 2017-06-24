@@ -9,6 +9,10 @@ using Core;
 
 namespace Controls.Elements.SingleControls.BaseControls
 {
+
+    /// <summary>
+    /// Базовый элемент управления для эл. цепей.
+    /// </summary>
     #region Attributes
     [Serializable]
     #endregion
@@ -16,10 +20,18 @@ namespace Controls.Elements.SingleControls.BaseControls
     {
 
         #region Protected Fields
+
+        /// <summary>
+        /// Электрическая цепь.
+        /// </summary>
         protected ICircuit _circuit;
         #endregion
 
         #region Constructors
+
+        /// <summary>
+        /// Создает новый экземпляр элемента управлений.
+        /// </summary>
         protected BaseCircuitControl()
         {
             InitializeComponent();
@@ -28,6 +40,10 @@ namespace Controls.Elements.SingleControls.BaseControls
         #endregion
 
         #region Public Properties
+
+        /// <summary>
+        /// Электрическая цепь.
+        /// </summary>
         [Browsable(false)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         [EditorBrowsable(EditorBrowsableState.Never)]
@@ -43,12 +59,18 @@ namespace Controls.Elements.SingleControls.BaseControls
             }
         }
 
+        /// <summary>
+        /// Текущий выбранный компонент.
+        /// </summary>
         [Browsable(false)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         [EditorBrowsable(EditorBrowsableState.Never)]
         [DefaultValue(null)]
         public Core.IComponent CurrentComponent => circuitListView.Current;
 
+        /// <summary>
+        /// Наименование цепи.
+        /// </summary>
         public string ElementName
         {
             get
@@ -63,11 +85,20 @@ namespace Controls.Elements.SingleControls.BaseControls
         #endregion
 
         #region Public Methods
+
+        /// <summary>
+        /// Добавление эл. элемента в цепь.
+        /// </summary>
+        /// <param name="component">Элемент эл. цепи.</param>
         public void Add(Core.IComponent component)
         {
             _circuit.Add(component);
         }
 
+        /// <summary>
+        /// Удаляет элемент из эл. цепи.
+        /// </summary>
+        /// <param name="component">Компонент эл.цепи.</param>
         public void Remove(Core.IComponent component)
         {
             _circuit.Remove(component);
@@ -75,6 +106,12 @@ namespace Controls.Elements.SingleControls.BaseControls
         #endregion
 
         #region Private Methods
+
+        /// <summary>
+        /// Изменение имени в текстовом поле.
+        /// </summary>
+        /// <param name="sender">Текстовое поле.</param>
+        /// <param name="e">Аргументы.</param>
         private void NameTextBoxTextChanged(object sender, EventArgs e)
         {
             if (_circuit != null)
