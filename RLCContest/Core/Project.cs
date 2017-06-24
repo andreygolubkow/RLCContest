@@ -5,17 +5,34 @@ using System.Collections.Generic;
 
 namespace Core
 {
+    /// <summary>
+    /// Проект.
+    /// Содержит в себе список частот и список эл. цепей(эл. компонентов).
+    /// </summary>
     #region Attributes
     [Serializable] 
     #endregion
     public class Project : ICloneable
     {
         #region Private Members
+
+        /// <summary>
+        /// Список частот. 
+        /// </summary>
         private List<double> _frequencies;
+
+        /// <summary>
+        /// Список эл. цепей.
+        /// </summary>
         private List<IComponent> _circuits;
+
         #endregion
 
         #region Constructors
+
+        /// <summary>
+        /// Создает проект с пустыми списками частот и эл.цепей.
+        /// </summary>
         public Project()
         {
             _frequencies = new List<double>();
@@ -24,6 +41,10 @@ namespace Core
         #endregion
 
         #region Properties
+
+        /// <summary>
+        /// Список частот.
+        /// </summary>
         public List<double> Frequencies
         {
             get
@@ -38,6 +59,9 @@ namespace Core
             set => _frequencies = value;
         }
 
+        /// <summary>
+        /// Список эл.цепей.
+        /// </summary>
         public List<IComponent> Circuits
         {
             get

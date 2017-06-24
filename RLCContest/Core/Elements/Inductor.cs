@@ -7,12 +7,12 @@ using System.Numerics;
 namespace Core.Elements
 {
 
+    /// <summary>
+    /// Класс катушки индуктивности.
+    /// </summary>
     #region Attributes
     [Serializable] 
     #endregion
-    /// <summary>
-    /// The inductor.
-    /// </summary>
     public class Inductor : IElement
     {
         #region Private Members
@@ -91,6 +91,10 @@ namespace Core.Elements
                 if ( value < 0 )
                 {
                     throw new ArgumentException("Inductance can not be negative.");
+                }
+                if (!(Math.Abs(value - _value) > 0.0001))
+                {
+                    return;
                 }
 
                 _value = value;

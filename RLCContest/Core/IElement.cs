@@ -10,10 +10,17 @@ namespace Core
     public interface IElement : IComponent
     {
         #region Events
+
+        /// <summary>
+        /// Событие, возникающее при изменении свойств данного компонента.
+        /// </summary>
         event EventHandler ValueChanged;
         #endregion
 
         #region Properties
+        /// <summary>
+        /// Характеристика для данного компонента.
+        /// </summary>
         double Value { get; set; } 
         #endregion
     }

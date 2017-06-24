@@ -90,7 +90,10 @@ namespace Core.Elements
                 {
                     throw new ArgumentException("Resistance can not be negative.");
                 }
-
+                if (!(Math.Abs(value - _value) > 0.0001))
+                {
+                    return;
+                }
                 _value = value;
                 ValueChanged?.Invoke(this, new EventArgs());
             }

@@ -7,22 +7,42 @@ using System.Numerics;
 
 namespace Core.Elements
 {
+    /// <summary>
+    /// Конденсатор.
+    /// </summary>
     #region Attrubutes
     [Serializable] 
     #endregion
     public class Capacitor : IElement
     {
         #region Private Members
+
+        /// <summary>
+        /// Наименование конденсатора.
+        /// </summary>
         private string _name;
+
+        /// <summary>
+        /// Емкость конденсатора.
+        /// </summary>
         private double _value;
         #endregion
 
         #region Constructors
+        /// <summary>
+        /// Инициализирует новый экземпляр конденсатора.
+        /// С именем New Capacitor и емкостью 0. 
+        /// </summary>
         public Capacitor()
             : this("New Capacitor", 0)
         {
         }
-
+        
+        /// <summary>
+        /// Инициализирует новый экземпляр класса конденсатора.
+        /// </summary>
+        /// <param name="name">Название конденсатора.</param>
+        /// <param name="value">Емкость конденсатора.</param>
         public Capacitor(string name, double value)
         {
             Name = name;
@@ -33,7 +53,7 @@ namespace Core.Elements
         #region Implementation of IElement
 
         /// <summary>
-        ///     Событие, вызывается когда изменено значение.
+        /// Событие, вызывается когда изменено значение.
         /// </summary>
         public event EventHandler ValueChanged;
 
@@ -54,7 +74,7 @@ namespace Core.Elements
         }
 
         /// <summary>
-        ///     Номинал.
+        /// Номинал.
         /// </summary>
         public double Value
         {
@@ -65,13 +85,17 @@ namespace Core.Elements
                 {
                     throw new ArgumentException("The capacity must not be less than zero.");
                 }
+                if (!(Math.Abs(value - _value) > 0.0001))
+                {
+                    return;
+                }
                 _value = value;
                 ValueChanged?.Invoke(this, new EventArgs());
             }
         }
 
         /// <summary>
-        ///     Рассчет сопротивления.
+        /// Рассчет сопротивления.
         /// </summary>
         /// <param name="frequency">Частота.</param>
         /// <returns>Комплексное сопротивление.</returns>
