@@ -12,24 +12,63 @@ using Core.Elements;
 
 namespace CircuitDrawer
 {
+    /// <summary>
+    /// Класс отрисовщика схем.
+    /// </summary>
     public static class CircuitImageDrawer
     {
 
         #region Private Members
+        /// <summary>
+        /// Процедура рисования элемента.
+        /// </summary>
+        /// <param name="graphics"></param>
         private delegate void DrawElementProcedure(Graphics graphics);
-
+        
+        /// <summary>
+        /// Стандартная кисть для линий.
+        /// </summary>
         private static readonly Pen _standartPen = new Pen(Color.Black);
+
+        /// <summary>
+        /// Размер пустого битмапа.
+        /// </summary>
         private static readonly Size _emptyImageSize = new Size(1,1);
+
+        /// <summary>
+        /// Размер простейшего элемента эл.цепи     
+        /// </summary>
         private static readonly Size _elementSize = new Size(50, 50);
 
+        /// <summary>
+        /// Длина входной линии.
+        /// </summary>
         private const int InputLineLength = 10;
+
+        /// <summary>
+        /// Длина выходной линии.
+        /// </summary>
         private const int OutputLineLength = 20;
+
+        /// <summary>
+        /// Делитель изображения. Определяет в какой части будет находится входная и выходная линии.
+        /// </summary>
         private const int ImageDellimitterConst = 2;
+
+        /// <summary>
+        /// Определяет где будет находиться выходная вертикальная линий у параллельной цепи.
+        /// </summary>
         private const int ParallelConnectorMargin = 8;
 
         #endregion
 
         #region Public Methods
+        
+        /// <summary>
+        /// Метод позволяющий отрисовать(вернуть битмап) эл. цепь.
+        /// </summary>
+        /// <param name="circuit">Электическая цепь.</param>
+        /// <returns>Рисунок эл. цепи.</returns>
         public static Bitmap GetImage(this ICircuit circuit)
         {
             if (circuit is SerialCircuit serial)
@@ -48,6 +87,12 @@ namespace CircuitDrawer
         #region Private Methods
 
         #region Circuit Drawers
+
+        /// <summary>
+        /// Метод отрисовывающий последовательную электрическую цепь.
+        /// </summary>
+        /// <param name="circuit">Электрическая цепь с последовательным соедининением.</param>
+        /// <returns>Рисунок эл. цепи.</returns>
         private static Bitmap GetCircuitImage(SerialCircuit circuit)
         {
             var size = GetSize(circuit);
@@ -86,6 +131,11 @@ namespace CircuitDrawer
             return bitmap;
         }
 
+        /// <summary>
+        /// Метод отрисовывающий эл. цепь с параллельным соединением.
+        /// </summary>
+        /// <param name="circuit">Эл. цепь с параллельным соединением.</param>
+        /// <returns>Рисунок эл. цепи.</returns>
         private static Bitmap GetCircuitImage(ParallelCircuit circuit)
         {
             var size = GetSize(circuit);
@@ -151,6 +201,12 @@ namespace CircuitDrawer
         #endregion
 
         #region Get Size Methods
+
+        /// <summary>
+        /// Вычисляет размер любого компонента эл. цепи.
+        /// </summary>
+        /// <param name="component">Компонент эл. цепи.</param>
+        /// <returns>Размер рисунка компонента эл. цепи.</returns>
         private static Size GetSize(IComponent component)
         {
             if (component is ICircuit circuit)
@@ -164,11 +220,21 @@ namespace CircuitDrawer
             return new Size(_emptyImageSize.Width, _emptyImageSize.Height);
         }
 
+        /// <summary>
+        /// Вычисляет размер элемента эл. цепи.
+        /// </summary>
+        /// <param name="component">Элемент эл. цепи.</param>
+        /// <returns>Размер рисунка элемента эл. цепи.</returns>
         private static Size GetSize(IElement component)
         {
             return new Size(_elementSize.Width, _elementSize.Width);
         }
 
+        /// <summary>
+        /// Вычисляет размер рисунка эл. цепи.
+        /// </summary>
+        /// <param name="circuit">Эл. цепь.</param>
+        /// <returns>Размер рисунка эл. цепи.</returns>
         private static Size GetSize(ICircuit circuit)
         {
             if (circuit is SerialCircuit serialCircuit)
@@ -182,7 +248,11 @@ namespace CircuitDrawer
             return new Size(1, 1);
         }
 
-
+        /// <summary>
+        /// Вычисляет размер рисунка эл. цепи с последовательным соединением.
+        /// </summary>
+        /// <param name="circuit">Эл. цепь с последовательным соединением.</param>
+        /// <returns>Размер рисунка эл.цепи.</returns>
         private static Size GetSize(SerialCircuit circuit)
         {
             var size = circuit.Count > 0 ? new Size(0, 0) : new Size(_emptyImageSize.Width, _emptyImageSize.Height);
@@ -209,6 +279,11 @@ namespace CircuitDrawer
             return size;
         }
 
+        /// <summary>
+        /// Вычисляет размер рисунка эл. цепи с параллельным соединением.
+        /// </summary>
+        /// <param name="circuit">Эл. цепь с параллельным соединением.</param>
+        /// <returns>Размер рисунка эл.цепи.</returns>
         private static Size GetSize(ParallelCircuit circuit)
         {
             var size = circuit.Count > 0 ? new Size(0, 0) : new Size(_emptyImageSize.Width, _emptyImageSize.Height);
@@ -239,12 +314,17 @@ namespace CircuitDrawer
         #endregion
 
         #region Element Drawers
-
-        private static Bitmap GetElementImage(IElement component)
+        
+        /// <summary>
+        /// Рисует элемент электрической цепи.
+        /// </summary>
+        /// <param name="element">Элемент эл. цепи.</param>
+        /// <returns>Рисунок элемента эл. цепи.</returns>
+        private static Bitmap GetElementImage(IElement element)
         {
-            DrawElementProcedure drawer = ElementDrawProcedureSelector(component);
+            DrawElementProcedure drawer = ElementDrawProcedureSelector(element);
 
-            var bitmap = new Bitmap(GetSize(component).Height, GetSize(component).Width);
+            var bitmap = new Bitmap(GetSize(element).Height, GetSize(element).Width);
             using (Graphics g = Graphics.FromImage(bitmap))
             {
                 drawer(g);
@@ -252,7 +332,11 @@ namespace CircuitDrawer
             return bitmap;
         }
 
-
+        /// <summary>
+        /// Выбирает метод рисования элемента эл.цепи.
+        /// </summary>
+        /// <param name="element">Элмент эл. цепи.</param>
+        /// <returns>Метод отрисовки элемента.</returns>
         private static DrawElementProcedure ElementDrawProcedureSelector(IElement element)
         {
             if (element is Resistor)
@@ -270,6 +354,10 @@ namespace CircuitDrawer
             throw new NotImplementedException("Unknown element");
         }
 
+        /// <summary>
+        /// Рисует резистор.
+        /// </summary>
+        /// <param name="graphics">Поверхность рисования GDI+.</param>
         private static void DrawResistor(Graphics graphics)
         {
             graphics.DrawRectangle(_standartPen, new Rectangle(10, 17, 30, 16));
@@ -280,6 +368,10 @@ namespace CircuitDrawer
             graphics.DrawLine(_standartPen, 40, 25, _elementSize.Width, 25);
         }
 
+        /// <summary>
+        /// Рисует конденсатор.
+        /// </summary>
+        /// <param name="graphics">Поверхность рисования GDI+.</param>
         private static void DrawCapacitor(Graphics graphics)
         {
             graphics.DrawLine(_standartPen, 20, 17, 20, 32);
@@ -291,6 +383,10 @@ namespace CircuitDrawer
             graphics.DrawLine(_standartPen, 29, 25, _elementSize.Width, 25);
         }
 
+        /// <summary>
+        /// Рисует катушку индуктивности.
+        /// </summary>
+        /// <param name="graphics">Поверхность рисования GDI+.</param>
         private static void DrawInductor(Graphics graphics)
         {
 
