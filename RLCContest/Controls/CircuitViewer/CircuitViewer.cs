@@ -10,9 +10,17 @@ using Core;
 
 namespace Controls.CircuitViewer
 {
+
+    /// <summary>
+    /// Элемент управления для просмотра комплексного сопротивления цепи.
+    /// </summary>
     public partial class CircuitViewer : UserControl
     {
         #region Constructors
+
+        /// <summary>
+        /// Создает новый экзмепляр элемента управления.
+        /// </summary>
         public CircuitViewer()
         {
             InitializeComponent();
@@ -21,6 +29,12 @@ namespace Controls.CircuitViewer
         #endregion
 
         #region Public Methods
+
+        /// <summary>
+        /// Заполнение таблицы рассчетами Z.
+        /// </summary>
+        /// <param name="circuit">Эл. цепь для который требуется рассчитать Z.</param>
+        /// <param name="freq">Массив частот.</param>
         [Browsable(false)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         [EditorBrowsable(EditorBrowsableState.Never)]
@@ -34,6 +48,9 @@ namespace Controls.CircuitViewer
             FillCircuitTable(circuit, freq);
         }
 
+        /// <summary>
+        /// Очистка таблицы с данными.
+        /// </summary>
         public void ClearTable()
         {
             circuitGridView.Rows.Clear();
@@ -44,6 +61,11 @@ namespace Controls.CircuitViewer
         #endregion
 
         #region Private Methods
+
+        /// <summary>
+        /// Строит столбцы для массива частот.
+        /// </summary>
+        /// <param name="freq">Массив частот.</param>
         private void BuildFreqRows(double[] freq)
         {
             foreach (double f in freq)
@@ -59,6 +81,9 @@ namespace Controls.CircuitViewer
             }
         }
 
+        /// <summary>
+        /// Строит стандартные столбцы.
+        /// </summary>
         private void BuildStandartRows()
         {
             var nameColumn = new DataGridViewColumn
@@ -75,6 +100,11 @@ namespace Controls.CircuitViewer
             circuitGridView.Columns.Add(elementColumn);
         }
 
+        /// <summary>
+        /// Вставляет данные о сопротивлении в таблицу.
+        /// </summary>
+        /// <param name="circuit">Эл. цепь для рассчета.</param>
+        /// <param name="freq">Массив частот.</param>
         private void FillCircuitTable(ICircuit circuit, double[] freq)
         {
             for (int elementIndex = -1; elementIndex < circuit.Count; elementIndex++)

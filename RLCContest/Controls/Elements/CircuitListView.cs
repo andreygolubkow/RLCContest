@@ -11,14 +11,25 @@ using IComponent = Core.IComponent;
 
 namespace Controls.Elements
 {
+    /// <summary>
+    /// Элемент управления для просмотра информации о эл. цепи.
+    /// </summary>
     public partial class CircuitListView : UserControl
     {
         #region Private Members
+
+        /// <summary>
+        /// Эл. цепь.
+        /// </summary>
         private ICircuit _circuit;
 
         #endregion
 
         #region Constructors
+
+        /// <summary>
+        /// Создает новый экземпляр элемента управления.
+        /// </summary>
         public CircuitListView()
         {
             InitializeComponent();
@@ -26,6 +37,10 @@ namespace Controls.Elements
         #endregion
 
         #region Public Properties
+
+        /// <summary>
+        /// Электрическая цепь.
+        /// </summary>
         [Browsable(false)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         [EditorBrowsable(EditorBrowsableState.Never)]
@@ -53,6 +68,9 @@ namespace Controls.Elements
             }
         }
 
+        /// <summary>
+        /// Текущий выбранный компонент эл. цепи.
+        /// </summary>
         [Browsable(false)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         [EditorBrowsable(EditorBrowsableState.Never)]
@@ -75,6 +93,11 @@ namespace Controls.Elements
         #endregion
 
         #region Private Methods
+
+        /// <summary>
+        /// Заполняет список элементами.
+        /// </summary>
+        /// <param name="circuit"></param>
         private void FillList(ICircuit circuit)
         {
             listBox.Items.Clear();
@@ -84,6 +107,11 @@ namespace Controls.Elements
             }
         }
 
+        /// <summary>
+        /// Метод срабатывает при изменени эл. цепью своих параметров.
+        /// </summary>
+        /// <param name="sender">Эл. цепь.</param>
+        /// <param name="e">Аргументы события.</param>
         private void CircuitChanged(object sender, EventArgs e)
         {
             FillList(_circuit);
