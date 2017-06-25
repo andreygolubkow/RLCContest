@@ -9,15 +9,30 @@ using Core;
 
 namespace RLCCalculator
 {
+
+    /// <summary>
+    /// Форма рассчета сопротивления.
+    /// </summary>
     public partial class CalculatorZForm : Form
     {
         #region Private Fields
-        private ICircuit _circuit;
-        private List<double> _frequencies;
 
+        /// <summary>
+        /// Электрическая цепь для рассчета.
+        /// </summary>
+        private ICircuit _circuit;
+
+        /// <summary>
+        /// Список частот для рассчета.
+        /// </summary>
+        private List<double> _frequencies;
         #endregion
 
         #region Constructors
+
+        /// <summary>
+        /// Создает экземпляр формы.
+        /// </summary>
         public CalculatorZForm()
         {
             InitializeComponent();
@@ -26,6 +41,10 @@ namespace RLCCalculator
         #endregion
 
         #region Public Properties
+
+        /// <summary>
+        /// Электрическая цепь для рассчета.
+        /// </summary>
         public ICircuit Circuit
         {
             set
@@ -46,6 +65,9 @@ namespace RLCCalculator
             }
         }
 
+        /// <summary>
+        /// Список частот для рассчета.
+        /// </summary>
         public List<double> Frequencies
         {
             set
@@ -60,6 +82,12 @@ namespace RLCCalculator
         #endregion
 
         #region Private Methods
+
+        /// <summary>
+        /// Метод срабатывается при изменениии параметров цепи.
+        /// </summary>
+        /// <param name="sender">Цепь изменившая параметр.</param>
+        /// <param name="e">Аргументы.</param>
         private void CircuitChanged(object sender, EventArgs e)
         {
             if (_circuit != null)
@@ -68,6 +96,11 @@ namespace RLCCalculator
             }
         }
 
+        /// <summary>
+        /// Не дает закрыть форму.
+        /// </summary>
+        /// <param name="sender">Источник события.</param>
+        /// <param name="e">Аргументы.</param>
         private void CalculatorZFormFormClosing(object sender, FormClosingEventArgs e)
         {
             e.Cancel = true;

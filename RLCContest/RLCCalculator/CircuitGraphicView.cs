@@ -10,9 +10,17 @@ using Core;
 
 namespace RLCCalculator
 {
+    /// <summary>
+    /// Форма просмотра грифического представления схемы.
+    /// </summary>
     public partial class CircuitGraphicView : Form
     {
         #region Constructors
+
+        /// <summary>
+        /// Создает новый экземпляр формы.
+        /// </summary>
+        /// <param name="circuit">Эл. цепь для просмотра.</param>
         public CircuitGraphicView(ICircuit circuit)
         {
             InitializeComponent();

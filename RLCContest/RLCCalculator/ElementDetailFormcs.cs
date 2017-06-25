@@ -14,14 +14,25 @@ using Tools;
 
 namespace RLCCalculator
 {
+    /// <summary>
+    /// Форма просмотра и редактирования элемента.
+    /// </summary>
     public partial class ElementDetailForm : Form
     {
         #region Private Fields
-        private BaseElementControl _elementControl;
 
+        /// <summary>
+        /// Контрол для редактирования элементов.
+        /// </summary>
+        private BaseElementControl _elementControl;
         #endregion
 
         #region Constructors
+
+        /// <summary>
+        /// Создает новый экземпляр формы.
+        /// </summary>
+        /// <param name="element">Элемент для редактирования.</param>
         public ElementDetailForm(IElement element = null)
         {
             InitializeComponent();
@@ -57,16 +68,31 @@ namespace RLCCalculator
         #endregion
 
         #region Public Properties
+
+        /// <summary>
+        /// Элемент эл. цепи.
+        /// </summary>
         public IElement Element => _elementControl.Element;
         #endregion
 
         #region Private Methods
+
+        /// <summary>
+        /// Нажатие на кнопку отмены редактирования.
+        /// </summary>
+        /// <param name="sender">Источник события.</param>
+        /// <param name="e">Аргументы.</param>
         private void CancelButtonClick(object sender, EventArgs e)
         {
             DialogResult = DialogResult.Cancel;
             Close();
         }
 
+        /// <summary>
+        /// Нажатие на кнопку принятие изменений.
+        /// </summary>
+        /// <param name="sender">Источник события.</param>
+        /// <param name="e">Аргументы.</param>
         private void OkButtonClick(object sender, EventArgs e)
         {
             if (_elementControl == null)
@@ -91,6 +117,11 @@ namespace RLCCalculator
 
         }
 
+        /// <summary>
+        /// Выбор типа элемента.
+        /// </summary>
+        /// <param name="sender">Источник события.</param>
+        /// <param name="e">Аргументы.</param>
         private void ComponentTypeComboBoxSelectedIndexChanged(object sender, EventArgs e)
         {
             capacitorElementControl.Visible = componentTypeComboBox.SelectedIndex == 0;

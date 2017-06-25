@@ -14,15 +14,31 @@ using Tools;
 
 namespace RLCCalculator
 {
+
+    /// <summary>
+    /// Класс редактирования эл. цепи.
+    /// </summary>
     public partial class CircuitDetailForm : Form
     {
         #region Private Fields
-        private BaseCircuitControl _circuitControl;
-        private readonly FormOpenMode _mode;
 
+        /// <summary>
+        /// Контрол для редактирования цепи.
+        /// </summary>
+        private BaseCircuitControl _circuitControl;
+
+        /// <summary>
+        /// Тип открытия формы.
+        /// </summary>
+        private readonly FormOpenMode _mode;
         #endregion
 
         #region Constructors
+
+        /// <summary>
+        /// Создает новый экземпляр формы.
+        /// </summary>
+        /// <param name="mode">Тип открытия формы.</param>
         public CircuitDetailForm(FormOpenMode mode = FormOpenMode.Create)
         {
             InitializeComponent();
@@ -57,6 +73,10 @@ namespace RLCCalculator
         #endregion
 
         #region Public Properties
+
+        /// <summary>
+        /// Электрическая цепь.
+        /// </summary>
         public ICircuit Circuit
         {
             set
@@ -79,6 +99,12 @@ namespace RLCCalculator
         #endregion
 
         #region Private Methods
+
+        /// <summary>
+        /// Предотвращает закрытие формы в лайв режиме.
+        /// </summary>
+        /// <param name="sender">Источник события.</param>
+        /// <param name="e">Аргументы.</param>
         private void CircuitDetailFormFormClosing(object sender, FormClosingEventArgs e)
         {
             if (_mode == FormOpenMode.LiveEdit)
@@ -89,6 +115,11 @@ namespace RLCCalculator
 
         }
 
+        /// <summary>
+        /// Нажатие на кнопку удаления элемента.
+        /// </summary>
+        /// <param name="sender">Источник события.</param>
+        /// <param name="e">Аргументы.</param>
         private void RemoveElementButtonClick(object sender, EventArgs e)
         {
             if (_circuitControl == null)
@@ -104,6 +135,11 @@ namespace RLCCalculator
             _circuitControl.Remove(_circuitControl.CurrentComponent);
         }
 
+        /// <summary>
+        /// Нажатие на кнопку добавления элемента.
+        /// </summary>
+        /// <param name="sender">Источник события.</param>
+        /// <param name="e">Аргументы.</param>
         private void AddComponentButtonClick(object sender, EventArgs e)
         {
             if (_circuitControl == null)
@@ -126,6 +162,11 @@ namespace RLCCalculator
             }
         }
 
+        /// <summary>
+        /// Изменение элемента в комбо боксе. Показывает нужный контрол для элемента.
+        /// </summary>
+        /// <param name="sender">Источник события.</param>
+        /// <param name="e">Аргументы.</param>
         private void CircuitTypeComboBoxSelectedIndexChanged(object sender, EventArgs e)
         {
 
@@ -147,6 +188,11 @@ namespace RLCCalculator
             }
         }
 
+        /// <summary>
+        /// Нажатие на кнопку создания элемента.
+        /// </summary>
+        /// <param name="sender">Источник события.</param>
+        /// <param name="e">Аргументы.</param>
         private void CreateButtonClick(object sender, EventArgs e)
         {
             if (_circuitControl == null)
@@ -175,6 +221,11 @@ namespace RLCCalculator
             }
         }
 
+        /// <summary>
+        /// Нажатие на кнопку добавления эл.цепи.
+        /// </summary>
+        /// <param name="sender">Источник события.</param>
+        /// <param name="e">Аргументы.</param>
         private void AddSubcircuitButtonClick(object sender, EventArgs e)
         {
             if (_circuitControl == null)
@@ -196,6 +247,11 @@ namespace RLCCalculator
             }
         }
 
+        /// <summary>
+        /// Нажатие на кнопку редактирования элемента.
+        /// </summary>
+        /// <param name="sender">Источник события.</param>
+        /// <param name="e">Аргументы.</param>
         private void EditElementButtonClick(object sender, EventArgs e)
         {
             if (_circuitControl == null)
