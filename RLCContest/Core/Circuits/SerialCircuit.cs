@@ -246,7 +246,7 @@ namespace Core.Circuits
         /// </summary>
         /// <param name="sender">Компонент который изменился.</param>
         /// <param name="e">Аргументы события.</param>
-        private void CircuitCircuitChanged(object sender, EventArgs e)
+        private void Circuit_Changed(object sender, EventArgs e)
         {
             CircuitChanged?.Invoke(sender, e);
         }
@@ -259,11 +259,11 @@ namespace Core.Circuits
         {
             if (component is ICircuit circuit)
             {
-                circuit.CircuitChanged += CircuitCircuitChanged;
+                circuit.CircuitChanged += Circuit_Changed;
             }
             else if (component is IElement element)
             {
-                element.ValueChanged += CircuitCircuitChanged;
+                element.ValueChanged += Circuit_Changed;
             }
         }
 
@@ -275,11 +275,11 @@ namespace Core.Circuits
         {
             if (component is ICircuit circuit)
             {
-                circuit.CircuitChanged -= CircuitCircuitChanged;
+                circuit.CircuitChanged -= Circuit_Changed;
             }
             else if (component is IElement element)
             {
-                element.ValueChanged -= CircuitCircuitChanged;
+                element.ValueChanged -= Circuit_Changed;
             }
         }
 

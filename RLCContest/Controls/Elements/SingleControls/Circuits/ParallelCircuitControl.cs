@@ -22,7 +22,6 @@ namespace Controls.Elements.SingleControls.Circuits
         public ParallelCircuitControl()
         {
             InitializeComponent();
-
             _circuit = new ParallelCircuit();
         }
         #endregion

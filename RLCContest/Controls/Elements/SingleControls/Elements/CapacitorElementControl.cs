@@ -34,7 +34,6 @@ namespace Controls.Elements.SingleControls.Elements
         public CapacitorElementControl()
         {
             InitializeComponent();
-
         } 
         #endregion
 

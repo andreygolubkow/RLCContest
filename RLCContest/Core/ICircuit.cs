@@ -1,10 +1,15 @@
 ﻿#region Using
+
 using System;
 using System.Collections.Generic;
 
 #endregion
+
 namespace Core
 {
+    /// <summary>
+    /// Электрическая цепь.
+    /// </summary>
     public interface ICircuit : IComponent, IList<IComponent>
     {
         #region Events 

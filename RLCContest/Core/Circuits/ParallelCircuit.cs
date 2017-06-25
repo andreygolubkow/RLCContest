@@ -1,4 +1,5 @@
 ﻿#region Using
+
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -13,6 +14,7 @@ namespace Core.Circuits
     /// Электрическая цепь с параллельным соединением элементов.
     /// </summary>
     #region Attributes
+
     [Serializable]
     #endregion
     public class ParallelCircuit : ICircuit
@@ -27,6 +29,7 @@ namespace Core.Circuits
         #endregion
 
         #region Events
+
         /// <inheritdoc/>
         public event EventHandler CircuitChanged;
         #endregion

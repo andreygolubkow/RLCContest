@@ -53,16 +53,8 @@ namespace Controls.Elements.SingleControls.Circuits
                 if (_circuit != null)
                 {
                 }
-                if (value == null)
-                {
-                    _circuit = new SerialCircuit();
 
-                }
-                else
-                {
-                    _circuit = value;
-                }
-
+                _circuit = value ?? new SerialCircuit();
                 base.Circuit = _circuit;
             }
         } 

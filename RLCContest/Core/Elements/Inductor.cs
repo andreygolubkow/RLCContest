@@ -109,6 +109,7 @@ namespace Core.Elements
             {
                 throw new ArgumentException("The frequency can not be negative.");
             }
+
             return new Complex(0, 2 * Math.PI * frequency * Value);
         }
 
