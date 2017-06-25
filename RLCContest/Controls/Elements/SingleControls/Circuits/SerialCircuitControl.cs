@@ -33,7 +33,7 @@ namespace Controls.Elements.SingleControls.Circuits
         #endregion
 
         #region Public Properties
-
+        //TODO убрать отступы между строками кода внутри блока
         /// <summary>
         /// Электрическая цепь.
         /// </summary>

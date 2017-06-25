@@ -60,7 +60,7 @@ namespace Core.Elements
         ///     Вызывается при изменении номинала.
         /// </summary>
         public event EventHandler ValueChanged;
-
+        //TODO убрать отступ между строк в блоке set. Аналагично в Value
         /// <summary>
         ///     Название элемента.
         /// </summary>

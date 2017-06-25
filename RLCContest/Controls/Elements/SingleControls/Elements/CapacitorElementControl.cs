@@ -27,7 +27,7 @@ namespace Controls.Elements.SingleControls.Elements
         #endregion
 
         #region Constructors
-
+        //TODO убрать пустую строку
         /// <summary>
         /// Создает новый экземпляр элемента управления.
         /// </summary>
