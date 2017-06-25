@@ -58,7 +58,7 @@ namespace Core.Elements
         ///     Срабатывает при изменении сопротивления.
         /// </summary>
         public event EventHandler ValueChanged;
-
+        //TODO убрать отступ между строк в блоке set
         /// <summary>
         ///     Название элемента.
         /// </summary>

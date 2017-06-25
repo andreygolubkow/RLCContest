@@ -240,7 +240,7 @@ namespace Core.Circuits
         {
             return _components.FirstOrDefault(c => c.Name == name);
         }
-
+        //TODO некорректное наименование метода CircuitCircuitChanged
         /// <summary>
         /// Срабатывает при изменении компонента внутри цепи.
         /// </summary>

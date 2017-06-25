@@ -63,7 +63,8 @@ namespace CircuitDrawer
         #endregion
 
         #region Public Methods
-        
+        //TODO в summary - Метод, позволяющий - пропустил запятую
+        //TODO  других комментариях также аналогичные ошибки
         /// <summary>
         /// Метод позволяющий отрисовать(вернуть битмап) эл. цепь.
         /// </summary>

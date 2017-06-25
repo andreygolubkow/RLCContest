@@ -15,7 +15,7 @@ namespace Controls.Elements.SingleControls.Circuits
     public partial class ParallelCircuitControl : BaseCircuitControl
     {
         #region Constructors
-
+        //TODO убери отступ между строками кода в конструкторе
         /// <summary>
         /// Создает экземпляр элемента управления.
         /// </summary>

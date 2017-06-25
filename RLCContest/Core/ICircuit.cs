@@ -1,8 +1,10 @@
 ﻿#region Using
+
 using System;
 using System.Collections.Generic;
 
 #endregion
+
 namespace Core
 {
     public interface ICircuit : IComponent, IList<IComponent>
