@@ -9,14 +9,27 @@ using Tools;
 
 namespace RLCCalculator
 {
+
+    /// <summary>
+    /// Форма редактирования списка частот.
+    /// </summary>
     public partial class FrequencyEditorForm : Form
     {
         #region Private Fields
+
+        /// <summary>
+        /// Список частот.
+        /// </summary>
         private List<double> _freqDoubles;
 
         #endregion
 
         #region Constructors
+
+        /// <summary>
+        /// Создает новый экземпляр формы.
+        /// </summary>
+        /// <param name="frequencies">Список частот.</param>
         public FrequencyEditorForm(List<double> frequencies)
         {
             InitializeComponent();
@@ -27,11 +40,21 @@ namespace RLCCalculator
         #endregion
 
         #region Public Properties
+
+        /// <summary>
+        /// Список частот.
+        /// </summary>
         public List<double> Frequencies => _freqDoubles;
 
         #endregion
 
         #region Private Methods
+
+        /// <summary>
+        /// Добавление частоты.
+        /// </summary>
+        /// <param name="sender">Источник события.</param>
+        /// <param name="e">Аргументы.</param>
         private void AddButtonClick(object sender, EventArgs e)
         {
             if (frequencyTextBox.Text.Length == 0)
@@ -55,6 +78,11 @@ namespace RLCCalculator
 
         }
 
+        /// <summary>
+        /// Нажатие на кнопку удаления частоты.
+        /// </summary>
+        /// <param name="sender">Источник события.</param>
+        /// <param name="e">Аргументы.</param>
         private void RemoveButtonClick(object sender, EventArgs e)
         {
             if (frequenciesListBox.SelectedIndex == -1)
@@ -65,6 +93,11 @@ namespace RLCCalculator
             doubleBindingSource.RemoveCurrent();
         }
 
+        /// <summary>
+        /// Нажатие клавишы в текст боксе для ввода частоты.
+        /// </summary>
+        /// <param name="sender">Источник события.</param>
+        /// <param name="e">Аргументы.</param>
         private void FrequencyTextBoxKeyPress(object sender, KeyPressEventArgs e)
         {
             Validators.DoubleEnterValidate(frequencyTextBox.Text, e);

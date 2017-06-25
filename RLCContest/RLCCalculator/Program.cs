@@ -6,6 +6,9 @@ using System.Windows.Forms;
 
 namespace RLCCalculator
 {
+    /// <summary>
+    /// Класс приложения.
+    /// </summary>
     public static class Program
     {
         #region Public Methods
