@@ -30,7 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CalculatorZForm));
             this.circuitsCalculatorGroupBox = new System.Windows.Forms.GroupBox();
-            this.circuitViewer = new Controls.CircuitViewer.CircuitViewer();
+            this.circuitViewer = new Controls.CircuitViewer.CircuitImpedanceViewer();
             this.circuitsCalculatorGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -75,6 +75,6 @@
         #endregion
 
         private System.Windows.Forms.GroupBox circuitsCalculatorGroupBox;
-        private Controls.CircuitViewer.CircuitViewer circuitViewer;
+        private Controls.CircuitViewer.CircuitImpedanceViewer circuitViewer;
     }
 }

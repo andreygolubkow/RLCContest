@@ -42,12 +42,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Circuits\CircuitBase.cs" />
     <Compile Include="Circuits\ParallelCircuit.cs" />
     <Compile Include="Circuits\SerialCircuit.cs" />
     <Compile Include="Elements\Capacitor.cs" />
     <Compile Include="Elements\Inductor.cs" />
     <Compile Include="Elements\Resistor.cs" />
-    <Compile Include="ICircuit.cs" />
     <Compile Include="IComponent.cs" />
     <Compile Include="IElement.cs" />
     <Compile Include="Project.cs" />

@@ -41,12 +41,8 @@ namespace Core.Elements
         /// <summary>
         ///     Создает новый <see cref="Inductor" />.
         /// </summary>
-        /// <param name="name">
-        ///     Наименование компонента.
-        /// </param>
-        /// <param name="value">
-        ///     Номинал.
-        /// </param>
+        /// <param name="name"> Наименование компонента. </param>
+        /// <param name="value"> Номинал. </param>
         public Inductor(string name, double value)
         {
             Name = name;

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 
 using Core;
+using Core.Circuits;
 
 #endregion
 
@@ -20,7 +21,7 @@ namespace RLCCalculator
         /// <summary>
         /// Электрическая цепь для рассчета.
         /// </summary>
-        private ICircuit _circuit;
+        private CircuitBase _circuit;
 
         /// <summary>
         /// Список частот для рассчета.
@@ -45,7 +46,7 @@ namespace RLCCalculator
         /// <summary>
         /// Электрическая цепь для рассчета.
         /// </summary>
-        public ICircuit Circuit
+        public CircuitBase Circuit
         {
             set
             {

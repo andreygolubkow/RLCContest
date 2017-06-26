@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using CircuitDrawer;
 
 using Core;
+using Core.Circuits;
 
 #endregion
 
@@ -21,7 +22,7 @@ namespace RLCCalculator
         /// Создает новый экземпляр формы.
         /// </summary>
         /// <param name="circuit">Эл. цепь для просмотра.</param>
-        public CircuitGraphicView(ICircuit circuit)
+        public CircuitGraphicView(CircuitBase circuit)
         {
             InitializeComponent();
 

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 
 using Core;
+using Core.Circuits;
 
 using Tools;
 
@@ -58,7 +59,7 @@ namespace RLCCalculator
             };
             iComponentBindingSource.DataSource = _project.Circuits;
             _calculatorZ = new CalculatorZForm();
-            _circuitDetailForm = new CircuitDetailForm(FormOpenMode.LiveEdit);
+            _circuitDetailForm = new CircuitDetailForm(FormOpenModeEnum.LiveEdit);
         }
 
         #endregion
@@ -109,8 +110,8 @@ namespace RLCCalculator
                     Frequencies = _project.Frequencies
                 };
             }
-            _calculatorZ.Circuit = (ICircuit)iComponentBindingSource.Current;
-            _circuitDetailForm.Circuit = (ICircuit)iComponentBindingSource.Current;
+            _calculatorZ.Circuit = (CircuitBase)iComponentBindingSource.Current;
+            _circuitDetailForm.CircuitBase = (CircuitBase)iComponentBindingSource.Current;
         }
 
         /// <summary>
@@ -207,10 +208,10 @@ namespace RLCCalculator
         /// <param name="e">Параметры события.</param>
         private void NewCircuitToolStripMenuItemClick1(object sender, EventArgs e)
         {
-            var circuitForm = new CircuitDetailForm(FormOpenMode.Create);
+            var circuitForm = new CircuitDetailForm(FormOpenModeEnum.Create);
             if (circuitForm.ShowDialog() == DialogResult.OK)
             {
-                iComponentBindingSource.Add(circuitForm.Circuit);
+                iComponentBindingSource.Add(circuitForm.CircuitBase);
             }
         }
 
@@ -239,7 +240,7 @@ namespace RLCCalculator
         /// <param name="e">Параметры события.</param>
         private void CircuitDesignerToolStripMenuItemClick(object sender, EventArgs e)
         {
-            var circuit = iComponentBindingSource.Current as ICircuit;
+            var circuit = iComponentBindingSource.Current as CircuitBase;
             if (circuit == null)
             {
                 MessageBox.Show(@"You must select an element to delete");

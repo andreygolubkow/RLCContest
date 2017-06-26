@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Windows.Forms;
 
 using Core;
+using Core.Circuits;
 
 #endregion
 
@@ -24,7 +25,7 @@ namespace Controls.Elements.SingleControls.BaseControls
         /// <summary>
         /// Электрическая цепь.
         /// </summary>
-        protected ICircuit _circuit;
+        protected CircuitBase _circuit;
         #endregion
 
         #region Constructors
@@ -48,7 +49,7 @@ namespace Controls.Elements.SingleControls.BaseControls
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         [EditorBrowsable(EditorBrowsableState.Never)]
         [DefaultValue(null)]
-        public virtual ICircuit Circuit
+        public virtual CircuitBase Circuit
         {
             get => _circuit;
             set

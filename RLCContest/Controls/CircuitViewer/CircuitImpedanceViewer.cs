@@ -6,6 +6,8 @@ using System.Globalization;
 using System.Windows.Forms;
 
 using Core;
+using Core.Circuits;
+
 #endregion
 
 namespace Controls.CircuitViewer
@@ -14,14 +16,14 @@ namespace Controls.CircuitViewer
     /// <summary>
     /// Элемент управления для просмотра комплексного сопротивления цепи.
     /// </summary>
-    public partial class CircuitViewer : UserControl
+    public partial class CircuitImpedanceViewer : UserControl
     {
         #region Constructors
 
         /// <summary>
         /// Создает новый экзмепляр элемента управления.
         /// </summary>
-        public CircuitViewer()
+        public CircuitImpedanceViewer()
         {
             InitializeComponent();
         }
@@ -39,7 +41,7 @@ namespace Controls.CircuitViewer
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         [EditorBrowsable(EditorBrowsableState.Never)]
         [DefaultValue(null)]
-        public void ShowZ(ICircuit circuit, double[] freq)
+        public void ShowZ(CircuitBase circuit, double[] freq)
         {
             circuitGridView.Rows.Clear();
             circuitGridView.Columns.Clear();
@@ -105,7 +107,7 @@ namespace Controls.CircuitViewer
         /// </summary>
         /// <param name="circuit">Эл. цепь для рассчета.</param>
         /// <param name="freq">Массив частот.</param>
-        private void FillCircuitTable(ICircuit circuit, double[] freq)
+        private void FillCircuitTable(CircuitBase circuit, double[] freq)
         {
             for (int elementIndex = -1; elementIndex < circuit.Count; elementIndex++)
             {

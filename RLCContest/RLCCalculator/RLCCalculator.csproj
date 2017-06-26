@@ -76,7 +76,7 @@
     <Compile Include="ElementDetailFormcs.Designer.cs">
       <DependentUpon>ElementDetailFormcs.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormModeEnumeration.cs" />
+    <Compile Include="FormOpenModeEnum.cs" />
     <Compile Include="FrequencyEditorForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -91,12 +91,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TestForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="TestForm.Designer.cs">
-      <DependentUpon>TestForm.cs</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="CalculatorZForm.resx">
       <DependentUpon>CalculatorZForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -124,9 +118,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="TestForm.resx">
-      <DependentUpon>TestForm.cs</DependentUpon>
-    </EmbeddedResource>
     <None Include="Properties\DataSources\Core.ICircuit.datasource" />
     <None Include="Properties\DataSources\Core.IComponent.datasource" />
     <None Include="Properties\DataSources\Core.IElement.datasource" />

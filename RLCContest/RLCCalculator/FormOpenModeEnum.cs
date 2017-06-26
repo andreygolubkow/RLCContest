@@ -10,7 +10,7 @@ namespace RLCCalculator
     /// <summary>
     /// Тип открытия формы.
     /// </summary>
-    public enum FormOpenMode
+    public enum FormOpenModeEnum
     {
         /// <summary>
         /// Редактирование.

@@ -60,11 +60,11 @@
     <Compile Include="Elements\CircuitListView.Designer.cs">
       <DependentUpon>CircuitListView.cs</DependentUpon>
     </Compile>
-    <Compile Include="CircuitViewer\CircuitViewer.cs">
+    <Compile Include="CircuitViewer\CircuitImpedanceViewer.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="CircuitViewer\CircuitViewer.Designer.cs">
-      <DependentUpon>CircuitViewer.cs</DependentUpon>
+    <Compile Include="CircuitViewer\CircuitImpedanceViewer.Designer.cs">
+      <DependentUpon>CircuitImpedanceViewer.cs</DependentUpon>
     </Compile>
     <Compile Include="Elements\SingleControls\BaseControls\BaseCircuitControl.cs">
       <SubType>UserControl</SubType>
@@ -120,8 +120,8 @@
     <EmbeddedResource Include="Elements\CircuitListView.resx">
       <DependentUpon>CircuitListView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CircuitViewer\CircuitViewer.resx">
-      <DependentUpon>CircuitViewer.cs</DependentUpon>
+    <EmbeddedResource Include="CircuitViewer\CircuitImpedanceViewer.resx">
+      <DependentUpon>CircuitImpedanceViewer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Elements\SingleControls\BaseControls\BaseCircuitControl.resx">
       <DependentUpon>BaseCircuitControl.cs</DependentUpon>

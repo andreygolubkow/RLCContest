@@ -31,7 +31,7 @@ namespace Controls.Elements.SingleControls.Circuits
         /// <summary>
         /// Электрическая цепь.
         /// </summary>
-        public override ICircuit Circuit
+        public override CircuitBase Circuit
         {
             get
             {

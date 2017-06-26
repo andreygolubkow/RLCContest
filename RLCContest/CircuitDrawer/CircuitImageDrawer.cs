@@ -67,15 +67,15 @@ namespace CircuitDrawer
         /// <summary>
         /// Метод позволяющий отрисовать(вернуть битмап) эл. цепь.
         /// </summary>
-        /// <param name="circuit">Электическая цепь.</param>
+        /// <param name="circuitBase">Электическая цепь.</param>
         /// <returns>Рисунок эл. цепи.</returns>
-        public static Bitmap GetImage(this ICircuit circuit)
+        public static Bitmap GetImage(this CircuitBase circuitBase)
         {
-            if (circuit is SerialCircuit serial)
+            if (circuitBase is SerialCircuit serial)
             {
                 return GetCircuitImage(serial);
             }
-            if (circuit is ParallelCircuit parallel)
+            if (circuitBase is ParallelCircuit parallel)
             {
                 return GetCircuitImage(parallel);
             }
@@ -91,11 +91,11 @@ namespace CircuitDrawer
         /// <summary>
         /// Метод отрисовывающий последовательную электрическую цепь.
         /// </summary>
-        /// <param name="circuit">Электрическая цепь с последовательным соедининением.</param>
+        /// <param name="circuitBase">Электрическая цепь с последовательным соедининением.</param>
         /// <returns>Рисунок эл. цепи.</returns>
-        private static Bitmap GetCircuitImage(SerialCircuit circuit)
+        private static Bitmap GetCircuitImage(SerialCircuit circuitBase)
         {
-            var size = GetSize(circuit);
+            var size = GetSize(circuitBase);
 
             var bitmap = new Bitmap(size.Width, size.Height);
             int x = 0;
@@ -104,7 +104,7 @@ namespace CircuitDrawer
             using (Graphics g = Graphics.FromImage(bitmap))
             {
 
-                foreach (IComponent component in circuit)
+                foreach (IComponent component in circuitBase)
                 {
                     if (component is IElement element)
                     {
@@ -112,7 +112,7 @@ namespace CircuitDrawer
                         g.DrawImage(elementImage, new Point(x, y - elementImage.Height / ImageDellimitterConst));
                         x += GetSize(element).Width;
                     }
-                    else if (component is ICircuit circuitComponent)
+                    else if (component is CircuitBase circuitComponent)
                     {
                         Bitmap circuitImage = new Bitmap(_emptyImageSize.Width, _emptyImageSize.Height);
                         if (circuitComponent is SerialCircuit sc)
@@ -134,19 +134,19 @@ namespace CircuitDrawer
         /// <summary>
         /// Метод отрисовывающий эл. цепь с параллельным соединением.
         /// </summary>
-        /// <param name="circuit">Эл. цепь с параллельным соединением.</param>
+        /// <param name="circuitBase">Эл. цепь с параллельным соединением.</param>
         /// <returns>Рисунок эл. цепи.</returns>
-        private static Bitmap GetCircuitImage(ParallelCircuit circuit)
+        private static Bitmap GetCircuitImage(ParallelCircuit circuitBase)
         {
-            var size = GetSize(circuit);
+            var size = GetSize(circuitBase);
 
             var bitmap = new Bitmap(size.Width, size.Height);
 
             int x = InputLineLength;
             int y = 0;
 
-            var firstComponent = circuit.FirstOrDefault();
-            var lastElement = circuit.LastOrDefault();
+            var firstComponent = circuitBase.FirstOrDefault();
+            var lastElement = circuitBase.LastOrDefault();
             if (firstComponent == null || lastElement == null)
             {
                 return bitmap;
@@ -161,7 +161,7 @@ namespace CircuitDrawer
 
                 g.DrawLine(_standartPen, x, y + firstHeight / ImageDellimitterConst, x, size.Height - lastHeight / ImageDellimitterConst);
                 g.DrawLine(_standartPen, x + 1, y + firstHeight / ImageDellimitterConst, x + 1, size.Height - lastHeight / ImageDellimitterConst);
-                foreach (var component in circuit)
+                foreach (var component in circuitBase)
                 {
                     if (component is IElement element)
                     {
@@ -171,7 +171,7 @@ namespace CircuitDrawer
                         g.DrawLine(_standartPen, x + elementImage.Width, y + elementImage.Height / ImageDellimitterConst - 1, bitmap.Width - ParallelConnectorMargin, y + elementImage.Height / ImageDellimitterConst - 1);
                         y += elementImage.Height;
                     }
-                    else if (component is ICircuit circuitComponent)
+                    else if (component is CircuitBase circuitComponent)
                     {
                         Bitmap circuitImage = new Bitmap(1, 1);
                         if (circuitComponent is SerialCircuit sc)
@@ -209,7 +209,7 @@ namespace CircuitDrawer
         /// <returns>Размер рисунка компонента эл. цепи.</returns>
         private static Size GetSize(IComponent component)
         {
-            if (component is ICircuit circuit)
+            if (component is CircuitBase circuit)
             {
                 return GetSize(circuit);
             }
@@ -233,15 +233,15 @@ namespace CircuitDrawer
         /// <summary>
         /// Вычисляет размер рисунка эл. цепи.
         /// </summary>
-        /// <param name="circuit">Эл. цепь.</param>
+        /// <param name="circuitBase">Эл. цепь.</param>
         /// <returns>Размер рисунка эл. цепи.</returns>
-        private static Size GetSize(ICircuit circuit)
+        private static Size GetSize(CircuitBase circuitBase)
         {
-            if (circuit is SerialCircuit serialCircuit)
+            if (circuitBase is SerialCircuit serialCircuit)
             {
                 return GetSize(serialCircuit);
             }
-            else if (circuit is ParallelCircuit parallelCircuit)
+            else if (circuitBase is ParallelCircuit parallelCircuit)
             {
                 return GetSize(parallelCircuit);
             }
@@ -251,12 +251,12 @@ namespace CircuitDrawer
         /// <summary>
         /// Вычисляет размер рисунка эл. цепи с последовательным соединением.
         /// </summary>
-        /// <param name="circuit">Эл. цепь с последовательным соединением.</param>
+        /// <param name="circuitBase">Эл. цепь с последовательным соединением.</param>
         /// <returns>Размер рисунка эл.цепи.</returns>
-        private static Size GetSize(SerialCircuit circuit)
+        private static Size GetSize(SerialCircuit circuitBase)
         {
-            var size = circuit.Count > 0 ? new Size(0, 0) : new Size(_emptyImageSize.Width, _emptyImageSize.Height);
-            foreach (IComponent component in circuit)
+            var size = circuitBase.Count > 0 ? new Size(0, 0) : new Size(_emptyImageSize.Width, _emptyImageSize.Height);
+            foreach (IComponent component in circuitBase)
             {
                 if (component is IElement element)
                 {
@@ -282,12 +282,12 @@ namespace CircuitDrawer
         /// <summary>
         /// Вычисляет размер рисунка эл. цепи с параллельным соединением.
         /// </summary>
-        /// <param name="circuit">Эл. цепь с параллельным соединением.</param>
+        /// <param name="circuitBase">Эл. цепь с параллельным соединением.</param>
         /// <returns>Размер рисунка эл.цепи.</returns>
-        private static Size GetSize(ParallelCircuit circuit)
+        private static Size GetSize(ParallelCircuit circuitBase)
         {
-            var size = circuit.Count > 0 ? new Size(0, 0) : new Size(_emptyImageSize.Width, _emptyImageSize.Height);
-            foreach (var component in circuit)
+            var size = circuitBase.Count > 0 ? new Size(0, 0) : new Size(_emptyImageSize.Width, _emptyImageSize.Height);
+            foreach (var component in circuitBase)
             {
                 if (component is IElement element)
                 {

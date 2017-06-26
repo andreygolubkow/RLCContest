@@ -30,7 +30,7 @@ namespace RLCCalculator
         /// <summary>
         /// Тип открытия формы.
         /// </summary>
-        private readonly FormOpenMode _mode;
+        private readonly FormOpenModeEnum _modeEnum;
         #endregion
 
         #region Constructors
@@ -38,8 +38,8 @@ namespace RLCCalculator
         /// <summary>
         /// Создает новый экземпляр формы.
         /// </summary>
-        /// <param name="mode">Тип открытия формы.</param>
-        public CircuitDetailForm(FormOpenMode mode = FormOpenMode.Create)
+        /// <param name="modeEnum">Тип открытия формы.</param>
+        public CircuitDetailForm(FormOpenModeEnum modeEnum = FormOpenModeEnum.Create)
         {
             InitializeComponent();
 
@@ -47,26 +47,26 @@ namespace RLCCalculator
             serialCircuitControl.Location = new Point(12, 60);
             parallelCircuitControl.Location = new Point(12, 60);
 
-            _mode = mode;
-            switch (mode)
+            _modeEnum = modeEnum;
+            switch (modeEnum)
             {
-                case FormOpenMode.Create:
+                case FormOpenModeEnum.Create:
 
                     circuitTypeComboBox.Enabled = true;
                     createButton.Visible = true;
 
                     break;
-                case FormOpenMode.Edit:
+                case FormOpenModeEnum.Edit:
 
                     circuitTypeComboBox.Enabled = false;
 
                     break;
-                case FormOpenMode.LiveEdit:
+                case FormOpenModeEnum.LiveEdit:
 
                     circuitTypeComboBox.Enabled = false;
                     break;
                 default:
-                    throw new ArgumentOutOfRangeException(nameof(mode), mode, null);
+                    throw new ArgumentOutOfRangeException(nameof(modeEnum), modeEnum, null);
             }
 
         }
@@ -77,7 +77,7 @@ namespace RLCCalculator
         /// <summary>
         /// Электрическая цепь.
         /// </summary>
-        public ICircuit Circuit
+        public CircuitBase CircuitBase
         {
             set
             {
@@ -107,7 +107,7 @@ namespace RLCCalculator
         /// <param name="e">Аргументы.</param>
         private void CircuitDetailFormFormClosing(object sender, FormClosingEventArgs e)
         {
-            if (_mode == FormOpenMode.LiveEdit)
+            if (_modeEnum == FormOpenModeEnum.LiveEdit)
             {
                 e.Cancel = true;
                 Visible = false;
@@ -182,7 +182,7 @@ namespace RLCCalculator
             serialCircuitControl.Visible = circuitTypeComboBox.SelectedIndex == 0;
             parallelCircuitControl.Visible = circuitTypeComboBox.SelectedIndex == 1;
 
-            if (_mode == FormOpenMode.Create)
+            if (_modeEnum == FormOpenModeEnum.Create)
             {
                 _circuitControl.Circuit = null;
             }
@@ -206,12 +206,12 @@ namespace RLCCalculator
                 {
                     throw new Exception("You must enter a valid name");
                 }
-                ICircuit circuit = _circuitControl.Circuit;
-                if (circuit == null)
+                CircuitBase circuitBase = _circuitControl.Circuit;
+                if (circuitBase == null)
                 {
-                    throw new ArgumentNullException(nameof(circuit));
+                    throw new ArgumentNullException(nameof(circuitBase));
                 }
-                circuit.TryLoad();
+                circuitBase.TryLoad();
                 DialogResult = DialogResult.OK;
                 Close();
             }
@@ -233,12 +233,12 @@ namespace RLCCalculator
                 MessageBox.Show(@"You need to select an electrical circuit to add elements");
                 return;
             }
-            var circuitForm = new CircuitDetailForm(FormOpenMode.Create);
+            var circuitForm = new CircuitDetailForm(FormOpenModeEnum.Create);
             if (circuitForm.ShowDialog() == DialogResult.OK)
             {
                 try
                 {
-                    _circuitControl.Add(circuitForm.Circuit);
+                    _circuitControl.Add(circuitForm.CircuitBase);
                 }
                 catch (Exception exception)
                 {
@@ -271,11 +271,11 @@ namespace RLCCalculator
                 {
                 }
             }
-            else if (_circuitControl.CurrentComponent is ICircuit circuit)
+            else if (_circuitControl.CurrentComponent is CircuitBase circuit)
             {
-                var circuitForm = new CircuitDetailForm(FormOpenMode.Edit)
+                var circuitForm = new CircuitDetailForm(FormOpenModeEnum.Edit)
                 {
-                    Circuit = circuit
+                    CircuitBase = circuit
                 };
                 circuitForm.ShowDialog();
             }

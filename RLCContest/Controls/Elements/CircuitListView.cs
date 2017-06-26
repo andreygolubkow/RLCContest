@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Windows.Forms;
 
 using Core;
+using Core.Circuits;
 
 using IComponent = Core.IComponent;
 
@@ -21,7 +22,7 @@ namespace Controls.Elements
         /// <summary>
         /// Эл. цепь.
         /// </summary>
-        private ICircuit _circuit;
+        private CircuitBase _circuit;
 
         #endregion
 
@@ -45,7 +46,7 @@ namespace Controls.Elements
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         [EditorBrowsable(EditorBrowsableState.Never)]
         [DefaultValue(null)]
-        public ICircuit Circuit
+        public CircuitBase Circuit
         {
             set
             {
@@ -98,7 +99,7 @@ namespace Controls.Elements
         /// Заполняет список элементами.
         /// </summary>
         /// <param name="circuit"></param>
-        private void FillList(ICircuit circuit)
+        private void FillList(CircuitBase circuit)
         {
             listBox.Items.Clear();
             foreach (IComponent e in circuit)

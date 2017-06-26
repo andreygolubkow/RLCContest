@@ -1,6 +1,6 @@
 ﻿namespace Controls.CircuitViewer
 {
-    partial class CircuitViewer
+    partial class CircuitImpedanceViewer
     {
         /// <summary> 
         /// Обязательная переменная конструктора.

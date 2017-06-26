@@ -1,6 +1,9 @@
 ﻿#region Using
 using System;
-using System.Collections.Generic; 
+using System.Collections.Generic;
+
+using Core.Circuits;
+
 #endregion
 
 namespace Core
@@ -94,9 +97,9 @@ namespace Core
 
             foreach (IComponent component in Circuits)
             {
-                if ( component is ICircuit c )
+                if ( component is CircuitBase c )
                 {
-                    proj.Circuits.Add((ICircuit)c.Clone());
+                    proj.Circuits.Add((CircuitBase)c.Clone());
                 }
             }
             return proj;
